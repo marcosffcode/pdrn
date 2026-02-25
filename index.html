@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coreamy - Rejuvenescedor Instantâneo PDRN</title>
+  <meta name="description" content="Descubra o PDRN da Coreamy, o sérum que rejuvenesce seu rosto em minutos. Sem agulhas, sem dor e com tecnologia Tensor-Active exclusiva.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+  
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Tailwind Config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Montserrat', 'sans-serif'],
+            serif: ['Playfair Display', 'serif'],
+          },
+          colors: {
+            luxury: {
+              black: '#0a0a0a',
+              dark: '#1a1a1a',
+              gold: '#D4AF37',
+              goldlight: '#F4E5B2',
+              white: '#FAFAFA'
+            }
+          },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-10px)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Styles & Glassmorphism */
+    .glass {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .glass-dark {
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+    }
+    .text-gradient {
+      background: linear-gradient(to right, #D4AF37, #F4E5B2, #D4AF37);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .btn-gold {
+      background: linear-gradient(135deg, #D4AF37 0%, #B58B22 100%);
+      transition: all 0.3s ease;
+    }
+    .btn-gold:hover {
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+      transform: translateY(-2px);
+    }
+    /* Hide scrollbar for clean look but keep functionality */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #0a0a0a; }
+    ::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 4px; }
+  </style>
+
+  <!-- Pixel Placeholders (Mantidos conforme original) -->
+  
+</head>
+
+<body class="bg-luxury-white text-gray-800 font-sans antialiased overflow-x-hidden">
+  
+  <!-- Top Bar -->
+  <div class="bg-luxury-black text-luxury-goldlight text-center py-3 px-2 md:px-4 text-xs md:text-base font-semibold tracking-wide border-b border-luxury-gold/30 relative z-50">
+    Atenção! Não faça Botox antes de conhecer o PDRN da Coreamy...
+  </div>
+
+  <!-- Hero Section -->
+  <section class="relative bg-luxury-black text-white pt-10 pb-16 md:pt-16 md:pb-24 lg:pt-24 lg:pb-32 overflow-hidden">
+    <!-- Decorators -->
+    <div class="absolute top-0 left-0 w-96 h-96 bg-luxury-gold opacity-10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+    <div class="absolute bottom-0 right-0 w-96 h-96 bg-luxury-gold opacity-10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3"></div>
+
+    <div class="container mx-auto px-4 lg:px-8 relative z-10 flex flex-col lg:flex-row items-center gap-10 lg:gap-20">
+      
+      <!-- Content -->
+      <div class="w-full lg:w-1/2 flex flex-col items-center text-center lg:items-start lg:text-left">
+        <div class="flex items-center gap-3 mb-4 md:mb-6">
+          <div class="h-[1px] w-8 md:w-12 bg-luxury-gold"></div>
+          <span class="text-luxury-gold uppercase tracking-widest text-xs md:text-sm font-bold">Tecnologia PDRN Bio-Tensor™</span>
+        </div>
+
+        <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight mb-4 md:mb-6">
+          Rejuvenesça 10 Anos com o <span class="font-style: italic text-gradient">DNA de Salmão</span>
+        </h1>
+        
+        <p class="text-lg md:text-2xl text-gray-300 mb-6 md:mb-8 font-light max-w-2xl leading-relaxed">
+          O truque secreto das atrizes coreanas para uma <span class="text-white font-semibold italic">"Pele de Vidro"</span> em menos de 30 dias.
+        </p>
+
+        <ul class="space-y-4 mb-8 md:mb-10 text-left w-full max-w-md mx-auto lg:mx-0">
+          <li class="flex items-start gap-3">
+            <i class="fa-solid fa-star text-luxury-gold text-lg mt-1 shrink-0"></i>
+            <span class="text-gray-200 text-base md:text-lg"><strong>Efeito Lifting Natural</strong> (Zero aspecto artificial ou rosto "congelado")</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <i class="fa-solid fa-star text-luxury-gold text-lg mt-1 shrink-0"></i>
+            <span class="text-gray-200 text-base md:text-lg"><strong>Alta Absorção Celular</strong> (Age de dentro para fora, direto na derme)</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <i class="fa-solid fa-star text-luxury-gold text-lg mt-1 shrink-0"></i>
+            <span class="text-gray-200 text-base md:text-lg">Suaviza visivelmente rugas profundas, bigode chinês e linhas de expressão</span>
+          </li>
+        </ul>
+
+        <a href="#ofertas" class="btn-gold text-luxury-black font-bold uppercase tracking-wider py-4 px-10 rounded-full text-base md:text-lg w-full md:w-auto text-center inline-block">
+          Descobrir o Efeito
+        </a>
+      </div>
+
+      <!-- Hero Image -->
+      <div class="w-full lg:w-1/2 relative mt-6 md:mt-0">
+        <div class="relative rounded-t-full rounded-b-xl overflow-hidden border-4 border-luxury-gold/20 shadow-2xl shadow-luxury-gold/10 aspect-[3/4] w-[85%] max-w-sm md:max-w-md mx-auto">
+          <!-- Placeholder Unsplash Image (Replace with /antes-e-depois.jpg) -->
+          <img src="antes-depois.webp" alt="Antes e Depois Pele" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-luxury-black via-transparent to-transparent"></div>
+        </div>
+
+        <!-- Floating Badges -->
+        <div class="absolute top-6 md:top-10 -left-2 md:-left-10 glass-dark p-3 md:p-4 rounded-xl animate-float flex flex-col items-center scale-90 md:scale-100">
+          <span class="text-luxury-gold font-serif text-2xl md:text-3xl font-bold">100%</span>
+          <span class="text-white text-xs uppercase tracking-wider mt-1">Aprovado</span>
+        </div>
+
+        <div class="absolute bottom-16 md:bottom-20 -right-2 md:-right-10 glass-dark p-3 md:p-4 rounded-xl animate-float flex items-center gap-2 md:gap-3 scale-90 md:scale-100" style="animation-delay: 2s;">
+          <div class="bg-luxury-gold/20 p-2 md:p-3 rounded-full">
+            <i class="fa-solid fa-shield-halved text-luxury-gold text-xl md:text-2xl"></i>
+          </div>
+          <div class="flex flex-col">
+            <span class="text-white text-sm md:text-base font-bold">Dermato-Safe</span>
+            <span class="text-gray-400 text-xs">Teste Clínico</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Bar (Optimized for Mobile Grid) -->
+  <div class="bg-luxury-black border-y border-luxury-gold/30 py-6">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-2 gap-y-6 md:flex md:flex-wrap justify-center md:justify-between items-start md:items-center gap-x-4">
+        <div class="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-3 text-white text-center">
+          <i class="fa-solid fa-microscope text-luxury-gold text-2xl md:text-3xl"></i>
+          <span class="text-xs md:text-sm uppercase tracking-wider font-bold">Sem Contraindicações</span>
+        </div>
+        <div class="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-3 text-white text-center">
+          <i class="fa-solid fa-lock text-luxury-gold text-2xl md:text-3xl"></i>
+          <span class="text-xs md:text-sm uppercase tracking-wider font-bold">Site Seguro</span>
+        </div>
+        <div class="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-3 text-white text-center">
+          <i class="fa-solid fa-handshake-angle text-luxury-gold text-2xl md:text-3xl"></i>
+          <span class="text-xs md:text-sm uppercase tracking-wider font-bold">Garantia de 30 Dias</span>
+        </div>
+        <div class="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-3 text-white text-center">
+          <i class="fa-solid fa-truck-fast text-luxury-gold text-2xl md:text-3xl"></i>
+          <span class="text-xs md:text-sm uppercase tracking-wider font-bold">Entrega Rastreável</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bio-Tensor Section -->
+  <section class="py-16 md:py-20 lg:py-32 bg-white relative">
+    <div class="container mx-auto px-4">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-luxury-gold uppercase tracking-widest text-sm font-bold block mb-3">Tecnologia Coreana PDRN™</span>
+        <h2 class="font-serif text-4xl md:text-5xl lg:text-6xl text-luxury-black mb-6 leading-tight">Não é Mágica. É <span class="text-luxury-gold italic">Bio-Ciência</span>.</h2>
+        <p class="text-gray-600 text-base md:text-lg leading-relaxed">
+          Entenda como o DNA de Salmão (PDRN) redefine o rejuvenescimento facial: agindo na raiz do problema, reconstruindo as células de dentro para fora, sem o efeito artificial dos procedimentos comuns.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Card 1 -->
+        <div class="bg-gray-50 p-8 rounded-2xl border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+          <div class="w-16 h-16 bg-luxury-black text-luxury-gold rounded-full flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition">
+            <i class="fa-solid fa-dna"></i>
+          </div>
+          <h3 class="font-serif text-2xl font-bold mb-3 text-luxury-black">DNA Raro</h3>
+          <p class="text-gray-600 text-base leading-relaxed">
+            Extraído de forma ultra-purificada, com 95% de compatibilidade humana. Garante absorção profunda agindo como sinalizador biológico.
+          </p>
+        </div>
+        <!-- Card 2 -->
+        <div class="bg-gray-50 p-8 rounded-2xl border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+          <div class="w-16 h-16 bg-luxury-black text-luxury-gold rounded-full flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition">
+            <i class="fa-solid fa-bolt"></i>
+          </div>
+          <h3 class="font-serif text-2xl font-bold mb-3 text-luxury-black">Regeneração</h3>
+          <p class="text-gray-600 text-base leading-relaxed">
+            Penetra na derme e entrega um comando direto: forçar a produção massiva de colágeno e elastina, firmando as estruturas do rosto.
+          </p>
+        </div>
+        <!-- Card 3 -->
+        <div class="bg-gray-50 p-8 rounded-2xl border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+          <div class="w-16 h-16 bg-luxury-black text-luxury-gold rounded-full flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+          </div>
+          <h3 class="font-serif text-2xl font-bold mb-3 text-luxury-black">Pele de Vidro</h3>
+          <p class="text-gray-600 text-base leading-relaxed">
+            O resultado é a famosa Glass Skin coreana: uma pele firme e ultra-iluminada. Poros invisíveis e brilho natural de juventude.
+          </p>
+        </div>
+        <!-- Card 4 (Aviso) -->
+        <div class="bg-red-50 p-8 rounded-2xl border border-red-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+          <div class="w-16 h-16 bg-red-100 text-red-600 rounded-full flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition">
+            <i class="fa-solid fa-ban"></i>
+          </div>
+          <h3 class="font-serif text-2xl font-bold mb-3 text-red-900">A Indústria Antiga</h3>
+          <p class="text-red-700 text-base leading-relaxed">
+            Utiliza petroquímicos ultrapassados que apenas mascaram o ressecamento, criando dependência sem impedir o envelhecimento.
+          </p>
+        </div>
+      </div>
+
+      <div class="text-center mt-12">
+        <a href="#bio-mechanism" class="inline-block border-b-2 border-luxury-gold pb-1 text-luxury-black font-bold uppercase tracking-wider text-lg hover:text-luxury-gold transition">
+          Ver Mecanismo Biológico &rarr;
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bio-Mechanism Section -->
+  <section id="bio-mechanism" class="py-20 bg-luxury-black text-white">
+    <div class="container mx-auto px-4 lg:flex lg:items-center lg:gap-16">
+      
+      <!-- Imagem Visual -->
+      <div class="w-full lg:w-1/2 mb-12 lg:mb-0 relative">
+        <div class="absolute inset-0 bg-luxury-gold rounded-full blur-3xl opacity-20"></div>
+        <!-- Placeholder for /OIP.jpg (DNA Concept) -->
+        <img src="foto.webp" alt="Biologia DNA" class="w-full h-auto rounded-full object-cover aspect-square border-2 border-luxury-gold/30 relative z-10 shadow-2xl">
+      </div>
+
+      <!-- Text -->
+      <div class="w-full lg:w-1/2">
+        <h2 class="font-serif text-4xl md:text-5xl lg:text-6xl mb-6 leading-tight">
+          A Biologia Implacável do <br>
+          <span class="text-gradient italic">DNA de Salmão</span>
+        </h2>
+        <p class="text-gray-300 mb-10 text-xl leading-relaxed">
+          Seu corpo bloqueia cremes sintéticos comuns. O PDRN funciona porque "hackeia" a sua biologia natural:
+        </p>
+
+        <div class="space-y-8">
+          <div class="flex gap-5">
+            <div class="shrink-0 w-14 h-14 rounded-full border-2 border-luxury-gold flex items-center justify-center text-luxury-gold text-2xl font-bold">1</div>
+            <div>
+              <h3 class="text-2xl font-bold mb-2">O Código Exato</h3>
+              <p class="text-gray-400 text-base md:text-lg leading-relaxed">É mais de 95% idêntico ao DNA humano, permitindo passagem livre nas barreiras da pele.</p>
+            </div>
+          </div>
+          
+          <div class="flex gap-5">
+            <div class="shrink-0 w-14 h-14 rounded-full border-2 border-luxury-gold flex items-center justify-center text-luxury-gold text-2xl font-bold">2</div>
+            <div>
+              <h3 class="text-2xl font-bold mb-2">Absorção e Reconstrução</h3>
+              <p class="text-gray-400 text-base md:text-lg leading-relaxed">Sua pele reconhece o ativo e o absorve instantaneamente, religando os motores de colágeno paralisados pela idade.</p>
+            </div>
+          </div>
+
+          <div class="flex gap-5 bg-white/5 p-6 md:p-8 rounded-xl border border-luxury-gold/30">
+            <div class="shrink-0 w-14 h-14 rounded-full bg-luxury-gold text-luxury-black flex items-center justify-center text-2xl font-bold"><i class="fa-solid fa-crown"></i></div>
+            <div>
+              <h3 class="text-2xl font-bold mb-2 text-luxury-gold">O Segredo Asiático no Brasil</h3>
+              <p class="text-gray-300 text-base md:text-lg leading-relaxed">A tecnologia de elite da "Pele de Vidro" é o fim das agulhas e procedimentos agressivos. Dê às suas células o código real do rejuvenescimento.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Section -->
+  <section class="py-20 lg:py-32 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="font-serif text-4xl md:text-5xl text-luxury-black leading-tight">Por que <span class="text-luxury-gold italic">Evoluir</span> para a Tecnologia PDRN?</h2>
+      </div>
+
+      <div class="flex flex-col lg:flex-row gap-8 max-w-6xl mx-auto">
+        
+        <!-- PDRN Column -->
+        <div class="flex-1 bg-white p-8 md:p-10 rounded-3xl shadow-xl border-t-4 border-luxury-gold relative overflow-hidden">
+          <div class="absolute top-0 right-0 bg-luxury-gold text-white text-sm font-bold px-5 py-2 rounded-bl-lg uppercase tracking-wider">A Escolha Premium</div>
+          <h3 class="font-serif text-3xl text-center mb-10 text-luxury-black">Tecnologia PDRN <br><span class="text-xl text-luxury-gold">(DNA de Salmão)</span></h3>
+          
+          <div class="space-y-8">
+            <div class="flex gap-4">
+              <i class="fa-solid fa-check text-green-500 text-2xl mt-1"></i>
+              <div>
+                <strong class="block text-luxury-black mb-2 text-lg md:text-xl">Zero Agulhas. Bio-Compatível.</strong>
+                <p class="text-base md:text-lg text-gray-600 leading-relaxed">Sinta apenas o frescor de um sérum. Absorção sem dor, sem rejeição e sem inflamação.</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <i class="fa-solid fa-check text-green-500 text-2xl mt-1"></i>
+              <div>
+                <strong class="block text-luxury-black mb-2 text-lg md:text-xl">Regeneração Contínua</strong>
+                <p class="text-base md:text-lg text-gray-600 leading-relaxed">A transformação celular entrega a verdadeira "Pele de Vidro" sem esconder-se em casa.</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <i class="fa-solid fa-check text-green-500 text-2xl mt-1"></i>
+              <div>
+                <strong class="block text-luxury-black mb-2 text-lg md:text-xl">Juventude com Movimento</strong>
+                <p class="text-base md:text-lg text-gray-600 leading-relaxed">Reconstrói as fibras. Você rejuvenesce mantendo cada movimento e sorriso natural.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- OUTROS Column -->
+        <div class="flex-1 bg-gray-100 p-8 md:p-10 rounded-3xl border border-gray-200">
+          <h3 class="font-serif text-3xl text-center mb-10 text-gray-500">Métodos Antigos <br><span class="text-xl text-gray-400">(Injetáveis)</span></h3>
+          
+          <div class="space-y-8 opacity-75">
+            <div class="flex gap-4">
+              <i class="fa-solid fa-xmark text-red-500 text-2xl mt-1"></i>
+              <div>
+                <strong class="block text-gray-700 mb-2 text-lg md:text-xl">Invasivo e Traumático</strong>
+                <p class="text-base md:text-lg text-gray-600 leading-relaxed">Injeções dolorosas que causam hematomas e forçam seu corpo a lutar contra substâncias.</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <i class="fa-solid fa-xmark text-red-500 text-2xl mt-1"></i>
+              <div>
+                <strong class="block text-gray-700 mb-2 text-lg md:text-xl">Recuperação Lenta</strong>
+                <p class="text-base md:text-lg text-gray-600 leading-relaxed">Exige dias de repouso, rosto descamando, obrigando você a cancelar compromissos.</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <i class="fa-solid fa-xmark text-red-500 text-2xl mt-1"></i>
+              <div>
+                <strong class="block text-gray-700 mb-2 text-lg md:text-xl">Risco de "Rosto de Cera"</strong>
+                <p class="text-base md:text-lg text-gray-600 leading-relaxed">Toxinas que paralisam músculos, criando aspecto plastificado e sem expressão.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Diagnosis Section -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4 flex flex-col lg:flex-row items-center gap-16">
+      
+      <!-- Visual -->
+      <div class="w-full lg:w-5/12">
+        <div class="relative rounded-2xl overflow-hidden shadow-2xl">
+          <!-- Placeholder Unsplash Image (Replace with /woman-mirror.jpg) -->
+          <img src="mulher2.webp" alt="Consulta Facial" class="w-full h-[500px] object-cover">
+          <div class="absolute bottom-0 left-0 right-0 bg-luxury-black/80 backdrop-blur-md p-6 md:p-8 text-white">
+            <p class="text-base md:text-lg font-light leading-relaxed">Se você se identifica com <strong class="text-luxury-gold font-bold">2 ou mais</strong> destes sinais, sua pele não precisa de mais "creminhos". Ela exige bio-regeneração.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="w-full lg:w-7/12">
+        <span class="text-luxury-gold uppercase tracking-widest text-sm font-bold block mb-3">Análise Celular</span>
+        <h2 class="font-serif text-4xl md:text-5xl text-luxury-black mb-8 leading-tight">O DNA de Salmão é a Intervenção Que Você Precisa?</h2>
+
+        <ul class="space-y-6">
+          <li class="flex items-start gap-4">
+            <div class="mt-1 bg-luxury-gold/20 p-2 rounded-full text-luxury-gold text-sm"><i class="fa-solid fa-chevron-right"></i></div>
+            <p class="text-gray-700 text-base md:text-lg leading-relaxed">Sente que o <strong class="text-luxury-black">"Bigode Chinês"</strong> e a flacidez dão um aspecto de cansaço e "derretimento"?</p>
+          </li>
+          <li class="flex items-start gap-4">
+            <div class="mt-1 bg-luxury-gold/20 p-2 rounded-full text-luxury-gold text-sm"><i class="fa-solid fa-chevron-right"></i></div>
+            <p class="text-gray-700 text-base md:text-lg leading-relaxed">Percebe <strong class="text-luxury-black">"pés de galinha"</strong> e linhas da testa marcados profundamente mesmo quando está séria?</p>
+          </li>
+          <li class="flex items-start gap-4">
+            <div class="mt-1 bg-luxury-gold/20 p-2 rounded-full text-luxury-gold text-sm"><i class="fa-solid fa-chevron-right"></i></div>
+            <p class="text-gray-700 text-base md:text-lg leading-relaxed">Sua pele perdeu o <strong class="text-luxury-black">viço da juventude</strong>, tornando-se opaca e com poros dilatados?</p>
+          </li>
+          <li class="flex items-start gap-4">
+            <div class="mt-1 bg-luxury-gold/20 p-2 rounded-full text-luxury-gold text-sm"><i class="fa-solid fa-chevron-right"></i></div>
+            <p class="text-gray-700 text-base md:text-lg leading-relaxed">Quer recuperar a firmeza facial, mas recusa-se a passar pela <strong class="text-luxury-black">dor e riscos</strong> das injeções?</p>
+          </li>
+          <li class="flex items-start gap-4">
+            <div class="mt-1 bg-luxury-gold/20 p-2 rounded-full text-luxury-gold text-sm"><i class="fa-solid fa-chevron-right"></i></div>
+            <p class="text-gray-700 text-base md:text-lg leading-relaxed">Sonha em ter o verdadeiro <strong class="text-luxury-black">Glass Skin</strong> para que a maquiagem seja escolha, e não obrigação?</p>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="py-20 lg:py-32 bg-luxury-black text-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-luxury-gold uppercase tracking-widest text-sm font-bold block mb-3">A Elite da Bio-Regeneração</span>
+        <h2 class="font-serif text-4xl md:text-5xl mb-6 leading-tight">Resultados de Quem Já Desbloqueou o Efeito Glass Skin</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- Review 1 -->
+        <div class="glass-dark p-8 md:p-10 rounded-2xl relative">
+          <i class="fa-solid fa-quote-right absolute top-6 right-6 text-5xl text-luxury-gold opacity-20"></i>
+          <div class="flex text-luxury-gold text-base mb-6 gap-1">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="text-gray-300 text-base md:text-lg italic mb-8 leading-relaxed">
+            "Eu pagava horrores na dermatologista para preencher o bigode chinês. Depois de 30 dias usando o PDRN, cancelei meu retorno. Minha pele voltou a ter a firmeza dos meus 30 anos sem uma única agulhada."
+          </p>
+          <div class="flex items-center gap-4 border-t border-white/10 pt-6">
+            <img src="AnyConv.com__review-carla_11zon.webp" alt="Mariana S." class="w-14 h-14 rounded-full object-cover">
+            <div>
+              <strong class="block text-white text-lg">Mariana S.</strong>
+              <span class="text-sm text-luxury-gold uppercase tracking-wider">48 Anos • Verificada</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="glass-dark p-8 md:p-10 rounded-2xl relative">
+          <i class="fa-solid fa-quote-right absolute top-6 right-6 text-5xl text-luxury-gold opacity-20"></i>
+          <div class="flex text-luxury-gold text-base mb-6 gap-1">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="text-gray-300 text-base md:text-lg italic mb-8 leading-relaxed">
+            "A textura do meu rosto mudou completamente. Aquela pele opaca sumiu. Hoje eu tenho aquele brilho espelhado e poros invisíveis que eu achava que só existia com filtro. É surreal."
+          </p>
+          <div class="flex items-center gap-4 border-t border-white/10 pt-6">
+            <img src="AnyConv.com__review-gersiane_11zon.webp" alt="Luciana T." class="w-14 h-14 rounded-full object-cover">
+            <div>
+              <strong class="block text-white text-lg">Luciana T.</strong>
+              <span class="text-sm text-luxury-gold uppercase tracking-wider">42 Anos • Verificada</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="glass-dark p-8 md:p-10 rounded-2xl relative">
+          <i class="fa-solid fa-quote-right absolute top-6 right-6 text-5xl text-luxury-gold opacity-20"></i>
+          <div class="flex text-luxury-gold text-base mb-6 gap-1">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="text-gray-300 text-base md:text-lg italic mb-8 leading-relaxed">
+            "Eu sentia meu rosto 'derretendo'. Esse extrato de DNA não esticou de forma artificial, ele reconstruiu o contorno do meu maxilar. Sinto a pele densa e preenchida de dentro para fora."
+          </p>
+          <div class="flex items-center gap-4 border-t border-white/10 pt-6">
+            <img src="AnyConv.com__review-vera_11zon.webp" alt="Sandra M." class="w-14 h-14 rounded-full object-cover">
+            <div>
+              <strong class="block text-white text-lg">Sandra M.</strong>
+              <span class="text-sm text-luxury-gold uppercase tracking-wider">55 Anos • Verificada</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Manifesto Section -->
+  <section class="py-24 bg-luxury-goldlight relative overflow-hidden">
+    <div class="container mx-auto px-4 relative z-10 flex flex-col md:flex-row items-center gap-12 lg:gap-16">
+      <div class="w-full md:w-1/2 text-center md:text-left">
+        <h2 class="font-serif text-4xl md:text-5xl lg:text-6xl text-luxury-black mb-8 leading-tight">Atenção! Você Merece <span class="italic font-bold block mt-2">Cuidar de Si Mesma</span></h2>
+        <p class="text-luxury-dark text-xl mb-8 leading-relaxed">Quanto custa sua beleza? Quanto você pagaria para se sentir bem ao olhar no espelho novamente?</p>
+        <blockquote class="border-l-4 border-luxury-black pl-6 py-2 italic text-2xl font-serif text-luxury-black mb-8 leading-relaxed">
+          "Cuidar de si mesma não é um Luxo. É uma obrigação. É um super poder de mulher!"
+        </blockquote>
+        <p class="font-bold text-luxury-black uppercase tracking-wider text-base md:text-lg">E chegou a hora de você se sentir bem novamente...</p>
+      </div>
+      <div class="w-full md:w-1/2 flex justify-center">
+         <!-- Placeholder Unsplash Image -->
+         <img src="mulher.webp" alt="Mulher Confiante" class="rounded-full w-72 h-72 md:w-96 md:h-96 object-cover border-8 border-white shadow-2xl">
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section id="ofertas" class="py-24 bg-white">
+    <div class="container mx-auto px-4">
+      
+      <div class="text-center mb-12">
+        <span class="text-luxury-gold uppercase tracking-widest text-sm font-bold block mb-4">Invista na sua Melhor Versão</span>
+        <h2 class="font-serif text-4xl md:text-5xl text-luxury-black mb-6 leading-tight">Escolha o Ritmo da sua <span class="text-luxury-gold italic">Transformação</span></h2>
+      </div>
+
+      <!-- Urgency Bar & Timer -->
+      <div class="max-w-2xl mx-auto bg-red-50 text-red-800 text-center p-5 rounded-xl mb-14 border border-red-200">
+        <p class="font-bold text-base md:text-lg mb-3">⏳ OFERTA DE LANÇAMENTO: Estoque Limitado!</p>
+        <div class="flex justify-center items-center gap-5 text-2xl md:text-3xl font-bold font-serif">
+          <div class="flex flex-col items-center"><span id="hours" class="bg-white px-4 py-2 rounded shadow text-red-600">00</span><span class="text-xs uppercase text-red-500 mt-2 font-sans">Horas</span></div>
+          <span class="mb-5">:</span>
+          <div class="flex flex-col items-center"><span id="minutes" class="bg-white px-4 py-2 rounded shadow text-red-600">00</span><span class="text-xs uppercase text-red-500 mt-2 font-sans">Min</span></div>
+          <span class="mb-5">:</span>
+          <div class="flex flex-col items-center"><span id="seconds" class="bg-white px-4 py-2 rounded shadow text-red-600">00</span><span class="text-xs uppercase text-red-500 mt-2 font-sans">Seg</span></div>
+        </div>
+      </div>
+
+      <!-- Pricing Grid -->
+      <div class="flex flex-col lg:flex-row justify-center items-center lg:items-end gap-8 md:gap-10 max-w-7xl mx-auto">
+        
+        <!-- 1 Frasco -->
+        <div class="w-full lg:w-1/3 bg-gray-50 rounded-3xl p-8 border border-gray-200 text-center flex flex-col hover:shadow-xl transition">
+          <span class="text-gray-500 text-xs md:text-sm font-bold uppercase tracking-wider mb-3">Para Conhecer</span>
+          <h3 class="font-serif text-2xl md:text-3xl text-luxury-black mb-5">01 Frasco</h3>
+          
+          <!-- Imagem do Produto (Com Fallback de Ícone) -->
+          <div class="h-48 md:h-56 flex items-center justify-center mb-6 relative group">
+            <img src="1pc.webp" alt="Kit 1 Frasco PDRN" class="h-full w-auto object-contain drop-shadow-xl group-hover:scale-105 transition-transform duration-300 relative z-10" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="absolute inset-0 hidden items-center justify-center text-luxury-gold opacity-50 z-0">
+              <i class="fa-solid fa-flask text-6xl"></i>
+            </div>
+          </div>
+
+          <div class="mb-8 flex-grow">
+            <p class="line-through text-gray-400 text-base">De R$ 247</p>
+            <p class="text-3xl md:text-4xl font-bold text-luxury-black my-2">12x R$ 13,75</p>
+            <p class="text-gray-500 text-sm md:text-base">ou R$ 137 à vista</p>
+          </div>
+          <a href="https://usashoponline.mycartpanda.com/checkout/207995459:1" class="border-2 border-luxury-gold text-luxury-gold hover:bg-luxury-gold hover:text-white font-bold py-4 px-6 rounded-full w-full transition mb-5 text-base md:text-lg">
+            Experimentar
+          </a>
+          <div class="flex justify-center gap-4 text-xs md:text-sm text-gray-400">
+            <span><i class="fa-solid fa-check-circle"></i> ANVISA</span>
+            <span><i class="fa-solid fa-lock"></i> Seguro</span>
+          </div>
+        </div>
+
+        <!-- 5 Frascos (VIP - Highlight -> order-first on mobile!) -->
+        <div class="w-full lg:w-1/3 bg-luxury-black rounded-3xl p-1 relative border-2 border-luxury-gold transform lg:scale-110 shadow-2xl z-10 flex flex-col order-first lg:order-none mb-6 lg:mb-0">
+          <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-luxury-gold text-luxury-black font-bold uppercase text-xs tracking-wider py-1.5 px-6 rounded-full whitespace-nowrap">
+            Melhor Custo-Benefício
+          </div>
+          <div class="bg-luxury-dark p-8 md:p-10 rounded-2xl text-center h-full flex flex-col">
+            <span class="text-luxury-gold text-xs md:text-sm font-bold uppercase tracking-wider mb-3">Tratamento VIP</span>
+            <h3 class="font-serif text-4xl md:text-5xl text-white mb-5">05 Frascos</h3>
+            
+            <!-- Imagem do Produto (Com Fallback de Ícone) -->
+            <div class="h-56 md:h-64 flex items-center justify-center mb-6 relative group">
+              <img src="5pc.webp" alt="Kit 5 Frascos PDRN" class="h-full w-auto object-contain drop-shadow-[0_10px_15px_rgba(212,175,55,0.2)] group-hover:scale-105 transition-transform duration-300 relative z-10" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="absolute inset-0 hidden items-center justify-center gap-2 text-luxury-gold opacity-80 z-0">
+                <i class="fa-solid fa-flask text-5xl"></i>
+                <i class="fa-solid fa-flask text-6xl mb-4"></i>
+                <i class="fa-solid fa-flask text-5xl"></i>
+              </div>
+            </div>
+
+            <div class="mb-8 flex-grow">
+              <p class="line-through text-gray-500 text-base">De R$ 697</p>
+              <p class="text-5xl md:text-6xl font-bold text-luxury-gold my-3 drop-shadow-[0_0_10px_rgba(212,175,55,0.3)]">12x R$ 39,85</p>
+              <p class="text-gray-400 text-sm md:text-base">ou R$ 397 à vista</p>
+            </div>
+            <!-- REMOVIDO "animate-pulse-slow" AQUI, AUMENTADO FONTE -->
+            <a href="https://usashoponline.mycartpanda.com/checkout/207995468:1" class="btn-gold text-luxury-black text-lg md:text-xl font-bold py-5 px-6 rounded-full w-full transition mb-5 shadow-[0_0_15px_rgba(212,175,55,0.4)]">
+              Comprar Agora
+            </a>
+            <div class="flex justify-center gap-4 text-xs md:text-sm text-gray-400">
+              <span><i class="fa-solid fa-check-circle text-luxury-gold"></i> ANVISA</span>
+              <span><i class="fa-solid fa-lock text-luxury-gold"></i> Compra Segura</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 Frascos -->
+        <div class="w-full lg:w-1/3 bg-gray-50 rounded-3xl p-8 border border-gray-200 text-center flex flex-col hover:shadow-xl transition relative">
+          <div class="absolute top-0 right-0 bg-gray-200 text-gray-600 text-[10px] md:text-xs font-bold uppercase py-1.5 px-4 rounded-bl-lg">
+            Mais Vendido
+          </div>
+          <span class="text-gray-500 text-xs md:text-sm font-bold uppercase tracking-wider mb-3">Tratamento Recomendado</span>
+          <h3 class="font-serif text-2xl md:text-3xl text-luxury-black mb-5">03 Frascos</h3>
+          
+          <!-- Imagem do Produto (Com Fallback de Ícone) -->
+          <div class="h-48 md:h-56 flex items-center justify-center mb-6 relative group">
+            <img src="3pc.webp" alt="Kit 3 Frascos PDRN" class="h-full w-auto object-contain drop-shadow-xl group-hover:scale-105 transition-transform duration-300 relative z-10" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="absolute inset-0 hidden items-center justify-center gap-[-10px] text-luxury-gold opacity-50 z-0">
+              <i class="fa-solid fa-flask text-5xl"></i>
+              <i class="fa-solid fa-flask text-5xl"></i>
+            </div>
+          </div>
+
+          <div class="mb-8 flex-grow">
+            <p class="line-through text-gray-400 text-base">De R$ 497</p>
+            <p class="text-3xl md:text-4xl font-bold text-luxury-black my-2">12x R$ 27,81</p>
+            <p class="text-gray-500 text-sm md:text-base">ou R$ 277 à vista</p>
+          </div>
+          <a href="https://usashoponline.mycartpanda.com/checkout/207995471:1" class="bg-luxury-black text-white hover:bg-gray-800 font-bold py-4 px-6 rounded-full w-full transition mb-5 text-base md:text-lg">
+            Comprar Kit
+          </a>
+          <div class="flex justify-center gap-4 text-xs md:text-sm text-gray-400">
+            <span><i class="fa-solid fa-check-circle"></i> ANVISA</span>
+            <span><i class="fa-solid fa-lock"></i> Seguro</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Guarantee Section -->
+  <section class="py-20 bg-luxury-black text-white relative border-y border-luxury-gold/30">
+    <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-center gap-12">
+      <div class="w-40 h-40 md:w-48 md:h-48 shrink-0 bg-gradient-to-br from-luxury-gold to-[#B58B22] rounded-full flex flex-col items-center justify-center border-4 border-luxury-black outline outline-2 outline-luxury-gold shadow-[0_0_30px_rgba(212,175,55,0.4)]">
+        <span class="text-sm font-bold uppercase tracking-wider text-luxury-black">Garantia</span>
+        <span class="text-5xl md:text-6xl font-serif font-bold text-white drop-shadow-md">30</span>
+        <span class="text-lg font-bold uppercase text-luxury-black">Dias</span>
+      </div>
+      <div class="max-w-xl text-center md:text-left">
+        <h2 class="font-serif text-3xl md:text-4xl mb-6 text-luxury-gold leading-tight">Regeneração Comprovada ou Seu Dinheiro de Volta!</h2>
+        <p class="text-gray-300 text-base md:text-xl leading-relaxed">
+          O risco é todo nosso: use o PDRN por 30 dias. Se não notar uma pele visivelmente mais firme, linhas suavizadas e o efeito Glass Skin, nós devolveremos 100% do seu dinheiro. Sem perguntas.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-24 bg-gray-50">
+    <div class="container mx-auto px-4 max-w-4xl">
+      <div class="text-center mb-16">
+        <span class="text-luxury-gold uppercase tracking-widest text-sm font-bold block mb-4">Dúvidas Frequentes</span>
+        <h2 class="font-serif text-4xl md:text-5xl text-luxury-black">Consultoria PDRN</h2>
+      </div>
+
+      <!-- FAQ Accordion Container -->
+      <div class="space-y-6" id="faq-accordion">
+        
+        <!-- Item 1 -->
+        <div class="border border-gray-200 rounded-xl bg-white overflow-hidden transition-all duration-300">
+          <button class="faq-btn w-full text-left p-6 md:p-8 flex justify-between items-center focus:outline-none">
+            <span class="font-bold text-luxury-black text-lg md:text-xl">Quem pode usar o PDRN?</span>
+            <i class="fa-solid fa-plus text-luxury-gold transition-transform duration-300 transform icon text-xl"></i>
+          </button>
+          <div class="faq-content hidden px-6 pb-6 md:px-8 md:pb-8 text-gray-600 text-base md:text-lg leading-relaxed">
+            Nossa tecnologia foi formulada para <strong>todos os tipos de pele</strong>. É a intervenção ideal para mulheres que já apresentam sinais de colapso de colágeno (flacidez, "bigode chinês") e desejam uma regeneração biológica profunda sem recorrer a agulhas.
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="border border-gray-200 rounded-xl bg-white overflow-hidden transition-all duration-300">
+          <button class="faq-btn w-full text-left p-6 md:p-8 flex justify-between items-center focus:outline-none">
+            <span class="font-bold text-luxury-black text-lg md:text-xl">Em quanto tempo terei resultados?</span>
+            <i class="fa-solid fa-plus text-luxury-gold transition-transform duration-300 transform icon text-xl"></i>
+          </button>
+          <div class="faq-content hidden px-6 pb-6 md:px-8 md:pb-8 text-gray-600 text-base md:text-lg leading-relaxed">
+            O "choque biológico" de hidratação é percebido nos primeiros dias. Porém, o verdadeiro efeito <strong>"Glass Skin"</strong> e firmeza atingem alta performance a partir de <strong>30 dias de uso contínuo</strong>, tempo necessário para forçar a produção de novas fibras.
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="border border-gray-200 rounded-xl bg-white overflow-hidden transition-all duration-300">
+          <button class="faq-btn w-full text-left p-6 md:p-8 flex justify-between items-center focus:outline-none">
+            <span class="font-bold text-luxury-black text-lg md:text-xl">É aprovado pela ANVISA?</span>
+            <i class="fa-solid fa-plus text-luxury-gold transition-transform duration-300 transform icon text-xl"></i>
+          </button>
+          <div class="faq-content hidden px-6 pb-6 md:px-8 md:pb-8 text-gray-600 text-base md:text-lg leading-relaxed">
+            Sim, <strong>100% aprovado e seguro</strong>. Nossa fórmula atende aos rigorosos padrões da ANVISA e Ministério da Saúde para uso tópico, livre de crueldade (cruelty-free).
+          </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="border border-gray-200 rounded-xl bg-white overflow-hidden transition-all duration-300">
+          <button class="faq-btn w-full text-left p-6 md:p-8 flex justify-between items-center focus:outline-none">
+            <span class="font-bold text-luxury-black text-lg md:text-xl">Qual o prazo de entrega?</span>
+            <i class="fa-solid fa-plus text-luxury-gold transition-transform duration-300 transform icon text-xl"></i>
+          </button>
+          <div class="faq-content hidden px-6 pb-6 md:px-8 md:pb-8 text-gray-600 text-base md:text-lg leading-relaxed">
+            Trabalhamos com logística expressa. O prazo médio varia de <strong>3 a 7 dias úteis</strong> após a confirmação. Você receberá o código de rastreamento no seu e-mail e WhatsApp.
+          </div>
+        </div>
+
+      </div>
+
+      <!-- WhatsApp Support -->
+      <div class="mt-14 text-center">
+        <a href="https://wa.me/5521970019689?text=Ol%C3%A1%2C%20tenho%20d%C3%BAvidas%20sobre%20o%20PDRN%20da%20Coreamy." target="_blank" class="inline-flex items-center gap-3 bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-10 rounded-full transition shadow-lg text-lg">
+          <i class="fa-brands fa-whatsapp text-2xl"></i>
+          Restou alguma dúvida? Fale Conosco
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-luxury-black text-center text-gray-500 py-10 border-t border-white/10 text-sm md:text-base">
+    <p>&copy; 2024 Coreamy. Todos os direitos reservados.</p>
+    <p class="mt-4 text-xs md:text-sm px-4">Aviso Legal: Os resultados podem variar de pessoa para pessoa. Este site não é afiliado ao Facebook ou qualquer entidade do Facebook. Uma vez que você sai do Facebook, não é mais de responsabilidade deles, é responsabilidade do nosso site.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // 1. Countdown Timer Logic (Até a meia-noite do dia atual)
+    function updateTimer() {
+      const now = new Date();
+      const midnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0);
+      const diff = midnight - now;
+
+      if (diff > 0) {
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+        document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+        document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+      }
+    }
+    setInterval(updateTimer, 1000);
+    updateTimer();
+
+    // 2. FAQ Accordion Logic
+    const faqBtns = document.querySelectorAll('.faq-btn');
+    faqBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const content = btn.nextElementSibling;
+        const icon = btn.querySelector('.icon');
+        
+        // Toggle current
+        content.classList.toggle('hidden');
+        if(content.classList.contains('hidden')) {
+          icon.classList.remove('rotate-45');
+        } else {
+          icon.classList.add('rotate-45');
+        }
+
+        // Close others (optional - aciona comportamento tipo sanfona exclusiva)
+        faqBtns.forEach(otherBtn => {
+          if (otherBtn !== btn) {
+            otherBtn.nextElementSibling.classList.add('hidden');
+            otherBtn.querySelector('.icon').classList.remove('rotate-45');
+          }
+        });
+      });
+    });
+  </script>
+
+  <!-- UTMify Tracker (Mantido) -->
+  <script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck data-utmify-prevent-subids async defer></script>
+</body>
+</html>

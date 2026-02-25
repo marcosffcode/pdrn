@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    
+    <!-- Primary Meta Tags -->
+    <title>Vida Sem Telas | Transforme a rotina do seu filho</title>
+    <meta name="title" content="Vida Sem Telas | Transforme a rotina do seu filho">
+    <meta name="description" content="Acesse brincadeiras, videoaulas e materiais exclusivos para seu filho se divertir e aprender longe das telas!">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="https://vidasemtela.com/wp-content/uploads/2025/04/FAVV-150x150.png" sizes="32x32">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Sora', 'sans-serif'],
+                        display: ['Fredoka', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            green: '#009B54',
+                            lightGreen: '#d5ffcf',
+                            textGreen: '#0ee407',
+                            blue: '#4C6FFF',
+                            yellow: '#E4A107',
+                            lightYellow: '#FFF1CF',
+                            red: '#ef4444'
+                        }
+                    },
+                    animation: {
+                        'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'bounce-slight': 'bounceSlight 2s infinite',
+                        'infinite-scroll': 'infinite-scroll 25s linear infinite',
+                    },
+                    keyframes: {
+                        bounceSlight: {
+                            '0%, 100%': { transform: 'translateY(-5%)', animationTimingFunction: 'cubic-bezier(0.8,0,1,1)' },
+                            '50%': { transform: 'translateY(0)', animationTimingFunction: 'cubic-bezier(0,0,0.2,1)' },
+                        },
+                        'infinite-scroll': {
+                            from: { transform: 'translateX(0)' },
+                            to: { transform: 'translateX(-100%)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Estilo customizado para o FAQ (Accordion) */
+        details > summary {
+            list-style: none;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased selection:bg-brand-green selection:text-white">
+
+    <!-- HERO SECTION -->
+    <header class="bg-gradient-to-b from-blue-50 to-white pt-8 pb-16 px-4">
+        <div class="max-w-4xl mx-auto text-center flex flex-col items-center">
+            <!-- Logo -->
+            <img src="https://vidasemtela.com/wp-content/uploads/2025/04/vida-sem-telas-logo.png" alt="Logo Vida Sem Telas" class="w-48 md:w-64 mb-8">
+            
+            <!-- Headlines -->
+            <h1 class="font-display text-3xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
+                Em 7 dias, seu filho vai se divertir com atividades que estimulam a mente e a criatividade!
+            </h1>
+            <p class="text-lg md:text-xl text-gray-600 mb-8 max-w-3xl">
+                São mais de 150 atividades simples e divertidas, para ensinar e aprimorar a criatividade, aprendizado e os sentidos.
+            </p>
+            
+            <!-- Hero Image -->
+            <img src="https://vidasemtela.com/wp-content/uploads/2025/09/mockup-principal-vst-1024x556.webp" alt="Kit Vida Sem Telas" class="w-full max-w-2xl mx-auto mb-8 drop-shadow-2xl animate-bounce-slight rounded-xl">
+            
+            <!-- CTA Button -->
+            <a href="#planos" class="inline-flex items-center justify-center w-full sm:w-auto px-8 py-4 bg-green-500 hover:bg-green-600 text-white font-bold text-lg md:text-xl rounded-full shadow-[0_8px_0_rgb(21,128,61)] hover:shadow-[0_4px_0_rgb(21,128,61)] hover:translate-y-1 transition-all animate-pulse-fast uppercase tracking-wide">
+                Quero o Kit Vida Sem Tela
+            </a>
+            <p class="mt-4 flex items-center gap-2 text-sm text-gray-500 font-semibold">
+                <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                Acesso Imediato
+            </p>
+        </div>
+    </header>
+
+    <!-- PREVIEW ATIVIDADES (CARROSSEL NATIVO) -->
+    <section class="py-16 bg-white px-4 overflow-hidden">
+        <div class="max-w-6xl mx-auto text-center">
+            <h2 class="font-display text-3xl md:text-4xl font-bold mb-2">Conheça um pouco das atividades do material</h2>
+            <p class="text-gray-600 text-lg mb-10">Tem para imprimir, pintar, recortar e ideias para aplicar com o que você tem em casa</p>
+            
+            <!-- Wrapper do Carrossel Infinito -->
+            <div class="relative w-full inline-flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_50px,_black_calc(100%-50px),transparent_100%)] md:[mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)] pb-8 pt-4">
+                
+                <!-- Primeiro Grupo de Imagens -->
+                <div class="flex items-center justify-center md:justify-start gap-4 animate-infinite-scroll hover:[animation-play-state:paused] pr-4">
+                    <img src="https://vidasemtela.com/wp-content/uploads/2025/05/foto-prova-social_0006_Camada-1.webp" alt="Atividade 1" class="w-[280px] md:w-[400px] flex-shrink-0 rounded-2xl shadow-md border border-gray-100">
+                    <img src="https://vidasemtela.com/wp-content/uploads/2025/05/foto-prova-social_0002_Camada-5.webp" alt="Atividade 2" class="w-[280px] md:w-[400px] flex-shrink-0 rounded-2xl shadow-md border border-gray-100">
+                    <img src="https://vidasemtela.com/wp-content/uploads/2025/05/foto-prova-social_0000_Camada-7.webp" alt="Atividade 3" class="w-[280px] md:w-[400px] flex-shrink-0 rounded-2xl shadow-md border border-gray-100">
+                    <img src="https://vidasemtela.com/wp-content/uploads/2025/05/foto-prova-social_0001_Camada-6.webp" alt="Atividade 4" class="w-[280px] md:w-[400px] flex-shrink-0 rounded-2xl shadow-md border border-gray-100">
+                    <img src="https://vidasemtela.com/wp-content/uploads/2025/05/foto-prova-social_0005_Camada-2.webp" alt="Atividade 5" class="w-[280px] md:w-[400px] flex-shrink-0 rounded-2xl shadow-md border border-gray-100">
+                </div>
+
+                <!-- Grupo Duplicado para Efeito Loop Infinito -->
+                <div class="flex items-center justify-center md:justify-start gap-4 animate-infinite-scroll hover:[animation-play-state:paused] pr-4" aria-hidden="true">
+                    <img src="https://vidasemtela.com/wp-content/uploads/2025/05/foto-prova-social_0006_Camada-1.webp" alt="Atividade 1" class="w-[280px] md:w-[400px] flex-shrink-0 rounded-2xl shadow-md border border-gray-100">
+                    <img src="https://vidasemtela.com/wp-content/uploads/2025/05/foto-prova-social_0002_Camada-5.webp" alt="Atividade 2" class="w-[280px] md:w-[400px] flex-shrink-0 rounded-2xl shadow-md border border-gray-100">
+                    <img src="https://vidasemtela.com/wp-content/uploads/2025/05/foto-prova-social_0000_Camada-7.webp" alt="Atividade 3" class="w-[280px] md:w-[400px] flex-shrink-0 rounded-2xl shadow-md border border-gray-100">
+                    <img src="https://vidasemtela.com/wp-content/uploads/2025/05/foto-prova-social_0001_Camada-6.webp" alt="Atividade 4" class="w-[280px] md:w-[400px] flex-shrink-0 rounded-2xl shadow-md border border-gray-100">
+                    <img src="https://vidasemtela.com/wp-content/uploads/2025/05/foto-prova-social_0005_Camada-2.webp" alt="Atividade 5" class="w-[280px] md:w-[400px] flex-shrink-0 rounded-2xl shadow-md border border-gray-100">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- POR QUE FUNCIONA -->
+    <section class="py-16 bg-blue-50 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="font-display text-3xl md:text-4xl font-bold mb-4">Por que o Vida Sem Telas Funciona?</h2>
+                <p class="text-gray-700 text-lg max-w-3xl mx-auto">Conteúdo completo com atividades divertidas e progressivas, a criança se mantém engajada. Isso naturalmente aumenta a capacidade de concentração e atenção dela.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <img src="https://vidasemtela.com/wp-content/uploads/2025/05/vidasemtelasprovasocial-1024x658-1-1.webp" alt="Crianças brincando" class="rounded-2xl shadow-xl w-full">
+                
+                <div class="space-y-6">
+                    <div class="flex items-start gap-4 bg-white p-5 rounded-xl shadow-sm border border-blue-100">
+                        <div class="bg-blue-100 text-blue-600 p-3 rounded-full">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-xl text-brand-green mb-1">Melhora Visível</h3>
+                            <p class="text-gray-600">Atividades que fazem seu filho não lembrar da tela</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4 bg-white p-5 rounded-xl shadow-sm border border-blue-100">
+                        <div class="bg-yellow-100 text-yellow-600 p-3 rounded-full">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-xl text-brand-green mb-1">Diversão Crescente</h3>
+                            <p class="text-gray-600">Todo dia uma brincadeira nova que desperta a criatividade e os sentidos</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4 bg-white p-5 rounded-xl shadow-sm border border-blue-100">
+                        <div class="bg-green-100 text-green-600 p-3 rounded-full">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-xl text-brand-green mb-1">Autonomia Natural</h3>
+                            <p class="text-gray-600">Brincadeiras que estimulam seu filho na tomada de decisões</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BÔNUS SECTION -->
+    <section class="py-16 bg-white px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="font-display text-3xl md:text-5xl font-bold uppercase leading-tight">
+                    Adquirindo o Kit <br> 
+                    <mark class="bg-brand-lightYellow text-brand-yellow px-2 rounded">Você leva 3 Super Bônus</mark>
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Bônus 1 -->
+                <article class="bg-white border-4 border-dotted border-indigo-200 rounded-3xl p-6 text-center flex flex-col hover:shadow-xl transition-shadow">
+                    <figure class="w-full max-w-[220px] mx-auto mb-4">
+                        <img src="https://vidasemtela.com/wp-content/uploads/2025/09/bonusssa.webp" alt="Caligrafia Divertida" class="w-full h-auto drop-shadow-lg">
+                    </figure>
+                    <h3 class="font-display font-bold text-brand-blue text-2xl uppercase mb-3">Caligrafia Divertida</h3>
+                    <p class="text-gray-600 mb-6 flex-grow">São exercícios lúdicos, progressivos e divertidos que despertam o interesse da criança, fortalecem a coordenação motora e desenvolvem a caligrafia cursiva de forma leve e natural.</p>
+                    <div class="mt-auto">
+                        <span class="inline-block bg-brand-lightGreen text-brand-textGreen px-4 py-2 rounded-lg font-bold uppercase text-sm">Brinde</span>
+                    </div>
+                </article>
+
+                <!-- Bônus 2 -->
+                <article class="bg-white border-4 border-dotted border-indigo-200 rounded-3xl p-6 text-center flex flex-col hover:shadow-xl transition-shadow">
+                    <figure class="w-full max-w-[220px] mx-auto mb-4">
+                        <img src="https://vidasemtela.com/wp-content/uploads/2025/08/mae-de-sucesso2.webp" alt="Mãe de Sucesso" class="w-full h-auto drop-shadow-lg">
+                    </figure>
+                    <h3 class="font-display font-bold text-brand-blue text-2xl uppercase mb-3">Mãe de Sucesso</h3>
+                    <p class="text-gray-600 mb-6 flex-grow">Descubra como recuperar o controle da rotina sem estresse, reduzir o tempo de telas naturalmente e criar momentos de conexão verdadeira. O guia que transforma mãe cansada em mãe confiante.</p>
+                    <div class="mt-auto">
+                        <span class="inline-block bg-brand-lightGreen text-brand-textGreen px-4 py-2 rounded-lg font-bold uppercase text-sm">Brinde</span>
+                    </div>
+                </article>
+
+                <!-- Bônus 3 -->
+                <article class="bg-white border-4 border-dotted border-indigo-200 rounded-3xl p-6 text-center flex flex-col hover:shadow-xl transition-shadow">
+                    <figure class="w-full max-w-[220px] mx-auto mb-4">
+                        <img src="https://vidasemtela.com/wp-content/uploads/2025/09/matefefe.webp" alt="Matemática Lúdica" class="w-full h-auto drop-shadow-lg">
+                    </figure>
+                    <h3 class="font-display font-bold text-brand-blue text-2xl uppercase mb-3">Matemática Lúdica</h3>
+                    <p class="text-gray-600 mb-6 flex-grow">Método lúdico e progressivo que faz a criança reconhecer algarismos, relacionar quantidades e ordenar. Aprimorando o cérebro cada vez mais.</p>
+                    <div class="mt-auto">
+                        <span class="inline-block bg-brand-lightGreen text-brand-textGreen px-4 py-2 rounded-lg font-bold uppercase text-sm">Brinde</span>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROVA SOCIAL (DEPOIMENTOS) -->
+    <section class="py-16 bg-gray-900 text-white px-4 overflow-hidden">
+        <div class="max-w-6xl mx-auto text-center">
+            <h2 class="font-display text-3xl md:text-4xl font-bold mb-2">Quem confiou, aprovou!</h2>
+            <p class="text-gray-300 text-lg mb-8">Já são mais de 9.531 pais e professores em todo o Brasil!</p>
+            
+            <!-- Wrapper do Carrossel Infinito -->
+            <div class="relative w-full inline-flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_50px,_black_calc(100%-50px),transparent_100%)] md:[mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)] pb-8 pt-4">
+                
+                <!-- Primeiro Grupo de Prints -->
+                <div class="flex items-center justify-center md:justify-start gap-4 animate-infinite-scroll hover:[animation-play-state:paused] pr-4">
+                    <img src="https://vidasemtela.com/wp-content/uploads/2025/12/WhatsApp-Image-2025-12-23-at-10.40.15-1.webp" alt="Depoimento 1" class="w-[250px] md:w-[300px] flex-shrink-0 rounded-2xl border border-gray-700">
+                    <img src="https://vidasemtela.com/wp-content/uploads/2025/12/WhatsApp-Image-2025-12-23-at-10.40.15-2.webp" alt="Depoimento 2" class="w-[250px] md:w-[300px] flex-shrink-0 rounded-2xl border border-gray-700">
+                    <img src="https://vidasemtela.com/wp-content/uploads/2025/12/WhatsApp-Image-2025-12-23-at-10.40.15.webp" alt="Depoimento 3" class="w-[250px] md:w-[300px] flex-shrink-0 rounded-2xl border border-gray-700">
+                    <img src="https://vidasemtela.com/wp-content/uploads/2025/12/WhatsApp-Image-2025-12-23-at-10.40.16-1.webp" alt="Depoimento 4" class="w-[250px] md:w-[300px] flex-shrink-0 rounded-2xl border border-gray-700">
+                    <img src="https://vidasemtela.com/wp-content/uploads/2025/12/WhatsApp-Image-2025-12-23-at-10.40.16-2.webp" alt="Depoimento 5" class="w-[250px] md:w-[300px] flex-shrink-0 rounded-2xl border border-gray-700">
+                </div>
+
+                <!-- Grupo Duplicado para Efeito Loop Infinito -->
+                <div class="flex items-center justify-center md:justify-start gap-4 animate-infinite-scroll hover:[animation-play-state:paused] pr-4" aria-hidden="true">
+                    <img src="https://vidasemtela.com/wp-content/uploads/2025/12/WhatsApp-Image-2025-12-23-at-10.40.15-1.webp" alt="Depoimento 1" class="w-[250px] md:w-[300px] flex-shrink-0 rounded-2xl border border-gray-700">
+                    <img src="https://vidasemtela.com/wp-content/uploads/2025/12/WhatsApp-Image-2025-12-23-at-10.40.15-2.webp" alt="Depoimento 2" class="w-[250px] md:w-[300px] flex-shrink-0 rounded-2xl border border-gray-700">
+                    <img src="https://vidasemtela.com/wp-content/uploads/2025/12/WhatsApp-Image-2025-12-23-at-10.40.15.webp" alt="Depoimento 3" class="w-[250px] md:w-[300px] flex-shrink-0 rounded-2xl border border-gray-700">
+                    <img src="https://vidasemtela.com/wp-content/uploads/2025/12/WhatsApp-Image-2025-12-23-at-10.40.16-1.webp" alt="Depoimento 4" class="w-[250px] md:w-[300px] flex-shrink-0 rounded-2xl border border-gray-700">
+                    <img src="https://vidasemtela.com/wp-content/uploads/2025/12/WhatsApp-Image-2025-12-23-at-10.40.16-2.webp" alt="Depoimento 5" class="w-[250px] md:w-[300px] flex-shrink-0 rounded-2xl border border-gray-700">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMO FUNCIONA (PASSO A PASSO) -->
+    <section class="py-16 bg-white px-4">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="font-display text-3xl md:text-4xl font-bold text-center mb-12">Como funciona?</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Passo 1 -->
+                <div class="relative rounded-2xl border-2 border-dashed border-gray-300 p-8 pt-10 mt-4 hover:border-blue-400 transition-colors bg-blue-50/30">
+                    <div class="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 rounded-full flex items-center justify-center text-white text-2xl font-bold shadow-lg bg-[#4CCBD4]">1</div>
+                    <div class="text-center">
+                        <svg class="w-12 h-12 mx-auto mb-4 text-[#4CCBD4]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                        </svg>
+                        <h3 class="font-display text-2xl font-semibold mb-3">Faça o download</h3>
+                        <p class="text-gray-600">Após a confirmação do pagamento, você receberá um e-mail com o link de acesso para baixar todos os materiais.</p>
+                    </div>
+                </div>
+
+                <!-- Passo 2 -->
+                <div class="relative rounded-2xl border-2 border-dashed border-gray-300 p-8 pt-10 mt-4 hover:border-pink-400 transition-colors bg-pink-50/30">
+                    <div class="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 rounded-full flex items-center justify-center text-white text-2xl font-bold shadow-lg bg-[#FF6799]">2</div>
+                    <div class="text-center">
+                        <svg class="w-12 h-12 mx-auto mb-4 text-[#FF6799]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
+                        </svg>
+                        <h3 class="font-display text-2xl font-semibold mb-3">Imprima</h3>
+                        <p class="text-gray-600">Você pode imprimir em casa ou na gráfica. As brincadeiras lúdicas também podem ser realizadas apenas acompanhando pelo celular.</p>
+                    </div>
+                </div>
+
+                <!-- Passo 3 -->
+                <div class="relative rounded-2xl border-2 border-dashed border-gray-300 p-8 pt-10 mt-4 hover:border-green-400 transition-colors bg-green-50/30">
+                    <div class="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 rounded-full flex items-center justify-center text-white text-2xl font-bold shadow-lg bg-[#59c996]">3</div>
+                    <div class="text-center">
+                        <svg class="w-12 h-12 mx-auto mb-4 text-[#59c996]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <h3 class="font-display text-2xl font-semibold mb-3">Comece a praticar</h3>
+                        <p class="text-gray-600">Com as atividades em mãos, basta começar! Sugerimos pelo menos 15 a 20 minutos por dia para criar o hábito e ver resultados.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PLANOS E PREÇOS -->
+    <section id="planos" class="py-16 bg-gray-50 px-4">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="font-display text-3xl md:text-5xl font-bold text-center mb-12">Escolha o melhor plano para você</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                
+                <!-- Plano Básico -->
+                <div class="bg-white rounded-3xl p-8 shadow-lg border border-gray-200 flex flex-col">
+                    <div class="mb-6 border-b pb-6">
+                        <h3 class="text-xl font-bold text-gray-500 uppercase tracking-wide mb-2">Acesso Trimestral</h3>
+                        <p class="text-gray-400 text-sm">Ideal para testar a metodologia</p>
+                    </div>
+                    
+                    <ul class="space-y-4 mb-8 flex-grow">
+                        <li class="flex items-center gap-3 text-gray-600">
+                            <svg class="w-5 h-5 text-green-500 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                            Acesso por 3 Meses
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-600">
+                            <svg class="w-5 h-5 text-green-500 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                            Mais de 150 atividades criativas
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-600">
+                            <svg class="w-5 h-5 text-green-500 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                            50 modelos de PaperCraft
+                        </li>
+                    </ul>
+
+                    <div class="text-center mt-auto">
+                        <p class="text-gray-500 mb-1">De <span class="line-through text-red-500 font-bold">R$ 97,00</span> por</p>
+                        <p class="text-4xl font-display font-bold text-gray-900 mb-6">R$ 7<span class="text-xl">,00</span></p>
+                        <a href="https://usashoponline.mycartpanda.com/checkout/208020137:1" class="block w-full py-4 bg-gray-800 hover:bg-gray-900 text-white font-bold rounded-xl transition uppercase text-sm">Quero o Plano Trimestral</a>
+                    </div>
+                </div>
+
+                <!-- Plano VIP / Vitalício (Destaque) -->
+                <div class="bg-[#1e293b] text-white rounded-3xl p-8 shadow-2xl border-2 border-brand-yellow relative flex flex-col transform md:-translate-y-4">
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-brand-yellow text-gray-900 font-bold px-4 py-1 rounded-full text-sm uppercase tracking-wide flex items-center gap-1 shadow-lg">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1.323l3.954 1.582 1.599-.8a1 1 0 01.894 1.79l-1.233.616 1.738 5.42a1 1 0 01-.285 1.05A3.989 3.989 0 0115 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.715-5.349L11 6.477V16h2a1 1 0 110 2H7a1 1 0 110-2h2V6.477L6.237 7.582l1.715 5.349a1 1 0 01-.285 1.05A3.989 3.989 0 015 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.738-5.42-1.233-.617a1 1 0 01.894-1.788l1.599.799L9 4.323V3a1 1 0 011-1z" clip-rule="evenodd"></path></svg>
+                        Mais Vendido
+                    </div>
+
+                    <div class="mb-6 border-b border-gray-700 pb-6 mt-2">
+                        <h3 class="text-2xl font-bold text-brand-yellow uppercase tracking-wide mb-2">Acesso Vitalício</h3>
+                        <p class="text-gray-400 text-sm">Acesso para sempre + Todos os Bônus + Atualizações</p>
+                    </div>
+                    
+                    <ul class="space-y-4 mb-8 flex-grow">
+                        <li class="flex items-start gap-3 text-gray-200">
+                            <svg class="w-6 h-6 text-brand-yellow shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            <span><strong>Tudo do plano trimestral, mais:</strong></span>
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-200">
+                            <svg class="w-5 h-5 text-brand-yellow shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                            Acesso Vitalício (Para Sempre)
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-200">
+                            <svg class="w-5 h-5 text-brand-yellow shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                            Bônus: Caligrafia Divertida
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-200">
+                            <svg class="w-5 h-5 text-brand-yellow shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                            Bônus: Matemática Lúdica
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-200">
+                            <svg class="w-5 h-5 text-brand-yellow shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                            Bônus: Guia Mãe de Sucesso
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-200">
+                            <svg class="w-5 h-5 text-brand-yellow shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                            Todas atualizações futuras incluídas
+                        </li>
+                    </ul>
+
+                    <div class="text-center mt-auto">
+                        <p class="text-gray-400 mb-1">De <span class="line-through text-red-400 font-bold">R$ 129,90</span> por apenas</p>
+                        <p class="text-5xl font-display font-bold text-white mb-6">R$ 27<span class="text-2xl">,00</span></p>
+                        <a href="https://usashoponline.mycartpanda.com/checkout/208021120:1" class="block w-full py-4 bg-green-500 hover:bg-green-600 text-white font-bold rounded-xl shadow-[0_6px_0_rgb(21,128,61)] hover:shadow-[0_2px_0_rgb(21,128,61)] hover:translate-y-1 transition-all animate-pulse-fast uppercase text-lg">Acessar Agora Completo</a>
+                        <p class="mt-4 text-xs text-gray-400">Garantia incondicional de 7 dias</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="py-16 bg-white px-4 border-t border-gray-100">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="font-display text-3xl md:text-4xl font-bold text-center mb-10 uppercase tracking-tight">Perguntas Frequentes</h2>
+            
+            <div class="space-y-4">
+                <!-- Pergunta 1 -->
+                <details class="group bg-gray-50 rounded-lg p-6 border border-gray-200 cursor-pointer [&_summary::-webkit-details-marker]:hidden">
+                    <summary class="flex justify-between items-center font-bold text-lg text-gray-800">
+                        Serve pra qualquer idade?
+                        <span class="transition group-open:rotate-180">
+                            <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                        </span>
+                    </summary>
+                    <p class="text-gray-600 mt-4 leading-relaxed">Sim! As atividades foram pensadas para crianças de 1 a 12 anos, e cada família adapta conforme a fase. Ou seja, você consegue entreter desde os pequenos até os mais crescidinhos — sem precisar de telas.</p>
+                </details>
+
+                <!-- Pergunta 2 -->
+                <details class="group bg-gray-50 rounded-lg p-6 border border-gray-200 cursor-pointer [&_summary::-webkit-details-marker]:hidden">
+                    <summary class="flex justify-between items-center font-bold text-lg text-gray-800">
+                        Posso usar em todos os dispositivos?
+                        <span class="transition group-open:rotate-180">
+                            <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                        </span>
+                    </summary>
+                    <p class="text-gray-600 mt-4 leading-relaxed">Com certeza. O material é compatível com celular, tablet e computador. Você acessa onde for mais prático e nunca fica sem opções de brincadeira.</p>
+                </details>
+
+                <!-- Pergunta 3 -->
+                <details class="group bg-gray-50 rounded-lg p-6 border border-gray-200 cursor-pointer [&_summary::-webkit-details-marker]:hidden">
+                    <summary class="flex justify-between items-center font-bold text-lg text-gray-800">
+                        Preciso imprimir?
+                        <span class="transition group-open:rotate-180">
+                            <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                        </span>
+                    </summary>
+                    <p class="text-gray-600 mt-4 leading-relaxed">Só se quiser. Você tem opções digitais que funcionam sem impressão e também materiais pra imprimir. Isso dá liberdade: brincar em qualquer lugar, seja em casa, na escola ou até numa viagem.</p>
+                </details>
+
+                <!-- Pergunta 4 -->
+                <details class="group bg-gray-50 rounded-lg p-6 border border-gray-200 cursor-pointer [&_summary::-webkit-details-marker]:hidden">
+                    <summary class="flex justify-between items-center font-bold text-lg text-gray-800">
+                        Preciso estar junto em todas as atividades?
+                        <span class="transition group-open:rotate-180">
+                            <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                        </span>
+                    </summary>
+                    <p class="text-gray-600 mt-4 leading-relaxed">Não! O kit foi feito pra equilibrar tudo. Algumas atividades são pra você viver momentos em família, mas muitas outras seu filho faz sozinho, sem pedir celular e sem você virar recreador o dia todo.</p>
+                </details>
+
+                <!-- Pergunta 5 -->
+                <details class="group bg-gray-50 rounded-lg p-6 border border-gray-200 cursor-pointer [&_summary::-webkit-details-marker]:hidden">
+                    <summary class="flex justify-between items-center font-bold text-lg text-gray-800">
+                        Serve pra crianças com autismo ou TDAH?
+                        <span class="transition group-open:rotate-180">
+                            <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                        </span>
+                    </summary>
+                    <p class="text-gray-600 mt-4 leading-relaxed">Sim. O conteúdo é inclusivo, pode ser adaptado, e já está sendo usado por famílias com crianças neurodivergentes, que estão vendo ótimos resultados de atenção, foco e alegria sem telas.</p>
+                </details>
+
+                <!-- Pergunta 6 -->
+                <details class="group bg-gray-50 rounded-lg p-6 border border-gray-200 cursor-pointer [&_summary::-webkit-details-marker]:hidden">
+                    <summary class="flex justify-between items-center font-bold text-lg text-gray-800">
+                        Posso compartilhar com outro responsável?
+                        <span class="transition group-open:rotate-180">
+                            <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                        </span>
+                    </summary>
+                    <p class="text-gray-600 mt-4 leading-relaxed">Sim! O acesso vitalício permite que você imprima ou compartilhe o aprendizado. É um investimento único que beneficia toda a rede de apoio da criança.</p>
+                </details>
+            </div>
+            
+            <div class="text-center mt-10">
+                <a href="#planos" class="inline-flex items-center gap-2 font-bold text-brand-blue hover:text-blue-800 hover:underline">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    Sim, quero começar o desafio hoje
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER / COMPRA SEGURA -->
+    <footer class="bg-gray-900 text-white py-12 px-4 border-t-4 border-green-500">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="font-display font-bold text-2xl mb-6 uppercase tracking-wide">
+                Compra <span class="text-green-400">100% Segura</span>
+            </h2>
+            <p class="text-gray-400 mb-8 max-w-2xl mx-auto text-sm leading-relaxed">
+                O acesso ao Vida Sem Telas é liberado exclusivamente aqui no site oficial. Assim você garante conteúdo original, suporte completo e todos os bônus que prometemos. Evite pirataria.
+            </p>
+            
+            <!-- Selos de Segurança -->
+            <div class="flex flex-wrap justify-center items-center gap-6 mb-8 bg-gray-800 py-4 px-6 rounded-2xl max-w-fit mx-auto">
+                <a href="https://www.sslshopper.com/ssl-checker.html#hostname=vidasemtela.site" target="_blank" rel="noopener">
+                    <img src="https://cdn.shopify.com/s/files/1/0655/0696/7773/files/NORTON_RBANCO.png?v=1675262979" alt="Norton Segurança" class="h-8 md:h-10 opacity-80 hover:opacity-100 transition">
+                </a>
+                <a href="https://transparencyreport.google.com/safe-browsing/search?url=vidasemtela.site" target="_blank" rel="noopener">
+                    <img src="https://cdn.shopify.com/s/files/1/0655/0696/7773/files/GOOGLE_BRANCO.png?v=1675262980" alt="Google Segurança" class="h-8 md:h-10 opacity-80 hover:opacity-100 transition">
+                </a>
+            </div>
+
+            <img src="https://vidasemtela.com/wp-content/uploads/2025/04/vida-sem-telas-logo.png" alt="Logo Vida Sem Telas" class="h-12 mx-auto opacity-50 grayscale hover:grayscale-0 transition mb-6">
+            
+            <p class="text-xs text-gray-500">© 2025 Vida Sem Telas. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPT REMOVIDO: Como o carrossel agora é 100% CSS automático, não precisamos mais de JavaScript para controlar o scroll! -->
+</body>
+</html>

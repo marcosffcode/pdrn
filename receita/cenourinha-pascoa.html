@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cenourinha de Chocolate – Páscoa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --choco: #3b1a0e;
+      --choco-mid: #6b3322;
+      --choco-light: #c4713a;
+      --carrot: #e8581a;
+      --carrot-light: #f4883b;
+      --cream: #fdf4e7;
+      --green: #4a7c3f;
+      --green-light: #7ab648;
+      --pastel-yellow: #fef3c4;
+      --pastel-pink: #fce4d6;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--cream);
+      font-family: 'DM Sans', sans-serif;
+      color: var(--choco);
+      overflow-x: hidden;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 24px 80px;
+      background: radial-gradient(ellipse at 20% 40%, #f4c48a55 0%, transparent 60%),
+                  radial-gradient(ellipse at 80% 60%, #e8581a22 0%, transparent 55%),
+                  linear-gradient(160deg, #fdf4e7 0%, #fce4d6 100%);
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle, #c4713a18 1px, transparent 1px);
+      background-size: 32px 32px;
+      pointer-events: none;
+    }
+
+    .tag {
+      display: inline-block;
+      background: var(--carrot);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      border-radius: 100px;
+      margin-bottom: 24px;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 8vw, 7rem);
+      font-weight: 900;
+      line-height: 1.05;
+      color: var(--choco);
+      animation: fadeUp 0.7s 0.1s ease both;
+    }
+
+    .hero h1 span {
+      color: var(--choco-light);
+      font-style: italic;
+    }
+
+    .hero p.subtitle {
+      margin-top: 20px;
+      font-size: 1.1rem;
+      font-weight: 300;
+      max-width: 480px;
+      line-height: 1.6;
+      color: var(--choco-mid);
+      animation: fadeUp 0.7s 0.2s ease both;
+    }
+
+    .hero-badges {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 36px;
+      animation: fadeUp 0.7s 0.3s ease both;
+    }
+
+    .badge {
+      background: #fff;
+      border: 1.5px solid #e8c8a8;
+      border-radius: 12px;
+      padding: 12px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      min-width: 100px;
+    }
+
+    .badge .icon { font-size: 1.6rem; }
+    .badge .label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #a07050; }
+    .badge .value { font-size: 14px; font-weight: 500; }
+
+    /* big carrot deco */
+    .carrot-deco {
+      font-size: 11rem;
+      position: absolute;
+      opacity: 0.07;
+      user-select: none;
+      pointer-events: none;
+    }
+    .carrot-deco.left  { top: 10%; left: -3%; transform: rotate(-20deg); }
+    .carrot-deco.right { bottom: 5%; right: -3%; transform: rotate(15deg); }
+
+    /* ── SECTION WRAPPER ── */
+    .section {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 80px 24px;
+    }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--carrot);
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      color: var(--choco);
+      margin-bottom: 48px;
+    }
+
+    /* ── INGREDIENTS ── */
+    .ingredients-bg {
+      background: linear-gradient(135deg, #3b1a0e 0%, #6b3322 100%);
+      color: var(--cream);
+    }
+
+    .ingredients-bg .section-label { color: var(--carrot-light); }
+    .ingredients-bg .section-title { color: #fff; }
+
+    .ing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .ing-group {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 16px;
+      padding: 24px;
+    }
+
+    .ing-group h3 {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      margin-bottom: 16px;
+      color: var(--carrot-light);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding-bottom: 10px;
+    }
+
+    .ing-list { list-style: none; }
+    .ing-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 7px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      font-size: 0.93rem;
+      font-weight: 300;
+      line-height: 1.4;
+    }
+    .ing-list li:last-child { border-bottom: none; }
+    .ing-list li::before {
+      content: '▸';
+      color: var(--carrot-light);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ── STEPS ── */
+    .steps-bg { background: var(--cream); }
+
+    .steps { display: flex; flex-direction: column; gap: 0; }
+
+    .step {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 24px;
+      padding: 28px 0;
+      border-bottom: 1px dashed #e0c8a8;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .step.visible { opacity: 1; transform: translateY(0); }
+
+    .step-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 900;
+      color: #e8c8a8;
+      line-height: 1;
+      text-align: right;
+    }
+
+    .step-content h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--choco);
+    }
+
+    .step-content p {
+      font-size: 0.95rem;
+      line-height: 1.65;
+      color: var(--choco-mid);
+      font-weight: 300;
+    }
+
+    .step-content .tip {
+      display: inline-block;
+      margin-top: 10px;
+      background: var(--pastel-yellow);
+      border-left: 3px solid var(--carrot);
+      border-radius: 0 8px 8px 0;
+      padding: 8px 14px;
+      font-size: 0.84rem;
+      color: var(--choco-mid);
+    }
+
+    /* ── TIPS ── */
+    .tips-bg {
+      background: linear-gradient(135deg, #4a7c3f, #2d5224);
+      color: #fff;
+    }
+    .tips-bg .section-label { color: #a8e06a; }
+    .tips-bg .section-title { color: #fff; }
+
+    .tips-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .tip-card {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 16px;
+      padding: 24px 20px;
+    }
+
+    .tip-card .tip-icon { font-size: 2rem; margin-bottom: 12px; }
+    .tip-card h4 { font-family: 'Playfair Display', serif; font-size: 1rem; margin-bottom: 8px; }
+    .tip-card p { font-size: 0.88rem; line-height: 1.55; font-weight: 300; opacity: 0.85; }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 48px 24px;
+      background: var(--choco);
+      color: rgba(255,255,255,0.5);
+      font-size: 0.85rem;
+    }
+
+    footer span { color: var(--carrot-light); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0 auto 48px;
+      max-width: 340px;
+    }
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #e0c8a8;
+    }
+    .divider span { font-size: 1.4rem; }
+
+    @media (max-width: 500px) {
+      .step { grid-template-columns: 40px 1fr; gap: 16px; }
+      .step-num { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="carrot-deco left">🥕</div>
+    <div class="carrot-deco right">🍫</div>
+
+    <span class="tag">🐣 Receita de Páscoa</span>
+    <h1>Cenourinha<br><span>de Chocolate</span></h1>
+    <p class="subtitle">
+      Moldes fofos, recheio cremoso e muito chocolate —
+      a receita que vai bombar na sua Páscoa deste ano.
+    </p>
+
+    <div class="hero-badges">
+      <div class="badge">
+        <span class="icon">⏱️</span>
+        <span class="label">Preparo</span>
+        <span class="value">40 min</span>
+      </div>
+      <div class="badge">
+        <span class="icon">🧊</span>
+        <span class="label">Gelar</span>
+        <span class="value">2 horas</span>
+      </div>
+      <div class="badge">
+        <span class="icon">🥕</span>
+        <span class="label">Rendimento</span>
+        <span class="value">20 unid.</span>
+      </div>
+      <div class="badge">
+        <span class="icon">🌡️</span>
+        <span class="label">Nível</span>
+        <span class="value">Fácil</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- INGREDIENTS -->
+  <div class="ingredients-bg">
+    <div class="section">
+      <p class="section-label">O que você vai precisar</p>
+      <h2 class="section-title">Ingredientes</h2>
+
+      <div class="ing-grid">
+        <div class="ing-group">
+          <h3>🍫 Casquinha de Chocolate</h3>
+          <ul class="ing-list">
+            <li>500 g de chocolate ao leite (cobertura fracionada)</li>
+            <li>Corante alimentar laranja em pó</li>
+            <li>Corante alimentar verde em pó</li>
+            <li>Molde de silicone em formato de cenoura</li>
+          </ul>
+        </div>
+
+        <div class="ing-group">
+          <h3>🥛 Recheio de Ganache</h3>
+          <ul class="ing-list">
+            <li>200 g de chocolate ao leite picado</li>
+            <li>100 ml de creme de leite (lata ou caixinha)</li>
+            <li>1 colher de sopa de mel (opcional)</li>
+            <li>1 colher de chá de essência de baunilha</li>
+          </ul>
+        </div>
+
+        <div class="ing-group">
+          <h3>✨ Finalização</h3>
+          <ul class="ing-list">
+            <li>Granulado de chocolate colorido</li>
+            <li>Papel chumbo ou celofane laranja</li>
+            <li>Lacinhos decorativos</li>
+            <li>Palitos para brigadeiro (opcional)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEPS -->
+  <div class="steps-bg">
+    <div class="section">
+      <p class="section-label">Passo a passo</p>
+      <h2 class="section-title">Modo de Preparo</h2>
+
+      <div class="divider"><span>🥕</span></div>
+
+      <div class="steps">
+
+        <div class="step">
+          <span class="step-num">01</span>
+          <div class="step-content">
+            <h3>Derreta o chocolate</h3>
+            <p>Pique 500 g de chocolate ao leite e derreta em banho-maria ou no micro-ondas em intervalos de 30 segundos, mexendo entre cada intervalo até ficar completamente liso e brilhante.</p>
+            <span class="tip">💡 Não deixe água cair no chocolate — ele talha!</span>
+          </div>
+        </div>
+
+        <div class="step">
+          <span class="step-num">02</span>
+          <div class="step-content">
+            <h3>Divida e colorize</h3>
+            <p>Separe o chocolate em dois recipientes. Em um deles misture o corante laranja (parte do corpo da cenoura) e no outro o corante verde (parte da folhagem). Mexa bem até a cor ficar uniforme.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <span class="step-num">03</span>
+          <div class="step-content">
+            <h3>Monte as casquinhas</h3>
+            <p>Despeje o chocolate laranja nos moldes de silicone, cobrindo bem as laterais. Leve ao freezer por 5 minutos para firmar. Repita com uma segunda camada para a casca ficar mais grossa e resistente.</p>
+            <span class="tip">💡 Use um pincel de silicone para distribuir melhor.</span>
+          </div>
+        </div>
+
+        <div class="step">
+          <span class="step-num">04</span>
+          <div class="step-content">
+            <h3>Prepare o ganache</h3>
+            <p>Enquanto as casquinhas gelam, leve o creme de leite ao fogo até começar a ferver. Despeje sobre o chocolate picado e aguarde 1 minuto. Misture até ficar homogêneo. Adicione a baunilha e o mel, se preferir.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <span class="step-num">05</span>
+          <div class="step-content">
+            <h3>Recheie e feche</h3>
+            <p>Com as casquinhas firmes, coloque o ganache com uma colherzinha ou saco de confeitar, deixando uma folga de 5 mm na borda. Cubra com mais chocolate laranja derretido para selar e volte ao freezer por 10 minutos.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <span class="step-num">06</span>
+          <div class="step-content">
+            <h3>Adicione as folhinhas</h3>
+            <p>Desenforme com cuidado. Com um palito fino e o chocolate verde colorido, faça linhas finas na ponta da cenoura imitando as folhas, ou use um molde pequeno de folha de silicone separado.</p>
+            <span class="tip">💡 Uma pitada de pó verde sobre a ponta fica incrível.</span>
+          </div>
+        </div>
+
+        <div class="step">
+          <span class="step-num">07</span>
+          <div class="step-content">
+            <h3>Finalize e embale</h3>
+            <p>Deixe as cenouras em temperatura ambiente por 10 minutos antes de embalar. Envolva individualmente em celofane laranja e amarre com um lacinho. Estão prontas para presentear!</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- TIPS -->
+  <div class="tips-bg">
+    <div class="section">
+      <p class="section-label">Segredos de confeiteira</p>
+      <h2 class="section-title">Dicas Essenciais</h2>
+
+      <div class="tips-grid">
+        <div class="tip-card">
+          <div class="tip-icon">🌡️</div>
+          <h4>Temperatura do Chocolate</h4>
+          <p>Mantenha o chocolate derretido entre 28–30 °C para trabalhar. Se esfriar demais, derreta levemente novamente em banho-maria.</p>
+        </div>
+
+        <div class="tip-card">
+          <div class="tip-icon">🧊</div>
+          <h4>Geladeira ou Freezer?</h4>
+          <p>Use o freezer para firmar rápido (5–10 min), mas armazene as cenouras prontas na geladeira para não criar umidade na embalagem.</p>
+        </div>
+
+        <div class="tip-card">
+          <div class="tip-icon">🎨</div>
+          <h4>Corante Certo</h4>
+          <p>Use sempre corante em pó ou em gel à base de óleo. Corante líquido comum contém água e vai estragar o chocolate.</p>
+        </div>
+
+        <div class="tip-card">
+          <div class="tip-icon">💰</div>
+          <h4>Custo x Lucro</h4>
+          <p>Com R$ 30 em ingredientes você faz ~20 unidades. Vendendo a R$ 8–12 cada, o lucro líquido ultrapassa R$ 130 facilmente.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Feito com <span>🍫 amor e chocolate</span> — Boa Páscoa para você! 🐣</p>
+  </footer>
+
+  <script>
+    // Scroll-triggered step reveal
+    const steps = document.querySelectorAll('.step');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 80);
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    steps.forEach(s => observer.observe(s));
+  </script>
+
+</body>
+</html>

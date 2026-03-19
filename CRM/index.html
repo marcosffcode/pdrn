@@ -597,10 +597,10 @@ function renderMsgs(msgs){
   msgs.forEach(function(m){
     var d=new Date(m.created_at),ds=d.toLocaleDateString('pt-BR',{weekday:'long',day:'2-digit',month:'long'});
     if(ds!==lastDate){if(grp){html+='</div>';grp=false;}html+='<div class="date-sep"><div class="date-sep-line"></div><div class="date-sep-lbl">'+ds+'</div><div class="date-sep-line"></div></div>';lastDate=ds;lastDir='';}
-    if(m.direction!==lastDir){if(grp){html+='</div>';grp=false;}html+='<div class="mg">';grp=true;lastDir=m.direction;}
     var rawContent=m.content||'';
     var isInternalLog=m.direction==='outbound'&&(rawContent==='[audio]'||rawContent==='[imagem: produto]'||rawContent==='[documento: material páscoa]'||rawContent==='[documento: guia de vendas]'||rawContent==='[documento: bônus 50 moldes]');
     if(isInternalLog)return;
+    if(m.direction!==lastDir){if(grp){html+='</div>';grp=false;}html+='<div class="mg">';grp=true;lastDir=m.direction;}
     var dir=m.direction==='outbound'?'out':'in',time=d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
     var tick=m.direction==='outbound'?'<span class="tick'+(m.status==='read'?' rd':'')+'"> '+(m.status==='delivered'||m.status==='read'?'✓✓':'✓')+'</span>':'';
     html+='<div class="mr '+dir+'"><div><div class="bbl">'+esc(m.content||'[midia]')+'</div><div class="mt">'+time+tick+'</div></div></div>';

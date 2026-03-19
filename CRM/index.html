@@ -593,19 +593,20 @@ async function loadMsgs(){
 function renderMsgs(msgs){
   var w=q('msgs');
   if(!msgs.length){w.innerHTML='<div style="align-self:center;color:var(--t3);font-size:14px;margin-top:48px">Nenhuma mensagem trocada ainda.</div>';return;}
-  var html='',lastDate='',lastDir='',grp=false;
+  var html='',lastDate='';
+  var HIDDEN=['[audio]','[imagem: produto]','[documento: material páscoa]','[documento: guia de vendas]','[documento: bônus 50 moldes]'];
   msgs.forEach(function(m){
-    var d=new Date(m.created_at),ds=d.toLocaleDateString('pt-BR',{weekday:'long',day:'2-digit',month:'long'});
-    if(ds!==lastDate){if(grp){html+='</div>';grp=false;}html+='<div class="date-sep"><div class="date-sep-line"></div><div class="date-sep-lbl">'+ds+'</div><div class="date-sep-line"></div></div>';lastDate=ds;lastDir='';}
-    var rawContent=m.content||'';
-    var isInternalLog=m.direction==='outbound'&&(rawContent==='[audio]'||rawContent==='[imagem: produto]'||rawContent==='[documento: material páscoa]'||rawContent==='[documento: guia de vendas]'||rawContent==='[documento: bônus 50 moldes]');
-    if(isInternalLog)return;
-    if(m.direction!==lastDir){if(grp){html+='</div>';grp=false;}html+='<div class="mg">';grp=true;lastDir=m.direction;}
-    var dir=m.direction==='outbound'?'out':'in',time=d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
+    var raw=m.content||'';
+    if(m.direction==='outbound'&&HIDDEN.indexOf(raw)>=0)return;
+    var d=new Date(m.created_at||m.inserted_at);
+    var ds=d.toLocaleDateString('pt-BR',{weekday:'long',day:'2-digit',month:'long'});
+    if(ds!==lastDate){html+='<div class="date-sep"><div class="date-sep-line"></div><div class="date-sep-lbl">'+ds+'</div><div class="date-sep-line"></div></div>';lastDate=ds;}
+    var dir=m.direction==='outbound'?'out':'in';
+    var time=d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
     var tick=m.direction==='outbound'?'<span class="tick'+(m.status==='read'?' rd':'')+'"> '+(m.status==='delivered'||m.status==='read'?'✓✓':'✓')+'</span>':'';
-    html+='<div class="mr '+dir+'"><div><div class="bbl">'+esc(m.content||'[midia]')+'</div><div class="mt">'+time+tick+'</div></div></div>';
+    html+='<div class="mg"><div class="mr '+dir+'"><div><div class="bbl">'+esc(raw||'[midia]')+'</div><div class="mt">'+time+tick+'</div></div></div></div>';
   });
-  if(grp)html+='</div>';w.innerHTML=html;scrollBottom();
+  w.innerHTML=html;scrollBottom();
 }
 function appendMsg(msg){
   var raw=msg.content||'';
@@ -625,7 +626,21 @@ async function sendMsg(){
   if(!webhook){showToast('Configure um número WhatsApp primeiro','err');return;}
   var btn=q('btn-send');btn.disabled=true;inp.value='';autoResize(inp);
   appendMsg({id:'tmp'+Date.now(),conversation_id:curId,direction:'outbound',type:'text',content:text,status:'sent',created_at:new Date().toISOString()});
-  try{var r=await fetch(webhook,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({phone:phone,message:text,conversation_id:curId})});if(!r.ok)throw new Error('HTTP '+r.status);}
+  try{
+    var r=await fetch(webhook,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({phone:phone,message:text,conversation_id:curId})});
+    if(!r.ok)throw new Error('HTTP '+r.status);
+    // Salvar no Supabase
+    await sb.from('messages').insert({
+      conversation_id:curId,
+      direction:'outbound',
+      type:'text',
+      content:text,
+      status:'sent',
+      topic:'text',
+      extension:'text'
+    });
+    await sb.from('conversations').update({last_message:text,last_message_at:new Date().toISOString()}).eq('id',curId);
+  }
   catch(e){showToast('Erro ao enviar: '+e.message,'err');}
   finally{btn.disabled=false;inp.focus();}
 }

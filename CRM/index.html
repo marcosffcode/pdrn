@@ -595,9 +595,10 @@ function renderMsgs(msgs){
   if(!msgs.length){w.innerHTML='<div style="align-self:center;color:var(--t3);font-size:14px;margin-top:48px">Nenhuma mensagem trocada ainda.</div>';return;}
   var html='',lastDate='';
   var HIDDEN=['[audio]','[imagem: produto]','[documento: material páscoa]','[documento: guia de vendas]','[documento: bônus 50 moldes]'];
+  var HIDDEN_PREFIX=['[Stage 2]','[Stage 1]','[Stage 0]'];
   msgs.forEach(function(m){
     var raw=m.content||'';
-    var isHidden=m.direction==='outbound'&&HIDDEN.indexOf(raw)>=0;
+    var isHidden=m.direction==='outbound'&&(HIDDEN.indexOf(raw)>=0||HIDDEN_PREFIX.some(function(p){return raw.indexOf(p)===0;}));
     if(isHidden){
       var label=raw==='[audio]'?'🎵 Áudio':raw==='[imagem: produto]'?'🖼 Imagem':'📄 Documento';
       html+='<div class="mg"><div class="mr out"><div><div class="bbl" style="opacity:0.5;font-style:italic">'+label+'</div></div></div></div>';
@@ -616,7 +617,9 @@ function renderMsgs(msgs){
 var pendingMsgIds={};
 function appendMsg(msg){
   var raw=msg.content||'';
-  if(msg.direction==='outbound'&&(raw==='[audio]'||raw==='[imagem: produto]'||raw==='[documento: material páscoa]'||raw==='[documento: guia de vendas]'||raw==='[documento: bônus 50 moldes]'))return;
+  var HIDDEN_EXACT=['[audio]','[imagem: produto]','[documento: material páscoa]','[documento: guia de vendas]','[documento: bônus 50 moldes]'];
+  var HIDDEN_PRE=['[Stage 2]','[Stage 1]','[Stage 0]'];
+  if(msg.direction==='outbound'&&(HIDDEN_EXACT.indexOf(raw)>=0||HIDDEN_PRE.some(function(p){return raw.indexOf(p)===0;})))return;
   // Evita duplicata do Realtime
   if(msg.id&&!String(msg.id).startsWith('tmp')){
     if(pendingMsgIds[msg.id])return;

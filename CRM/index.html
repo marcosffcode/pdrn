@@ -597,7 +597,12 @@ function renderMsgs(msgs){
   var HIDDEN=['[audio]','[imagem: produto]','[documento: material páscoa]','[documento: guia de vendas]','[documento: bônus 50 moldes]'];
   msgs.forEach(function(m){
     var raw=m.content||'';
-    if(m.direction==='outbound'&&HIDDEN.indexOf(raw)>=0)return;
+    var isHidden=m.direction==='outbound'&&HIDDEN.indexOf(raw)>=0;
+    if(isHidden){
+      var label=raw==='[audio]'?'🎵 Áudio':raw==='[imagem: produto]'?'🖼 Imagem':'📄 Documento';
+      html+='<div class="mg"><div class="mr out"><div><div class="bbl" style="opacity:0.5;font-style:italic">'+label+'</div></div></div></div>';
+      return;
+    }
     var d=new Date(m.created_at);
     var ds=d.toLocaleDateString('pt-BR',{weekday:'long',day:'2-digit',month:'long'});
     if(ds!==lastDate){html+='<div class="date-sep"><div class="date-sep-line"></div><div class="date-sep-lbl">'+ds+'</div><div class="date-sep-line"></div></div>';lastDate=ds;}
@@ -608,13 +613,22 @@ function renderMsgs(msgs){
   });
   w.innerHTML=html;scrollBottom();
 }
+var pendingMsgIds={};
 function appendMsg(msg){
   var raw=msg.content||'';
   if(msg.direction==='outbound'&&(raw==='[audio]'||raw==='[imagem: produto]'||raw==='[documento: material páscoa]'||raw==='[documento: guia de vendas]'||raw==='[documento: bônus 50 moldes]'))return;
+  // Evita duplicata do Realtime
+  if(msg.id&&!String(msg.id).startsWith('tmp')){
+    if(pendingMsgIds[msg.id])return;
+    pendingMsgIds[msg.id]=true;
+    // Remove tmp se existir
+    var tmp=q('msgs').querySelector('[data-tmp]');if(tmp)tmp.remove();
+  }
   var w=q('msgs'),noEl=w.querySelector('[style*="Nenhuma mensagem"]');if(noEl)noEl.remove();
   var dir=msg.direction==='outbound'?'out':'in',time=new Date(msg.created_at).toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
   var div=document.createElement('div');div.className='mg';
-  div.innerHTML='<div class="mr '+dir+'"><div><div class="bbl">'+esc(msg.content||'[midia]')+'</div><div class="mt">'+time+'</div></div></div>';
+  if(String(msg.id).startsWith('tmp'))div.setAttribute('data-tmp','1');
+  div.innerHTML='<div class="mr '+dir+'"><div><div class="bbl">'+esc(raw||'[midia]')+'</div><div class="mt">'+time+'</div></div></div>';
   w.appendChild(div);scrollBottom();
 }
 

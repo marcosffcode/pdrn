@@ -291,9 +291,10 @@ input,textarea,select{font:inherit;color:inherit;border:none;outline:none;backgr
 <div class="modal-bg" id="modal-num-form">
   <div class="modal">
     <div class="modal-header"><h3 id="num-form-title">Novo Numero</h3><button class="modal-close" id="close-num-form">×</button></div>
-    <div class="m-fld"><label>Nome do numero</label><input id="nf-name" type="text" placeholder="Ex: Numero Principal"/></div>
+    <div class="m-fld"><label>Nome do numero</label><input id="nf-name" type="text" placeholder="Ex: Esther (API 01)"/></div>
     <div class="m-fld"><label>Phone Number ID (Meta)</label><input id="nf-pnid" type="text" placeholder="Ex: 1077954032065472"/></div>
     <div class="m-fld"><label>Webhook de envio (n8n)</label><input id="nf-wh" type="url" placeholder="https://seu-n8n.com/webhook/whatsapp-send"/></div>
+    <div class="m-fld" style="display:flex;gap:12px"><div style="flex:2"><label>Produto que esta rodando</label><input id="nf-product" type="text" placeholder="Ex: Material de Pascoa"/></div><div style="flex:1"><label>Ticket (R$)</label><input id="nf-ticket" type="number" min="0" step="0.01" placeholder="14.90"/></div></div>
     <div class="m-fld"><label>Cor</label>
       <div class="color-picker" id="color-picker">
         <div class="color-swatch selected" data-color="#2563eb" style="background:#2563eb"></div>
@@ -423,7 +424,7 @@ input,textarea,select{font:inherit;color:inherit;border:none;outline:none;backgr
 <script>
 (function(){
 'use strict';
-var TICKET=14.90;
+var TICKET=14.90; // fallback global
 var STAGE_META=[
   {label:'Novo Lead',cls:'stg-0',bg:'#f1f5f9',fg:'#475569'},
   {label:'Aguardando',cls:'stg-1',bg:'#eff6ff',fg:'#2563eb'},
@@ -455,8 +456,14 @@ function loadCfg(){
   SB_URL=localStorage.getItem('crm_u')||'';SB_KEY=localStorage.getItem('crm_k')||'';
   numbers=JSON.parse(localStorage.getItem('crm_numbers')||'[]');
   quickReplies=JSON.parse(localStorage.getItem('crm_qr')||'[]');
+  // Pre-seed numero principal se ainda nao foi configurado
+  if(!numbers.length){
+    numbers=[{id:'num_default',name:'Esther (API 01)',phoneNumberId:'1077954032065472',webhook:'https://n8n-n8n.afwopj.easypanel.host/webhook/whatsapp-send',color:'#2563eb',product:'Material de Pascoa',ticket:14.90}];
+    saveNumbers();
+  }
   var sn=localStorage.getItem('crm_active_num');
-  if(sn)activeNum=numbers.find(function(n){return n.id===sn;})||null;
+  if(!sn){activeNum=numbers[0];localStorage.setItem('crm_active_num',numbers[0].id);}
+  else activeNum=numbers.find(function(n){return n.id===sn;})||null;
   if(SB_URL&&SB_KEY){q('f-url').value=SB_URL;q('f-key').value=SB_KEY;startApp();}
 }
 function doLogin(){
@@ -501,7 +508,7 @@ function renderNumList(){
 function openNumForm(eid){
   editingNumId=eid||null;var n=eid?numbers.find(function(x){return x.id===eid;}):null;
   q('num-form-title').textContent=n?'Editar Numero':'Novo Numero';
-  q('nf-name').value=n?n.name:'';q('nf-pnid').value=n?n.phoneNumberId:'';q('nf-wh').value=n?n.webhook:'';
+  q('nf-name').value=n?n.name:'';q('nf-pnid').value=n?n.phoneNumberId:'';q('nf-wh').value=n?n.webhook:'';q('nf-product').value=n?(n.product||''):'';q('nf-ticket').value=n?(n.ticket||''):'';  
   selectedColor=n?n.color:'#2563eb';
   document.querySelectorAll('.color-swatch').forEach(function(s){s.classList.toggle('selected',s.getAttribute('data-color')===selectedColor);});
   q('modal-num-form').classList.add('open');
@@ -509,9 +516,10 @@ function openNumForm(eid){
 function closeNumForm(){q('modal-num-form').classList.remove('open');editingNumId=null;}
 function saveNumForm(){
   var name=(q('nf-name').value||'').trim(),pnid=(q('nf-pnid').value||'').trim(),wh=(q('nf-wh').value||'').trim();
+  var product=(q('nf-product').value||'').trim(),ticket=parseFloat(q('nf-ticket').value)||0;
   if(!name||!pnid||!wh){showToast('Preencha todos os campos','err');return;}
-  if(editingNumId){var n=numbers.find(function(x){return x.id===editingNumId;});if(n){n.name=name;n.phoneNumberId=pnid;n.webhook=wh;n.color=selectedColor;}if(activeNum&&activeNum.id===editingNumId)activeNum=n;}
-  else numbers.push({id:'num_'+Date.now(),name:name,phoneNumberId:pnid,webhook:wh,color:selectedColor});
+  if(editingNumId){var n=numbers.find(function(x){return x.id===editingNumId;});if(n){n.name=name;n.phoneNumberId=pnid;n.webhook=wh;n.color=selectedColor;n.product=product;n.ticket=ticket;}if(activeNum&&activeNum.id===editingNumId)activeNum=n;}
+  else numbers.push({id:'num_'+Date.now(),name:name,phoneNumberId:pnid,webhook:wh,color:selectedColor,product:product,ticket:ticket});
   saveNumbers();renderNumList();renderWs();closeNumForm();showToast('Numero salvo!');
 }
 
@@ -619,10 +627,15 @@ async function loadDash(){
     var hoje=all.filter(function(c){return new Date(c.created_at)>=today;}).length;
     var pagos=all.filter(function(c){return(c.stage||0)>=3;}).length;
     var total=all.length;
+    var curTicket=activeNum&&activeNum.ticket?activeNum.ticket:TICKET;
+    var curProduct=activeNum&&activeNum.product?activeNum.product:('R$ '+curTicket.toFixed(2));
     q('d-hoje').textContent=hoje;
-    q('d-fat').textContent='R$ '+(pagos*TICKET).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
+    q('d-fat').textContent='R$ '+(pagos*curTicket).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
     q('d-conv').textContent=total>0?(((pagos/total)*100).toFixed(1)+'%'):'0%';
     q('d-total').textContent=total;
+    // update subtitles
+    var fatSub=document.querySelector('#d-fat').closest('.metric-card').querySelector('.metric-sub');
+    if(fatSub)fatSub.textContent=curProduct+' • R$ '+curTicket.toFixed(2)+'/venda';
     var days=[],labels=[],counts=[];
     for(var i=6;i>=0;i--){var d2=new Date(today);d2.setDate(d2.getDate()-i);days.push(d2);}
     days.forEach(function(d3){labels.push(d3.toLocaleDateString('pt-BR',{weekday:'short',day:'2-digit'}));var next=new Date(d3);next.setDate(next.getDate()+1);counts.push(all.filter(function(c){var cd=new Date(c.created_at);return cd>=d3&&cd<next;}).length);});

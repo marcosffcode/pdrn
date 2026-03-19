@@ -598,7 +598,7 @@ function renderMsgs(msgs){
   msgs.forEach(function(m){
     var raw=m.content||'';
     if(m.direction==='outbound'&&HIDDEN.indexOf(raw)>=0)return;
-    var d=new Date(m.created_at||m.inserted_at);
+    var d=new Date(m.created_at);
     var ds=d.toLocaleDateString('pt-BR',{weekday:'long',day:'2-digit',month:'long'});
     if(ds!==lastDate){html+='<div class="date-sep"><div class="date-sep-line"></div><div class="date-sep-lbl">'+ds+'</div><div class="date-sep-line"></div></div>';lastDate=ds;}
     var dir=m.direction==='outbound'?'out':'in';
@@ -612,7 +612,7 @@ function appendMsg(msg){
   var raw=msg.content||'';
   if(msg.direction==='outbound'&&(raw==='[audio]'||raw==='[imagem: produto]'||raw==='[documento: material páscoa]'||raw==='[documento: guia de vendas]'||raw==='[documento: bônus 50 moldes]'))return;
   var w=q('msgs'),noEl=w.querySelector('[style*="Nenhuma mensagem"]');if(noEl)noEl.remove();
-  var dir=msg.direction==='outbound'?'out':'in',time=new Date(msg.created_at||msg.inserted_at).toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
+  var dir=msg.direction==='outbound'?'out':'in',time=new Date(msg.created_at).toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
   var div=document.createElement('div');div.className='mg';
   div.innerHTML='<div class="mr '+dir+'"><div><div class="bbl">'+esc(msg.content||'[midia]')+'</div><div class="mt">'+time+'</div></div></div>';
   w.appendChild(div);scrollBottom();

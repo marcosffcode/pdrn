@@ -629,20 +629,11 @@ async function sendMsg(){
   try{
     var r=await fetch(webhook,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({phone:phone,message:text,conversation_id:curId})});
     if(!r.ok)throw new Error('HTTP '+r.status);
-    // Salvar no Supabase
-    var now=new Date().toISOString();
-    await sb.from('messages').insert({
-      conversation_id:curId,
-      direction:'outbound',
-      type:'text',
-      content:text,
-      status:'sent',
-      topic:'text',
-      extension:'text',
-      inserted_at:now,
-      updated_at:now
-    });
-    await sb.from('conversations').update({last_message:text,last_message_at:new Date().toISOString()}).eq('id',curId);
+    // Salvar via RPC
+    var phone2=(curConv.contacts||{}).phone||phone;
+    var name2=(curConv.contacts||{}).name||phone2;
+    var numId=activeNum?activeNum.phoneNumberId:'';
+    await sb.rpc('save_whatsapp_message',{p_phone:phone2,p_name:name2,p_direction:'outbound',p_type:'text',p_content:text,p_phone_number_id:numId,p_whatsapp_msg_id:null});
   }
   catch(e){showToast('Erro ao enviar: '+e.message,'err');}
   finally{btn.disabled=false;inp.focus();}

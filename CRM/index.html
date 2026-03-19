@@ -598,6 +598,9 @@ function renderMsgs(msgs){
     var d=new Date(m.created_at),ds=d.toLocaleDateString('pt-BR',{weekday:'long',day:'2-digit',month:'long'});
     if(ds!==lastDate){if(grp){html+='</div>';grp=false;}html+='<div class="date-sep"><div class="date-sep-line"></div><div class="date-sep-lbl">'+ds+'</div><div class="date-sep-line"></div></div>';lastDate=ds;lastDir='';}
     if(m.direction!==lastDir){if(grp){html+='</div>';grp=false;}html+='<div class="mg">';grp=true;lastDir=m.direction;}
+    var rawContent=m.content||'';
+    var isInternalLog=m.direction==='outbound'&&(rawContent.startsWith('[Stage ')||rawContent==='[audio]'||rawContent==='[imagem: produto]'||rawContent.startsWith('[documento'));
+    if(isInternalLog)return;
     var dir=m.direction==='outbound'?'out':'in',time=d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
     var tick=m.direction==='outbound'?'<span class="tick'+(m.status==='read'?' rd':'')+'"> '+(m.status==='delivered'||m.status==='read'?'✓✓':'✓')+'</span>':'';
     html+='<div class="mr '+dir+'"><div><div class="bbl">'+esc(m.content||'[midia]')+'</div><div class="mt">'+time+tick+'</div></div></div>';
@@ -605,6 +608,8 @@ function renderMsgs(msgs){
   if(grp)html+='</div>';w.innerHTML=html;scrollBottom();
 }
 function appendMsg(msg){
+  var raw=msg.content||'';
+  if(msg.direction==='outbound'&&(raw.startsWith('[Stage ')||raw==='[audio]'||raw==='[imagem: produto]'||raw.startsWith('[documento')))return;
   var w=q('msgs'),noEl=w.querySelector('[style*="Nenhuma mensagem"]');if(noEl)noEl.remove();
   var dir=msg.direction==='outbound'?'out':'in',time=new Date(msg.created_at).toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
   var div=document.createElement('div');div.className='mg';

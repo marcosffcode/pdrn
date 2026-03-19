@@ -599,7 +599,7 @@ function renderMsgs(msgs){
     if(ds!==lastDate){if(grp){html+='</div>';grp=false;}html+='<div class="date-sep"><div class="date-sep-line"></div><div class="date-sep-lbl">'+ds+'</div><div class="date-sep-line"></div></div>';lastDate=ds;lastDir='';}
     if(m.direction!==lastDir){if(grp){html+='</div>';grp=false;}html+='<div class="mg">';grp=true;lastDir=m.direction;}
     var rawContent=m.content||'';
-    var isInternalLog=m.direction==='outbound'&&(rawContent.startsWith('[Stage ')||rawContent==='[audio]'||rawContent==='[imagem: produto]'||rawContent.startsWith('[documento'));
+    var isInternalLog=m.direction==='outbound'&&(rawContent==='[audio]'||rawContent==='[imagem: produto]'||rawContent==='[documento: material páscoa]'||rawContent==='[documento: guia de vendas]'||rawContent==='[documento: bônus 50 moldes]');
     if(isInternalLog)return;
     var dir=m.direction==='outbound'?'out':'in',time=d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
     var tick=m.direction==='outbound'?'<span class="tick'+(m.status==='read'?' rd':'')+'"> '+(m.status==='delivered'||m.status==='read'?'✓✓':'✓')+'</span>':'';
@@ -609,7 +609,7 @@ function renderMsgs(msgs){
 }
 function appendMsg(msg){
   var raw=msg.content||'';
-  if(msg.direction==='outbound'&&(raw.startsWith('[Stage ')||raw==='[audio]'||raw==='[imagem: produto]'||raw.startsWith('[documento')))return;
+  if(msg.direction==='outbound'&&(raw==='[audio]'||raw==='[imagem: produto]'||raw==='[documento: material páscoa]'||raw==='[documento: guia de vendas]'||raw==='[documento: bônus 50 moldes]'))return;
   var w=q('msgs'),noEl=w.querySelector('[style*="Nenhuma mensagem"]');if(noEl)noEl.remove();
   var dir=msg.direction==='outbound'?'out':'in',time=new Date(msg.created_at).toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
   var div=document.createElement('div');div.className='mg';

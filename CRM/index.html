@@ -526,7 +526,7 @@ function saveNumForm(){
 async function loadConvs(){
   try{
     var q2=sb.from('conversations').select('id,status,unread_count,last_message,last_message_at,created_at,stage,phone_number_id,contacts(id,phone,name,notes)').order('last_message_at',{ascending:false});
-    if(activeNum)q2=q2.eq('phone_number_id',activeNum.phoneNumberId);
+    if(activeNum)q2=q2.or('phone_number_id.eq.'+activeNum.phoneNumberId+',phone_number_id.is.null');
     var r=await q2;if(r.error)throw r.error;
     convs=r.data||[];renderConvs();setConn('Conectado',true);
   }catch(e){setConn('Erro',false);showToast('Erro: '+e.message,'err');}

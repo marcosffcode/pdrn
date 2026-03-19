@@ -462,8 +462,8 @@ function loadCfg(){
     saveNumbers();
   }
   var sn=localStorage.getItem('crm_active_num');
-  if(!sn){activeNum=numbers[0];localStorage.setItem('crm_active_num',numbers[0].id);}
-  else activeNum=numbers.find(function(n){return n.id===sn;})||null;
+  activeNum=numbers.find(function(n){return n.id===sn;})||numbers[0]||null;
+  if(activeNum)localStorage.setItem('crm_active_num',activeNum.id);
   if(SB_URL&&SB_KEY){q('f-url').value=SB_URL;q('f-key').value=SB_KEY;startApp();}
 }
 function doLogin(){
@@ -487,12 +487,12 @@ function saveNumbers(){localStorage.setItem('crm_numbers',JSON.stringify(numbers
 function renderWs(){
   var dot=q('ws-dot'),name=q('ws-name');
   if(activeNum){dot.style.background=activeNum.color;name.textContent=activeNum.name;}
-  else{dot.style.background='#94a3b8';name.textContent='Todos os numeros';}
+  else{dot.style.background='#94a3b8';name.textContent='Nenhum numero';}
   var opts=q('ws-opts');
-  var html='<div class="ws-opt'+(activeNum===null?' active':'')+'" data-num="all"><div class="ws-opt-dot" style="background:#94a3b8"></div><div class="ws-opt-name">Todos os numeros</div></div>';
+  var html='';
   numbers.forEach(function(n){html+='<div class="ws-opt'+(activeNum&&activeNum.id===n.id?' active':'')+'" data-num="'+n.id+'"><div class="ws-opt-dot" style="background:'+n.color+'"></div><div class="ws-opt-name">'+esc(n.name)+'</div></div>';});
   opts.innerHTML=html;
-  opts.querySelectorAll('.ws-opt').forEach(function(el){el.addEventListener('click',function(){var nid=el.getAttribute('data-num');if(nid==='all'){activeNum=null;localStorage.removeItem('crm_active_num');}else{activeNum=numbers.find(function(n){return n.id===nid;})||null;if(activeNum)localStorage.setItem('crm_active_num',activeNum.id);}toggleWsDd(false);renderWs();loadConvs();if(activeSideTab==='dash')loadDash();});});
+  opts.querySelectorAll('.ws-opt').forEach(function(el){el.addEventListener('click',function(){var nid=el.getAttribute('data-num');activeNum=numbers.find(function(n){return n.id===nid;})||null;if(activeNum)localStorage.setItem('crm_active_num',activeNum.id);toggleWsDd(false);renderWs();loadConvs();if(activeSideTab==='dash')loadDash();});});
 }
 function toggleWsDd(f){wsDdOpen=typeof f==='boolean'?f:!wsDdOpen;q('ws-dropdown').classList.toggle('open',wsDdOpen);}
 

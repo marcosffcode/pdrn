@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Kit Dia dos Namorados 2026 ✦</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --rose:    #C4486A;
+  --rose-lt: #F2C4D0;
+  --rose-dk: #7A1F3A;
+  --blush:   #FAF0F3;
+  --cream:   #FDF8F0;
+  --gold:    #C9963A;
+  --gold-lt: #F5E6C8;
+  --brown:   #3A2010;
+  --text:    #2A1218;
+  --muted:   #8A6070;
+  --border:  rgba(196,72,106,0.15);
+  --r-lg:    16px;
+  --r-xl:    24px;
+  --r-pill:  999px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── ONBOARDING OVERLAY ── */
+#onboarding {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--rose-dk);
+  overflow: hidden;
+}
+
+.ob-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.ob-petal {
+  position: absolute;
+  width: 8px; height: 8px;
+  border-radius: 50% 0 50% 0;
+  background: rgba(255,255,255,0.12);
+  animation: petalaFall linear infinite;
+}
+
+@keyframes petalaFall {
+  0%   { transform: translateY(-20px) rotate(0deg); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 0.6; }
+  100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+}
+
+.ob-slides {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 420px;
+  padding: 0 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.ob-slide {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  animation: slideIn 0.5s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+.ob-slide.active { display: flex; }
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(30px) scale(0.95); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.ob-emoji {
+  font-size: 72px;
+  margin-bottom: 24px;
+  animation: floatEmoji 3s ease-in-out infinite;
+  filter: drop-shadow(0 8px 24px rgba(0,0,0,0.3));
+}
+
+@keyframes floatEmoji {
+  0%,100% { transform: translateY(0px) rotate(-3deg); }
+  50%      { transform: translateY(-12px) rotate(3deg); }
+}
+
+.ob-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(26px, 7vw, 34px);
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 14px;
+  font-weight: 600;
+}
+
+.ob-title em {
+  color: var(--rose-lt);
+  font-style: italic;
+}
+
+.ob-desc {
+  font-size: 15px;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.65;
+  max-width: 320px;
+  margin-bottom: 36px;
+  font-weight: 300;
+}
+
+.ob-dots {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+
+.ob-dot {
+  width: 6px; height: 6px;
+  border-radius: 3px;
+  background: rgba(255,255,255,0.3);
+  transition: width 0.3s ease, background 0.3s ease;
+}
+.ob-dot.active {
+  width: 20px;
+  background: #fff;
+}
+
+.ob-btn {
+  background: #fff;
+  color: var(--rose-dk);
+  border: none;
+  border-radius: var(--r-pill);
+  padding: 16px 40px;
+  font-size: 15px;
+  font-weight: 500;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.25);
+  letter-spacing: 0.2px;
+  width: 100%;
+  max-width: 280px;
+}
+.ob-btn:active { transform: scale(0.97); }
+.ob-btn.secondary {
+  background: rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.8);
+  box-shadow: none;
+  margin-top: 10px;
+  padding: 12px 32px;
+}
+
+.ob-skip {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: rgba(255,255,255,0.5);
+  font-size: 13px;
+  cursor: pointer;
+  padding: 8px 12px;
+  z-index: 10;
+  font-family: 'DM Sans', sans-serif;
+}
+.ob-skip:hover { color: rgba(255,255,255,0.9); }
+
+.ob-counter {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  color: rgba(255,255,255,0.4);
+  font-size: 13px;
+  font-weight: 300;
+  z-index: 10;
+}
+
+.ob-formats {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+.ob-badge {
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  border-radius: var(--r-pill);
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  border: 1px solid rgba(255,255,255,0.2);
+  animation: badgePop 0.4s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+
+@keyframes badgePop {
+  from { opacity: 0; transform: scale(0.7); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.ob-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  margin-bottom: 32px;
+}
+
+.ob-check-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(255,255,255,0.1);
+  border-radius: var(--r-lg);
+  padding: 14px 16px;
+  text-align: left;
+  animation: slideIn 0.5s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+
+.ob-check-icon {
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.ob-check-text {
+  color: #fff;
+  font-size: 14px;
+  line-height: 1.4;
+}
+.ob-check-text strong { display: block; font-weight: 500; }
+.ob-check-text span { color: rgba(255,255,255,0.65); font-size: 12px; font-weight: 300; }
+
+/* onboarding exit */
+#onboarding.exit {
+  animation: overlayExit 0.6s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+
+@keyframes overlayExit {
+  0%   { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.04); pointer-events: none; }
+}
+
+/* ── MAIN APP ── */
+#app {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  min-height: 100vh;
+}
+#app.visible { opacity: 1; transform: translateY(0); }
+
+/* Header */
+.app-header {
+  background: var(--rose-dk);
+  position: relative;
+  overflow: hidden;
+  padding: 40px 20px 60px;
+  text-align: center;
+}
+
+.header-noise {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+.header-orbs {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(40px);
+  opacity: 0.25;
+}
+
+.orb-1 { width: 200px; height: 200px; background: var(--rose); top: -60px; left: -40px; }
+.orb-2 { width: 160px; height: 160px; background: var(--gold); bottom: -40px; right: -20px; }
+.orb-3 { width: 120px; height: 120px; background: #fff; top: 50%; right: 20%; transform: translateY(-50%); }
+
+.header-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: var(--r-pill);
+  padding: 5px 14px;
+  font-size: 11px;
+  color: rgba(255,255,255,0.8);
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 2;
+}
+
+.header-eyebrow::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: #7CFC00;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%,100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.5; transform: scale(0.7); }
+}
+
+.header-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 8vw, 44px);
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 2;
+}
+
+.header-title em {
+  color: var(--rose-lt);
+  font-style: italic;
+}
+
+.header-sub {
+  font-size: 14px;
+  color: rgba(255,255,255,0.65);
+  font-weight: 300;
+  position: relative;
+  z-index: 2;
+}
+
+.header-stats {
+  display: flex;
+  gap: 0;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  margin: 24px auto 0;
+  max-width: 360px;
+  position: relative;
+  z-index: 2;
+  backdrop-filter: blur(10px);
+}
+
+.stat-item {
+  flex: 1;
+  padding: 14px 8px;
+  text-align: center;
+  border-right: 1px solid rgba(255,255,255,0.1);
+}
+.stat-item:last-child { border-right: none; }
+.stat-num {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  color: #fff;
+  font-weight: 600;
+}
+.stat-label { font-size: 10px; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 0.8px; font-weight: 500; }
+
+/* Wave divider */
+.wave-divider {
+  margin-top: -1px;
+  line-height: 0;
+  background: var(--cream);
+}
+.wave-divider svg { display: block; width: 100%; }
+
+/* Search */
+.search-wrap {
+  padding: 0 16px;
+  margin: -24px auto 20px;
+  max-width: 600px;
+  position: relative;
+  z-index: 10;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  border-radius: var(--r-pill);
+  padding: 14px 20px;
+  box-shadow: 0 4px 32px rgba(196,72,106,0.15), 0 1px 4px rgba(0,0,0,0.08);
+  border: 1.5px solid transparent;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.search-box:focus-within {
+  border-color: var(--rose);
+  box-shadow: 0 4px 32px rgba(196,72,106,0.25), 0 0 0 4px rgba(196,72,106,0.08);
+}
+
+.search-icon { color: var(--rose); font-size: 18px; flex-shrink: 0; }
+
+.search-box input {
+  border: none;
+  outline: none;
+  font-size: 15px;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text);
+  flex: 1;
+  background: transparent;
+  font-weight: 400;
+}
+.search-box input::placeholder { color: var(--muted); font-weight: 300; }
+
+.search-clear {
+  cursor: pointer;
+  color: var(--muted);
+  font-size: 18px;
+  display: none;
+  background: none;
+  border: none;
+  padding: 0;
+  line-height: 1;
+  transition: color 0.15s;
+}
+.search-clear:hover { color: var(--rose); }
+.search-clear.show { display: block; }
+
+/* Categories */
+.section-wrap {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.section-label {
+  font-size: 10px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.cats-scroll {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  margin-bottom: 24px;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.cats-scroll::-webkit-scrollbar { display: none; }
+
+.cat-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #fff;
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-pill);
+  padding: 9px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  font-family: 'DM Sans', sans-serif;
+}
+.cat-pill:hover { border-color: var(--rose); color: var(--rose); }
+.cat-pill.active {
+  background: var(--rose-dk);
+  border-color: var(--rose-dk);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(122,31,58,0.3);
+}
+.cat-pill-emoji { font-size: 15px; }
+.cat-pill-count {
+  background: rgba(255,255,255,0.2);
+  border-radius: var(--r-pill);
+  padding: 1px 7px;
+  font-size: 11px;
+  font-weight: 400;
+}
+.cat-pill:not(.active) .cat-pill-count {
+  background: var(--blush);
+  color: var(--rose);
+}
+
+/* Items grid */
+.items-count {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 16px;
+  font-weight: 300;
+}
+.items-count strong { color: var(--text); font-weight: 500; }
+
+.items-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+@media (max-width: 380px) {
+  .items-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+}
+
+.item-card {
+  background: #fff;
+  border-radius: var(--r-xl);
+  border: 1px solid rgba(196,72,106,0.1);
+  padding: 18px 16px 16px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  animation: cardIn 0.4s cubic-bezier(0.34,1.2,0.64,1) both;
+}
+
+.item-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(196,72,106,0.04) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.item-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(196,72,106,0.15);
+  border-color: rgba(196,72,106,0.25);
+}
+
+.item-card:active { transform: translateY(-1px); }
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(16px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.card-emoji-wrap {
+  width: 44px; height: 44px;
+  background: var(--blush);
+  border-radius: var(--r-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  transition: transform 0.2s ease;
+}
+
+.item-card:hover .card-emoji-wrap { transform: scale(1.1) rotate(-5deg); }
+
+.card-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.3;
+  flex: 1;
+}
+
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.ctag {
+  font-size: 9px;
+  padding: 2px 7px;
+  border-radius: var(--r-pill);
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.ctag-pdf    { background: #FFF0D6; color: #7A4A00; }
+.ctag-studio { background: #EDE9FF; color: #4A3AAA; }
+.ctag-dxf    { background: #E0F5EA; color: #1A6B3A; }
+.ctag-imagens{ background: #E6F0FF; color: #1A3FAA; }
+.ctag-card   { background: #FFEDF3; color: #8A1A40; }
+
+.card-arrow {
+  position: absolute;
+  bottom: 14px; right: 14px;
+  width: 28px; height: 28px;
+  background: var(--blush);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px;
+  color: var(--rose);
+  transition: background 0.2s, transform 0.2s;
+}
+.item-card:hover .card-arrow {
+  background: var(--rose);
+  color: #fff;
+  transform: translate(2px, -2px);
+}
+
+/* Empty state */
+.empty-state {
+  grid-column: 1/-1;
+  text-align: center;
+  padding: 40px 20px;
+}
+.empty-emoji { font-size: 48px; margin-bottom: 12px; }
+.empty-text  { font-size: 15px; color: var(--muted); font-weight: 300; }
+
+/* Tips section */
+.tips-section {
+  background: var(--blush);
+  border-radius: var(--r-xl);
+  padding: 24px 20px;
+  margin-bottom: 24px;
+}
+
+.tips-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 17px;
+  color: var(--rose-dk);
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.tip-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(196,72,106,0.1);
+}
+.tip-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+.tip-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+  width: 36px; height: 36px;
+  background: #fff;
+  border-radius: var(--r-lg);
+  display: flex; align-items: center; justify-content: center;
+}
+
+.tip-content strong {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--rose-dk);
+  margin-bottom: 2px;
+}
+.tip-content span { font-size: 12px; color: var(--muted); font-weight: 300; line-height: 1.5; }
+
+/* Contact footer */
+.contact-footer {
+  background: var(--rose-dk);
+  border-radius: var(--r-xl);
+  padding: 24px 20px;
+  text-align: center;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-footer::before {
+  content: '❤️';
+  position: absolute;
+  font-size: 120px;
+  opacity: 0.05;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.contact-footer h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  color: #fff;
+  margin-bottom: 6px;
+  position: relative;
+}
+.contact-footer p {
+  font-size: 13px;
+  color: rgba(255,255,255,0.65);
+  margin-bottom: 20px;
+  font-weight: 300;
+  position: relative;
+}
+
+.contact-links {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.contact-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: var(--r-pill);
+  padding: 10px 18px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  font-family: 'DM Sans', sans-serif;
+  transition: background 0.2s;
+}
+.contact-btn:hover { background: rgba(255,255,255,0.22); }
+
+.footer-note {
+  text-align: center;
+  font-size: 11px;
+  color: var(--muted);
+  padding: 0 0 24px;
+  font-weight: 300;
+}
+
+/* Floating hearts animation on main */
+.floating-hearts {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.fh {
+  position: absolute;
+  bottom: -40px;
+  font-size: 14px;
+  opacity: 0;
+  animation: floatHeart linear infinite;
+}
+
+@keyframes floatHeart {
+  0%   { transform: translateY(0) rotate(0deg) scale(0.8); opacity: 0; }
+  10%  { opacity: 0.35; }
+  90%  { opacity: 0.1; }
+  100% { transform: translateY(-105vh) rotate(360deg) scale(1.2); opacity: 0; }
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(26,8,16,0.7);
+  z-index: 500;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  backdrop-filter: blur(4px);
+}
+.modal-overlay.open { opacity: 1; pointer-events: all; }
+
+.modal-sheet {
+  background: var(--cream);
+  border-radius: 28px 28px 0 0;
+  padding: 8px 0 0;
+  width: 100%;
+  max-width: 540px;
+  max-height: 80vh;
+  overflow-y: auto;
+  transform: translateY(100%);
+  transition: transform 0.35s cubic-bezier(0.34,1.1,0.64,1);
+  scrollbar-width: none;
+}
+.modal-sheet::-webkit-scrollbar { display: none; }
+.modal-overlay.open .modal-sheet { transform: translateY(0); }
+
+.modal-handle {
+  width: 40px; height: 4px;
+  background: rgba(0,0,0,0.15);
+  border-radius: 2px;
+  margin: 0 auto 20px;
+}
+
+.modal-body { padding: 0 24px 32px; }
+
+.modal-emoji {
+  font-size: 52px;
+  margin-bottom: 14px;
+  display: block;
+  text-align: center;
+}
+
+.modal-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  color: var(--rose-dk);
+  text-align: center;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.modal-desc {
+  font-size: 14px;
+  color: var(--muted);
+  text-align: center;
+  margin-bottom: 24px;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+.modal-formats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 28px;
+}
+
+.modal-format-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--rose-dk);
+}
+.modal-format-badge span { font-size: 11px; color: var(--muted); font-weight: 300; }
+
+.modal-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--rose-dk);
+  color: #fff;
+  border-radius: var(--r-pill);
+  padding: 16px 28px;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  font-family: 'DM Sans', sans-serif;
+  transition: background 0.2s, transform 0.15s;
+  box-shadow: 0 4px 20px rgba(122,31,58,0.35);
+}
+.modal-cta:hover { background: var(--rose); }
+.modal-cta:active { transform: scale(0.98); }
+
+/* scroll indicator */
+.scroll-hint {
+  text-align: center;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 300;
+  margin: -8px 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.scroll-hint-arrow {
+  animation: bounceDown 1.5s ease-in-out infinite;
+}
+
+@keyframes bounceDown {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(4px); }
+}
+
+/* responsive */
+@media (min-width: 540px) {
+  .items-grid { grid-template-columns: repeat(3, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<!-- ONBOARDING -->
+<div id="onboarding">
+  <div class="ob-bg" id="obBg"></div>
+  <span class="ob-counter" id="obCounter">1 / 3</span>
+  <button class="ob-skip" onclick="skipOnboarding()">Pular →</button>
+
+  <div class="ob-slides">
+    <!-- Slide 1 -->
+    <div class="ob-slide active" id="slide-0">
+      <div class="ob-emoji">💝</div>
+      <h1 class="ob-title">Seu kit <em>completo</em> chegou!</h1>
+      <p class="ob-desc">Você tem acesso a um kit premium com mais de 47 artes exclusivas para o Dia dos Namorados 2026.</p>
+      <div class="ob-dots">
+        <div class="ob-dot active"></div>
+        <div class="ob-dot"></div>
+        <div class="ob-dot"></div>
+      </div>
+      <button class="ob-btn" onclick="nextSlide()">Continuar →</button>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="ob-slide" id="slide-1">
+      <div class="ob-emoji">🎨</div>
+      <h1 class="ob-title">Formatos para <em>tudo</em></h1>
+      <p class="ob-desc">Cada item está disponível nos formatos que você precisa:</p>
+      <div class="ob-formats">
+        <span class="ob-badge" style="animation-delay:.05s">📄 PDF pronto para imprimir</span>
+        <span class="ob-badge" style="animation-delay:.12s">✏️ Studio para editar</span>
+        <span class="ob-badge" style="animation-delay:.19s">✂️ DXF para plotter</span>
+        <span class="ob-badge" style="animation-delay:.26s">🖼️ Mockups e fotos</span>
+      </div>
+      <div class="ob-dots">
+        <div class="ob-dot"></div>
+        <div class="ob-dot active"></div>
+        <div class="ob-dot"></div>
+      </div>
+      <button class="ob-btn" onclick="nextSlide()">Continuar →</button>
+      <button class="ob-btn secondary" onclick="prevSlide()">← Voltar</button>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="ob-slide" id="slide-2">
+      <div class="ob-emoji">🚀</div>
+      <h1 class="ob-title">Como <em>navegar</em></h1>
+      <div class="ob-checklist">
+        <div class="ob-check-item" style="animation-delay:.05s">
+          <span class="ob-check-icon">🔍</span>
+          <div class="ob-check-text">
+            <strong>Busque pelo nome</strong>
+            <span>Digite "coração", "chocolate" e encontre na hora</span>
+          </div>
+        </div>
+        <div class="ob-check-item" style="animation-delay:.12s">
+          <span class="ob-check-icon">📂</span>
+          <div class="ob-check-text">
+            <strong>Filtre por categoria</strong>
+            <span>Caixas, cards, adesivos, papelaria e muito mais</span>
+          </div>
+        </div>
+        <div class="ob-check-item" style="animation-delay:.19s">
+          <span class="ob-check-icon">📥</span>
+          <div class="ob-check-text">
+            <strong>Baixe do Google Drive</strong>
+            <span>Cada item abre direto na pasta certa</span>
+          </div>
+        </div>
+      </div>
+      <div class="ob-dots">
+        <div class="ob-dot"></div>
+        <div class="ob-dot"></div>
+        <div class="ob-dot active"></div>
+      </div>
+      <button class="ob-btn" onclick="finishOnboarding()">Acessar meu kit ✦</button>
+      <button class="ob-btn secondary" onclick="prevSlide()">← Voltar</button>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN APP -->
+<div id="app">
+  <div class="floating-hearts" id="floatingHearts"></div>
+
+  <div class="app-header">
+    <div class="header-noise"></div>
+    <div class="header-orbs">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+    </div>
+    <div class="header-eyebrow">Kit digital exclusivo</div>
+    <h1 class="header-title">Dia dos<br><em>Namorados</em> 2026</h1>
+    <p class="header-sub">Toque em qualquer item para baixar</p>
+    <div class="header-stats">
+      <div class="stat-item">
+        <span class="stat-num">47</span>
+        <span class="stat-label">Artes</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">5</span>
+        <span class="stat-label">Categorias</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">3</span>
+        <span class="stat-label">Formatos</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="wave-divider">
+    <svg viewBox="0 0 1440 40" preserveAspectRatio="none" height="40" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,40 L0,20 Q180,0 360,20 Q540,40 720,20 Q900,0 1080,20 Q1260,40 1440,20 L1440,40 Z" fill="#FDF8F0"/>
+    </svg>
+  </div>
+
+  <div style="position:relative; z-index:10;">
+    <div class="search-wrap">
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchInput" placeholder="Buscar item... ex: coração, chocolate" oninput="onSearch()">
+        <button class="search-clear" id="searchClear" onclick="clearSearch()">✕</button>
+      </div>
+    </div>
+
+    <div class="section-wrap">
+      <div class="section-label">Categorias</div>
+      <div class="cats-scroll" id="catScroll"></div>
+
+      <div class="scroll-hint" id="scrollHint">
+        <span>Role para ver todos os itens</span>
+        <span class="scroll-hint-arrow">↓</span>
+      </div>
+
+      <div class="items-count" id="itemsCount"></div>
+      <div class="items-grid" id="itemsGrid"></div>
+
+      <div class="tips-section">
+        <h2 class="tips-title">💡 Dicas de uso</h2>
+        <div class="tip-item">
+          <div class="tip-icon">📄</div>
+          <div class="tip-content">
+            <strong>Arquivos PDF</strong>
+            <span>Prontos para imprimir em qualquer gráfica ou em casa. Não precisa de software.</span>
+          </div>
+        </div>
+        <div class="tip-item">
+          <div class="tip-icon">✏️</div>
+          <div class="tip-content">
+            <strong>Arquivos Studio</strong>
+            <span>Abra no Silhouette Studio para personalizar nome, cor e textos antes de cortar.</span>
+          </div>
+        </div>
+        <div class="tip-item">
+          <div class="tip-icon">✂️</div>
+          <div class="tip-content">
+            <strong>Arquivos DXF</strong>
+            <span>Compatível com Cricut, Brother ScanNCut e qualquer plotter de recorte.</span>
+          </div>
+        </div>
+        <div class="tip-item">
+          <div class="tip-icon">📸</div>
+          <div class="tip-content">
+            <strong>Mockups & Fotos</strong>
+            <span>Use nas suas redes sociais para divulgar e aumentar suas vendas.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-footer">
+        <h3>Precisa de ajuda?</h3>
+        <p>Nossa equipe está aqui para te apoiar</p>
+        <div class="contact-links">
+          <a class="contact-btn" href="https://wa.me/5563981261836" target="_blank">
+            💬 WhatsApp
+          </a>
+          <a class="contact-btn" href="mailto:administrativo@alvoecom.com">
+            ✉️ E-mail
+          </a>
+        </div>
+      </div>
+
+      <p class="footer-note">© 2026 Kit Dia dos Namorados · Todos os direitos reservados</p>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal-sheet" id="modalSheet">
+    <div class="modal-handle"></div>
+    <div class="modal-body">
+      <span class="modal-emoji" id="modalEmoji"></span>
+      <h2 class="modal-title" id="modalTitle"></h2>
+      <p class="modal-desc" id="modalDesc"></p>
+      <div class="modal-formats" id="modalFormats"></div>
+      <a class="modal-cta" id="modalCta" href="#" target="_blank">
+        📂 Abrir no Google Drive
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+const ITEMS = [
+  // CAIXAS
+  { name:"Caixa 10x15", cat:"caixas", emoji:"📦", tags:["pdf","studio","dxf"], url:"https://drive.google.com/drive/folders/1hCmti4a4Ej9KYDhhfHKJiuWY7utwE75N", desc:"Caixa retangular 10x15cm, perfeita para kits de presente.", formatos:["PDF para imprimir","Silhouette Studio","Arquivo DXF"] },
+  { name:"Caixa Coração", cat:"caixas", emoji:"💝", tags:["pdf","studio"], url:"https://drive.google.com/drive/folders/1NHb1Zr-N8LP1rEHP3NZl1WZxZvM3He-j", desc:"Caixa no formato coração, super romântica para surpreender.", formatos:["PDF para imprimir","Silhouette Studio"] },
+  { name:"Caixa Quadrada", cat:"caixas", emoji:"🎁", tags:["pdf","studio"], url:"https://drive.google.com/drive/folders/1dAG2STE3Rus1-97Koa4Yyt3DwZt727Je", desc:"Caixa formato quadrado, versátil para vários produtos.", formatos:["PDF para imprimir","Silhouette Studio"] },
+  { name:"Caixa 2 Doces", cat:"caixas", emoji:"🍬", tags:["pdf","studio"], url:"https://drive.google.com/drive/folders/1NNzT1POJ-3paPkW_RzDn0SCqJKYrPXij", desc:"Caixinha para 2 doces ou balinhas.", formatos:["PDF para imprimir","Silhouette Studio"] },
+  { name:"Caixa Envelope Mimos", cat:"caixas", emoji:"💌", tags:["pdf","studio"], url:"https://drive.google.com/drive/folders/1oB58qaVrM2b1pD2MkcrLueamBCiAPsmr", desc:"Envelope estilo caixa para pequenos mimos.", formatos:["PDF para imprimir","Silhouette Studio"] },
+  { name:"Caixa Promessas", cat:"caixas", emoji:"💒", tags:["pdf","studio"], url:"https://drive.google.com/drive/folders/1KATYOfLQdFDq6NDV3RlVrLMDVswIY_pY", desc:"Caixa especial para cartinhas de promessas do casal.", formatos:["PDF para imprimir","Silhouette Studio"] },
+  { name:"Caneca Acrílica na Caixinha", cat:"caixas", emoji:"☕", tags:["pdf","studio"], url:"https://drive.google.com/drive/folders/1roKt16J6RQcPJetVgDjCZ9u6XUn1ggaG", desc:"Caixinha especialmente desenvolvida para canecas acrílicas.", formatos:["PDF para imprimir","Silhouette Studio"] },
+  { name:"Cestinha Coração", cat:"caixas", emoji:"🧺", tags:["pdf","studio"], url:"https://drive.google.com/drive/folders/1EMqSruEh-2imI3lnYL2Njy_VvoUW46Ld", desc:"Cestinha no formato coração, charmosa e diferenciada.", formatos:["PDF para imprimir","Silhouette Studio"] },
+  { name:"Caixas + Cards PDF", cat:"caixas", emoji:"📄", tags:["pdf"], url:"https://drive.google.com/drive/folders/1eqOXjnyMSHhq_ornF329ljhFbrvJ-Uwh", desc:"Pasta com todas as caixas e cards prontos em PDF.", formatos:["PDF para imprimir"] },
+  { name:"Caixas em Studio", cat:"caixas", emoji:"📐", tags:["studio"], url:"https://drive.google.com/drive/folders/1hVFIFKDtaOn4hYeRmc9DHCyGFUM8B-4_", desc:"Todos os modelos de caixas em formato Silhouette Studio.", formatos:["Silhouette Studio"] },
+  // CARDS & TAGS
+  { name:"Card Vela Coração", cat:"cards", emoji:"🕯️", tags:["card","studio"], url:"https://drive.google.com/drive/folders/1ojh-vbIDG2LTtux9b1mP5mLrdlCMWk8a", desc:"Card decorativo para acompanhar vela no formato coração.", formatos:["PDF para imprimir","Silhouette Studio"] },
+  { name:"Card Xícara Coração", cat:"cards", emoji:"🍵", tags:["card","studio"], url:"https://drive.google.com/drive/folders/1p5ePWbddplaCtswEFBGKYAoR-xHXVMv6", desc:"Card para presentear com xícara temática.", formatos:["PDF para imprimir","Silhouette Studio"] },
+  { name:"Card Potinho", cat:"cards", emoji:"🪴", tags:["card","studio"], url:"https://drive.google.com/drive/folders/1TG6AAduMFNXjYCxripsquj-0vSA5hfnH", desc:"Card ideal para acompanhar potinhos decorativos.", formatos:["PDF para imprimir","Silhouette Studio"] },
+  { name:"Card Pirulito", cat:"cards", emoji:"🍭", tags:["card","studio"], url:"https://drive.google.com/drive/folders/1mnX1Nc6HsipWXgWH59hMwgg9SwYZ_gEI", desc:"Card especial para pirulitos personalizados.", formatos:["PDF para imprimir","Silhouette Studio"] },
+  { name:"Card Lápis", cat:"cards", emoji:"✏️", tags:["card","studio"], url:"https://drive.google.com/drive/folders/19yZsBnHCShMnAJNVHQK9_V2SHDw1aK4D", desc:"Card no formato lápis, criativo e original.", formatos:["PDF para imprimir","Silhouette Studio"] },
+  { name:"Card 2 BIS", cat:"cards", emoji:"🍫", tags:["card","studio"], url:"https://drive.google.com/drive/folders/1lPb2NETqbWhFW5U9jtHvtikhGF98MEJO", desc:"Card para 2 unidades de BIS — sucesso garantido!", formatos:["PDF para imprimir","Silhouette Studio"] },
+  { name:"Card 2 Batons", cat:"cards", emoji:"💄", tags:["card","studio"], url:"https://drive.google.com/drive/folders/1rzcJpLk2l-Bz_pve9dCkY5cThtBLA9m7", desc:"Card que acomoda 2 batons — delicado e feminino.", formatos:["PDF para imprimir","Silhouette Studio"] },
+  { name:"Card La Crème", cat:"cards", emoji:"💆", tags:["card","studio"], url:"https://drive.google.com/drive/folders/1KTIYxsh38esWvxiHVN91VIHauwEOXSba", desc:"Card temático para creme hidratante La Crème.", formatos:["PDF para imprimir","Silhouette Studio"] },
+  { name:"Card + Chaveiro Acrílico 3x4", cat:"cards", emoji:"🔑", tags:["card","studio"], url:"https://drive.google.com/drive/folders/1lUhtl19lpWHcjMgDVhx35d4WJofErJc3", desc:"Card combinado com chaveiro acrílico 3x4cm.", formatos:["PDF para imprimir","Silhouette Studio"] },
+  { name:"Tags", cat:"cards", emoji:"🏷️", tags:["card","pdf"], url:"https://drive.google.com/drive/folders/1jhu-g-KTTdsI2qFiebyKe9ASaEJb_gio", desc:"Variedade de tags para personalizar seus presentes.", formatos:["PDF para imprimir","Silhouette Studio"] },
+  { name:"Tag Lingerie", cat:"cards", emoji:"🎀", tags:["card","studio"], url:"https://drive.google.com/drive/folders/1JF0q8g-yj9l-r78vSw5pOwrKYB9PVjb-", desc:"Tag especial para presentear com lingerie.", formatos:["PDF para imprimir","Silhouette Studio"] },
+  { name:"Cartão Flor", cat:"cards", emoji:"🌸", tags:["card","studio"], url:"https://drive.google.com/drive/folders/1FYIJQWOCXbfPo8m2RUosABWa91AKiPva", desc:"Cartão no formato flor, delicado e romântico.", formatos:["PDF para imprimir","Silhouette Studio"] },
+  { name:"Cartão e Balinha", cat:"cards", emoji:"🍬", tags:["card","studio"], url:"https://drive.google.com/drive/folders/1fwEEns_SixbaRZJAHcA2k8kOgs8ufNJ0", desc:"Cartão com espaço para uma balinha — gostoso e fofo.", formatos:["PDF para imprimir","Silhouette Studio"] },
+  // ADESIVOS
+  { name:"Adesivo Barra Chocolate v1", cat:"adesivos", emoji:"🍫", tags:["pdf","studio"], url:"https://drive.google.com/drive/folders/12dCkFSEcoe7DrmqbhqDpQfHGJhpWEiUd", desc:"Adesivo para envolver barra de chocolate — modelo 1.", formatos:["PDF para imprimir","Silhouette Studio"] },
+  { name:"Adesivo Barra Chocolate v2", cat:"adesivos", emoji:"🍫", tags:["pdf","studio"], url:"https://drive.google.com/drive/folders/18uG4dqByftss-O6gyesgzB7NmRhNAOjw", desc:"Adesivo para barra de chocolate — versão 2 diferenciada.", formatos:["PDF para imprimir","Silhouette Studio"] },
+  { name:"Kit Chaveiro", cat:"adesivos", emoji:"🔑", tags:["studio","pdf"], url:"https://drive.google.com/drive/folders/11q58QlUrwKLqruivmUKSpPK1s6POhhrt", desc:"Kit completo de chaveiro personalizado para Dia dos Namorados.", formatos:["PDF para imprimir","Silhouette Studio"] },
+  { name:"Kit Kat Adesivo", cat:"adesivos", emoji:"🎭", tags:["pdf","studio"], url:"https://drive.google.com/drive/folders/1y4oqcSFA-TVSABEF9qleh1nDIEBusOzg", desc:"Adesivo estilo Kit Kat para personalizar seu doce favorito.", formatos:["PDF para imprimir","Silhouette Studio"] },
+  { name:"Most BomBom", cat:"adesivos", emoji:"🍬", tags:["studio","pdf"], url:"https://drive.google.com/drive/folders/13ZqoBqMGzWRMxQPLdSZE0qoOJE0s3t7a", desc:"Mosteiro para bombom personalizado.", formatos:["PDF para imprimir","Silhouette Studio"] },
+  { name:"Chaveiro Redondo", cat:"adesivos", emoji:"🔵", tags:["studio","dxf"], url:"https://drive.google.com/drive/folders/1ipVTp_pvf7ERNiheYidCfuuzvVBYwKRG", desc:"Chaveiro no formato redondo para corte e personalização.", formatos:["Silhouette Studio","Arquivo DXF"] },
+  // PAPELARIA
+  { name:"Álbum de Figurinhas", cat:"papelaria", emoji:"📒", tags:["pdf"], url:"https://drive.google.com/drive/folders/10QKD47kKcZlVc9yWrQTvM-mjgEL0N3Ux", desc:"Álbum temático de figurinhas do casal — muito especial!", formatos:["PDF para imprimir"] },
+  { name:"Bíblia BIS", cat:"papelaria", emoji:"📖", tags:["pdf","studio"], url:"https://drive.google.com/drive/folders/1IhADknlyLR6kQ7qGl1e3buGF8tmUWH9P", desc:"Bíblia de BIS personalizada — fofa e saborosa.", formatos:["PDF para imprimir","Silhouette Studio"] },
+  { name:"Livro Nossos Momentos", cat:"papelaria", emoji:"📔", tags:["pdf"], url:"https://drive.google.com/drive/folders/1lwVoDp1LLtepomrrT_OxMbpAYNlwf1AB", desc:"Livro para registrar os momentos mais especiais do casal.", formatos:["PDF para imprimir"] },
+  { name:"Marca Página", cat:"papelaria", emoji:"🔖", tags:["pdf","studio"], url:"https://drive.google.com/drive/folders/1p0eqnILo8tytsSAE4oXM1EZ8VEgEkw2-", desc:"Marca página temático para presentear quem ama ler.", formatos:["PDF para imprimir","Silhouette Studio"] },
+  { name:"Bloquinho", cat:"papelaria", emoji:"📝", tags:["pdf","studio"], url:"https://drive.google.com/drive/folders/1vNjZ_0MAeGz4q6JzyZdifecAlMENS0Fm", desc:"Bloquinho de anotações personalizado e apaixonante.", formatos:["PDF para imprimir","Silhouette Studio"] },
+  { name:"Frases Românticas", cat:"papelaria", emoji:"💬", tags:["pdf"], url:"https://drive.google.com/drive/folders/1v7o5IEBsGRvZ4bzxUXKk5KbyJRCaAjem", desc:"Banco de frases românticas para usar em todos os produtos.", formatos:["PDF para imprimir"] },
+  { name:"Capa Rosa", cat:"papelaria", emoji:"🌸", tags:["pdf","studio"], url:"https://drive.google.com/drive/folders/1sUYmSsT25dmeq9T09_Kga0Km17LgtIKi", desc:"Capa decorativa rosa para composições.", formatos:["PDF para imprimir","Silhouette Studio"] },
+  { name:"Cupido", cat:"papelaria", emoji:"💘", tags:["studio","pdf"], url:"https://drive.google.com/drive/folders/1kHuqv5DcI_nR4b9nkRtXcN1_MdPiRcG2", desc:"Arte do Cupido, clássica e encantadora.", formatos:["PDF para imprimir","Silhouette Studio"] },
+  { name:"Cupido 2", cat:"papelaria", emoji:"💘", tags:["studio","pdf"], url:"https://drive.google.com/drive/folders/1_-5IhTRhowvx4gCuozypDjs5Wx1bsxH_", desc:"Segunda versão do Cupido — diferente e igualmente linda.", formatos:["PDF para imprimir","Silhouette Studio"] },
+  { name:"Coração Cupido", cat:"papelaria", emoji:"💝", tags:["studio","pdf"], url:"https://drive.google.com/drive/folders/1i39Va6-4N1BA45qCU2mA-9ub0ugFEORe", desc:"Composição coração + cupido, apaixonante!", formatos:["PDF para imprimir","Silhouette Studio"] },
+  // EXTRAS
+  { name:"Envelope Foto Polaroid", cat:"extras", emoji:"📷", tags:["studio","pdf"], url:"https://drive.google.com/drive/folders/1SaRjA1kr26MW3LRxuWxZtopayOzYsria", desc:"Envelope para presentear com foto estilo polaroid.", formatos:["PDF para imprimir","Silhouette Studio"] },
+  { name:"Sacola 16x22", cat:"extras", emoji:"🛍️", tags:["studio","pdf","dxf"], url:"https://drive.google.com/drive/folders/10xkBdAHjlyOE_jgfiiKm_h8_FvB8YatI", desc:"Sacola 16x22cm — ótima para kits maiores.", formatos:["PDF para imprimir","Silhouette Studio","Arquivo DXF"] },
+  { name:"Copo Americano", cat:"extras", emoji:"🥤", tags:["studio","pdf"], url:"https://drive.google.com/drive/folders/1hrIShZYx1W3UiQYlLgAadzpM6IhD4kpn", desc:"Arte para copo americano personalizado.", formatos:["PDF para imprimir","Silhouette Studio"] },
+  { name:"Bolsa Xuxinha", cat:"extras", emoji:"👜", tags:["studio","pdf","dxf"], url:"https://drive.google.com/drive/folders/1DE3t6qlN1UI_iKJ7URIdjYfdEg5vwZZj", desc:"Bolsa fofa no formato xuxinha — exclusiva!", formatos:["PDF para imprimir","Silhouette Studio","Arquivo DXF"] },
+  { name:"Mockups", cat:"extras", emoji:"🖼️", tags:["imagens"], url:"https://drive.google.com/drive/folders/1vPoTDRC1JmFVXnzcM3_9T0oyJLwdgb81", desc:"Mockups profissionais para divulgar nas redes sociais.", formatos:["Imagens PNG/JPG"] },
+  { name:"Fotos para Divulgação", cat:"extras", emoji:"📸", tags:["imagens"], url:"https://drive.google.com/drive/folders/1u360fi_PNGa1RLeypFjbBErN4RaNDTIm", desc:"Fotos prontas e profissionais para anunciar seus produtos.", formatos:["Imagens PNG/JPG"] },
+  { name:"Fotos Gerais", cat:"extras", emoji:"🖼️", tags:["imagens"], url:"https://drive.google.com/drive/folders/1_aTNs1H6ibz7dHiqgC6_2FPWkNVfz8X3", desc:"Acervo geral de imagens do kit.", formatos:["Imagens PNG/JPG"] },
+  { name:"Arquivos DXF", cat:"extras", emoji:"✂️", tags:["dxf"], url:"https://drive.google.com/drive/folders/1vf9DhHtAMVep9snY8WysMBNdbgYlqlFV", desc:"Todos os arquivos DXF para plotter de corte.", formatos:["Arquivo DXF"] },
+  { name:"Arquivos Silhouette Studio", cat:"extras", emoji:"🔧", tags:["studio"], url:"https://drive.google.com/drive/folders/1OZrvm1qpwFo2eKhTWSaKMzolWFnjZQs3", desc:"Todos os arquivos .studio reunidos em um só lugar.", formatos:["Silhouette Studio"] },
+];
+
+const CATS = [
+  { id:"todos",    label:"Tudo",       emoji:"🎁" },
+  { id:"caixas",   label:"Caixas",     emoji:"📦" },
+  { id:"cards",    label:"Cards & Tags",emoji:"🎴" },
+  { id:"adesivos", label:"Adesivos",   emoji:"🍫" },
+  { id:"papelaria",label:"Papelaria",  emoji:"📋" },
+  { id:"extras",   label:"Extras",     emoji:"✨" },
+];
+
+const TAG_LABELS = { pdf:"PDF", studio:"Studio", dxf:"DXF", imagens:"Imagens", card:"Card" };
+const TAG_CLASS  = { pdf:"ctag-pdf", studio:"ctag-studio", dxf:"ctag-dxf", imagens:"ctag-imagens", card:"ctag-card" };
+
+let currentCat = "todos";
+let searchVal  = "";
+let currentItem = null;
+let obSlide = 0;
+
+// ── PETALS ──
+(function() {
+  const bg = document.getElementById('obBg');
+  for (let i = 0; i < 22; i++) {
+    const p = document.createElement('div');
+    p.className = 'ob-petal';
+    const sz = 6 + Math.random() * 10;
+    p.style.cssText = `
+      width:${sz}px;height:${sz}px;
+      left:${Math.random()*100}%;
+      animation-duration:${6+Math.random()*8}s;
+      animation-delay:${Math.random()*8}s;
+      opacity:${0.08+Math.random()*0.12};
+    `;
+    bg.appendChild(p);
+  }
+})();
+
+// ── FLOATING HEARTS ──
+(function() {
+  const container = document.getElementById('floatingHearts');
+  const symbols = ['❤️','🌹','💕','💖','✦','💗'];
+  for (let i = 0; i < 10; i++) {
+    const h = document.createElement('div');
+    h.className = 'fh';
+    h.textContent = symbols[Math.floor(Math.random()*symbols.length)];
+    h.style.cssText = `
+      left:${5+Math.random()*90}%;
+      font-size:${10+Math.random()*10}px;
+      animation-duration:${18+Math.random()*14}s;
+      animation-delay:${Math.random()*16}s;
+    `;
+    container.appendChild(h);
+  }
+})();
+
+// ── ONBOARDING ──
+function nextSlide() {
+  if (obSlide < 2) { obSlide++; showSlide(obSlide); }
+}
+function prevSlide() {
+  if (obSlide > 0) { obSlide--; showSlide(obSlide); }
+}
+function showSlide(n) {
+  document.querySelectorAll('.ob-slide').forEach((s,i) => {
+    s.classList.toggle('active', i===n);
+  });
+  document.getElementById('obCounter').textContent = (n+1) + ' / 3';
+}
+function skipOnboarding() { finishOnboarding(); }
+function finishOnboarding() {
+  const ob = document.getElementById('onboarding');
+  ob.classList.add('exit');
+  setTimeout(() => {
+    ob.style.display = 'none';
+    const app = document.getElementById('app');
+    app.classList.add('visible');
+    try { localStorage.setItem('dn2026_ob','1'); } catch(e){}
+  }, 600);
+}
+
+// check if onboarding was already seen
+try {
+  if (localStorage.getItem('dn2026_ob') === '1') {
+    document.getElementById('onboarding').style.display = 'none';
+    document.getElementById('app').classList.add('visible');
+  }
+} catch(e) {}
+
+// ── BUILD CATEGORIES ──
+function buildCats() {
+  const wrap = document.getElementById('catScroll');
+  wrap.innerHTML = CATS.map(c => {
+    const count = c.id === 'todos' ? ITEMS.length : ITEMS.filter(i=>i.cat===c.id).length;
+    return `<button class="cat-pill${c.id===currentCat?' active':''}" onclick="selectCat('${c.id}')">
+      <span class="cat-pill-emoji">${c.emoji}</span>
+      ${c.label}
+      <span class="cat-pill-count">${count}</span>
+    </button>`;
+  }).join('');
+}
+
+function selectCat(cat) {
+  currentCat = cat;
+  buildCats();
+  renderItems();
+  document.getElementById('scrollHint').style.display = 'none';
+}
+
+// ── SEARCH ──
+function onSearch() {
+  searchVal = document.getElementById('searchInput').value.trim().toLowerCase();
+  const btn = document.getElementById('searchClear');
+  btn.classList.toggle('show', searchVal.length > 0);
+  renderItems();
+}
+
+function clearSearch() {
+  document.getElementById('searchInput').value = '';
+  searchVal = '';
+  document.getElementById('searchClear').classList.remove('show');
+  renderItems();
+}
+
+// ── RENDER ITEMS ──
+function renderItems() {
+  const grid = document.getElementById('itemsGrid');
+  const countEl = document.getElementById('itemsCount');
+
+  let filtered = ITEMS.filter(item => {
+    const catOk = currentCat === 'todos' || item.cat === currentCat;
+    const srchOk = !searchVal || item.name.toLowerCase().includes(searchVal) || item.desc.toLowerCase().includes(searchVal) || item.tags.some(t=>t.includes(searchVal));
+    return catOk && srchOk;
+  });
+
+  countEl.innerHTML = `Mostrando <strong>${filtered.length}</strong> de ${ITEMS.length} itens`;
+
+  if (!filtered.length) {
+    grid.innerHTML = `<div class="empty-state"><div class="empty-emoji">💔</div><p class="empty-text">Nada encontrado para "<strong>${searchVal}</strong>"<br>Tente outro termo.</p></div>`;
+    return;
+  }
+
+  grid.innerHTML = filtered.map((item, i) => {
+    const tagsHtml = item.tags.slice(0,2).map(t =>
+      `<span class="ctag ${TAG_CLASS[t]||''}">${TAG_LABELS[t]||t}</span>`
+    ).join('');
+    return `
+      <div class="item-card" style="animation-delay:${i*0.035}s" onclick="openModal(${ITEMS.indexOf(item)})">
+        <div class="card-emoji-wrap">${item.emoji}</div>
+        <div class="card-name">${item.name}</div>
+        <div class="card-tags">${tagsHtml}</div>
+        <div class="card-arrow">↗</div>
+      </div>`;
+  }).join('');
+}
+
+// ── MODAL ──
+function openModal(idx) {
+  const item = ITEMS[idx];
+  currentItem = item;
+
+  document.getElementById('modalEmoji').textContent = item.emoji;
+  document.getElementById('modalTitle').textContent = item.name;
+  document.getElementById('modalDesc').textContent  = item.desc;
+  document.getElementById('modalCta').href = item.url;
+
+  const formatIcons = { "PDF para imprimir":"📄", "Silhouette Studio":"✏️", "Arquivo DXF":"✂️", "Imagens PNG/JPG":"🖼️" };
+  document.getElementById('modalFormats').innerHTML = item.formatos.map(f =>
+    `<div class="modal-format-badge">${formatIcons[f]||'📁'} <div><strong style="font-size:13px;color:var(--rose-dk)">${f}</strong></div></div>`
+  ).join('');
+
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(e) {
+  if (e && e.target !== document.getElementById('modalOverlay')) return;
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// close modal on escape
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeModal({target: document.getElementById('modalOverlay')});
+});
+
+// swipe to close modal
+let touchStartY = 0;
+document.getElementById('modalSheet').addEventListener('touchstart', e => { touchStartY = e.touches[0].clientY; });
+document.getElementById('modalSheet').addEventListener('touchend', e => {
+  if (e.changedTouches[0].clientY - touchStartY > 60) closeModal({target: document.getElementById('modalOverlay')});
+});
+
+// ── INIT ──
+buildCats();
+renderItems();
+</script>
+</body>
+</html>

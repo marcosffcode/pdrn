@@ -5,16 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Super Kit Dia dos Namorados 2026</title>
     
-    <!-- Google Fonts -->
+    <!-- Preconnects: domínios críticos -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://pub-83097298470040bc9877e60d6fcf79d1.r2.dev" crossorigin>
+    <link rel="preconnect" href="https://mpc-prod-27-s6uit34pua-uk.a.run.app" crossorigin>
+    <link rel="dns-prefetch" href="https://ipapi.co">
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&family=Poppins:wght@500;700;800&display=swap" rel="stylesheet">
-    
+
     <!-- Tailwind CSS (via CDN) -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Lucide Icons: defer + jsDelivr (CDN mais rápido que unpkg) -->
+    <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js" defer></script>
 
     <!-- Tailwind Configuration -->
     <script>
@@ -41,6 +47,10 @@
                         slideUp: {
                             '0%': { transform: 'translateY(100%)', opacity: '0' },
                             '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        shimmer: {
+                            '0%': { transform: 'skewX(-12deg) translateX(-150%)' },
+                            '100%': { transform: 'skewX(-12deg) translateX(300%)' }
                         }
                     }
                 }
@@ -158,16 +168,20 @@ src="https://www.facebook.com/tr?id=679523000263255&ev=PageView&noscript=1"
             <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
                 <img src="https://pub-83097298470040bc9877e60d6fcf79d1.r2.dev/lembrancinhas.webp" 
                      onerror="this.src='https://placehold.co/400x400/fdf2f8/9d467e?text=Lembrancinhas'" 
-                     alt="Lembrancinhas" class="rounded-xl shadow-sm border border-pink-100 w-full h-auto object-cover aspect-square hover:scale-105 transition-transform">
+                     alt="Lembrancinhas" class="rounded-xl shadow-sm border border-pink-100 w-full h-auto object-cover aspect-square hover:scale-105 transition-transform"
+                     fetchpriority="high" width="400" height="400" decoding="sync">
                 <img src="https://pub-83097298470040bc9877e60d6fcf79d1.r2.dev/caixinhas%20(1).webp" 
                      onerror="this.src='https://placehold.co/400x400/fdf2f8/9d467e?text=Caixinhas'" 
-                     alt="Caixinhas" class="rounded-xl shadow-sm border border-pink-100 w-full h-auto object-cover aspect-square hover:scale-105 transition-transform">
+                     alt="Caixinhas" class="rounded-xl shadow-sm border border-pink-100 w-full h-auto object-cover aspect-square hover:scale-105 transition-transform"
+                     width="400" height="400" decoding="async">
                 <img src="https://pub-83097298470040bc9877e60d6fcf79d1.r2.dev/presentes%20(1).webp" 
                      onerror="this.src='https://placehold.co/400x400/fdf2f8/9d467e?text=Presentes'" 
-                     alt="Presentes" class="rounded-xl shadow-sm border border-pink-100 w-full h-auto object-cover aspect-square hover:scale-105 transition-transform">
+                     alt="Presentes" class="rounded-xl shadow-sm border border-pink-100 w-full h-auto object-cover aspect-square hover:scale-105 transition-transform"
+                     width="400" height="400" decoding="async">
                 <img src="https://pub-83097298470040bc9877e60d6fcf79d1.r2.dev/cartoes%20(1).webp" 
                      onerror="this.src='https://placehold.co/400x400/fdf2f8/9d467e?text=Cartões'" 
-                     alt="Cartões" class="rounded-xl shadow-sm border border-pink-100 w-full h-auto object-cover aspect-square hover:scale-105 transition-transform">
+                     alt="Cartões" class="rounded-xl shadow-sm border border-pink-100 w-full h-auto object-cover aspect-square hover:scale-105 transition-transform"
+                     width="400" height="400" decoding="async">
             </div>
 
             <a href="https://checkout.bemestarbrasil.online/" class="inline-block w-full md:w-auto bg-green-500 hover:bg-green-600 text-white font-bold text-xl md:text-2xl py-4 px-8 rounded-full shadow-xl shadow-green-500/30 transform transition hover:-translate-y-1 animate-pulse-fast">
@@ -218,7 +232,8 @@ src="https://www.facebook.com/tr?id=679523000263255&ev=PageView&noscript=1"
                     <div class="absolute top-0 right-0 bg-brand-red text-white text-xs font-bold px-2 py-1 rounded-bl-lg z-10">BÔNUS 1</div>
                     <img src="https://pub-83097298470040bc9877e60d6fcf79d1.r2.dev/publicacoes.webp" 
                          onerror="this.src='https://placehold.co/300x400/eeeeee/999999?text=Publicações'" 
-                         alt="Publicações" class="w-full rounded-lg mb-4 group-hover:scale-105 transition-transform duration-300">
+                         alt="Publicações" class="w-full rounded-lg mb-4 group-hover:scale-105 transition-transform duration-300"
+                         loading="lazy" width="300" height="400" decoding="async">
                     <p class="text-gray-500 text-sm mb-1">de <s class="text-red-400">R$ 29</s></p>
                     <p class="font-bold text-green-600 text-lg">100% GRÁTIS</p>
                 </div>
@@ -227,7 +242,8 @@ src="https://www.facebook.com/tr?id=679523000263255&ev=PageView&noscript=1"
                     <div class="absolute top-0 right-0 bg-brand-red text-white text-xs font-bold px-2 py-1 rounded-bl-lg z-10">BÔNUS 2</div>
                     <img src="https://pub-83097298470040bc9877e60d6fcf79d1.r2.dev/murais.webp" 
                          onerror="this.src='https://placehold.co/300x400/eeeeee/999999?text=Murais'" 
-                         alt="Murais" class="w-full rounded-lg mb-4 group-hover:scale-105 transition-transform duration-300">
+                         alt="Murais" class="w-full rounded-lg mb-4 group-hover:scale-105 transition-transform duration-300"
+                         loading="lazy" width="300" height="400" decoding="async">
                     <p class="text-gray-500 text-sm mb-1">de <s class="text-red-400">R$ 29</s></p>
                     <p class="font-bold text-green-600 text-lg">100% GRÁTIS</p>
                 </div>
@@ -236,7 +252,8 @@ src="https://www.facebook.com/tr?id=679523000263255&ev=PageView&noscript=1"
                     <div class="absolute top-0 right-0 bg-brand-red text-white text-xs font-bold px-2 py-1 rounded-bl-lg z-10">BÔNUS 3</div>
                     <img src="https://pub-83097298470040bc9877e60d6fcf79d1.r2.dev/frases.webp" 
                          onerror="this.src='https://placehold.co/300x400/eeeeee/999999?text=Frases'" 
-                         alt="Frases" class="w-full rounded-lg mb-4 group-hover:scale-105 transition-transform duration-300">
+                         alt="Frases" class="w-full rounded-lg mb-4 group-hover:scale-105 transition-transform duration-300"
+                         loading="lazy" width="300" height="400" decoding="async">
                     <p class="text-gray-500 text-sm mb-1">de <s class="text-red-400">R$ 29</s></p>
                     <p class="font-bold text-green-600 text-lg">100% GRÁTIS</p>
                 </div>
@@ -245,7 +262,8 @@ src="https://www.facebook.com/tr?id=679523000263255&ev=PageView&noscript=1"
                     <div class="absolute top-0 right-0 bg-brand-red text-white text-xs font-bold px-2 py-1 rounded-bl-lg z-10">BÔNUS 4</div>
                     <img src="https://pub-83097298470040bc9877e60d6fcf79d1.r2.dev/ilustracoes.webp" 
                          onerror="this.src='https://placehold.co/300x400/eeeeee/999999?text=Ilustrações'" 
-                         alt="Ilustrações" class="w-full rounded-lg mb-4 group-hover:scale-105 transition-transform duration-300">
+                         alt="Ilustrações" class="w-full rounded-lg mb-4 group-hover:scale-105 transition-transform duration-300"
+                         loading="lazy" width="300" height="400" decoding="async">
                     <p class="text-gray-500 text-sm mb-1">de <s class="text-red-400">R$ 29</s></p>
                     <p class="font-bold text-green-600 text-lg">100% GRÁTIS</p>
                 </div>
@@ -263,13 +281,16 @@ src="https://www.facebook.com/tr?id=679523000263255&ev=PageView&noscript=1"
             <div class="space-y-6">
                 <img src="https://pub-83097298470040bc9877e60d6fcf79d1.r2.dev/prova1-1-1024x443%20(2).webp" 
                      onerror="this.src='https://placehold.co/1024x443/f9fafb/d1d5db?text=Depoimento+1'" 
-                     alt="Prova Social 1" class="w-full rounded-2xl shadow-md border border-gray-100">
+                     alt="Prova Social 1" class="w-full rounded-2xl shadow-md border border-gray-100"
+                     loading="lazy" width="1024" height="443" decoding="async">
                 <img src="https://pub-83097298470040bc9877e60d6fcf79d1.r2.dev/prova2-1024x443%20(1).webp" 
                      onerror="this.src='https://placehold.co/1024x443/f9fafb/d1d5db?text=Depoimento+2'" 
-                     alt="Prova Social 2" class="w-full rounded-2xl shadow-md border border-gray-100">
+                     alt="Prova Social 2" class="w-full rounded-2xl shadow-md border border-gray-100"
+                     loading="lazy" width="1024" height="443" decoding="async">
                 <img src="https://pub-83097298470040bc9877e60d6fcf79d1.r2.dev/prova3-1024x443%20(1).webp" 
                      onerror="this.src='https://placehold.co/1024x443/f9fafb/d1d5db?text=Depoimento+3'" 
-                     alt="Prova Social 3" class="w-full rounded-2xl shadow-md border border-gray-100">
+                     alt="Prova Social 3" class="w-full rounded-2xl shadow-md border border-gray-100"
+                     loading="lazy" width="1024" height="443" decoding="async">
             </div>
         </div>
     </section>
@@ -346,7 +367,8 @@ src="https://www.facebook.com/tr?id=679523000263255&ev=PageView&noscript=1"
         <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12">
             <img src="https://meusuperkit.com/wp-content/uploads/2026/01/garantia-7dias.webp" 
                  onerror="this.src='https://placehold.co/250x250/fdf2f8/9d467e?text=Garantia'" 
-                 alt="Garantia 7 Dias" class="w-48 md:w-64 drop-shadow-xl hover:scale-105 transition-transform duration-500">
+                 alt="Garantia 7 Dias" class="w-48 md:w-64 drop-shadow-xl hover:scale-105 transition-transform duration-500"
+                 loading="lazy" width="250" height="250" decoding="async">
             
             <div class="text-center md:text-left max-w-lg">
                 <p class="text-brand-red font-bold uppercase tracking-wider mb-2">Risco zero para você!</p>
@@ -388,8 +410,10 @@ src="https://www.facebook.com/tr?id=679523000263255&ev=PageView&noscript=1"
 
     <!-- Scripts -->
     <script>
-        // Initialize Lucide Icons
-        lucide.createIcons();
+        // Initialize Lucide Icons (defer-safe)
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+        });
 
         // 1. Sticky CTA logic (Show after scrolling down 300px)
         const stickyCta = document.getElementById('sticky-cta');
@@ -401,7 +425,7 @@ src="https://www.facebook.com/tr?id=679523000263255&ev=PageView&noscript=1"
             }
         });
 
-        // 2. Geolocation Script (Detect City)
+        // 2. Geolocation Script (Detect City) - com cache em sessionStorage
         (async function () {
             const aplicar = (cidadeDetectada) => {
                 document.querySelectorAll('.cta-cidade').forEach(el => {
@@ -415,17 +439,27 @@ src="https://www.facebook.com/tr?id=679523000263255&ev=PageView&noscript=1"
                 });
             };
 
+            // Usar cache da sessão para evitar request extra
+            const cached = sessionStorage.getItem('_user_city');
+            if (cached) return aplicar(cached);
+
             try {
                 // Primary endpoint
-                let response = await fetch('https://ipapi.co/json/', { cache: 'no-store' });
+                let response = await fetch('https://ipapi.co/json/');
                 if (!response.ok) throw new Error('API 1 falhou');
                 let data = await response.json();
-                if (data.city) return aplicar(data.city);
+                if (data.city) {
+                    sessionStorage.setItem('_user_city', data.city);
+                    return aplicar(data.city);
+                }
                 
                 // Fallback endpoint
-                response = await fetch('https://ipwho.is/', { cache: 'no-store' });
+                response = await fetch('https://ipwho.is/');
                 data = await response.json();
-                if (data.city) return aplicar(data.city);
+                if (data.city) {
+                    sessionStorage.setItem('_user_city', data.city);
+                    return aplicar(data.city);
+                }
                 
                 aplicar(null);
             } catch (e) {
@@ -460,11 +494,6 @@ src="https://www.facebook.com/tr?id=679523000263255&ev=PageView&noscript=1"
             setInterval(mostrarToast, 18000); 
         })();
 
-        // Tailwind Keyframe for Shimmer (Progress Bar)
-        tailwind.config.theme.extend.keyframes.shimmer = {
-            '0%': { transform: 'skewX(-12deg) translateX(-150%)' },
-            '100%': { transform: 'skewX(-12deg) translateX(300%)' }
-        };
     </script>
 </body>
 </html>

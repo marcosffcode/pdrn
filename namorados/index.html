@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="scroll-smooth">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Super Kit Dia dos Namorados 2026</title>
-    
+
     <!-- Preconnects: domínios críticos -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,367 +13,275 @@
     <link rel="dns-prefetch" href="https://ipapi.co">
     <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&family=Poppins:wght@500;700;800&display=swap" rel="stylesheet">
+    <!-- Google Fonts: carregamento assíncrono -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&family=Poppins:wght@500;700;800&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&family=Poppins:wght@500;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&family=Poppins:wght@500;700;800&display=swap" rel="stylesheet"></noscript>
 
-    <!-- Tailwind CSS (via CDN) -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- CSS local (sem Tailwind) -->
+    <link rel="stylesheet" href="style.css">
 
-    <!-- Lucide Icons: defer + jsDelivr (CDN mais rápido que unpkg) -->
+    <!-- Lucide Icons -->
     <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js" defer></script>
 
-    <!-- Tailwind Configuration -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Montserrat', 'sans-serif'],
-                        serif: ['Poppins', 'sans-serif'],
-                    },
-                    colors: {
-                        brand: {
-                            red: '#cd0a09',
-                            darkred: '#a30807',
-                            pink: '#9d467e',
-                            lightpink: '#fdf2f8'
-                        }
-                    },
-                    animation: {
-                        'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'slide-up': 'slideUp 0.5s ease-out forwards',
-                    },
-                    keyframes: {
-                        slideUp: {
-                            '0%': { transform: 'translateY(100%)', opacity: '0' },
-                            '100%': { transform: 'translateY(0)', opacity: '1' },
-                        },
-                        shimmer: {
-                            '0%': { transform: 'skewX(-12deg) translateX(-150%)' },
-                            '100%': { transform: 'skewX(-12deg) translateX(300%)' }
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-
-    <style>
-        /* Custom Styles for specific animations & tweaks */
-        .strike-animation::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 50%;
-            height: 2px;
-            background: #cd0a09;
-            width: 100%;
-            transform-origin: left center;
-            transform: translateY(-50%) scaleX(0);
-            animation: strike 2s ease-in-out forwards;
-            animation-delay: 1s;
-        }
-        @keyframes strike {
-            0% { transform: translateY(-50%) scaleX(0); opacity: 1; }
-            100% { transform: translateY(-50%) scaleX(1); opacity: 1; }
-        }
-        
-        .toast-enter {
-            opacity: 1 !important;
-            transform: translateY(0) !important;
-        }
-
-        /* Hide scrollbar for the image gallery but keep functionality */
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-    </style>
-
     <!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '679523000263255');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=679523000263255&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '679523000263255');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=679523000263255&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
 
-<script
-  src="https://cdn.utmify.com.br/scripts/utms/latest.js"
-  data-utmify-prevent-xcod-sck
-  data-utmify-prevent-subids
-  async
-  defer
-></script>
+    <script
+      src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+      data-utmify-prevent-xcod-sck
+      data-utmify-prevent-subids
+      async
+      defer
+    ></script>
 
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-10990947453"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'AW-10990947453');
-</script>
-
-    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-10990947453"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-10990947453');
+    </script>
 </head>
-<body class="bg-gray-50 text-gray-800 antialiased pb-24">
+<body>
 
-    <!-- Top Scarcity Bar -->
-    <div class="bg-brand-red text-white text-center py-2 px-4 text-sm font-medium sticky top-0 z-50 shadow-md">
-        <span class="animate-pulse inline-block w-2 h-2 bg-white rounded-full mr-2"></span>
+    <!-- Barra de Escassez -->
+    <div class="scarcity-bar">
+        <span class="scarcity-pulse"></span>
         Atenção: Oferta encerra quando o cronômetro zerar ou os estoques acabarem!
     </div>
 
-    <!-- Hero Section -->
-    <header class="bg-gradient-to-b from-brand-lightpink to-white py-12 px-4">
-        <div class="max-w-3xl mx-auto text-center">
-            <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl text-brand-red font-bold leading-tight mb-4">
-                Super Kit Dia dos Namorados 2026
-            </h1>
-            <p class="text-lg md:text-xl text-gray-700 font-medium mb-6">
-                Pronto em minutos: é só imprimir, montar e encantar ❤️
-            </p>
+    <!-- Hero -->
+    <header class="hero">
+        <div class="hero-container">
+            <h1 class="hero-title">Super Kit Dia dos Namorados 2026</h1>
+            <p class="hero-subtitle">Pronto em minutos: é só imprimir, montar e encantar ❤️</p>
 
-            <!-- Social Proof Badge -->
-            <div class="flex items-center justify-center space-x-2 mb-8">
-                <div class="flex text-yellow-400">
-                    <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                    <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                    <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                    <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                    <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+            <!-- Badge de avaliação -->
+            <div class="rating-badge">
+                <div class="stars">
+                    <i data-lucide="star"></i>
+                    <i data-lucide="star"></i>
+                    <i data-lucide="star"></i>
+                    <i data-lucide="star"></i>
+                    <i data-lucide="star"></i>
                 </div>
-                <span class="text-sm font-bold text-gray-600 bg-gray-100 px-3 py-1 rounded-full border border-gray-200">
-                    2.137 unidades vendidas
-                </span>
+                <span class="units-sold">2.137 unidades vendidas</span>
             </div>
 
-            <!-- Preview Gallery (Grid format for better visibility) -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
-                <img src="https://pub-83097298470040bc9877e60d6fcf79d1.r2.dev/lembrancinhas.webp" 
-                     onerror="this.src='https://placehold.co/400x400/fdf2f8/9d467e?text=Lembrancinhas'" 
-                     alt="Lembrancinhas" class="rounded-xl shadow-sm border border-pink-100 w-full h-auto object-cover aspect-square hover:scale-105 transition-transform"
+            <!-- Galeria -->
+            <div class="hero-gallery">
+                <img src="https://pub-83097298470040bc9877e60d6fcf79d1.r2.dev/lembrancinhas.webp"
+                     onerror="this.src='https://placehold.co/400x400/fdf2f8/9d467e?text=Lembrancinhas'"
+                     alt="Lembrancinhas" class="hero-gallery-img"
                      fetchpriority="high" width="400" height="400" decoding="sync">
-                <img src="https://pub-83097298470040bc9877e60d6fcf79d1.r2.dev/caixinhas%20(1).webp" 
-                     onerror="this.src='https://placehold.co/400x400/fdf2f8/9d467e?text=Caixinhas'" 
-                     alt="Caixinhas" class="rounded-xl shadow-sm border border-pink-100 w-full h-auto object-cover aspect-square hover:scale-105 transition-transform"
+                <img src="https://pub-83097298470040bc9877e60d6fcf79d1.r2.dev/caixinhas%20(1).webp"
+                     onerror="this.src='https://placehold.co/400x400/fdf2f8/9d467e?text=Caixinhas'"
+                     alt="Caixinhas" class="hero-gallery-img"
                      width="400" height="400" decoding="async">
-                <img src="https://pub-83097298470040bc9877e60d6fcf79d1.r2.dev/presentes%20(1).webp" 
-                     onerror="this.src='https://placehold.co/400x400/fdf2f8/9d467e?text=Presentes'" 
-                     alt="Presentes" class="rounded-xl shadow-sm border border-pink-100 w-full h-auto object-cover aspect-square hover:scale-105 transition-transform"
+                <img src="https://pub-83097298470040bc9877e60d6fcf79d1.r2.dev/presentes%20(1).webp"
+                     onerror="this.src='https://placehold.co/400x400/fdf2f8/9d467e?text=Presentes'"
+                     alt="Presentes" class="hero-gallery-img"
                      width="400" height="400" decoding="async">
-                <img src="https://pub-83097298470040bc9877e60d6fcf79d1.r2.dev/cartoes%20(1).webp" 
-                     onerror="this.src='https://placehold.co/400x400/fdf2f8/9d467e?text=Cartões'" 
-                     alt="Cartões" class="rounded-xl shadow-sm border border-pink-100 w-full h-auto object-cover aspect-square hover:scale-105 transition-transform"
+                <img src="https://pub-83097298470040bc9877e60d6fcf79d1.r2.dev/cartoes%20(1).webp"
+                     onerror="this.src='https://placehold.co/400x400/fdf2f8/9d467e?text=Cartões'"
+                     alt="Cartões" class="hero-gallery-img"
                      width="400" height="400" decoding="async">
             </div>
 
-            <a href="https://checkout.bemestarbrasil.online/" class="inline-block w-full md:w-auto bg-green-500 hover:bg-green-600 text-white font-bold text-xl md:text-2xl py-4 px-8 rounded-full shadow-xl shadow-green-500/30 transform transition hover:-translate-y-1 animate-pulse-fast">
+            <a href="https://checkout.bemestarbrasil.online/" class="btn-green">
                 👉 COMPRAR E RECEBER AGORA!
             </a>
         </div>
     </header>
 
-    <!-- Features Section -->
-    <section class="py-16 px-4 bg-white">
-        <div class="max-w-3xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-serif font-bold text-center mb-4 text-gray-900">
-                Temos tudo que você precisa...
-            </h2>
-            <p class="text-center text-lg text-gray-600 mb-10">
-                ... e o que não encontrar, a gente consegue pra você <strong class="text-brand-red border-b-2 border-brand-red">sem custo!</strong>
+    <!-- Features -->
+    <section class="features-section">
+        <div class="features-container">
+            <h2 class="section-title">Temos tudo que você precisa...</h2>
+            <p class="features-subtitle">
+                ... e o que não encontrar, a gente consegue pra você <strong>sem custo!</strong>
             </p>
 
-            <div class="bg-brand-lightpink rounded-3xl p-6 md:p-10 shadow-lg border border-pink-100">
-                <ul class="space-y-4 text-lg font-medium text-gray-800">
-                    <li class="flex items-center"><span class="text-2xl mr-3">🎁</span> Super Kit Presentes</li>
-                    <li class="flex items-center"><span class="text-2xl mr-3">🎁</span> Super Kit Lindas Caixinhas</li>
-                    <li class="flex items-center"><span class="text-2xl mr-3">🎁</span> Super Kit Lembrancinhas</li>
-                    <li class="flex items-center"><span class="text-2xl mr-3">🎁</span> Super Kit Cartões com Frases</li>
-                    <li class="flex items-center"><span class="text-2xl mr-3">🎁</span> Super Kit Frases completas</li>
-                    <li class="flex items-center"><span class="text-2xl mr-3">🎁</span> Super Kit Publicações</li>
-                    <li class="flex items-center"><span class="text-2xl mr-3">🎁</span> Super Kit Ilustrações</li>
+            <div class="features-box">
+                <ul class="features-list">
+                    <li><span class="emoji">🎁</span> Super Kit Presentes</li>
+                    <li><span class="emoji">🎁</span> Super Kit Lindas Caixinhas</li>
+                    <li><span class="emoji">🎁</span> Super Kit Lembrancinhas</li>
+                    <li><span class="emoji">🎁</span> Super Kit Cartões com Frases</li>
+                    <li><span class="emoji">🎁</span> Super Kit Frases completas</li>
+                    <li><span class="emoji">🎁</span> Super Kit Publicações</li>
+                    <li><span class="emoji">🎁</span> Super Kit Ilustrações</li>
                 </ul>
-                <div class="mt-8 text-center">
-                    <span class="inline-block bg-brand-pink text-white font-bold px-6 py-2 rounded-full shadow-md">
-                        E muuuuito mais!
-                    </span>
+                <div class="features-more">
+                    <span class="badge-pink">E muuuuito mais!</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Bonuses Section -->
-    <section class="py-16 px-4 bg-gray-50">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-serif font-bold text-center mb-10 text-gray-900">
-                Bônus incríveis <span class="text-brand-red">só HOJE!</span>
-            </h2>
+    <!-- Bônus -->
+    <section class="bonuses-section">
+        <div class="bonuses-container">
+            <h2 class="section-title">Bônus incríveis <span style="color:var(--brand-red)">só HOJE!</span></h2>
 
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <!-- Bonus 1 -->
-                <div class="bg-white rounded-2xl shadow-md p-4 text-center border border-gray-100 relative overflow-hidden group">
-                    <div class="absolute top-0 right-0 bg-brand-red text-white text-xs font-bold px-2 py-1 rounded-bl-lg z-10">BÔNUS 1</div>
-                    <img src="https://pub-83097298470040bc9877e60d6fcf79d1.r2.dev/publicacoes.webp" 
-                         onerror="this.src='https://placehold.co/300x400/eeeeee/999999?text=Publicações'" 
-                         alt="Publicações" class="w-full rounded-lg mb-4 group-hover:scale-105 transition-transform duration-300"
+            <div class="bonus-grid">
+                <div class="bonus-card">
+                    <div class="bonus-badge">BÔNUS 1</div>
+                    <img src="https://pub-83097298470040bc9877e60d6fcf79d1.r2.dev/publicacoes.webp"
+                         onerror="this.src='https://placehold.co/300x400/eeeeee/999999?text=Publicações'"
+                         alt="Publicações" class="bonus-img"
                          loading="lazy" width="300" height="400" decoding="async">
-                    <p class="text-gray-500 text-sm mb-1">de <s class="text-red-400">R$ 29</s></p>
-                    <p class="font-bold text-green-600 text-lg">100% GRÁTIS</p>
+                    <p class="bonus-price">de <s>R$ 29</s></p>
+                    <p class="bonus-free">100% GRÁTIS</p>
                 </div>
-                <!-- Bonus 2 -->
-                <div class="bg-white rounded-2xl shadow-md p-4 text-center border border-gray-100 relative overflow-hidden group">
-                    <div class="absolute top-0 right-0 bg-brand-red text-white text-xs font-bold px-2 py-1 rounded-bl-lg z-10">BÔNUS 2</div>
-                    <img src="https://pub-83097298470040bc9877e60d6fcf79d1.r2.dev/murais.webp" 
-                         onerror="this.src='https://placehold.co/300x400/eeeeee/999999?text=Murais'" 
-                         alt="Murais" class="w-full rounded-lg mb-4 group-hover:scale-105 transition-transform duration-300"
+                <div class="bonus-card">
+                    <div class="bonus-badge">BÔNUS 2</div>
+                    <img src="https://pub-83097298470040bc9877e60d6fcf79d1.r2.dev/murais.webp"
+                         onerror="this.src='https://placehold.co/300x400/eeeeee/999999?text=Murais'"
+                         alt="Murais" class="bonus-img"
                          loading="lazy" width="300" height="400" decoding="async">
-                    <p class="text-gray-500 text-sm mb-1">de <s class="text-red-400">R$ 29</s></p>
-                    <p class="font-bold text-green-600 text-lg">100% GRÁTIS</p>
+                    <p class="bonus-price">de <s>R$ 29</s></p>
+                    <p class="bonus-free">100% GRÁTIS</p>
                 </div>
-                <!-- Bonus 3 -->
-                <div class="bg-white rounded-2xl shadow-md p-4 text-center border border-gray-100 relative overflow-hidden group">
-                    <div class="absolute top-0 right-0 bg-brand-red text-white text-xs font-bold px-2 py-1 rounded-bl-lg z-10">BÔNUS 3</div>
-                    <img src="https://pub-83097298470040bc9877e60d6fcf79d1.r2.dev/frases.webp" 
-                         onerror="this.src='https://placehold.co/300x400/eeeeee/999999?text=Frases'" 
-                         alt="Frases" class="w-full rounded-lg mb-4 group-hover:scale-105 transition-transform duration-300"
+                <div class="bonus-card">
+                    <div class="bonus-badge">BÔNUS 3</div>
+                    <img src="https://pub-83097298470040bc9877e60d6fcf79d1.r2.dev/frases.webp"
+                         onerror="this.src='https://placehold.co/300x400/eeeeee/999999?text=Frases'"
+                         alt="Frases" class="bonus-img"
                          loading="lazy" width="300" height="400" decoding="async">
-                    <p class="text-gray-500 text-sm mb-1">de <s class="text-red-400">R$ 29</s></p>
-                    <p class="font-bold text-green-600 text-lg">100% GRÁTIS</p>
+                    <p class="bonus-price">de <s>R$ 29</s></p>
+                    <p class="bonus-free">100% GRÁTIS</p>
                 </div>
-                <!-- Bonus 4 -->
-                <div class="bg-white rounded-2xl shadow-md p-4 text-center border border-gray-100 relative overflow-hidden group">
-                    <div class="absolute top-0 right-0 bg-brand-red text-white text-xs font-bold px-2 py-1 rounded-bl-lg z-10">BÔNUS 4</div>
-                    <img src="https://pub-83097298470040bc9877e60d6fcf79d1.r2.dev/ilustracoes.webp" 
-                         onerror="this.src='https://placehold.co/300x400/eeeeee/999999?text=Ilustrações'" 
-                         alt="Ilustrações" class="w-full rounded-lg mb-4 group-hover:scale-105 transition-transform duration-300"
+                <div class="bonus-card">
+                    <div class="bonus-badge">BÔNUS 4</div>
+                    <img src="https://pub-83097298470040bc9877e60d6fcf79d1.r2.dev/ilustracoes.webp"
+                         onerror="this.src='https://placehold.co/300x400/eeeeee/999999?text=Ilustrações'"
+                         alt="Ilustrações" class="bonus-img"
                          loading="lazy" width="300" height="400" decoding="async">
-                    <p class="text-gray-500 text-sm mb-1">de <s class="text-red-400">R$ 29</s></p>
-                    <p class="font-bold text-green-600 text-lg">100% GRÁTIS</p>
+                    <p class="bonus-price">de <s>R$ 29</s></p>
+                    <p class="bonus-free">100% GRÁTIS</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Social Proof Section -->
-    <section class="py-16 px-4 bg-white">
-        <div class="max-w-3xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-serif font-bold text-center mb-10 text-gray-900">
-                As pessoas estão amando tudo!
-            </h2>
-            
-            <div class="space-y-6">
-                <img src="https://pub-83097298470040bc9877e60d6fcf79d1.r2.dev/prova1-1-1024x443%20(2).webp" 
-                     onerror="this.src='https://placehold.co/1024x443/f9fafb/d1d5db?text=Depoimento+1'" 
-                     alt="Prova Social 1" class="w-full rounded-2xl shadow-md border border-gray-100"
+    <!-- Prova Social -->
+    <section class="social-section">
+        <div class="social-container">
+            <h2 class="section-title">As pessoas estão amando tudo!</h2>
+            <div class="social-images">
+                <img src="https://pub-83097298470040bc9877e60d6fcf79d1.r2.dev/prova1-1-1024x443%20(2).webp"
+                     onerror="this.src='https://placehold.co/1024x443/f9fafb/d1d5db?text=Depoimento+1'"
+                     alt="Prova Social 1" class="social-img"
                      loading="lazy" width="1024" height="443" decoding="async">
-                <img src="https://pub-83097298470040bc9877e60d6fcf79d1.r2.dev/prova2-1024x443%20(1).webp" 
-                     onerror="this.src='https://placehold.co/1024x443/f9fafb/d1d5db?text=Depoimento+2'" 
-                     alt="Prova Social 2" class="w-full rounded-2xl shadow-md border border-gray-100"
+                <img src="https://pub-83097298470040bc9877e60d6fcf79d1.r2.dev/prova2-1024x443%20(1).webp"
+                     onerror="this.src='https://placehold.co/1024x443/f9fafb/d1d5db?text=Depoimento+2'"
+                     alt="Prova Social 2" class="social-img"
                      loading="lazy" width="1024" height="443" decoding="async">
-                <img src="https://pub-83097298470040bc9877e60d6fcf79d1.r2.dev/prova3-1024x443%20(1).webp" 
-                     onerror="this.src='https://placehold.co/1024x443/f9fafb/d1d5db?text=Depoimento+3'" 
-                     alt="Prova Social 3" class="w-full rounded-2xl shadow-md border border-gray-100"
+                <img src="https://pub-83097298470040bc9877e60d6fcf79d1.r2.dev/prova3-1024x443%20(1).webp"
+                     onerror="this.src='https://placehold.co/1024x443/f9fafb/d1d5db?text=Depoimento+3'"
+                     alt="Prova Social 3" class="social-img"
                      loading="lazy" width="1024" height="443" decoding="async">
             </div>
         </div>
     </section>
 
-    <!-- Offer & Scarcity Section -->
-    <section class="py-16 px-4 bg-brand-lightpink text-gray-900 relative overflow-hidden">
-        <!-- Decorative background elements -->
-        <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none" style="background-image: radial-gradient(#cd0a09 1px, transparent 1px); background-size: 20px 20px;"></div>
+    <!-- Oferta -->
+    <section class="offer-section">
+        <div class="offer-bg-dots"></div>
+        <div class="offer-container">
+            <p class="offer-label">Oferta Especial</p>
+            <div class="offer-badge">ACESSO IMEDIATO COM MAIS DE 89% DE DESCONTO!</div>
 
-        <div class="max-w-2xl mx-auto text-center relative z-10">
-            <h3 class="text-2xl font-bold tracking-widest text-brand-red uppercase mb-2">Oferta Especial</h3>
-            <h4 class="text-xl md:text-2xl font-bold bg-brand-red text-white inline-block px-4 py-1 rounded mb-8">
-                ACESSO IMEDIATO COM MAIS DE 89% DE DESCONTO!
-            </h4>
-
-            <div class="bg-white rounded-3xl p-6 md:p-10 border border-pink-200 shadow-xl mb-8 text-left">
-                <ul class="space-y-4 text-lg md:text-xl font-medium text-gray-700">
-                    <li class="flex items-center"><i data-lucide="check-circle-2" class="text-green-500 mr-3 w-6 h-6 shrink-0"></i> <strong class="text-gray-900 mr-1">Completo:</strong> acesso a todos os Kits</li>
-                    <li class="flex items-center"><i data-lucide="check-circle-2" class="text-green-500 mr-3 w-6 h-6 shrink-0"></i> Todos os <strong class="text-gray-900 ml-1">Bônus</strong></li>
-                    <li class="flex items-center"><i data-lucide="check-circle-2" class="text-green-500 mr-3 w-6 h-6 shrink-0"></i> <strong class="text-gray-900 mr-1">07 Dias</strong> de Garantia</li>
-                    <li class="flex items-center"><i data-lucide="check-circle-2" class="text-green-500 mr-3 w-6 h-6 shrink-0"></i> <strong class="text-gray-900 mr-1">Desconto</strong> de 89%</li>
+            <div class="offer-box">
+                <ul class="offer-list">
+                    <li>
+                        <i data-lucide="check-circle-2"></i>
+                        <span><strong>Completo:</strong> acesso a todos os Kits</span>
+                    </li>
+                    <li>
+                        <i data-lucide="check-circle-2"></i>
+                        <span>Todos os <strong>Bônus</strong></span>
+                    </li>
+                    <li>
+                        <i data-lucide="check-circle-2"></i>
+                        <span><strong>07 Dias</strong> de Garantia</span>
+                    </li>
+                    <li>
+                        <i data-lucide="check-circle-2"></i>
+                        <span><strong>Desconto</strong> de 89%</span>
+                    </li>
                 </ul>
 
-                <div class="mt-8 pt-8 border-t border-gray-200 text-center">
-                    <p class="text-gray-500 font-bold mb-2 uppercase tracking-wide">Hoje com desconto único</p>
-                    
-                    <div class="text-2xl text-gray-400 font-bold mb-2">
-                        De: <span class="relative inline-block strike-animation px-1">R$ 97,90</span>
+                <div class="offer-divider">
+                    <p class="offer-discount-label">Hoje com desconto único</p>
+                    <div class="price-original">
+                        De: <span class="strike-animation">R$ 97,90</span>
                     </div>
-                    
-                    <div class="text-6xl md:text-7xl font-extrabold text-green-500 mb-4 flex justify-center items-start leading-none">
-                        <span class="text-3xl mt-2 mr-1">R$</span>10<span class="text-3xl mt-2 ml-1">,00</span>
+                    <div class="price-current">
+                        <span class="price-currency">R$</span>10<span class="price-cents">,00</span>
                     </div>
-                    
-                    <p class="text-sm text-brand-red font-medium mb-6">
-                        <strong>APROVEITE AGORA:</strong> Você NÃO vai encontrar esse preço depois.
-                    </p>
-                    
-                    <a href="https://checkout.bemestarbrasil.online/" class="block w-full bg-green-500 hover:bg-green-600 text-white font-bold text-xl py-5 px-6 rounded-2xl shadow-[0_0_20px_rgba(34,197,94,0.4)] transform transition hover:scale-105">
+                    <p class="offer-urgency"><strong>APROVEITE AGORA:</strong> Você NÃO vai encontrar esse preço depois.</p>
+                    <a href="https://checkout.bemestarbrasil.online/" class="btn-green-block">
                         QUERO GARANTIR MEU KIT AGORA!
                     </a>
                 </div>
             </div>
 
-            <!-- Progress Bar -->
-            <div class="bg-white rounded-full p-1 border border-pink-200 mb-4 relative overflow-hidden h-8 shadow-sm">
-                <div class="bg-brand-red h-full rounded-full w-[92%] flex items-center justify-center text-xs font-bold text-white shadow-inner relative overflow-hidden">
-                    <!-- Shine effect -->
-                    <div class="absolute top-0 left-0 w-full h-full bg-white opacity-20 transform -skew-x-12 translate-x-[-100%] animate-[shimmer_2s_infinite]"></div>
+            <!-- Barra de Progresso -->
+            <div class="progress-wrap">
+                <div class="progress-bar">
+                    <div class="progress-shine"></div>
                     92% (Unidades esgotando)
                 </div>
             </div>
 
-            <!-- Dynamic City Script Container -->
-            <div class="cta-cidade bg-white border border-pink-200 rounded-lg p-3 text-sm text-gray-600 shadow-sm" data-numero="319">
-                <i data-lucide="map-pin" class="inline w-4 h-4 text-brand-red mb-1 mr-1"></i>
-                <span class="num font-bold text-gray-900">319</span> pessoas em <span class="cidade font-bold text-gray-900 border-b border-gray-300">sua cidade</span> já garantiram o kit!
+            <!-- Widget Cidade -->
+            <div class="cta-cidade" data-numero="319">
+                <i data-lucide="map-pin"></i>
+                <span class="num">319</span> pessoas em <span class="cidade">sua cidade</span> já garantiram o kit!
             </div>
         </div>
     </section>
 
-    <!-- Charity / Donation -->
-    <section class="py-12 px-4 bg-brand-lightpink text-center">
-        <div class="max-w-2xl mx-auto">
-            <h3 class="text-2xl md:text-3xl font-bold text-gray-900 leading-relaxed">
-                ❤️ <span class="bg-brand-red text-white px-3 py-1 rounded shadow-sm inline-block transform -rotate-1 my-2">Sua Compra Salva Vidas</span> ❤️<br>
-                <span class="text-brand-red mt-2 inline-block">100% DO VALOR SERÁ DOADO</span>
+    <!-- Doação -->
+    <section class="charity-section">
+        <div class="charity-container">
+            <h3 class="charity-title">
+                ❤️ <span class="charity-highlight">Sua Compra Salva Vidas</span> ❤️<br>
+                <span class="charity-donated">100% DO VALOR SERÁ DOADO</span>
             </h3>
         </div>
     </section>
 
-    <!-- Guarantee Section -->
-    <section class="py-16 px-4 bg-white border-b border-gray-200">
-        <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12">
-            <img src="https://meusuperkit.com/wp-content/uploads/2026/01/garantia-7dias.webp" 
-                 onerror="this.src='https://placehold.co/250x250/fdf2f8/9d467e?text=Garantia'" 
-                 alt="Garantia 7 Dias" class="w-48 md:w-64 drop-shadow-xl hover:scale-105 transition-transform duration-500"
+    <!-- Garantia -->
+    <section class="guarantee-section">
+        <div class="guarantee-container">
+            <img src="https://meusuperkit.com/wp-content/uploads/2026/01/garantia-7dias.webp"
+                 onerror="this.src='https://placehold.co/250x250/fdf2f8/9d467e?text=Garantia'"
+                 alt="Garantia 7 Dias" class="guarantee-img"
                  loading="lazy" width="250" height="250" decoding="async">
-            
-            <div class="text-center md:text-left max-w-lg">
-                <p class="text-brand-red font-bold uppercase tracking-wider mb-2">Risco zero para você!</p>
-                <h4 class="text-3xl font-serif font-bold text-gray-900 mb-4">Garantia Incondicional!</h4>
-                <p class="text-gray-600 text-lg leading-relaxed">
+            <div class="guarantee-text">
+                <p class="guarantee-label">Risco zero para você!</p>
+                <h4 class="guarantee-title">Garantia Incondicional!</h4>
+                <p class="guarantee-desc">
                     Ainda não tem certeza? Não se preocupe. Se o conteúdo descrito acima não for o mesmo que você receber, você tem <strong>7 dias de garantia</strong> e devolverei seu dinheiro sem burocracia!
                 </p>
             </div>
@@ -381,70 +289,66 @@ src="https://www.facebook.com/tr?id=679523000263255&ev=PageView&noscript=1"
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-400 py-12 px-4 text-center text-sm">
-        <div class="max-w-3xl mx-auto">
-            
-            <p class="mb-4">Copyright &copy; 2026 Meu Super Kit. Todos os direitos reservados.</p>
-            <div class="flex justify-center space-x-4 md:space-x-6">
-                <a href="https://meusuperkit.com/politica-de-publicidade/" class="hover:text-white transition-colors">Política de Privacidade</a>
+    <footer class="footer">
+        <div class="footer-container">
+            <p class="footer-copy">Copyright &copy; 2026 Meu Super Kit. Todos os direitos reservados.</p>
+            <div class="footer-links">
+                <a href="https://meusuperkit.com/politica-de-publicidade/">Política de Privacidade</a>
                 <span>|</span>
-                <a href="https://meusuperkit.com/termos-de-uso/" class="hover:text-white transition-colors">Termos de Uso</a>
+                <a href="https://meusuperkit.com/termos-de-uso/">Termos de Uso</a>
                 <span>|</span>
-                <a href="mailto:suporte@meusuperkit.com" class="hover:text-white transition-colors">Suporte</a>
+                <a href="mailto:suporte@meusuperkit.com">Suporte</a>
             </div>
         </div>
     </footer>
 
-    <!-- Fixed Mobile CTA Bottom Bar (Appears on scroll) -->
-    <div id="sticky-cta" class="fixed bottom-0 left-0 w-full p-4 bg-white border-t border-gray-200 shadow-[0_-10px_20px_rgba(0,0,0,0.05)] z-40 transform translate-y-full transition-transform duration-300 md:hidden">
-        <a href="https://checkout.bemestarbrasil.online/" class="block w-full bg-green-500 text-white font-bold text-center py-3 rounded-xl shadow-lg animate-pulse-fast">
+    <!-- Sticky CTA Mobile -->
+    <div id="sticky-cta" class="sticky-cta">
+        <a href="https://checkout.bemestarbrasil.online/" class="sticky-cta-btn">
             GARANTIR POR R$10,00
         </a>
     </div>
 
-    <!-- Purchase Toast Notification -->
-    <div id="purchase-toast" class="fixed left-4 bottom-24 md:bottom-8 bg-white text-gray-800 text-sm font-medium py-3 px-5 rounded-2xl shadow-xl z-50 flex items-center opacity-0 translate-y-10 transition-all duration-500 pointer-events-none border border-pink-100">
-        <div class="bg-green-500 rounded-full w-2 h-2 mr-3 animate-ping"></div>
+    <!-- Toast de Compra -->
+    <div id="purchase-toast" class="purchase-toast">
+        <div class="toast-dot"></div>
         <span id="toast-text">Alguém comprou o kit!</span>
     </div>
 
     <!-- Scripts -->
     <script>
-        // Initialize Lucide Icons (defer-safe)
-        document.addEventListener('DOMContentLoaded', function() {
+        // Lucide Icons (defer-safe)
+        document.addEventListener('DOMContentLoaded', function () {
             if (typeof lucide !== 'undefined') lucide.createIcons();
         });
 
-        // 1. Sticky CTA logic (Show after scrolling down 300px)
+        // Sticky CTA
         const stickyCta = document.getElementById('sticky-cta');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 300) {
-                stickyCta.classList.remove('translate-y-full');
+                stickyCta.classList.add('visible');
             } else {
-                stickyCta.classList.add('translate-y-full');
+                stickyCta.classList.remove('visible');
             }
         });
 
-        // 2. Geolocation Script (Detect City) - com cache em sessionStorage
+        // Geolocalização com cache em sessionStorage
         (async function () {
             const aplicar = (cidadeDetectada) => {
                 document.querySelectorAll('.cta-cidade').forEach(el => {
                     const numEl = el.querySelector('.num');
                     const cidadeEl = el.querySelector('.cidade');
                     const numero = el.getAttribute('data-numero') || '257';
-                    
                     if (numEl) numEl.textContent = numero;
-                    const cidade = cidadeDetectada || el.getAttribute('data-cidade-fallback') || 'sua cidade';
+                    const cidade = cidadeDetectada || 'sua cidade';
                     if (cidadeEl) cidadeEl.textContent = cidade;
                 });
             };
 
-            // Usar cache da sessão para evitar request extra
             const cached = sessionStorage.getItem('_user_city');
             if (cached) return aplicar(cached);
 
             try {
-                // Primary endpoint
                 let response = await fetch('https://ipapi.co/json/');
                 if (!response.ok) throw new Error('API 1 falhou');
                 let data = await response.json();
@@ -452,48 +356,40 @@ src="https://www.facebook.com/tr?id=679523000263255&ev=PageView&noscript=1"
                     sessionStorage.setItem('_user_city', data.city);
                     return aplicar(data.city);
                 }
-                
-                // Fallback endpoint
                 response = await fetch('https://ipwho.is/');
                 data = await response.json();
                 if (data.city) {
                     sessionStorage.setItem('_user_city', data.city);
                     return aplicar(data.city);
                 }
-                
                 aplicar(null);
             } catch (e) {
                 aplicar(null);
             }
         })();
 
-        // 3. Purchase Toast Logic
-        (function(){  
-            const NOMES = ["Maria","Ana","Juliana","Beatriz","Camila","Fernanda","Gabriela","Larissa","Luana","Adriana","Aline","Amanda","Bruna","Carla","Carolina","Daniela","Letícia","Mariana","Patrícia","Renata"];  
-            const EMOJIS = ["🎁","🛍️","✨","🔥","🎉", "💖", "🥰"];
+        // Toast de compra
+        (function () {
+            const NOMES = ["Maria","Ana","Juliana","Beatriz","Camila","Fernanda","Gabriela","Larissa","Luana","Adriana","Aline","Amanda","Bruna","Carla","Carolina","Daniela","Letícia","Mariana","Patrícia","Renata"];
+            const EMOJIS = ["🎁","🛍️","✨","🔥","🎉","💖","🥰"];
             const toast = document.getElementById("purchase-toast");
             const toastText = document.getElementById("toast-text");
 
-            function aleatorio(lista) {    
-                return lista[Math.floor(Math.random() * lista.length)];  
+            function aleatorio(lista) {
+                return lista[Math.floor(Math.random() * lista.length)];
             }
 
-            function mostrarToast() {    
-                const nome = aleatorio(NOMES);    
-                const emoji = aleatorio(EMOJIS);    
-                toastText.innerHTML = `<strong class="text-brand-red">${nome}</strong> acabou de comprar um kit ${emoji}`;    
-                toast.classList.add("toast-enter");    
-                
-                setTimeout(() => {
-                    toast.classList.remove("toast-enter");
-                }, 4000);  
+            function mostrarToast() {
+                const nome = aleatorio(NOMES);
+                const emoji = aleatorio(EMOJIS);
+                toastText.innerHTML = `<span class="toast-name">${nome}</span> acabou de comprar um kit ${emoji}`;
+                toast.classList.add("toast-enter");
+                setTimeout(() => toast.classList.remove("toast-enter"), 4000);
             }
 
-            // Initial delay, then interval
-            setTimeout(mostrarToast, 3000); 
-            setInterval(mostrarToast, 18000); 
+            setTimeout(mostrarToast, 3000);
+            setInterval(mostrarToast, 18000);
         })();
-
     </script>
 </body>
 </html>

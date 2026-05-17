@@ -1,0 +1,19 @@
+{
+  "rewrites": [
+    {
+      "source": "/cdn/:path*",
+      "destination": "https://pub-80d3706d8b3c4936b06601bde5361dc6.r2.dev/:path*"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/cdn/:path*",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ]
+}

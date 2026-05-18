@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Super Kit São João 2026 - A Melhor Decoração</title>
+
+  <!-- DNS Prefetch & Preconnect apenas para domínios realmente usados no critical path -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://meusuperkit.com">
+  <link rel="dns-prefetch" href="https://checkout.bemestarbrasil.online">
+
+  <!-- Carrega fontes de forma assíncrona (não bloqueia renderização) -->
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap"
+    onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap">
+  </noscript>
+
+  <!-- Preload da imagem LCP (primeira imagem visível do carrossel) -->
+  <link rel="preload" as="image" href="https://meusuperkit.com/wp-content/uploads/2026/05/Caixinhas-1.png">
+
+  <style>
+    /* =====================================================
+       RESET & BASE
+    ===================================================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --brand-dark:      #551F13;
+      --brand-primary:   #d97706;
+      --brand-secondary: #dc2626;
+      --brand-accent:    #22c55e;
+      --amber-50:        #fffbeb;
+      --amber-100:       #fef3c7;
+      --amber-200:       #fde68a;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--amber-50);
+      color: #1e293b;
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    ::selection { background-color: var(--brand-primary); color: #fff; }
+
+    img { display: block; max-width: 100%; }
+    a   { text-decoration: none; }
+    ul  { list-style: none; }
+
+    /* =====================================================
+       ANIMAÇÕES
+    ===================================================== */
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: .5; }
+    }
+    @keyframes heartbeat {
+      0%,  100% { transform: scale(1); }
+      10%        { transform: scale(1.05); }
+      20%        { transform: scale(1); }
+      30%        { transform: scale(1.05); }
+      40%        { transform: scale(1); }
+    }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes strike {
+      from { transform: translateY(-50%) scaleX(0); }
+      to   { transform: translateY(-50%) scaleX(1); }
+    }
+    @keyframes scroll-carousel {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    @keyframes progress-stripes {
+      from { background-position: 1rem 0; }
+      to   { background-position: 0 0; }
+    }
+
+    .animate-slide-up  { animation: slideUp  0.5s ease-out forwards; }
+    .animate-heartbeat { animation: heartbeat 1.5s ease-in-out infinite; }
+    .animate-pulse     { animation: pulse     2s  cubic-bezier(0.4,0,0.6,1) infinite; }
+
+    /* =====================================================
+       BARRA TOPO
+    ===================================================== */
+    .top-alert {
+      background-color: var(--brand-dark);
+      color: #fff;
+      text-align: center;
+      padding: .5rem 1rem;
+      font-size: .875rem;
+      font-weight: 600;
+      letter-spacing: .05em;
+    }
+    .top-alert .hl { color: #facc15; }
+
+    /* =====================================================
+       HERO
+    ===================================================== */
+    .hero {
+      background: linear-gradient(to bottom, #fffbeb, #fef3c7);
+      padding: 3rem 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+    @media (min-width: 768px) { .hero { padding: 5rem 1rem; } }
+
+    /* Elemento decorativo de fundo (SVG inline, sem requisição externa) */
+    .hero-bg-deco {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 8rem;
+      opacity: .2;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cpath d='M0 0l40 0v40l-20-20-20 20z' fill='%23d97706' fill-opacity='.4' fill-rule='evenodd'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 56rem;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.75rem);
+      font-weight: 900;
+      color: var(--brand-dark);
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1rem, 2.5vw, 1.5rem);
+      font-weight: 500;
+      color: #475569;
+      margin: 0 auto 2rem;
+      max-width: 42rem;
+    }
+    .hero-subtitle strong { color: var(--brand-secondary); }
+
+    /* Social proof */
+    .social-proof {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .5rem;
+      margin-bottom: 2rem;
+    }
+    .sp-badge {
+      font-size: .875rem;
+      font-weight: 700;
+      color: #475569;
+      background: rgba(255,255,255,.6);
+      padding: .25rem .75rem;
+      border-radius: 9999px;
+      box-shadow: 0 1px 2px rgba(0,0,0,.05);
+      border: 1px solid #fef3c7;
+    }
+    .sp-badge span { color: var(--brand-secondary); }
+
+    /* =====================================================
+       CARROSSEL INFINITO
+    ===================================================== */
+    .carousel-container {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 2.5rem;
+      -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+              mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+    }
+    .carousel-track {
+      display: flex;
+      width: max-content;
+      animation: scroll-carousel 25s linear infinite;
+    }
+    .carousel-track:hover { animation-play-state: paused; }
+    .carousel-item {
+      width: 260px;
+      height: 200px;
+      margin: 0 10px;
+      flex-shrink: 0;
+      border-radius: 1rem;
+      box-shadow: 0 10px 25px -5px rgba(0,0,0,.2);
+      border: 4px solid #fff;
+      object-fit: cover;
+      transition: transform .3s ease;
+    }
+    .carousel-item:hover { transform: scale(1.05); }
+    @media (max-width: 767px) { .carousel-item { width: 220px; } }
+
+    /* =====================================================
+       BOTÕES CTA
+    ===================================================== */
+    .btn-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 1.25rem 2rem;
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: #fff;
+      background-color: var(--brand-accent);
+      border-radius: 9999px;
+      box-shadow: 0 10px 20px rgba(34,197,94,.4);
+      transition: background-color .2s;
+      animation: heartbeat 1.5s ease-in-out infinite;
+    }
+    @media (min-width: 768px) {
+      .btn-pill { width: auto; font-size: 1.25rem; }
+    }
+    .btn-pill:hover { background-color: #16a34a; }
+
+    .btn-block {
+      display: block;
+      width: 100%;
+      padding: 1.5rem 2rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+      font-weight: 900;
+      color: #fff;
+      background-color: var(--brand-accent);
+      border-radius: 1rem;
+      text-align: center;
+      box-shadow: 0 15px 30px rgba(34,197,94,.3);
+      transition: background-color .2s;
+      animation: heartbeat 1.5s ease-in-out infinite;
+      margin-bottom: 1.5rem;
+    }
+    .btn-block:hover { background-color: #16a34a; }
+
+    .secure-msg {
+      margin-top: 1rem;
+      font-size: .875rem;
+      color: #64748b;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+    }
+
+    /* =====================================================
+       SEÇÃO BRANCA — O QUE VOCÊ VAI RECEBER
+    ===================================================== */
+    .section-white {
+      padding: 4rem 1rem;
+      background: #fff;
+    }
+    @media (min-width: 768px) { .section-white { padding: 6rem 1rem; } }
+
+    .container { max-width: 64rem; margin: 0 auto; }
+
+    .section-header { text-align: center; margin-bottom: 3rem; }
+
+    .section-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(1.75rem, 4vw, 2.25rem);
+      font-weight: 800;
+      color: var(--brand-dark);
+      margin-bottom: 1rem;
+    }
+    .section-subtitle {
+      font-size: clamp(.95rem, 2vw, 1.125rem);
+      font-weight: 500;
+      color: #475569;
+    }
+    .section-subtitle u { color: var(--brand-secondary); font-weight: 700; }
+
+    .kit-box {
+      background: #fffbeb;
+      border-radius: 1.5rem;
+      padding: 2rem;
+      border: 1px solid var(--amber-200);
+      box-shadow: 0 1px 2px rgba(0,0,0,.05);
+      max-width: 56rem;
+      margin: 0 auto;
+    }
+    @media (min-width: 768px) { .kit-box { padding: 3rem; } }
+
+    .kit-box-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(1.25rem, 3vw, 1.875rem);
+      font-weight: 700;
+      color: var(--brand-dark);
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--amber-200);
+      text-align: center;
+    }
+
+    .kit-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      max-width: 48rem;
+      margin: 0 auto;
+    }
+    @media (min-width: 640px) { .kit-list { grid-template-columns: 1fr 1fr; } }
+
+    .kit-list li {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      background: #fff;
+      padding: .75rem;
+      border-radius: .75rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,.08);
+      font-size: 1.0625rem;
+      font-weight: 500;
+      color: #374151;
+    }
+    .kit-list li .emoji { font-size: 1.5rem; }
+
+    .kit-box-footer {
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--amber-200);
+      text-align: center;
+    }
+    .much-more {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 1.5rem;
+      color: var(--brand-secondary);
+      animation: pulse 2s cubic-bezier(0.4,0,0.6,1) infinite;
+    }
+
+    .section-cta { margin-top: 3rem; text-align: center; }
+
+    /* =====================================================
+       SEÇÃO ESCURA — BÔNUS
+    ===================================================== */
+    .section-dark {
+      padding: 4rem 1rem;
+      background-color: var(--brand-dark);
+      color: #fff;
+    }
+    @media (min-width: 768px) { .section-dark { padding: 6rem 1rem; } }
+
+    .bonus-badge {
+      display: inline-block;
+      padding: .25rem .75rem;
+      border-radius: 9999px;
+      background-color: #eab308;
+      color: var(--brand-dark);
+      font-weight: 700;
+      font-size: .875rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: .75rem;
+    }
+    .bonus-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(1.875rem, 5vw, 3rem);
+      font-weight: 900;
+      margin-bottom: 1rem;
+    }
+    .bonus-subtitle { color: #fde68a; font-size: 1.125rem; }
+
+    .bonus-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 3rem;
+    }
+    @media (min-width: 768px) {
+      .bonus-grid { grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+    }
+
+    .bonus-card {
+      background: rgba(255,255,255,.1);
+      padding: 1rem;
+      border-radius: 1rem;
+      border: 1px solid rgba(255,255,255,.2);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      transition: transform .3s;
+    }
+    .bonus-card:hover { transform: translateY(-8px); }
+    .bonus-card img {
+      width: 100%;
+      border-radius: .5rem;
+      margin-bottom: 1rem;
+      filter: drop-shadow(0 4px 6px rgba(0,0,0,.3));
+    }
+    .bonus-card-footer { margin-top: auto; }
+    .bonus-card .old-price { color: #94a3b8; font-size: .875rem; margin-bottom: .25rem; }
+    .bonus-card .new-price { font-weight: 900; font-size: 1.25rem; color: #facc15; }
+
+    /* =====================================================
+       SEÇÃO AMBER — PROVA SOCIAL
+    ===================================================== */
+    .section-amber { padding: 4rem 1rem; background: #fffbeb; }
+
+    .testimonials {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      justify-content: center;
+    }
+    @media (min-width: 768px) { .testimonials { flex-direction: row; } }
+
+    .testimonials img {
+      width: 100%;
+      border-radius: .75rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,.1);
+      border: 2px solid #fff;
+      height: auto;
+    }
+    @media (min-width: 768px) { .testimonials img { width: 33.333%; } }
+
+    /* =====================================================
+       SEÇÃO OFERTA
+    ===================================================== */
+    .section-offer { padding: 4rem 1rem; background: #fff; }
+    @media (min-width: 768px) { .section-offer { padding: 6rem 1rem; } }
+
+    .offer-box {
+      max-width: 48rem;
+      margin: 0 auto;
+      text-align: center;
+      border: 4px solid var(--brand-secondary);
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      box-shadow: 0 25px 50px rgba(0,0,0,.12);
+      position: relative;
+      background: #fff;
+    }
+    @media (min-width: 768px) { .offer-box { padding: 3rem; } }
+
+    .offer-badge {
+      position: absolute;
+      top: -1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--brand-secondary);
+      color: #fff;
+      font-weight: 700;
+      padding: .5rem 1.5rem;
+      border-radius: 9999px;
+      font-size: 1.125rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,.12);
+      white-space: nowrap;
+    }
+
+    .offer-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(1.25rem, 3vw, 1.875rem);
+      font-weight: 900;
+      color: var(--brand-dark);
+      margin: 1rem 0 1.5rem;
+    }
+
+    .offer-checklist {
+      text-align: left;
+      max-width: 24rem;
+      margin: 0 auto 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+      font-weight: 500;
+      font-size: 1.125rem;
+      color: #374151;
+    }
+    .offer-checklist li { display: flex; align-items: center; gap: .5rem; }
+    .offer-checklist strong { color: var(--brand-dark); }
+
+    .price-box {
+      background: #f8fafc;
+      border-radius: .75rem;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      border: 1px solid #e2e8f0;
+    }
+    .price-label  { color: #64748b; font-weight: 500; margin-bottom: .5rem; }
+    .price-old    { font-size: 1.25rem; font-weight: 700; color: #94a3b8; margin-bottom: .5rem; }
+    .price-main {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: clamp(4rem, 12vw, 5.5rem);
+      color: var(--brand-dark);
+      line-height: 1;
+      margin: 1rem 0;
+    }
+    .price-currency { font-size: 1.875rem; vertical-align: top; }
+    .price-cents    { font-size: 2.25rem; }
+    .price-urgency  {
+      color: var(--brand-secondary);
+      font-weight: 700;
+      animation: pulse 2s cubic-bezier(0.4,0,0.6,1) infinite;
+    }
+
+    /* Strike-through animado */
+    .strike-through { position: relative; display: inline-block; }
+    .strike-through::after {
+      content: "";
+      position: absolute;
+      left: 0; top: 50%;
+      height: 3px;
+      background: #dc2626;
+      width: 100%;
+      transform-origin: left center;
+      transform: translateY(-50%) scaleX(0);
+      animation: strike 2s ease-in-out 1s forwards;
+    }
+
+    /* Urgência */
+    .urgency-wrap { margin-bottom: 2rem; }
+    .urgency-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: .875rem;
+      font-weight: 700;
+      color: var(--brand-secondary);
+      margin-bottom: .5rem;
+    }
+    .progress-track {
+      width: 100%;
+      background: #e2e8f0;
+      border-radius: 9999px;
+      height: 1rem;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 1rem;
+      border-radius: 9999px;
+      background-color: var(--brand-secondary);
+      background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+      background-size: 1rem 1rem;
+      animation: progress-stripes 1s linear infinite;
+      transition: width 1s ease-out;
+      width: 92%;
+    }
+    .cta-cidade       { margin-top: .75rem; font-size: .875rem; color: #475569; font-weight: 500; }
+    .cta-cidade.hidden { display: none; }
+    .cta-cidade .num   { color: var(--brand-secondary); font-weight: 700; }
+    .cta-cidade .cidade{ font-weight: 700; color: var(--brand-dark); }
+
+    .seal-img { width: 100%; max-width: 28rem; margin: 0 auto; opacity: .8; }
+
+    /* =====================================================
+       SEÇÃO GARANTIA
+    ===================================================== */
+    .section-guarantee {
+      padding: 3rem 1rem;
+      /* Gradiente escuro substitui textura externa (sem requisição a transparenttextures.com) */
+      background: linear-gradient(135deg, #1e0a06 0%, #290f09 60%, #1e0a06 100%);
+      color: #fff;
+      text-align: center;
+    }
+
+    .guarantee-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(1.5rem, 3.5vw, 1.875rem);
+      font-weight: 900;
+      margin-bottom: 2.5rem;
+      color: #facc15;
+    }
+    .guarantee-title span {
+      color: #fff;
+      font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+      font-weight: 500;
+      display: block;
+      margin-top: .5rem;
+    }
+
+    .guarantee-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      background: rgba(255,255,255,.05);
+      padding: 2rem;
+      border-radius: 1.5rem;
+      border: 1px solid rgba(255,255,255,.1);
+      max-width: 56rem;
+      margin: 0 auto;
+    }
+    @media (min-width: 768px) { .guarantee-inner { flex-direction: row; } }
+
+    .guarantee-img { width: 12rem; filter: drop-shadow(0 10px 15px rgba(0,0,0,.3)); }
+
+    .guarantee-text { text-align: left; max-width: 28rem; }
+    .guarantee-text h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 900;
+      margin-bottom: .75rem;
+    }
+    .guarantee-text p { color: #cbd5e1; font-size: 1.125rem; line-height: 1.625; }
+    .guarantee-text p strong { color: #fff; }
+
+    /* =====================================================
+       FOOTER
+    ===================================================== */
+    footer {
+      background: #111;
+      color: #94a3b8;
+      padding: 3rem 1rem;
+      text-align: center;
+      font-size: .875rem;
+    }
+    .footer-logo {
+      margin: 0 auto 1.5rem;
+      height: 2rem;
+      object-fit: contain;
+      opacity: .5;
+      filter: grayscale(1);
+      transition: filter .3s, opacity .3s;
+    }
+    .footer-logo:hover { filter: grayscale(0); opacity: 1; }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      font-size: .75rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+    .footer-links a { color: inherit; transition: color .2s; }
+    .footer-links a:hover { color: #fff; }
+
+    .footer-disclaimer {
+      margin: 2rem auto 0;
+      font-size: .75rem;
+      opacity: .4;
+      max-width: 42rem;
+      line-height: 1.5;
+    }
+
+    /* =====================================================
+       TOAST
+    ===================================================== */
+    .toast-notification {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background-color: #1e293b;
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 8px;
+      box-shadow: 0 10px 25px -5px rgba(0,0,0,.3);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 9999;
+      transform: translateY(150%);
+      transition: transform .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      max-width: calc(100vw - 40px);
+    }
+    .toast-notification.show { transform: translateY(0); }
+    .toast-icon { background: #22c55e; border-radius: 50%; padding: 4px; flex-shrink: 0; display: flex; }
+    .toast-title { font-weight: 700; font-size: .875rem; }
+    .toast-time  { font-size: .75rem; color: #94a3b8; }
+  </style>
+</head>
+<body>
+
+  <!-- ALERTA TOPO -->
+  <div class="top-alert">
+    🔥 OFERTA DE LANÇAMENTO: <span class="hl">89% DE DESCONTO</span> APENAS HOJE!
+  </div>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-bg-deco" aria-hidden="true"></div>
+
+    <div class="hero-inner">
+      <h1 class="hero-title animate-slide-up">Super Kit São João 2026</h1>
+
+      <h2 class="hero-subtitle">
+        Pronto em minutos: é só <strong>imprimir, montar e encantar</strong> todos os seus convidados!
+      </h2>
+
+      <!-- Prova Social -->
+      <div class="social-proof">
+        <p class="sp-badge">🏆 Mais de <span>2.137 unidades</span> vendidas</p>
+      </div>
+
+      <!-- Carrossel Infinito -->
+      <div class="carousel-container" aria-hidden="true">
+        <div class="carousel-track">
+          <!-- Set 1 — eager (acima do dobramento) -->
+          <img src="https://meusuperkit.com/wp-content/uploads/2026/05/Caixinhas-1.png"
+               alt="Caixinhas" class="carousel-item"
+               width="260" height="200" loading="eager" fetchpriority="high">
+          <img src="https://meusuperkit.com/wp-content/uploads/2026/05/Lembrancinhas-1.png"
+               alt="Lembrancinhas" class="carousel-item"
+               width="260" height="200" loading="eager">
+          <img src="https://meusuperkit.com/wp-content/uploads/2026/05/Bamboles.png"
+               alt="Bambolês" class="carousel-item"
+               width="260" height="200" loading="lazy">
+          <img src="https://meusuperkit.com/wp-content/uploads/2026/05/Frases-1.png"
+               alt="Frases" class="carousel-item"
+               width="260" height="200" loading="lazy">
+          <!-- Set 2 — duplicado para loop infinito -->
+          <img src="https://meusuperkit.com/wp-content/uploads/2026/05/Caixinhas-1.png"
+               alt="" class="carousel-item"
+               width="260" height="200" loading="lazy" aria-hidden="true">
+          <img src="https://meusuperkit.com/wp-content/uploads/2026/05/Lembrancinhas-1.png"
+               alt="" class="carousel-item"
+               width="260" height="200" loading="lazy" aria-hidden="true">
+          <img src="https://meusuperkit.com/wp-content/uploads/2026/05/Bamboles.png"
+               alt="" class="carousel-item"
+               width="260" height="200" loading="lazy" aria-hidden="true">
+          <img src="https://meusuperkit.com/wp-content/uploads/2026/05/Frases-1.png"
+               alt="" class="carousel-item"
+               width="260" height="200" loading="lazy" aria-hidden="true">
+        </div>
+      </div>
+
+      <!-- CTA 1 -->
+      <a href="https://checkout.bemestarbrasil.online" class="btn-pill">
+        👉 QUERO COMPRAR E RECEBER AGORA!
+      </a>
+
+      <p class="secure-msg">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="#22c55e" aria-hidden="true">
+          <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/>
+        </svg>
+        Pagamento 100% Seguro. Acesso Imediato.
+      </p>
+    </div>
+  </header>
+
+  <!-- O QUE VOCÊ VAI RECEBER -->
+  <section class="section-white">
+    <div class="container">
+      <div class="section-header">
+        <h3 class="section-title">Temos tudo que você precisa...</h3>
+        <h4 class="section-subtitle">
+          ... e o que não encontrar, a gente consegue pra você
+          <u>sem custo adicional!</u>
+        </h4>
+      </div>
+
+      <div class="kit-box">
+        <h5 class="kit-box-title">Neste pacote completo você leva:</h5>
+        <ul class="kit-list">
+          <li><span class="emoji">🎁</span> Super Kit Lindas Caixinhas</li>
+          <li><span class="emoji">🎁</span> Super Kit Painéis Completos</li>
+          <li><span class="emoji">🎁</span> Super Kit Lembrancinhas</li>
+          <li><span class="emoji">🎁</span> Super Kit Cartões com Frases</li>
+          <li><span class="emoji">🎁</span> Super Kit Posts para Instagram</li>
+          <li><span class="emoji">🎁</span> Super Kit Artes em Bambolês</li>
+          <li><span class="emoji">🎁</span> Super Kit Decorações</li>
+          <li><span class="emoji">🎁</span> Super Kit Ilustrações</li>
+        </ul>
+        <div class="kit-box-footer">
+          <p class="much-more">E muuuuito mais!</p>
+        </div>
+      </div>
+
+      <!-- CTA 2 -->
+      <div class="section-cta">
+        <a href="https://checkout.bemestarbrasil.online" class="btn-pill">
+          QUERO GARANTIR MEU KIT COMPLETO
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BÔNUS -->
+  <section class="section-dark">
+    <div class="container" style="text-align:center">
+      <span class="bonus-badge">Presentes Inclusos</span>
+      <h3 class="bonus-title">Bônus incríveis só HOJE!</h3>
+      <p class="bonus-subtitle">Comprando agora, você leva todos esses materiais adicionais de graça.</p>
+
+      <div class="bonus-grid">
+        <div class="bonus-card">
+          <img src="https://meusuperkit.com/wp-content/uploads/2026/05/Paineis.png"
+               alt="Painéis" width="240" height="180" loading="lazy">
+          <div class="bonus-card-footer">
+            <p class="old-price">De <s>R$ 29,00</s></p>
+            <p class="new-price">100% GRÁTIS</p>
+          </div>
+        </div>
+        <div class="bonus-card">
+          <img src="https://meusuperkit.com/wp-content/uploads/2026/05/Publicacoes-1.png"
+               alt="Publicações" width="240" height="180" loading="lazy">
+          <div class="bonus-card-footer">
+            <p class="old-price">De <s>R$ 29,00</s></p>
+            <p class="new-price">100% GRÁTIS</p>
+          </div>
+        </div>
+        <div class="bonus-card">
+          <img src="https://meusuperkit.com/wp-content/uploads/2026/05/Cartaz-A4.png"
+               alt="Cartaz" width="240" height="180" loading="lazy">
+          <div class="bonus-card-footer">
+            <p class="old-price">De <s>R$ 29,00</s></p>
+            <p class="new-price">100% GRÁTIS</p>
+          </div>
+        </div>
+        <div class="bonus-card">
+          <img src="https://meusuperkit.com/wp-content/uploads/2026/05/Ilustracoes-1.png"
+               alt="Ilustrações" width="240" height="180" loading="lazy">
+          <div class="bonus-card-footer">
+            <p class="old-price">De <s>R$ 29,00</s></p>
+            <p class="new-price">100% GRÁTIS</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROVA SOCIAL -->
+  <section class="section-amber">
+    <div class="container">
+      <h3 class="section-title" style="text-align:center;margin-bottom:3rem">
+        As pessoas estão amando tudo!
+      </h3>
+      <div class="testimonials">
+        <img src="https://meusuperkit.com/wp-content/uploads/2026/05/prova-1-1024x443.png"
+             alt="Depoimento de cliente 1" width="340" height="147" loading="lazy">
+        <img src="https://meusuperkit.com/wp-content/uploads/2026/05/prova-1024x443.png"
+             alt="Depoimento de cliente 2" width="340" height="147" loading="lazy">
+        <img src="https://meusuperkit.com/wp-content/uploads/2026/05/prova2-1-1024x443.png"
+             alt="Depoimento de cliente 3" width="340" height="147" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- OFERTA & CHECKOUT -->
+  <section class="section-offer">
+    <div class="offer-box">
+      <div class="offer-badge">OFERTA ESPECIAL</div>
+
+      <h4 class="offer-title">ACESSO IMEDIATO COM MAIS DE 89% DE DESCONTO!</h4>
+
+      <ul class="offer-checklist">
+        <li>✅ <strong>Completo:</strong> acesso a todos os Kits</li>
+        <li>✅ Todos os <strong>Bônus Grátis</strong></li>
+        <li>✅ <strong>07 Dias</strong> de Garantia</li>
+        <li>✅ <strong>Acesso Vitalício</strong></li>
+      </ul>
+
+      <div class="price-box">
+        <p class="price-label">↓ HOJE COM DESCONTO ÚNICO ↓</p>
+        <p class="price-old">
+          Valor Total:
+          <span class="strike-through" style="color:var(--brand-secondary)">R$ 97,90</span>
+        </p>
+        <div class="price-main">
+          <span class="price-currency">R$</span>10<span class="price-cents">,00</span>
+        </div>
+        <p class="price-urgency">APROVEITE AGORA: Você NÃO vai encontrar esse preço depois.</p>
+      </div>
+
+      <!-- Urgência: barra de progresso -->
+      <div class="urgency-wrap">
+        <div class="urgency-header">
+          <span id="urgency-text">Unidades esgotando...</span>
+          <span>92% Reservado</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="progress-bar"></div>
+        </div>
+        <p class="cta-cidade hidden">
+          🔥 <span class="num">319</span> pessoas em
+          <span class="cidade">sua cidade</span> já garantiram.
+        </p>
+      </div>
+
+      <!-- CTA FINAL -->
+      <a href="https://checkout.bemestarbrasil.online" class="btn-block">
+        👉 SIM, QUERO GARANTIR POR R$ 10!
+      </a>
+
+      <!-- Selos de Segurança -->
+      <img src="https://meusuperkit.com/wp-content/uploads/2026/01/selo.webp"
+           alt="Compra Segura - Pagamento Protegido"
+           class="seal-img" width="448" height="100" loading="lazy">
+    </div>
+  </section>
+
+  <!-- GARANTIA & DOAÇÃO -->
+  <section class="section-guarantee">
+    <div style="max-width:56rem;margin:0 auto">
+      <h3 class="guarantee-title">
+        ❤️ Sua Compra Salva Vidas ❤️
+        <span>100% DO VALOR SERÁ DOADO</span>
+      </h3>
+      <div class="guarantee-inner">
+        <img src="https://meusuperkit.com/wp-content/uploads/2026/01/garantia-7dias.webp"
+             alt="Garantia de 7 Dias" class="guarantee-img"
+             width="192" height="192" loading="lazy">
+        <div class="guarantee-text">
+          <h4>Risco Zero para você!</h4>
+          <p>
+            Ainda não tem certeza? Não se preocupe. Se o conteúdo não for
+            exatamente o que você esperava,
+            <strong>você tem 7 dias de garantia incondicional</strong>.
+            Devolveremos 100% do seu dinheiro sem burocracia, basta um email.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <img src="https://meusuperkit.com/wp-content/uploads/elementor/thumbs/redes-reptuua1grmj3ktuz3xce4ebyf5iquuft7fuwezsp4-rhdp5n2mbm90xsc6x6rnbz76hhwyhwwkhxrwx6mp9c.png"
+         alt="Formas de Pagamento Aceitas" class="footer-logo"
+         width="200" height="32" loading="lazy">
+
+    <p>Copyright © 2026 Meu Super Kit. Todos os direitos reservados.</p>
+
+    <div class="footer-links">
+      <a href="#">Política de Privacidade</a> |
+      <a href="#">Termos de Uso</a> |
+      <a href="mailto:suporte@meusuperkit.com">Suporte</a>
+    </div>
+
+    <p class="footer-disclaimer">
+      Este site não faz parte do site do Facebook ou Facebook Inc.
+      Além disso, este site não é endossado pelo Facebook de nenhuma maneira.
+      FACEBOOK é uma marca comercial da FACEBOOK, Inc.
+    </p>
+  </footer>
+
+  <!-- TOAST (Prova Social Dinâmica) -->
+  <div id="purchase-toast" class="toast-notification" role="status" aria-live="polite">
+    <div class="toast-icon" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="white">
+        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+      </svg>
+    </div>
+    <div>
+      <p class="toast-title" id="toast-message">Alguém comprou o kit!</p>
+      <p class="toast-time">Há poucos segundos</p>
+    </div>
+  </div>
+
+  <!--
+    Scripts de conversão: totalmente diferidos (não bloqueiam nada).
+    Executam só depois que o navegador termina de pintar a página.
+  -->
+  <script>
+    (function () {
+      'use strict';
+
+      function init() {
+        /* ---- 1. Geolocalização para escassez ---- */
+        var els = document.querySelectorAll('.cta-cidade');
+        if (els.length) {
+          fetch('https://ipapi.co/json/')
+            .then(function (r) { return r.ok ? r.json() : null; })
+            .then(function (d) {
+              if (d && d.city) {
+                els.forEach(function (el) {
+                  el.querySelector('.cidade').textContent = d.city;
+                  el.querySelector('.num').textContent = 300 + Math.floor(Math.random() * 50);
+                  el.classList.remove('hidden');
+                });
+              }
+            })
+            .catch(function () {});
+        }
+
+        /* ---- 2. Toast de compras ---- */
+        var nomes  = ['Maria Silva','Ana Clara','Juliana','Beatriz','Camila C.','Fernanda','Gabriela','Larissa M.','Luana','Adriana','Amanda','Bruna','Carla','Carolina','Letícia','Mariana','Patrícia','Renata','Aline'];
+        var emojis = ['🎁','🛍️','✨','🔥','🎉','🥰'];
+        var toast  = document.getElementById('purchase-toast');
+        var msg    = document.getElementById('toast-message');
+        var toastTimer;
+
+        function mostrarToast() {
+          msg.textContent = nomes[Math.floor(Math.random() * nomes.length)] + ' acabou de comprar! ' + emojis[Math.floor(Math.random() * emojis.length)];
+          toast.classList.add('show');
+          setTimeout(function () { toast.classList.remove('show'); }, 4000);
+        }
+
+        setTimeout(function () {
+          mostrarToast();
+          toastTimer = setInterval(mostrarToast, Math.floor(Math.random() * 13000) + 12000);
+        }, 3000);
+
+        /* ---- 3. Barra de estoque dinâmica ---- */
+        var pct  = 92;
+        var bar  = document.getElementById('progress-bar');
+        var utxt = document.getElementById('urgency-text');
+
+        setInterval(function () {
+          if (pct < 98 && Math.random() > 0.7) {
+            pct += 0.5;
+            bar.style.width = pct + '%';
+            if (pct >= 95) {
+              utxt.textContent = 'Últimas unidades!';
+              utxt.style.color     = '#dc2626';
+              utxt.style.animation = 'pulse 2s cubic-bezier(0.4,0,0.6,1) infinite';
+            }
+          }
+        }, 10000);
+      }
+
+      /* Executa depois que tudo já foi pintado */
+      if (document.readyState === 'complete') {
+        init();
+      } else {
+        window.addEventListener('load', init);
+      }
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Bússola Vocacional - Descubra seu Código Oculto</title>
+    
+    <!-- Fontes Místicas e Modernas -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ==========================================================================
+           RESET & VARIÁVEIS (Spiritual Black / Energetic)
+           ========================================================================== */
+        :root {
+            --bg-dark: #050308;
+            --bg-glow: #1a0f2e; /* Púrpura cósmico para o centro da energia */
+            --surface-color: rgba(22, 18, 36, 0.6);
+            --surface-border: rgba(212, 175, 55, 0.15);
+            
+            --text-main: #f8f8f8;
+            --text-muted: #a8a0b5;
+            
+            --accent-red: #e11d48; /* Vermelho agressivo para dor/alerta */
+            --accent-gold: #d4af37; /* Ouro místico */
+            --accent-purple: #8b5cf6;
+            
+            --font-heading: 'Cinzel', serif;
+            --font-body: 'Montserrat', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        /* Container simulando tela mobile com gradiente de energia de fundo */
+        .app-container {
+            width: 100%;
+            max-width: 480px;
+            background: radial-gradient(circle at top center, var(--bg-glow) 0%, var(--bg-dark) 80%);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 0 40px rgba(0,0,0,0.8);
+        }
+
+        /* ==========================================================================
+           TIPOGRAFIA
+           ========================================================================== */
+        h1, h2, h3 { 
+            font-family: var(--font-heading); 
+            line-height: 1.3; 
+            font-weight: 700; 
+            letter-spacing: 0.5px;
+        }
+        
+        .text-center { text-align: center; }
+        .text-red { color: var(--accent-red); text-shadow: 0 0 10px rgba(225, 29, 72, 0.4); }
+        .text-gold { color: var(--accent-gold); text-shadow: 0 0 10px rgba(212, 175, 55, 0.3); }
+        .mt-1 { margin-top: 8px; }
+        .mt-2 { margin-top: 16px; }
+        .mt-4 { margin-top: 32px; }
+        .mb-2 { margin-bottom: 16px; }
+        .mb-4 { margin-bottom: 32px; }
+        
+        .hidden { display: none !important; }
+
+        /* ==========================================================================
+           COMPONENTES
+           ========================================================================== */
+        .screen {
+            padding: 24px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            animation: fadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); filter: blur(5px); }
+            to { opacity: 1; transform: translateY(0); filter: blur(0); }
+        }
+
+        /* Botões */
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 18px 20px;
+            font-size: 16px;
+            font-family: var(--font-body);
+            font-weight: 700;
+            text-align: center;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .btn:active { transform: scale(0.97); }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-red), #9f1239);
+            box-shadow: 0 4px 20px rgba(225, 29, 72, 0.3), inset 0 1px 0 rgba(255,255,255,0.2);
+            border: 1px solid #ff4c6d;
+        }
+        
+        .btn-gold {
+            background: linear-gradient(135deg, #dfc059, #b8860b);
+            color: #111;
+            border: 1px solid #ffeba5;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4), inset 0 1px 0 rgba(255,255,255,0.5);
+            animation: pulse-glow 2.5s infinite;
+        }
+
+        .btn-option {
+            background-color: var(--surface-color);
+            border: 1px solid var(--surface-border);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: var(--text-main);
+            text-transform: none;
+            font-weight: 400;
+            margin-bottom: 14px;
+            font-size: 16px;
+            padding: 20px;
+            border-radius: 12px;
+            letter-spacing: 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-option::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.05), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.5s ease;
+        }
+        .btn-option:active::before {
+            transform: translateX(100%);
+        }
+        .btn-option:active {
+            background-color: rgba(212, 175, 55, 0.1);
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+        }
+
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(212, 175, 55, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+        }
+
+        /* Inputs */
+        .input-field {
+            width: 100%;
+            padding: 18px;
+            font-size: 18px;
+            font-family: var(--font-body);
+            background-color: var(--surface-color);
+            border: 1px solid var(--surface-border);
+            color: white;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            outline: none;
+            text-align: center;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .input-field:focus {
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.15);
+        }
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            filter: invert(1);
+            opacity: 0.5;
+        }
+
+        /* Barra de Progresso (Energia) */
+        .progress-container {
+            width: 100%;
+            height: 4px;
+            background-color: rgba(255,255,255,0.05);
+            border-radius: 2px;
+            margin-bottom: 24px;
+            overflow: hidden;
+            position: relative;
+        }
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-purple), var(--accent-gold));
+            width: 0%;
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 0 10px var(--accent-gold);
+        }
+
+        /* Tela de Carregamento (Geometria Sagrada / Energética) */
+        .loader-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+        }
+        .energy-ring {
+            width: 70px;
+            height: 70px;
+            border: 2px solid rgba(212, 175, 55, 0.1);
+            border-top: 2px solid var(--accent-gold);
+            border-bottom: 2px solid var(--accent-purple);
+            border-radius: 50%;
+            animation: spin 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+            margin-bottom: 32px;
+            position: relative;
+        }
+        .energy-ring::before {
+            content: '';
+            position: absolute;
+            top: 5px; left: 5px; right: 5px; bottom: 5px;
+            border: 2px solid rgba(225, 29, 72, 0.1);
+            border-left: 2px solid var(--accent-red);
+            border-radius: 50%;
+            animation: spin-reverse 2s linear infinite;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        @keyframes spin-reverse { 0% { transform: rotate(360deg); } 100% { transform: rotate(0deg); } }
+        
+        .loading-text {
+            font-size: 15px;
+            font-weight: 300;
+            color: var(--text-muted);
+            text-align: center;
+            min-height: 60px;
+            letter-spacing: 1px;
+        }
+
+        /* Paywall */
+        .paywall-box {
+            background-color: var(--surface-color);
+            border: 1px solid rgba(225, 29, 72, 0.3); /* Borda avermelhada de alerta */
+            border-radius: 12px;
+            padding: 24px 20px;
+            margin-bottom: 24px;
+            position: relative;
+            box-shadow: inset 0 0 30px rgba(225, 29, 72, 0.05);
+        }
+        .paywall-box::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 50%; transform: translateX(-50%);
+            width: 60%; height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-red), transparent);
+        }
+        .blurred-result {
+            filter: blur(5px);
+            user-select: none;
+            opacity: 0.6;
+            font-family: monospace;
+            font-size: 14px;
+            margin: 16px 0;
+            background: rgba(0,0,0,0.5);
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #222;
+        }
+        .alert-badge {
+            background: linear-gradient(90deg, rgba(225, 29, 72, 0.15), rgba(225, 29, 72, 0.05));
+            color: #ff4c6d;
+            border-left: 3px solid var(--accent-red);
+            padding: 10px 14px;
+            font-weight: 700;
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(225, 29, 72, 0.1);
+        }
+        .price-strike {
+            text-decoration: line-through;
+            color: #ef4444; /* Vermelho mais forte no cortado */
+            font-size: 16px;
+            font-weight: 600;
+        }
+        .price-new {
+            font-size: 38px;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            color: var(--accent-gold);
+            display: block;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+            line-height: 1;
+            margin: 8px 0;
+        }
+        .testimonial {
+            background: linear-gradient(135deg, rgba(255,255,255,0.03), transparent);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 16px;
+            font-size: 13px;
+            color: var(--text-muted);
+            font-style: italic;
+            margin-bottom: 16px;
+            border-radius: 8px;
+            font-weight: 300;
+        }
+    </style>
+</head>
+<body>
+
+<div class="app-container">
+
+    <!-- PASSO 1: LANDING PAGE -->
+    <div id="step-intro" class="screen">
+        <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 20px 0;">
+            <p class="text-gold text-center" style="font-weight: 600; font-size: 12px; letter-spacing: 2px; margin-bottom: 20px; text-transform: uppercase;">
+                Decodificação Energética Restrita
+            </p>
+            <h1 class="text-center" style="font-size: 32px; margin-bottom: 24px;">
+                Há um <span class="text-red">'Código Oculto'</span> no seu nome que dita o seu sucesso (ou fracasso) profissional.
+            </h1>
+            <p class="text-center text-muted" style="font-size: 16px; margin-bottom: 40px; font-weight: 300;">
+                Responda a estas 7 perguntas e descubra se você está alinhado com sua verdadeira Vocação ou se está caminhando para um <strong style="color:white; font-weight:600;">esgotamento vital inevitável</strong>.
+            </p>
+            <button class="btn btn-primary" onclick="startQuiz()">[ INICIAR LEITURA GRATUITA ]</button>
+            <p class="text-center mt-4" style="font-size: 11px; color: rgba(255,255,255,0.3); letter-spacing: 1px; text-transform: uppercase;">
+                Baseado em Numerologia Pitagórica e Arquetípica
+            </p>
+        </div>
+    </div>
+
+    <!-- PASSO 2: QUIZ -->
+    <div id="step-quiz" class="screen hidden">
+        <div class="progress-container">
+            <div id="quiz-progress" class="progress-bar"></div>
+        </div>
+        
+        <p id="question-counter" class="text-gold" style="font-size: 11px; font-weight: 600; margin-bottom: 12px; letter-spacing: 2px;">PERGUNTA 1 DE 7</p>
+        <h2 id="question-text" style="font-size: 24px; margin-bottom: 32px;">Carregando...</h2>
+
+        <!-- Container para botões de múltipla escolha -->
+        <div id="options-container"></div>
+
+        <!-- Container para input de texto/data (Nome e Nascimento) -->
+        <div id="input-container" class="hidden">
+            <input type="text" id="quiz-input" class="input-field" placeholder="Digite aqui...">
+            <button class="btn btn-primary" onclick="handleInputAnswer()">PROSSEGUIR &rarr;</button>
+        </div>
+    </div>
+
+    <!-- PASSO 3: TELA DE PROCESSAMENTO (EFEITO BARNUM) -->
+    <div id="step-loading" class="screen hidden loader-box">
+        <div class="energy-ring"></div>
+        <h2 style="font-size: 22px; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1px;">Acessando Frequência...</h2>
+        <div id="loading-steps" class="loading-text">
+            Sintonizando matriz do nome...
+        </div>
+    </div>
+
+    <!-- PASSO 4: PAYWALL / OFERTA -->
+    <div id="step-paywall" class="screen hidden">
+        <div class="alert-badge">&#9888; ANÁLISE CONCLUÍDA COM ALERTAS CRÍTICOS</div>
+        
+        <h2 style="font-size: 28px; margin-bottom: 16px;">O que encontramos explica <span class="text-red">exatamente</span> o seu cansaço, <span id="user-name-display" class="text-gold"></span>.</h2>
+        
+        <p class="text-muted" style="margin-bottom: 24px; font-weight: 300;">
+            Nós mapeamos o seu Perfil Vocacional. Você carrega uma forte inclinação para o Arquétipo 
+            <span style="background: rgba(255,255,255,0.1); color:#fff; padding: 2px 6px; border-radius: 4px; filter: blur(4px); user-select: none;">[BLOQUEADO]</span>, 
+            mas existe um <strong class="text-red" style="font-weight: 700;">Bloqueio Energético Severo</strong> gerado pela sua data de nascimento que está te travando no ambiente errado.
+        </p>
+
+        <div class="paywall-box">
+            <h3 style="font-size: 14px; color: var(--accent-gold); letter-spacing: 1px; text-transform: uppercase; border-bottom: 1px solid rgba(212, 175, 55, 0.2); padding-bottom: 12px; margin-bottom: 16px;">
+                Prévia do Dossiê Decodificado:
+            </h3>
+            <div class="blurred-result">
+                &gt; Matriz de Talentos Ocultos: [RESTRITO]<br>
+                &gt; Vibração Numérica do Nome: [RESTRITO]<br>
+                &gt; Ambientes Tóxicos para sua Energia: [RESTRITO]<br>
+                &gt; Verdadeiro Propósito de Alma: [RESTRITO]
+            </div>
+            <p style="font-size: 13px; color: #ff4c6d; font-weight: 600; text-align: center; margin-top: 16px; letter-spacing: 0.5px;">
+                ALERTA: Continuar ignorando sua energia vital vai agravar seu esgotamento mental e bloquear sua prosperidade financeira.
+            </p>
+        </div>
+
+        <p style="margin-bottom: 24px; font-weight: 300; font-size: 15px;">
+            Nós geramos um Dossiê completo de 30 páginas, a sua <strong>Bússola Vocacional</strong>, calcado exclusivamente na sua assinatura vibracional. 
+            Um numerólogo cobraria <span class="price-strike">R$ 300,00</span> por essa leitura individualizada.
+        </p>
+
+        <div class="text-center mb-4">
+            <p style="font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Taxa única de emissão do sistema:</p>
+            <span class="price-new">R$ 17,00</span>
+            <p style="font-size: 12px; color: var(--accent-gold); margin-top: 4px; font-weight: 600;">Acesso Imediato e Vitalício ao PDF</p>
+        </div>
+
+        <button class="btn btn-gold mb-4" onclick="redirectToCheckout()">
+            LIBERAR MINHA BÚSSOLA AGORA
+        </button>
+
+        <div style="margin-top: 32px;">
+            <h4 style="font-size: 12px; margin-bottom: 16px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; text-align: center;">
+                Relatos de Despertar
+            </h4>
+            <div class="testimonial">
+                "Eu tava ganhando bem mas vazio por dentro. A Bússola mostrou que minha alma precisa de criatividade e eu tava num trabalho completamente mecânico. Descobri meu bloqueio e pedi demissão. A energia mudou na hora." <br><strong style="color: #fff; font-weight: 600; margin-top: 8px; display: inline-block;">— Pedro Henrique</strong>
+            </div>
+            <div class="testimonial">
+                "O mapa revelou meus dons e onde minha energia flui melhor. A parte sobre os ambientes que sugavam minha vitalidade foi esclarecedora demais." <br><strong style="color: #fff; font-weight: 600; margin-top: 8px; display: inline-block;">— Bruno Costa</strong>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    /* ==========================================================================
+       LÓGICA DO FUNIL E QUIZ
+       ========================================================================== */
+    
+    // Dados do Quiz
+    const questions = [
+        {
+            text: "Como você se sente energeticamente no domingo à noite?",
+            type: "choice",
+            options: [
+                "Equilibrado, pronto pra semana",
+                "Uma ansiedade leve, um desconforto",
+                "Um aperto no peito, vontade de sumir"
+            ]
+        },
+        {
+            text: "No seu ambiente de trabalho atual, você sente que precisa vestir uma 'máscara' para ser aceito?",
+            type: "choice",
+            options: [
+                "Sim, o tempo todo",
+                "Às vezes",
+                "Não, sou autêntico"
+            ]
+        },
+        {
+            text: "Você já sentiu que tem um potencial gigantesco adormecido, mas que está sendo sugado por tarefas mecânicas?",
+            type: "choice",
+            options: [
+                "Sim, sinto isso todos os dias",
+                "Não, me sinto no caminho certo",
+                "Sinto uma confusão interna"
+            ]
+        },
+        {
+            text: "Qual destas dores mais assombra seu subconsciente hoje?",
+            type: "choice",
+            options: [
+                "A escassez financeira contínua",
+                "Chegar aos 80 anos e perceber que desperdiçou a vida",
+                "Nunca ser reconhecido pela sua essência"
+            ]
+        },
+        {
+            text: "Você sente um cansaço físico inexplicável logo após interagir com chefes ou certos ambientes de trabalho?",
+            type: "choice",
+            options: [
+                "Sim, parece que sugam minha vitalidade",
+                "Às vezes acontece",
+                "Não, minha energia se mantém intacta"
+            ]
+        },
+        {
+            text: "Qual o seu PRIMEIRO NOME exato de batismo? (Crucial para o cálculo da sua vibração de destino).",
+            type: "input",
+            inputType: "text",
+            placeholder: "Ex: Maria"
+        },
+        {
+            text: "Qual a sua DATA DE NASCIMENTO exata? (Fundamental para mapear seus bloqueios energéticos).",
+            type: "input",
+            inputType: "date",
+            placeholder: ""
+        }
+    ];
+
+    let currentQuestionIndex = 0;
+    let userName = "Buscador"; // Default fallback
+
+    // Funções de Navegação de Telas
+    function hideAllScreens() {
+        document.getElementById('step-intro').classList.add('hidden');
+        document.getElementById('step-quiz').classList.add('hidden');
+        document.getElementById('step-loading').classList.add('hidden');
+        document.getElementById('step-paywall').classList.add('hidden');
+    }
+
+    function startQuiz() {
+        hideAllScreens();
+        document.getElementById('step-quiz').classList.remove('hidden');
+        renderQuestion();
+    }
+
+    // Renderização das Perguntas
+    function renderQuestion() {
+        const q = questions[currentQuestionIndex];
+        
+        // Atualiza progresso
+        const progressPercentage = ((currentQuestionIndex) / questions.length) * 100;
+        document.getElementById('quiz-progress').style.width = progressPercentage + '%';
+        document.getElementById('question-counter').innerText = `PERGUNTA ${currentQuestionIndex + 1} DE ${questions.length}`;
+        
+        // Atualiza texto
+        document.getElementById('question-text').innerText = q.text;
+
+        const optionsContainer = document.getElementById('options-container');
+        const inputContainer = document.getElementById('input-container');
+        const inputElement = document.getElementById('quiz-input');
+
+        if (q.type === 'choice') {
+            optionsContainer.classList.remove('hidden');
+            inputContainer.classList.add('hidden');
+            optionsContainer.innerHTML = '';
+            
+            q.options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = 'btn btn-option';
+                btn.innerText = opt;
+                btn.onclick = () => nextQuestion();
+                optionsContainer.appendChild(btn);
+            });
+        } else if (q.type === 'input') {
+            optionsContainer.classList.add('hidden');
+            inputContainer.classList.remove('hidden');
+            inputElement.type = q.inputType;
+            inputElement.placeholder = q.placeholder || '';
+            inputElement.value = '';
+            inputElement.focus();
+        }
+    }
+
+    function handleInputAnswer() {
+        const inputElement = document.getElementById('quiz-input');
+        if (!inputElement.value.trim()) {
+            alert("Por favor, preencha o campo para continuar e garantir a precisão da sua leitura vibracional.");
+            return;
+        }
+
+        // Salvar o nome se for a pergunta do nome (índice 5 no array atual)
+        if (currentQuestionIndex === 5) {
+            // Pega o primeiro nome, capitaliza a primeira letra
+            let rawName = inputElement.value.trim().split(' ')[0];
+            userName = rawName.charAt(0).toUpperCase() + rawName.slice(1).toLowerCase();
+        }
+
+        nextQuestion();
+    }
+
+    function nextQuestion() {
+        currentQuestionIndex++;
+        if (currentQuestionIndex < questions.length) {
+            renderQuestion();
+        } else {
+            startProcessing();
+        }
+    }
+
+    // Tela de Processamento (Efeito Barnum Místico)
+    function startProcessing() {
+        hideAllScreens();
+        document.getElementById('step-loading').classList.remove('hidden');
+
+        const loadingSteps = [
+            "Conectando à matriz numerológica...",
+            "Calculando frequência vibracional do nome...",
+            "Cruzando trânsitos da data de nascimento...",
+            "<span class='text-red' style='font-weight: 600;'>[ALERTA] Bloqueio Energético Severo Detectado...</span>",
+            "Identificando o seu Arquétipo Dominante...",
+            "Compilando Dossiê Bússola Vocacional (30 págs)...",
+            "Selando documento..."
+        ];
+
+        const textContainer = document.getElementById('loading-steps');
+        let step = 0;
+
+        const interval = setInterval(() => {
+            textContainer.innerHTML = loadingSteps[step];
+            step++;
+            if (step >= loadingSteps.length) {
+                clearInterval(interval);
+                setTimeout(showPaywall, 1000); // Pausa dramática no final
+            }
+        }, 1300); // 1.3 segundos por frase para dar peso
+    }
+
+    // Tela de Vendas (Paywall)
+    function showPaywall() {
+        hideAllScreens();
+        document.getElementById('user-name-display').innerText = userName;
+        document.getElementById('step-paywall').classList.remove('hidden');
+        // Scrolla para o topo para garantir que o usuário veja a headline de alerta
+        window.scrollTo(0, 0);
+    }
+
+    // Redirecionamento para o Checkout
+    function redirectToCheckout() {
+        // AQUI VOCÊ INSERE O SEU LINK DE CHECKOUT
+        // Exemplo: window.location.href = "https://pay.kiwify.com.br/SEU_LINK";
+        alert("Redirecionando para o Checkout (Coloque o link da sua plataforma aqui na função redirectToCheckout).");
+        // window.location.href = "https://spiritualizese.com/finalizar-compra/";
+    }
+</script>
+</body>
+</html>

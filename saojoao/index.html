@@ -43,12 +43,7 @@
     async defer></script>
 
   <link rel="preload" as="image"
-    href="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=520,quality=80,format=webp/Caixinhas-1%20(1).webp"
-    imagesrcset="
-      https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=280,quality=80,format=webp/Caixinhas-1%20(1).webp 280w,
-      https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=560,quality=80,format=webp/Caixinhas-1%20(1).webp 560w
-    "
-    imagesizes="240px">
+    href="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/Caixinhas-1%20(1).webp">
 
   <style>
     /* =====================================================
@@ -210,11 +205,6 @@
 
     /* =====================================================
        CARROSSEL INFINITO
-       FIX: dimensões ajustadas para a proporção real das
-       imagens (401×494 → ratio 0.812:1, retrato).
-       Antes: 280×220 (paisagem) → espaço branco enorme.
-       Agora: 240×296 (retrato) → sem espaço branco,
-              sem corte, imagem exibida por inteiro.
     ===================================================== */
     .carousel-container {
       width: 100%;
@@ -232,14 +222,14 @@
     .carousel-track:hover { animation-play-state: paused; }
 
     .carousel-item {
-      width: 240px;          /* ← era 280px */
-      height: 296px;         /* ← era 220px — agora corresponde à proporção 401:494 */
-      margin: 0 10px;
+      width: 320px;
+      height: 394px;
+      margin: 0 12px;
       flex-shrink: 0;
       border-radius: 1rem;
       box-shadow: 0 10px 25px -5px rgba(0,0,0,.2);
       border: 4px solid #fff;
-      object-fit: contain;   /* exibe a imagem inteira sem corte */
+      object-fit: contain;
       background: #fff;
       transition: transform .3s ease;
     }
@@ -247,8 +237,8 @@
 
     @media (max-width: 767px) {
       .carousel-item {
-        width: 200px;        /* ← era 240px */
-        height: 246px;       /* ← era 190px — mantém a proporção 401:494 */
+        width: 260px;
+        height: 320px;
       }
     }
 
@@ -549,7 +539,7 @@
       font-family: 'Montserrat', sans-serif;
       font-weight: 900;
       font-size: clamp(4rem, 12vw, 5.5rem);
-      color: var(--brand-dark);
+      color: var(--brand-accent);
       line-height: 1;
       margin: 1rem 0;
     }
@@ -606,7 +596,7 @@
     .cta-cidade .cidade{ font-weight: 700; color: var(--brand-dark); }
 
     /* =====================================================
-       SEÇÃO DOAÇÃO — fundo branco, destaques verde/azul
+       SEÇÃO DOAÇÃO
     ===================================================== */
     .donation-section {
       padding: 4rem 1rem;
@@ -621,32 +611,33 @@
       gap: 2.5rem;
       max-width: 52rem;
       margin: 0 auto;
-    }
-    @media (min-width: 768px) {
-      .donation-inner { flex-direction: row; align-items: flex-start; }
-    }
-
-    /* Cartão da imagem */
-    .donation-img-wrap {
-      flex-shrink: 0;
-      width: 100%;
-      max-width: 280px;
-      background: #f0fdf4;
-      border: 2px solid #bbf7d0;
-      border-radius: 1.25rem;
-      padding: 1.25rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
       text-align: center;
     }
     @media (min-width: 768px) {
-      .donation-img-wrap { max-width: 240px; }
+      .donation-inner { flex-direction: row; align-items: center; text-align: left; }
+    }
+
+    .donation-img-wrap {
+      flex-shrink: 0;
+      width: 100%;
+      max-width: 340px;
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      text-align: center;
+    }
+    @media (min-width: 768px) {
+      .donation-img-wrap { max-width: 300px; }
     }
 
     .donation-ong-img {
       width: 100%;
+      max-width: 300px;
       border-radius: .625rem;
       filter: drop-shadow(0 4px 8px rgba(0,0,0,.08));
     }
@@ -662,7 +653,6 @@
       border-radius: 9999px;
     }
 
-    /* Texto */
     .donation-text {
       text-align: left;
       flex: 1;
@@ -718,6 +708,73 @@
       color: #166534;
     }
     .donation-highlight .dh-icon { font-size: 1.25rem; flex-shrink: 0; }
+
+    /* =====================================================
+       SEÇÃO GARANTIA
+    ===================================================== */
+    .guarantee-section {
+      padding: 4rem 1rem;
+      background: #fffbeb;
+      border-top: 1px solid var(--amber-200);
+    }
+
+    .guarantee-inner {
+      max-width: 52rem;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2.5rem;
+      text-align: center;
+    }
+    @media (min-width: 768px) {
+      .guarantee-inner {
+        flex-direction: row;
+        align-items: center;
+        text-align: left;
+      }
+    }
+
+    .guarantee-inner > img {
+      flex-shrink: 0;
+      width: 200px;
+      height: 200px;
+      object-fit: contain;
+      filter: drop-shadow(0 8px 20px rgba(0,0,0,.15));
+    }
+    @media (min-width: 768px) {
+      .guarantee-inner > img { width: 220px; height: 220px; }
+    }
+
+    .guarantee-txt { flex: 1; }
+
+    .g-label {
+      display: inline-block;
+      font-size: .8125rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: #0369a1;
+      background: #e0f2fe;
+      padding: .3rem 1rem;
+      border-radius: 9999px;
+      margin-bottom: .875rem;
+    }
+
+    .g-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(1.375rem, 3vw, 1.875rem);
+      font-weight: 900;
+      color: var(--brand-dark);
+      margin-bottom: .875rem;
+    }
+
+    .guarantee-txt p:last-child {
+      color: #475569;
+      font-size: 1rem;
+      line-height: 1.75;
+    }
+    .guarantee-txt p:last-child strong { color: var(--brand-dark); }
 
     /* =====================================================
        FOOTER
@@ -809,96 +866,56 @@
         </div>
       </div>
 
-      <!-- CARROSSEL — imagens 401×494 (retrato), container ajustado para 240×296 -->
+      <!-- CARROSSEL — URLs diretas do R2 (sem cdn-cgi/image/) -->
       <div class="carousel-container" aria-hidden="true">
         <div class="carousel-track">
 
           <!-- Set 1 -->
           <img
-            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=480,quality=80,format=webp/Caixinhas-1%20(1).webp"
-            srcset="
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=240,quality=80,format=webp/Caixinhas-1%20(1).webp 240w,
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=480,quality=80,format=webp/Caixinhas-1%20(1).webp 480w
-            "
-            sizes="(max-width: 767px) 200px, 240px"
+            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/Caixinhas-1%20(1).webp"
             alt="Caixinhas" class="carousel-item"
             width="240" height="296"
             loading="eager" fetchpriority="high">
 
           <img
-            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=480,quality=80,format=webp/Lembrancinhas-1.webp"
-            srcset="
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=240,quality=80,format=webp/Lembrancinhas-1.webp 240w,
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=480,quality=80,format=webp/Lembrancinhas-1.webp 480w
-            "
-            sizes="(max-width: 767px) 200px, 240px"
+            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/Lembrancinhas-1.webp"
             alt="Lembrancinhas" class="carousel-item"
             width="240" height="296"
             loading="eager">
 
           <img
-            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=480,quality=80,format=webp/Bamboles.webp"
-            srcset="
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=240,quality=80,format=webp/Bamboles.webp 240w,
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=480,quality=80,format=webp/Bamboles.webp 480w
-            "
-            sizes="(max-width: 767px) 200px, 240px"
+            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/Bamboles.webp"
             alt="Bambolês" class="carousel-item"
             width="240" height="296"
             loading="lazy">
 
           <img
-            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=480,quality=80,format=webp/Frases-1.webp"
-            srcset="
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=240,quality=80,format=webp/Frases-1.webp 240w,
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=480,quality=80,format=webp/Frases-1.webp 480w
-            "
-            sizes="(max-width: 767px) 200px, 240px"
+            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/Frases-1.webp"
             alt="Frases" class="carousel-item"
             width="240" height="296"
             loading="lazy">
 
           <!-- Set 2 — duplicado para loop infinito -->
           <img
-            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=480,quality=80,format=webp/Caixinhas-1%20(1).webp"
-            srcset="
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=240,quality=80,format=webp/Caixinhas-1%20(1).webp 240w,
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=480,quality=80,format=webp/Caixinhas-1%20(1).webp 480w
-            "
-            sizes="(max-width: 767px) 200px, 240px"
+            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/Caixinhas-1%20(1).webp"
             alt="" class="carousel-item"
             width="240" height="296"
             loading="lazy" aria-hidden="true">
 
           <img
-            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=480,quality=80,format=webp/Lembrancinhas-1.webp"
-            srcset="
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=240,quality=80,format=webp/Lembrancinhas-1.webp 240w,
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=480,quality=80,format=webp/Lembrancinhas-1.webp 480w
-            "
-            sizes="(max-width: 767px) 200px, 240px"
+            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/Lembrancinhas-1.webp"
             alt="" class="carousel-item"
             width="240" height="296"
             loading="lazy" aria-hidden="true">
 
           <img
-            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=480,quality=80,format=webp/Bamboles.webp"
-            srcset="
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=240,quality=80,format=webp/Bamboles.webp 240w,
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=480,quality=80,format=webp/Bamboles.webp 480w
-            "
-            sizes="(max-width: 767px) 200px, 240px"
+            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/Bamboles.webp"
             alt="" class="carousel-item"
             width="240" height="296"
             loading="lazy" aria-hidden="true">
 
           <img
-            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=480,quality=80,format=webp/Frases-1.webp"
-            srcset="
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=240,quality=80,format=webp/Frases-1.webp 240w,
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=480,quality=80,format=webp/Frases-1.webp 480w
-            "
-            sizes="(max-width: 767px) 200px, 240px"
+            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/Frases-1.webp"
             alt="" class="carousel-item"
             width="240" height="296"
             loading="lazy" aria-hidden="true">
@@ -965,13 +982,7 @@
       <div class="bonus-grid">
         <div class="bonus-card">
           <img
-            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=320,quality=80,format=webp/Paineis.webp"
-            srcset="
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=160,quality=80,format=webp/Paineis.webp 160w,
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=320,quality=80,format=webp/Paineis.webp 320w,
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=480,quality=80,format=webp/Paineis.webp 480w
-            "
-            sizes="(max-width: 767px) calc(50vw - 1.5rem), 240px"
+            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/Paineis.webp"
             alt="Painéis" width="240" height="180" loading="lazy">
           <div class="bonus-card-footer">
             <p class="old-price">De <s>R$ 29,00</s></p>
@@ -981,13 +992,7 @@
 
         <div class="bonus-card">
           <img
-            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=320,quality=80,format=webp/Publicacoes-1.webp"
-            srcset="
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=160,quality=80,format=webp/Publicacoes-1.webp 160w,
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=320,quality=80,format=webp/Publicacoes-1.webp 320w,
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=480,quality=80,format=webp/Publicacoes-1.webp 480w
-            "
-            sizes="(max-width: 767px) calc(50vw - 1.5rem), 240px"
+            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/Publicacoes-1.webp"
             alt="Publicações" width="240" height="180" loading="lazy">
           <div class="bonus-card-footer">
             <p class="old-price">De <s>R$ 29,00</s></p>
@@ -997,13 +1002,7 @@
 
         <div class="bonus-card">
           <img
-            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=320,quality=80,format=webp/Cartaz-A4.webp"
-            srcset="
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=160,quality=80,format=webp/Cartaz-A4.webp 160w,
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=320,quality=80,format=webp/Cartaz-A4.webp 320w,
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=480,quality=80,format=webp/Cartaz-A4.webp 480w
-            "
-            sizes="(max-width: 767px) calc(50vw - 1.5rem), 240px"
+            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/Cartaz-A4.webp"
             alt="Cartaz" width="240" height="180" loading="lazy">
           <div class="bonus-card-footer">
             <p class="old-price">De <s>R$ 29,00</s></p>
@@ -1013,13 +1012,7 @@
 
         <div class="bonus-card">
           <img
-            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=320,quality=80,format=webp/Ilustracoes-1.webp"
-            srcset="
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=160,quality=80,format=webp/Ilustracoes-1.webp 160w,
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=320,quality=80,format=webp/Ilustracoes-1.webp 320w,
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=480,quality=80,format=webp/Ilustracoes-1.webp 480w
-            "
-            sizes="(max-width: 767px) calc(50vw - 1.5rem), 240px"
+            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/Ilustracoes-1.webp"
             alt="Ilustrações" width="240" height="180" loading="lazy">
           <div class="bonus-card-footer">
             <p class="old-price">De <s>R$ 29,00</s></p>
@@ -1038,35 +1031,17 @@
       </h3>
       <div class="testimonials">
         <img
-          src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=400,quality=80,format=webp/prova-1-1024x443%20(1).webp"
-          srcset="
-            https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=400,quality=80,format=webp/prova-1-1024x443%20(1).webp 400w,
-            https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=700,quality=80,format=webp/prova-1-1024x443%20(1).webp 700w,
-            https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/prova-1-1024x443%20(1).webp 1024w
-          "
-          sizes="(max-width: 767px) calc(100vw - 2rem), 33vw"
+          src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/prova-1-1024x443%20(1).webp"
           alt="Depoimento de cliente 1"
           width="340" height="147" loading="lazy">
 
         <img
-          src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=400,quality=80,format=webp/prova-1024x443%20(1).webp"
-          srcset="
-            https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=400,quality=80,format=webp/prova-1024x443%20(1).webp 400w,
-            https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=700,quality=80,format=webp/prova-1024x443%20(1).webp 700w,
-            https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/prova-1024x443%20(1).webp 1024w
-          "
-          sizes="(max-width: 767px) calc(100vw - 2rem), 33vw"
+          src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/prova-1024x443%20(1).webp"
           alt="Depoimento de cliente 2"
           width="340" height="147" loading="lazy">
 
         <img
-          src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=400,quality=80,format=webp/prova2-1-1024x443%20(1).webp"
-          srcset="
-            https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=400,quality=80,format=webp/prova2-1-1024x443%20(1).webp 400w,
-            https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=700,quality=80,format=webp/prova2-1-1024x443%20(1).webp 700w,
-            https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/prova2-1-1024x443%20(1).webp 1024w
-          "
-          sizes="(max-width: 767px) calc(100vw - 2rem), 33vw"
+          src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/prova2-1-1024x443%20(1).webp"
           alt="Depoimento de cliente 3"
           width="340" height="147" loading="lazy">
       </div>
@@ -1114,7 +1089,7 @@
       </div>
 
       <a href="https://pay.wiapy.com/6a0a5d8d0d76d746be336f6e" class="btn-block">
-        👉 SIM, QUERO GARANTIR POR R$ 10!
+        👉 QUERO GARANTIR POR R$ 10!
       </a>
     </div>
   </section>
@@ -1154,6 +1129,26 @@
         </div>
 
       </div>
+    </div>
+  </section>
+
+  <!-- GARANTIA -->
+  <section class="guarantee-section">
+    <div class="guarantee-inner">
+        <img src="https://meusuperkit.com/wp-content/uploads/2026/01/garantia-7dias.webp"
+             onerror="this.src='https://placehold.co/250x250/fdf2f8/9d467e?text=Garantia'"
+             alt="Garantia 7 Dias"
+             width="250" height="250"
+             loading="lazy" decoding="async">
+        <div class="guarantee-txt">
+            <p class="g-label">Risco zero para você!</p>
+            <h4 class="g-title">Garantia Incondicional!</h4>
+            <p>
+                Ainda não tem certeza? Não se preocupe. Se o conteúdo descrito acima
+                não for o mesmo que você receber, você tem <strong>7 dias de garantia</strong>
+                e devolverei seu dinheiro sem burocracia!
+            </p>
+        </div>
     </div>
   </section>
 

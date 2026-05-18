@@ -190,7 +190,7 @@
         </ul>
     </div>
 
-    <!-- PASSO 4: PAYWALL / OFERTA (TEXTO CLÁSSICO RESTAURADO) -->
+    <!-- PASSO 4: PAYWALL / OFERTA -->
     <div id="step-paywall" class="screen hidden">
         <div class="alert-badge">&#9888; ANÁLISE CONCLUÍDA COM ALERTAS</div>
         <h2 style="font-size: 26px; margin-bottom: 16px;">O que encontramos explica exatamente o seu cansaço, <span id="user-name-display" class="text-gold"></span>.</h2>
@@ -450,7 +450,7 @@
     }
 
     /* ==========================================================================
-       INTEGRAÇÃO API ABACATEPAY (NOVO ENDPOINT SEM CPF)
+       INTEGRAÇÃO API ABACATEPAY (NOVO ENDPOINT SEM CPF) E REDIRECIONAMENTO REMOVIDO
        ========================================================================== */
     async function checkoutViaPix() {
         const btn = document.getElementById('btn-generate-pix');
@@ -467,16 +467,19 @@
                     "Authorization": `Bearer ${ABACATEPAY_API_TOKEN}`
                 },
                 body: JSON.stringify({
-                    amount: 1700, // R$ 17,00
+                    amount: 1700, // R$ 17,00 em centavos (caso a API exija formato numérico sem pontuação)
                     description: "Bússola Vocacional",
                     metadata: {
-                        email: userData.email,
-                        name: userData.name
+                        email: userData.email || "nao_informado@email.com",
+                        telefone: "5511999999999" // Fallback para não dar erro se a API exigir telefone
                     }
                 })
             });
 
-            if (!response.ok) throw new Error("Erro na API da Abacatepay");
+            if (!response.ok) {
+                const errorLog = await response.text();
+                throw new Error(`Status ${response.status} - ${errorLog}`);
+            }
 
             const data = await response.json();
             
@@ -496,9 +499,12 @@
             }
 
         } catch (error) {
-            console.error("Erro ao gerar PIX: ", error);
-            alert("Houve uma instabilidade ao gerar o PIX direto. Redirecionando para o checkout alternativo...");
-            window.location.href = "https://spiritualizese.com/finalizar-compra/";
+            console.error("Erro detalhado ao gerar PIX AbacatePay: ", error);
+            alert("Houve uma instabilidade na conexão com o banco ao gerar o PIX direto. Por favor, aguarde alguns instantes e tente novamente.");
+            
+            // Restaura o botão em caso de erro para tentar novamente (REMOVIDO REDIRECIONAMENTO)
+            btn.innerHTML = "LIBERAR MINHA BÚSSOLA AGORA";
+            btn.style.opacity = "1";
         }
     }
 

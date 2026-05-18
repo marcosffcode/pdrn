@@ -42,18 +42,13 @@
     data-utmify-prevent-subids
     async defer></script>
 
-  <!--
-    OTIMIZAÇÃO LCP: Preload da primeira imagem do carrossel usando
-    Cloudflare Image Resizing para servir o tamanho correto (260px).
-    Requer Cloudflare Image Resizing ativo no plano Pro ou superior.
-  -->
   <link rel="preload" as="image"
     href="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=520,quality=80,format=webp/Caixinhas-1%20(1).webp"
     imagesrcset="
-      https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=260,quality=80,format=webp/Caixinhas-1%20(1).webp 260w,
-      https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=520,quality=80,format=webp/Caixinhas-1%20(1).webp 520w
+      https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=280,quality=80,format=webp/Caixinhas-1%20(1).webp 280w,
+      https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=560,quality=80,format=webp/Caixinhas-1%20(1).webp 560w
     "
-    imagesizes="260px">
+    imagesizes="280px">
 
   <style>
     /* =====================================================
@@ -69,6 +64,7 @@
       --amber-50:        #fffbeb;
       --amber-100:       #fef3c7;
       --amber-200:       #fde68a;
+      --red:             #dc2626;
     }
 
     html { scroll-behavior: smooth; }
@@ -164,17 +160,19 @@
       z-index: 1;
     }
 
+    /* CHANGE 1: Título maior */
     .hero-title {
       font-family: 'Montserrat', sans-serif;
-      font-size: clamp(2rem, 5vw, 3.75rem);
+      font-size: clamp(2.5rem, 6.5vw, 4.75rem);
       font-weight: 900;
       color: var(--brand-dark);
       line-height: 1.15;
       margin-bottom: 1.5rem;
     }
 
+    /* CHANGE 1: Subtítulo maior */
     .hero-subtitle {
-      font-size: clamp(1rem, 2.5vw, 1.5rem);
+      font-size: clamp(1.2rem, 3vw, 1.875rem);
       font-weight: 500;
       color: #475569;
       margin: 0 auto 2rem;
@@ -201,8 +199,20 @@
     }
     .sp-badge span { color: var(--brand-secondary); }
 
+    /* CHANGE 2: Estrelas */
+    .sp-stars {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      font-size: 1.5rem;
+      line-height: 1;
+      color: #f59e0b;
+      letter-spacing: 2px;
+    }
+
     /* =====================================================
-       CARROSSEL INFINITO
+       CARROSSEL INFINITO — CHANGE 3: sem corte, maior
     ===================================================== */
     .carousel-container {
       width: 100%;
@@ -219,24 +229,22 @@
     }
     .carousel-track:hover { animation-play-state: paused; }
 
-    /*
-      OTIMIZAÇÃO: Dimensões exatas definidas em CSS para evitar
-      que o browser baixe e renderize imagens maiores que o necessário.
-    */
+    /* object-fit: contain → exibe a imagem inteira sem cortar */
     .carousel-item {
-      width: 260px;
-      height: 200px;
+      width: 280px;
+      height: 220px;
       margin: 0 10px;
       flex-shrink: 0;
       border-radius: 1rem;
       box-shadow: 0 10px 25px -5px rgba(0,0,0,.2);
       border: 4px solid #fff;
-      object-fit: cover;
+      object-fit: contain;      /* ← era cover, agora sem corte */
+      background: #fff;         /* fundo branco para imagens transparentes */
       transition: transform .3s ease;
     }
     .carousel-item:hover { transform: scale(1.05); }
     @media (max-width: 767px) {
-      .carousel-item { width: 220px; }
+      .carousel-item { width: 240px; height: 190px; }
     }
 
     /* =====================================================
@@ -432,11 +440,6 @@
     }
     .bonus-card:hover { transform: translateY(-8px); }
 
-    /*
-      OTIMIZAÇÃO: Bonus cards exibidos a ~148px (desktop) e ~(50vw - 1.5rem) no mobile.
-      Forçamos o tamanho via CSS para evitar layout shift e garantir que o browser
-      use o srcset correto.
-    */
     .bonus-card img {
       width: 100%;
       aspect-ratio: 240 / 180;
@@ -462,10 +465,6 @@
     }
     @media (min-width: 768px) { .testimonials { flex-direction: row; } }
 
-    /*
-      OTIMIZAÇÃO: Depoimentos exibidos a 100% no mobile e ~33% no desktop.
-      aspect-ratio evita CLS enquanto a imagem carrega.
-    */
     .testimonials img {
       width: 100%;
       aspect-ratio: 1024 / 443;
@@ -601,34 +600,16 @@
     .cta-cidade .num   { color: var(--brand-secondary); font-weight: 700; }
     .cta-cidade .cidade{ font-weight: 700; color: var(--brand-dark); }
 
-    .seal-img { width: 100%; max-width: 28rem; margin: 0 auto; opacity: .8; }
-
     /* =====================================================
-       SEÇÃO GARANTIA
+       SEÇÃO DOAÇÃO — CHANGE 5
     ===================================================== */
-    .section-guarantee {
+    .donation-section {
       padding: 3rem 1rem;
       background: linear-gradient(135deg, #1e0a06 0%, #290f09 60%, #1e0a06 100%);
       color: #fff;
-      text-align: center;
     }
 
-    .guarantee-title {
-      font-family: 'Montserrat', sans-serif;
-      font-size: clamp(1.5rem, 3.5vw, 1.875rem);
-      font-weight: 900;
-      margin-bottom: 2.5rem;
-      color: #facc15;
-    }
-    .guarantee-title span {
-      color: #fff;
-      font-size: clamp(1.125rem, 2.5vw, 1.5rem);
-      font-weight: 500;
-      display: block;
-      margin-top: .5rem;
-    }
-
-    .guarantee-inner {
+    .donation-inner {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -641,19 +622,39 @@
       max-width: 56rem;
       margin: 0 auto;
     }
-    @media (min-width: 768px) { .guarantee-inner { flex-direction: row; } }
-
-    .guarantee-img { width: 12rem; filter: drop-shadow(0 10px 15px rgba(0,0,0,.3)); }
-
-    .guarantee-text { text-align: left; max-width: 28rem; }
-    .guarantee-text h4 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.5rem;
-      font-weight: 900;
-      margin-bottom: .75rem;
+    @media (min-width: 768px) {
+      .donation-inner { flex-direction: row; }
     }
-    .guarantee-text p { color: #cbd5e1; font-size: 1.125rem; line-height: 1.625; }
-    .guarantee-text p strong { color: #fff; }
+
+    .donation-ong-img {
+      width: 100%;
+      max-width: 280px;
+      border-radius: .75rem;
+      filter: drop-shadow(0 10px 15px rgba(0,0,0,.3));
+      flex-shrink: 0;
+    }
+    @media (min-width: 768px) {
+      .donation-ong-img { max-width: 240px; }
+    }
+
+    .donation-text { text-align: left; max-width: 28rem; }
+
+    .donation-text h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(1.25rem, 3vw, 1.75rem);
+      font-weight: 900;
+      margin-bottom: 1rem;
+      line-height: 1.4;
+      color: #facc15;
+    }
+    .donation-text h3 span { color: #fff; }
+
+    .donation-text p {
+      color: #cbd5e1;
+      font-size: 1.0625rem;
+      line-height: 1.7;
+    }
+    .donation-text p strong { color: #fff; }
 
     /* =====================================================
        FOOTER
@@ -732,116 +733,114 @@
     <div class="hero-bg-deco" aria-hidden="true"></div>
 
     <div class="hero-inner">
+      <!-- CHANGE 1: Título maior via clamp atualizado -->
       <h1 class="hero-title animate-slide-up">Super Kit São João 2026</h1>
 
+      <!-- CHANGE 1: Subtítulo maior via clamp atualizado -->
       <h2 class="hero-subtitle">
         Pronto em minutos: é só <strong>imprimir, montar e encantar</strong> todos os seus convidados!
       </h2>
 
       <div class="social-proof">
         <p class="sp-badge">🏆 Mais de <span>2.137 unidades</span> vendidas</p>
+        <!-- CHANGE 2: 5 estrelas abaixo do badge -->
+        <div class="sp-stars" aria-label="5 estrelas">
+          ★★★★★
+        </div>
       </div>
 
-      <!-- ================================================
-           CARROSSEL — OTIMIZADO
-           Problema: imagens de 401×363 sendo baixadas para
-           exibição em 220–260px (desperdício de ~27–34 KiB cada).
-           Solução: srcset com Cloudflare Image Resizing em
-           larguras exatas de exibição (1× e 2× para Retina).
-           O atributo sizes informa ao browser o tamanho real
-           antes do download, eliminando o oversizing.
-      ================================================ -->
+      <!-- CHANGE 3: Carrossel sem corte (object-fit: contain) e levemente maior -->
       <div class="carousel-container" aria-hidden="true">
         <div class="carousel-track">
 
-          <!-- Set 1 — imagens acima do dobramento: eager + fetchpriority -->
+          <!-- Set 1 -->
           <img
-            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=260,quality=80,format=webp/Caixinhas-1%20(1).webp"
+            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=280,quality=80,format=webp/Caixinhas-1%20(1).webp"
             srcset="
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=260,quality=80,format=webp/Caixinhas-1%20(1).webp 260w,
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=520,quality=80,format=webp/Caixinhas-1%20(1).webp 520w
+              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=280,quality=80,format=webp/Caixinhas-1%20(1).webp 280w,
+              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=560,quality=80,format=webp/Caixinhas-1%20(1).webp 560w
             "
-            sizes="(max-width: 767px) 220px, 260px"
+            sizes="(max-width: 767px) 240px, 280px"
             alt="Caixinhas" class="carousel-item"
-            width="260" height="200"
+            width="280" height="220"
             loading="eager" fetchpriority="high">
 
           <img
-            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=260,quality=80,format=webp/Lembrancinhas-1.webp"
+            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=280,quality=80,format=webp/Lembrancinhas-1.webp"
             srcset="
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=260,quality=80,format=webp/Lembrancinhas-1.webp 260w,
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=520,quality=80,format=webp/Lembrancinhas-1.webp 520w
+              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=280,quality=80,format=webp/Lembrancinhas-1.webp 280w,
+              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=560,quality=80,format=webp/Lembrancinhas-1.webp 560w
             "
-            sizes="(max-width: 767px) 220px, 260px"
+            sizes="(max-width: 767px) 240px, 280px"
             alt="Lembrancinhas" class="carousel-item"
-            width="260" height="200"
+            width="280" height="220"
             loading="eager">
 
           <img
-            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=260,quality=80,format=webp/Bamboles.webp"
+            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=280,quality=80,format=webp/Bamboles.webp"
             srcset="
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=260,quality=80,format=webp/Bamboles.webp 260w,
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=520,quality=80,format=webp/Bamboles.webp 520w
+              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=280,quality=80,format=webp/Bamboles.webp 280w,
+              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=560,quality=80,format=webp/Bamboles.webp 560w
             "
-            sizes="(max-width: 767px) 220px, 260px"
+            sizes="(max-width: 767px) 240px, 280px"
             alt="Bambolês" class="carousel-item"
-            width="260" height="200"
+            width="280" height="220"
             loading="lazy">
 
           <img
-            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=260,quality=80,format=webp/Frases-1.webp"
+            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=280,quality=80,format=webp/Frases-1.webp"
             srcset="
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=260,quality=80,format=webp/Frases-1.webp 260w,
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=520,quality=80,format=webp/Frases-1.webp 520w
+              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=280,quality=80,format=webp/Frases-1.webp 280w,
+              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=560,quality=80,format=webp/Frases-1.webp 560w
             "
-            sizes="(max-width: 767px) 220px, 260px"
+            sizes="(max-width: 767px) 240px, 280px"
             alt="Frases" class="carousel-item"
-            width="260" height="200"
+            width="280" height="220"
             loading="lazy">
 
-          <!-- Set 2 — duplicado para o loop infinito (aria-hidden, lazy) -->
+          <!-- Set 2 — duplicado para loop infinito -->
           <img
-            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=260,quality=80,format=webp/Caixinhas-1%20(1).webp"
+            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=280,quality=80,format=webp/Caixinhas-1%20(1).webp"
             srcset="
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=260,quality=80,format=webp/Caixinhas-1%20(1).webp 260w,
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=520,quality=80,format=webp/Caixinhas-1%20(1).webp 520w
+              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=280,quality=80,format=webp/Caixinhas-1%20(1).webp 280w,
+              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=560,quality=80,format=webp/Caixinhas-1%20(1).webp 560w
             "
-            sizes="(max-width: 767px) 220px, 260px"
+            sizes="(max-width: 767px) 240px, 280px"
             alt="" class="carousel-item"
-            width="260" height="200"
+            width="280" height="220"
             loading="lazy" aria-hidden="true">
 
           <img
-            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=260,quality=80,format=webp/Lembrancinhas-1.webp"
+            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=280,quality=80,format=webp/Lembrancinhas-1.webp"
             srcset="
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=260,quality=80,format=webp/Lembrancinhas-1.webp 260w,
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=520,quality=80,format=webp/Lembrancinhas-1.webp 520w
+              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=280,quality=80,format=webp/Lembrancinhas-1.webp 280w,
+              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=560,quality=80,format=webp/Lembrancinhas-1.webp 560w
             "
-            sizes="(max-width: 767px) 220px, 260px"
+            sizes="(max-width: 767px) 240px, 280px"
             alt="" class="carousel-item"
-            width="260" height="200"
+            width="280" height="220"
             loading="lazy" aria-hidden="true">
 
           <img
-            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=260,quality=80,format=webp/Bamboles.webp"
+            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=280,quality=80,format=webp/Bamboles.webp"
             srcset="
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=260,quality=80,format=webp/Bamboles.webp 260w,
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=520,quality=80,format=webp/Bamboles.webp 520w
+              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=280,quality=80,format=webp/Bamboles.webp 280w,
+              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=560,quality=80,format=webp/Bamboles.webp 560w
             "
-            sizes="(max-width: 767px) 220px, 260px"
+            sizes="(max-width: 767px) 240px, 280px"
             alt="" class="carousel-item"
-            width="260" height="200"
+            width="280" height="220"
             loading="lazy" aria-hidden="true">
 
           <img
-            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=260,quality=80,format=webp/Frases-1.webp"
+            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=280,quality=80,format=webp/Frases-1.webp"
             srcset="
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=260,quality=80,format=webp/Frases-1.webp 260w,
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=520,quality=80,format=webp/Frases-1.webp 520w
+              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=280,quality=80,format=webp/Frases-1.webp 280w,
+              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=560,quality=80,format=webp/Frases-1.webp 560w
             "
-            sizes="(max-width: 767px) 220px, 260px"
+            sizes="(max-width: 767px) 240px, 280px"
             alt="" class="carousel-item"
-            width="260" height="200"
+            width="280" height="220"
             loading="lazy" aria-hidden="true">
         </div>
       </div>
@@ -896,14 +895,7 @@
     </div>
   </section>
 
-  <!-- ====================================================
-       BÔNUS — OTIMIZADO
-       Problema: imagens de 401×494 baixadas para exibição
-       em 148px (desktop) ou ~50vw (mobile) → ~32–37 KiB desperdiçados.
-       Solução: srcset com Cloudflare Image Resizing em
-       larguras de 160px, 320px e 480px. O sizes informa
-       o tamanho real antes do download.
-  ==================================================== -->
+  <!-- BÔNUS -->
   <section class="section-dark">
     <div class="container" style="text-align:center">
       <span class="bonus-badge">Presentes Inclusos</span>
@@ -978,23 +970,13 @@
     </div>
   </section>
 
-  <!-- ====================================================
-       PROVA SOCIAL — OTIMIZADO
-       Problema CRÍTICO: imagens de 1024×443 baixadas para
-       exibição em ~376px (mobile) ou ~340px (1/3 do desktop).
-       Economiza ~66–82 KiB POR IMAGEM (198–246 KiB no total).
-       srcset oferece versões de 400, 700 e 1024px.
-       sizes instrui o browser antes do download:
-         - Mobile (< 768px): largura total menos padding
-         - Desktop: 1/3 do container (max 64rem / 3 ≈ 340px)
-  ==================================================== -->
+  <!-- PROVA SOCIAL -->
   <section class="section-amber">
     <div class="container">
       <h3 class="section-title" style="text-align:center;margin-bottom:3rem">
         As pessoas estão amando tudo!
       </h3>
       <div class="testimonials">
-
         <img
           src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=400,quality=80,format=webp/prova-1-1024x443%20(1).webp"
           srcset="
@@ -1027,7 +1009,6 @@
           sizes="(max-width: 767px) calc(100vw - 2rem), 33vw"
           alt="Depoimento de cliente 3"
           width="340" height="147" loading="lazy">
-
       </div>
     </div>
   </section>
@@ -1072,36 +1053,33 @@
         </p>
       </div>
 
+      <!-- CHANGE 4: Botão sem o selo de cartões abaixo -->
       <a href="https://pay.wiapy.com/6a0a5d8d0d76d746be336f6e" class="btn-block">
         👉 SIM, QUERO GARANTIR POR R$ 10!
       </a>
-
-      <img src="https://meusuperkit.com/wp-content/uploads/2026/01/selo.webp"
-           alt="Compra Segura - Pagamento Protegido"
-           class="seal-img" width="448" height="100" loading="lazy">
     </div>
   </section>
 
-  <!-- GARANTIA & DOAÇÃO -->
-  <section class="section-guarantee">
-    <div style="max-width:56rem;margin:0 auto">
-      <h3 class="guarantee-title">
-        ❤️ Sua Compra Salva Vidas ❤️
-        <span>100% DO VALOR SERÁ DOADO</span>
-      </h3>
-      <div class="guarantee-inner">
-        <img src="https://meusuperkit.com/wp-content/uploads/2026/01/garantia-7dias.webp"
-             alt="Garantia de 7 Dias" class="guarantee-img"
-             width="192" height="192" loading="lazy">
-        <div class="guarantee-text">
-          <h4>Risco Zero para você!</h4>
-          <p>
-            Ainda não tem certeza? Não se preocupe. Se o conteúdo não for
-            exatamente o que você esperava,
-            <strong>você tem 7 dias de garantia incondicional</strong>.
-            Devolveremos 100% do seu dinheiro sem burocracia, basta um email.
-          </p>
-        </div>
+  <!-- CHANGE 5: Seção doação nova (ONG 4 Patas) -->
+  <section class="donation-section">
+    <div class="donation-inner">
+      <img
+        src="https://pub-80d3706d8b3c4936b06601bde5361dc6.r2.dev/WhatsApp%20Image%202026-05-17%20at%2017.33.06.webp"
+        onerror="this.style.display='none'"
+        alt="ONG 4 Patas"
+        class="donation-ong-img"
+        width="500" height="116"
+        loading="lazy" decoding="async">
+      <div class="donation-text">
+        <h3>
+          ❤️ <span>Sua Compra Salva Vidas</span> ❤️
+          <br><span style="color:var(--red);background:none;padding:0;transform:none">PARTE DO LUCRO É DOADO</span>
+        </h3>
+        <p>
+          Parte do nosso lucro é destinado à <strong>ONG 4 Patas</strong>,
+          que resgata e cuida de animais em situação de abandono e vulnerabilidade.
+          Ao comprar, você também faz parte dessa corrente do bem. 🐾
+        </p>
       </div>
     </div>
   </section>

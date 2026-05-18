@@ -42,13 +42,9 @@
     data-utmify-prevent-subids
     async defer></script>
 
+  <!-- Preload LCP: primeira imagem do carrossel (URL direta, sem cdn-cgi) -->
   <link rel="preload" as="image"
-    href="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=520,quality=80,format=webp/Caixinhas-1%20(1).webp"
-    imagesrcset="
-      https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=280,quality=80,format=webp/Caixinhas-1%20(1).webp 280w,
-      https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=560,quality=80,format=webp/Caixinhas-1%20(1).webp 560w
-    "
-    imagesizes="280px">
+    href="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/Caixinhas-1%20(1).webp">
 
   <style>
     /* =====================================================
@@ -84,7 +80,7 @@
     ul  { list-style: none; }
 
     /* =====================================================
-       ANIMAÇÕES
+       ANIMACOES
     ===================================================== */
     @keyframes pulse {
       0%, 100% { opacity: 1; }
@@ -160,7 +156,7 @@
       z-index: 1;
     }
 
-    /* CHANGE 1: Título maior */
+    /* Titulo maior */
     .hero-title {
       font-family: 'Montserrat', sans-serif;
       font-size: clamp(2.5rem, 6.5vw, 4.75rem);
@@ -170,7 +166,7 @@
       margin-bottom: 1.5rem;
     }
 
-    /* CHANGE 1: Subtítulo maior */
+    /* Subtitulo maior */
     .hero-subtitle {
       font-size: clamp(1.2rem, 3vw, 1.875rem);
       font-weight: 500;
@@ -199,20 +195,21 @@
     }
     .sp-badge span { color: var(--brand-secondary); }
 
-    /* CHANGE 2: Estrelas */
+    /* 5 estrelas */
     .sp-stars {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 4px;
+      gap: 2px;
       font-size: 1.5rem;
-      line-height: 1;
       color: #f59e0b;
       letter-spacing: 2px;
     }
 
     /* =====================================================
-       CARROSSEL INFINITO — CHANGE 3: sem corte, maior
+       CARROSSEL INFINITO
+       - URLs diretas R2 (sem cdn-cgi: nao disponivel neste bucket)
+       - object-fit: contain + background branco = sem corte lateral
     ===================================================== */
     .carousel-container {
       width: 100%;
@@ -229,7 +226,6 @@
     }
     .carousel-track:hover { animation-play-state: paused; }
 
-    /* object-fit: contain → exibe a imagem inteira sem cortar */
     .carousel-item {
       width: 280px;
       height: 220px;
@@ -238,8 +234,8 @@
       border-radius: 1rem;
       box-shadow: 0 10px 25px -5px rgba(0,0,0,.2);
       border: 4px solid #fff;
-      object-fit: contain;      /* ← era cover, agora sem corte */
-      background: #fff;         /* fundo branco para imagens transparentes */
+      object-fit: contain;
+      background-color: #fff;
       transition: transform .3s ease;
     }
     .carousel-item:hover { transform: scale(1.05); }
@@ -248,7 +244,7 @@
     }
 
     /* =====================================================
-       BOTÕES CTA
+       BOTOES CTA
     ===================================================== */
     .btn-pill {
       display: inline-flex;
@@ -265,9 +261,7 @@
       transition: background-color .2s;
       animation: heartbeat 1.5s ease-in-out infinite;
     }
-    @media (min-width: 768px) {
-      .btn-pill { width: auto; font-size: 1.25rem; }
-    }
+    @media (min-width: 768px) { .btn-pill { width: auto; font-size: 1.25rem; } }
     .btn-pill:hover { background-color: #16a34a; }
 
     .btn-block {
@@ -300,12 +294,9 @@
     }
 
     /* =====================================================
-       SEÇÃO BRANCA
+       SECAO BRANCA — O QUE VOCE VAI RECEBER
     ===================================================== */
-    .section-white {
-      padding: 4rem 1rem;
-      background: #fff;
-    }
+    .section-white { padding: 4rem 1rem; background: #fff; }
     @media (min-width: 768px) { .section-white { padding: 6rem 1rem; } }
 
     .container { max-width: 64rem; margin: 0 auto; }
@@ -388,13 +379,10 @@
     .section-cta { margin-top: 3rem; text-align: center; }
 
     /* =====================================================
-       SEÇÃO ESCURA — BÔNUS
+       SECAO ESCURA — BONUS
+       Mobile fix: min-width:0 + padding e texto escalaveis
     ===================================================== */
-    .section-dark {
-      padding: 4rem 1rem;
-      background-color: var(--brand-dark);
-      color: #fff;
-    }
+    .section-dark { padding: 4rem 1rem; background-color: var(--brand-dark); color: #fff; }
     @media (min-width: 768px) { .section-dark { padding: 6rem 1rem; } }
 
     .bonus-badge {
@@ -420,40 +408,44 @@
     .bonus-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1rem;
+      gap: .75rem;
       margin-top: 3rem;
     }
-    @media (min-width: 768px) {
-      .bonus-grid { grid-template-columns: repeat(4, 1fr); gap: 2rem; }
-    }
+    @media (min-width: 480px) { .bonus-grid { gap: 1rem; } }
+    @media (min-width: 768px) { .bonus-grid { grid-template-columns: repeat(4, 1fr); gap: 2rem; } }
 
     .bonus-card {
       background: rgba(255,255,255,.1);
-      padding: 1rem;
+      padding: .75rem;
       border-radius: 1rem;
       border: 1px solid rgba(255,255,255,.2);
       text-align: center;
       display: flex;
       flex-direction: column;
-      height: 100%;
+      min-width: 0;        /* impede overflow horizontal no grid */
       transition: transform .3s;
     }
+    @media (min-width: 768px) { .bonus-card { padding: 1rem; } }
     .bonus-card:hover { transform: translateY(-8px); }
 
     .bonus-card img {
       width: 100%;
-      aspect-ratio: 240 / 180;
+      aspect-ratio: 4 / 3;
       border-radius: .5rem;
-      margin-bottom: 1rem;
-      filter: drop-shadow(0 4px 6px rgba(0,0,0,.3));
+      margin-bottom: .75rem;
       object-fit: cover;
+      display: block;
     }
+    @media (min-width: 768px) { .bonus-card img { margin-bottom: 1rem; } }
+
     .bonus-card-footer { margin-top: auto; }
-    .bonus-card .old-price { color: #94a3b8; font-size: .875rem; margin-bottom: .25rem; }
-    .bonus-card .new-price { font-weight: 900; font-size: 1.25rem; color: #facc15; }
+    .bonus-card .old-price { color: #94a3b8; font-size: .75rem; margin-bottom: .2rem; }
+    @media (min-width: 480px) { .bonus-card .old-price { font-size: .875rem; } }
+    .bonus-card .new-price { font-weight: 900; font-size: 1rem; color: #facc15; }
+    @media (min-width: 480px) { .bonus-card .new-price { font-size: 1.25rem; } }
 
     /* =====================================================
-       SEÇÃO AMBER — PROVA SOCIAL
+       SECAO AMBER — PROVA SOCIAL
     ===================================================== */
     .section-amber { padding: 4rem 1rem; background: #fffbeb; }
 
@@ -476,7 +468,7 @@
     @media (min-width: 768px) { .testimonials img { width: 33.333%; } }
 
     /* =====================================================
-       SEÇÃO OFERTA
+       SECAO OFERTA
     ===================================================== */
     .section-offer { padding: 4rem 1rem; background: #fff; }
     @media (min-width: 768px) { .section-offer { padding: 6rem 1rem; } }
@@ -540,11 +532,13 @@
     }
     .price-label  { color: #64748b; font-weight: 500; margin-bottom: .5rem; }
     .price-old    { font-size: 1.25rem; font-weight: 700; color: #94a3b8; margin-bottom: .5rem; }
+
+    /* PRECO VERDE */
     .price-main {
       font-family: 'Montserrat', sans-serif;
       font-weight: 900;
       font-size: clamp(4rem, 12vw, 5.5rem);
-      color: var(--brand-dark);
+      color: var(--brand-accent);
       line-height: 1;
       margin: 1rem 0;
     }
@@ -595,13 +589,14 @@
       transition: width 1s ease-out;
       width: 92%;
     }
-    .cta-cidade       { margin-top: .75rem; font-size: .875rem; color: #475569; font-weight: 500; }
+    .cta-cidade        { margin-top: .75rem; font-size: .875rem; color: #475569; font-weight: 500; }
     .cta-cidade.hidden { display: none; }
     .cta-cidade .num   { color: var(--brand-secondary); font-weight: 700; }
     .cta-cidade .cidade{ font-weight: 700; color: var(--brand-dark); }
 
     /* =====================================================
-       SEÇÃO DOAÇÃO — CHANGE 5
+       SECAO DOACAO — ONG 4 Patas
+       Imagem original 1001x233 → aspect-ratio 1001/233, sem achatamento
     ===================================================== */
     .donation-section {
       padding: 3rem 1rem;
@@ -623,21 +618,23 @@
       margin: 0 auto;
     }
     @media (min-width: 768px) {
-      .donation-inner { flex-direction: row; }
+      .donation-inner { flex-direction: row; align-items: center; }
     }
 
     .donation-ong-img {
       width: 100%;
-      max-width: 280px;
-      border-radius: .75rem;
-      filter: drop-shadow(0 10px 15px rgba(0,0,0,.3));
+      max-width: 380px;
+      height: auto;
+      aspect-ratio: 1001 / 233;
+      object-fit: contain;
+      border-radius: .5rem;
       flex-shrink: 0;
     }
     @media (min-width: 768px) {
-      .donation-ong-img { max-width: 240px; }
+      .donation-ong-img { max-width: 300px; }
     }
 
-    .donation-text { text-align: left; max-width: 28rem; }
+    .donation-text { text-align: left; max-width: 32rem; }
 
     .donation-text h3 {
       font-family: 'Montserrat', sans-serif;
@@ -655,6 +652,58 @@
       line-height: 1.7;
     }
     .donation-text p strong { color: #fff; }
+
+    /* =====================================================
+       SECAO GARANTIA
+    ===================================================== */
+    .section-guarantee {
+      padding: 3rem 1rem;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #0f172a 100%);
+      color: #fff;
+      text-align: center;
+    }
+
+    .guarantee-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(1.5rem, 3.5vw, 1.875rem);
+      font-weight: 900;
+      margin-bottom: 2.5rem;
+      color: #facc15;
+    }
+    .guarantee-title span {
+      color: #fff;
+      font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+      font-weight: 500;
+      display: block;
+      margin-top: .5rem;
+    }
+
+    .guarantee-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      background: rgba(255,255,255,.05);
+      padding: 2rem;
+      border-radius: 1.5rem;
+      border: 1px solid rgba(255,255,255,.1);
+      max-width: 56rem;
+      margin: 0 auto;
+    }
+    @media (min-width: 768px) { .guarantee-inner { flex-direction: row; } }
+
+    .guarantee-img { width: 12rem; filter: drop-shadow(0 10px 15px rgba(0,0,0,.3)); }
+
+    .guarantee-text { text-align: left; max-width: 28rem; }
+    .guarantee-text h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 900;
+      margin-bottom: .75rem;
+    }
+    .guarantee-text p { color: #cbd5e1; font-size: 1.125rem; line-height: 1.625; }
+    .guarantee-text p strong { color: #fff; }
 
     /* =====================================================
        FOOTER
@@ -728,124 +777,68 @@
     🔥 OFERTA DE LANÇAMENTO: <span class="hl">89% DE DESCONTO</span> APENAS HOJE!
   </div>
 
-  <!-- HERO -->
+  <!-- ====================================================
+       HERO
+  ==================================================== -->
   <header class="hero">
     <div class="hero-bg-deco" aria-hidden="true"></div>
 
     <div class="hero-inner">
-      <!-- CHANGE 1: Título maior via clamp atualizado -->
       <h1 class="hero-title animate-slide-up">Super Kit São João 2026</h1>
 
-      <!-- CHANGE 1: Subtítulo maior via clamp atualizado -->
       <h2 class="hero-subtitle">
         Pronto em minutos: é só <strong>imprimir, montar e encantar</strong> todos os seus convidados!
       </h2>
 
       <div class="social-proof">
         <p class="sp-badge">🏆 Mais de <span>2.137 unidades</span> vendidas</p>
-        <!-- CHANGE 2: 5 estrelas abaixo do badge -->
-        <div class="sp-stars" aria-label="5 estrelas">
-          ★★★★★
-        </div>
+        <div class="sp-stars" aria-label="Avaliação 5 estrelas">★★★★★</div>
       </div>
 
-      <!-- CHANGE 3: Carrossel sem corte (object-fit: contain) e levemente maior -->
+      <!--
+        CARROSSEL: todas as imgs com URL direta R2 (sem cdn-cgi).
+        Set 1 original + Set 2 duplicado para loop continuo.
+        object-fit:contain + background branco = imagem inteira, sem corte.
+      -->
       <div class="carousel-container" aria-hidden="true">
         <div class="carousel-track">
 
           <!-- Set 1 -->
-          <img
-            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=280,quality=80,format=webp/Caixinhas-1%20(1).webp"
-            srcset="
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=280,quality=80,format=webp/Caixinhas-1%20(1).webp 280w,
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=560,quality=80,format=webp/Caixinhas-1%20(1).webp 560w
-            "
-            sizes="(max-width: 767px) 240px, 280px"
-            alt="Caixinhas" class="carousel-item"
-            width="280" height="220"
-            loading="eager" fetchpriority="high">
+          <img src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/Caixinhas-1%20(1).webp"
+               alt="Caixinhas" class="carousel-item"
+               width="280" height="220" loading="eager" fetchpriority="high">
 
-          <img
-            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=280,quality=80,format=webp/Lembrancinhas-1.webp"
-            srcset="
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=280,quality=80,format=webp/Lembrancinhas-1.webp 280w,
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=560,quality=80,format=webp/Lembrancinhas-1.webp 560w
-            "
-            sizes="(max-width: 767px) 240px, 280px"
-            alt="Lembrancinhas" class="carousel-item"
-            width="280" height="220"
-            loading="eager">
+          <img src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/Lembrancinhas-1.webp"
+               alt="Lembrancinhas" class="carousel-item"
+               width="280" height="220" loading="eager">
 
-          <img
-            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=280,quality=80,format=webp/Bamboles.webp"
-            srcset="
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=280,quality=80,format=webp/Bamboles.webp 280w,
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=560,quality=80,format=webp/Bamboles.webp 560w
-            "
-            sizes="(max-width: 767px) 240px, 280px"
-            alt="Bambolês" class="carousel-item"
-            width="280" height="220"
-            loading="lazy">
+          <img src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/Bamboles.webp"
+               alt="Bamboles" class="carousel-item"
+               width="280" height="220" loading="lazy">
 
-          <img
-            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=280,quality=80,format=webp/Frases-1.webp"
-            srcset="
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=280,quality=80,format=webp/Frases-1.webp 280w,
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=560,quality=80,format=webp/Frases-1.webp 560w
-            "
-            sizes="(max-width: 767px) 240px, 280px"
-            alt="Frases" class="carousel-item"
-            width="280" height="220"
-            loading="lazy">
+          <img src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/Frases-1.webp"
+               alt="Frases" class="carousel-item"
+               width="280" height="220" loading="lazy">
 
-          <!-- Set 2 — duplicado para loop infinito -->
-          <img
-            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=280,quality=80,format=webp/Caixinhas-1%20(1).webp"
-            srcset="
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=280,quality=80,format=webp/Caixinhas-1%20(1).webp 280w,
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=560,quality=80,format=webp/Caixinhas-1%20(1).webp 560w
-            "
-            sizes="(max-width: 767px) 240px, 280px"
-            alt="" class="carousel-item"
-            width="280" height="220"
-            loading="lazy" aria-hidden="true">
+          <!-- Set 2 (duplicado para loop — aria-hidden, lazy) -->
+          <img src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/Caixinhas-1%20(1).webp"
+               alt="" class="carousel-item"
+               width="280" height="220" loading="lazy" aria-hidden="true">
 
-          <img
-            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=280,quality=80,format=webp/Lembrancinhas-1.webp"
-            srcset="
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=280,quality=80,format=webp/Lembrancinhas-1.webp 280w,
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=560,quality=80,format=webp/Lembrancinhas-1.webp 560w
-            "
-            sizes="(max-width: 767px) 240px, 280px"
-            alt="" class="carousel-item"
-            width="280" height="220"
-            loading="lazy" aria-hidden="true">
+          <img src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/Lembrancinhas-1.webp"
+               alt="" class="carousel-item"
+               width="280" height="220" loading="lazy" aria-hidden="true">
 
-          <img
-            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=280,quality=80,format=webp/Bamboles.webp"
-            srcset="
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=280,quality=80,format=webp/Bamboles.webp 280w,
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=560,quality=80,format=webp/Bamboles.webp 560w
-            "
-            sizes="(max-width: 767px) 240px, 280px"
-            alt="" class="carousel-item"
-            width="280" height="220"
-            loading="lazy" aria-hidden="true">
+          <img src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/Bamboles.webp"
+               alt="" class="carousel-item"
+               width="280" height="220" loading="lazy" aria-hidden="true">
 
-          <img
-            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=280,quality=80,format=webp/Frases-1.webp"
-            srcset="
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=280,quality=80,format=webp/Frases-1.webp 280w,
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=560,quality=80,format=webp/Frases-1.webp 560w
-            "
-            sizes="(max-width: 767px) 240px, 280px"
-            alt="" class="carousel-item"
-            width="280" height="220"
-            loading="lazy" aria-hidden="true">
+          <img src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/Frases-1.webp"
+               alt="" class="carousel-item"
+               width="280" height="220" loading="lazy" aria-hidden="true">
         </div>
       </div>
 
-      <!-- CTA 1 -->
       <a href="https://pay.wiapy.com/6a0a5d8d0d76d746be336f6e" class="btn-pill">
         👉 QUERO COMPRAR E RECEBER AGORA!
       </a>
@@ -859,7 +852,9 @@
     </div>
   </header>
 
-  <!-- O QUE VOCÊ VAI RECEBER -->
+  <!-- ====================================================
+       O QUE VOCE VAI RECEBER
+  ==================================================== -->
   <section class="section-white">
     <div class="container">
       <div class="section-header">
@@ -895,7 +890,9 @@
     </div>
   </section>
 
-  <!-- BÔNUS -->
+  <!-- ====================================================
+       BONUS — URLs diretas R2, min-width:0 nos cards (mobile fix)
+  ==================================================== -->
   <section class="section-dark">
     <div class="container" style="text-align:center">
       <span class="bonus-badge">Presentes Inclusos</span>
@@ -904,15 +901,8 @@
 
       <div class="bonus-grid">
         <div class="bonus-card">
-          <img
-            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=320,quality=80,format=webp/Paineis.webp"
-            srcset="
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=160,quality=80,format=webp/Paineis.webp 160w,
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=320,quality=80,format=webp/Paineis.webp 320w,
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=480,quality=80,format=webp/Paineis.webp 480w
-            "
-            sizes="(max-width: 767px) calc(50vw - 1.5rem), 240px"
-            alt="Painéis" width="240" height="180" loading="lazy">
+          <img src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/Paineis.webp"
+               alt="Painéis" width="240" height="180" loading="lazy">
           <div class="bonus-card-footer">
             <p class="old-price">De <s>R$ 29,00</s></p>
             <p class="new-price">100% GRÁTIS</p>
@@ -920,15 +910,8 @@
         </div>
 
         <div class="bonus-card">
-          <img
-            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=320,quality=80,format=webp/Publicacoes-1.webp"
-            srcset="
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=160,quality=80,format=webp/Publicacoes-1.webp 160w,
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=320,quality=80,format=webp/Publicacoes-1.webp 320w,
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=480,quality=80,format=webp/Publicacoes-1.webp 480w
-            "
-            sizes="(max-width: 767px) calc(50vw - 1.5rem), 240px"
-            alt="Publicações" width="240" height="180" loading="lazy">
+          <img src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/Publicacoes-1.webp"
+               alt="Publicações" width="240" height="180" loading="lazy">
           <div class="bonus-card-footer">
             <p class="old-price">De <s>R$ 29,00</s></p>
             <p class="new-price">100% GRÁTIS</p>
@@ -936,15 +919,8 @@
         </div>
 
         <div class="bonus-card">
-          <img
-            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=320,quality=80,format=webp/Cartaz-A4.webp"
-            srcset="
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=160,quality=80,format=webp/Cartaz-A4.webp 160w,
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=320,quality=80,format=webp/Cartaz-A4.webp 320w,
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=480,quality=80,format=webp/Cartaz-A4.webp 480w
-            "
-            sizes="(max-width: 767px) calc(50vw - 1.5rem), 240px"
-            alt="Cartaz" width="240" height="180" loading="lazy">
+          <img src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/Cartaz-A4.webp"
+               alt="Cartaz A4" width="240" height="180" loading="lazy">
           <div class="bonus-card-footer">
             <p class="old-price">De <s>R$ 29,00</s></p>
             <p class="new-price">100% GRÁTIS</p>
@@ -952,15 +928,8 @@
         </div>
 
         <div class="bonus-card">
-          <img
-            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=320,quality=80,format=webp/Ilustracoes-1.webp"
-            srcset="
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=160,quality=80,format=webp/Ilustracoes-1.webp 160w,
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=320,quality=80,format=webp/Ilustracoes-1.webp 320w,
-              https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=480,quality=80,format=webp/Ilustracoes-1.webp 480w
-            "
-            sizes="(max-width: 767px) calc(50vw - 1.5rem), 240px"
-            alt="Ilustrações" width="240" height="180" loading="lazy">
+          <img src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/Ilustracoes-1.webp"
+               alt="Ilustrações" width="240" height="180" loading="lazy">
           <div class="bonus-card-footer">
             <p class="old-price">De <s>R$ 29,00</s></p>
             <p class="new-price">100% GRÁTIS</p>
@@ -970,7 +939,10 @@
     </div>
   </section>
 
-  <!-- PROVA SOCIAL -->
+  <!-- ====================================================
+       PROVA SOCIAL
+       Mantém URLs originais (incluem fallback direto no srcset 1024w)
+  ==================================================== -->
   <section class="section-amber">
     <div class="container">
       <h3 class="section-title" style="text-align:center;margin-bottom:3rem">
@@ -985,8 +957,7 @@
             https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/prova-1-1024x443%20(1).webp 1024w
           "
           sizes="(max-width: 767px) calc(100vw - 2rem), 33vw"
-          alt="Depoimento de cliente 1"
-          width="340" height="147" loading="lazy">
+          alt="Depoimento de cliente 1" width="340" height="147" loading="lazy">
 
         <img
           src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=400,quality=80,format=webp/prova-1024x443%20(1).webp"
@@ -996,8 +967,7 @@
             https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/prova-1024x443%20(1).webp 1024w
           "
           sizes="(max-width: 767px) calc(100vw - 2rem), 33vw"
-          alt="Depoimento de cliente 2"
-          width="340" height="147" loading="lazy">
+          alt="Depoimento de cliente 2" width="340" height="147" loading="lazy">
 
         <img
           src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/cdn-cgi/image/width=400,quality=80,format=webp/prova2-1-1024x443%20(1).webp"
@@ -1007,13 +977,14 @@
             https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/prova2-1-1024x443%20(1).webp 1024w
           "
           sizes="(max-width: 767px) calc(100vw - 2rem), 33vw"
-          alt="Depoimento de cliente 3"
-          width="340" height="147" loading="lazy">
+          alt="Depoimento de cliente 3" width="340" height="147" loading="lazy">
       </div>
     </div>
   </section>
 
-  <!-- OFERTA & CHECKOUT -->
+  <!-- ====================================================
+       OFERTA & CHECKOUT
+  ==================================================== -->
   <section class="section-offer">
     <div class="offer-box">
       <div class="offer-badge">OFERTA ESPECIAL</div>
@@ -1033,6 +1004,7 @@
           Valor Total:
           <span class="strike-through" style="color:var(--brand-secondary)">R$ 97,90</span>
         </p>
+        <!-- Preço verde via .price-main { color: var(--brand-accent) } -->
         <div class="price-main">
           <span class="price-currency">R$</span>10<span class="price-cents">,00</span>
         </div>
@@ -1053,14 +1025,16 @@
         </p>
       </div>
 
-      <!-- CHANGE 4: Botão sem o selo de cartões abaixo -->
       <a href="https://pay.wiapy.com/6a0a5d8d0d76d746be336f6e" class="btn-block">
         👉 SIM, QUERO GARANTIR POR R$ 10!
       </a>
     </div>
   </section>
 
-  <!-- CHANGE 5: Seção doação nova (ONG 4 Patas) -->
+  <!-- ====================================================
+       DOACAO — ONG 4 Patas
+       Imagem com dimensoes corretas 1001x233 (aspect-ratio preservado)
+  ==================================================== -->
   <section class="donation-section">
     <div class="donation-inner">
       <img
@@ -1068,18 +1042,44 @@
         onerror="this.style.display='none'"
         alt="ONG 4 Patas"
         class="donation-ong-img"
-        width="500" height="116"
+        width="1001" height="233"
         loading="lazy" decoding="async">
       <div class="donation-text">
         <h3>
           ❤️ <span>Sua Compra Salva Vidas</span> ❤️
-          <br><span style="color:var(--red);background:none;padding:0;transform:none">PARTE DO LUCRO É DOADO</span>
+          <br><span style="color:var(--red)">PARTE DO LUCRO É DOADO</span>
         </h3>
         <p>
           Parte do nosso lucro é destinado à <strong>ONG 4 Patas</strong>,
           que resgata e cuida de animais em situação de abandono e vulnerabilidade.
           Ao comprar, você também faz parte dessa corrente do bem. 🐾
         </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================
+       GARANTIA 7 DIAS
+  ==================================================== -->
+  <section class="section-guarantee">
+    <div style="max-width:56rem;margin:0 auto">
+      <h3 class="guarantee-title">
+        🛡️ Garantia Incondicional
+        <span>7 DIAS DE GARANTIA TOTAL</span>
+      </h3>
+      <div class="guarantee-inner">
+        <img src="https://meusuperkit.com/wp-content/uploads/2026/01/garantia-7dias.webp"
+             alt="Garantia de 7 Dias" class="guarantee-img"
+             width="192" height="192" loading="lazy">
+        <div class="guarantee-text">
+          <h4>Risco Zero para você!</h4>
+          <p>
+            Ainda não tem certeza? Não se preocupe. Se o conteúdo não for
+            exatamente o que você esperava,
+            <strong>você tem 7 dias de garantia incondicional</strong>.
+            Devolveremos 100% do seu dinheiro sem burocracia, basta um email.
+          </p>
+        </div>
       </div>
     </div>
   </section>
@@ -1123,6 +1123,7 @@
       'use strict';
 
       function init() {
+        /* Geolocalização para cta-cidade */
         var els = document.querySelectorAll('.cta-cidade');
         if (els.length) {
           fetch('https://ipapi.co/json/')
@@ -1139,6 +1140,7 @@
             .catch(function () {});
         }
 
+        /* Toast de compras simuladas */
         var nomes  = ['Maria Silva','Ana Clara','Juliana','Beatriz','Camila C.','Fernanda','Gabriela','Larissa M.','Luana','Adriana','Amanda','Bruna','Carla','Carolina','Letícia','Mariana','Patrícia','Renata','Aline'];
         var emojis = ['🎁','🛍️','✨','🔥','🎉','🥰'];
         var toast  = document.getElementById('purchase-toast');
@@ -1155,6 +1157,7 @@
           setInterval(mostrarToast, Math.floor(Math.random() * 13000) + 12000);
         }, 3000);
 
+        /* Barra de urgência */
         var pct  = 92;
         var bar  = document.getElementById('progress-bar');
         var utxt = document.getElementById('urgency-text');

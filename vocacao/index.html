@@ -4,35 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Bússola Vocacional - Descubra seu Código Oculto</title>
-    
-    <!-- UTMIFY SCRIPT -->
-    <script
-      src="https://cdn.utmify.com.br/scripts/utms/latest.js"
-      data-utmify-prevent-xcod-sck
-      data-utmify-prevent-subids
-      async
-      defer
-    ></script>
 
-    <!-- META PIXEL SCRIPT -->
-    <script>
-    !function(f,b,e,v,n,t,s){
-        if(f.fbq)return;
-        n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];
-        t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t,s)
-    }(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init','1240448141301183'); 
-    fbq('track','PageView');
-    </script>
-    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1240448141301183&ev=PageView&noscript=1"/></noscript>
-
-    <!-- FONTES MÍSTICAS -->
+    <!-- FONTES MÍSTICAS OTIMIZADAS (Assíncronas para não bloquear renderização) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Montserrat:wght@300;400;600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Montserrat:wght@300;400;600;700&display=swap" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Montserrat:wght@300;400;600;700&display=swap">
+    </noscript>
 
     <style>
         /* ==========================================================================
@@ -239,6 +219,7 @@
 
 </div>
 
+<!-- SCRIPTS DE FUNCIONAMENTO DO FUNIL -->
 <script>
     /* ==========================================================================
        LÓGICA DO FUNIL E QUIZ
@@ -388,7 +369,7 @@
         window.scrollTo(0, 0);
     }
 
-    // Redirecionamento para o Checkout da Eduzz/Kiwify/Hotmart
+    // Redirecionamento para o Checkout
     function redirectToCheckout() {
         const btn = document.getElementById('btn-checkout');
         btn.innerHTML = "Redirecionando...";
@@ -402,5 +383,26 @@
         window.location.href = "https://checkout.bemestarbrasil.online";
     }
 </script>
+
+<!-- SCRIPTS DE TRACKING (Diferidos para não bloquear a renderização) -->
+<script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck data-utmify-prevent-subids></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Atraso intencional de 500ms no carregamento do Pixel para otimizar LCP e TBT (PageSpeed)
+        setTimeout(function() {
+            !function(f,b,e,v,n,t,s){
+            if(f.fbq)return;
+            n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];
+            t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)
+            }(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init','1240448141301183'); 
+            fbq('track','PageView');
+        }, 500); 
+    });
+</script>
+
 </body>
 </html>

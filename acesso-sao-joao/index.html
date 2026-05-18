@@ -1,1251 +1,1082 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Super Kit São João 2026 - A Melhor Decoração</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="dns-prefetch" href="https://meusuperkit.com">
-  <link rel="dns-prefetch" href="https://pay.wiapy.com">
-
-  <link rel="preload" as="style"
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap"
-    onload="this.onload=null;this.rel='stylesheet'">
-  <noscript>
-    <link rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap">
-  </noscript>
-
-  <!-- Facebook Pixel -->
-  <script>
-    !function(f,b,e,v,n,t,s){
-      if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-      n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s)}(window,document,'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init','27342339312030354');
-    fbq('track','PageView');
-  </script>
-  <noscript>
-    <img height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=27342339312030354&ev=PageView&noscript=1">
-  </noscript>
-
-  <!-- Utmify -->
-  <script src="https://cdn.utmify.com.br/scripts/utms/latest.js"
-    data-utmify-prevent-xcod-sck
-    data-utmify-prevent-subids
-    async defer></script>
-
-  <link rel="preload" as="image"
-    href="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/Caixinhas-1%20(1).webp">
-
-  <style>
-    /* =====================================================
-       RESET & BASE
-    ===================================================== */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --brand-dark:      #551F13;
-      --brand-primary:   #d97706;
-      --brand-secondary: #dc2626;
-      --brand-accent:    #22c55e;
-      --amber-50:        #fffbeb;
-      --amber-100:       #fef3c7;
-      --amber-200:       #fde68a;
-      --red:             #dc2626;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background-color: var(--amber-50);
-      color: #1e293b;
-      font-family: 'Inter', sans-serif;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
-
-    ::selection { background-color: var(--brand-primary); color: #fff; }
-
-    img { display: block; max-width: 100%; }
-    a   { text-decoration: none; }
-    ul  { list-style: none; }
-
-    /* =====================================================
-       ANIMAÇÕES
-    ===================================================== */
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50%       { opacity: .5; }
-    }
-    @keyframes heartbeat {
-      0%,  100% { transform: scale(1); }
-      10%        { transform: scale(1.05); }
-      20%        { transform: scale(1); }
-      30%        { transform: scale(1.05); }
-      40%        { transform: scale(1); }
-    }
-    @keyframes slideUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes strike {
-      from { transform: translateY(-50%) scaleX(0); }
-      to   { transform: translateY(-50%) scaleX(1); }
-    }
-    @keyframes scroll-carousel {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
-    }
-    @keyframes progress-stripes {
-      from { background-position: 1rem 0; }
-      to   { background-position: 0 0; }
-    }
-
-    .animate-slide-up  { animation: slideUp  0.5s ease-out forwards; }
-    .animate-heartbeat { animation: heartbeat 1.5s ease-in-out infinite; }
-    .animate-pulse     { animation: pulse     2s  cubic-bezier(0.4,0,0.6,1) infinite; }
-
-    /* =====================================================
-       BARRA TOPO
-    ===================================================== */
-    .top-alert {
-      background-color: var(--brand-dark);
-      color: #fff;
-      text-align: center;
-      padding: .5rem 1rem;
-      font-size: .875rem;
-      font-weight: 600;
-      letter-spacing: .05em;
-    }
-    .top-alert .hl { color: #facc15; }
-
-    /* =====================================================
-       HERO
-    ===================================================== */
-    .hero {
-      background: linear-gradient(to bottom, #fffbeb, #fef3c7);
-      padding: 3rem 1rem;
-      position: relative;
-      overflow: hidden;
-    }
-    @media (min-width: 768px) { .hero { padding: 5rem 1rem; } }
-
-    .hero-bg-deco {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 8rem;
-      opacity: .2;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cpath d='M0 0l40 0v40l-20-20-20 20z' fill='%23d97706' fill-opacity='.4' fill-rule='evenodd'/%3E%3C/svg%3E");
-      pointer-events: none;
-    }
-
-    .hero-inner {
-      max-width: 56rem;
-      margin: 0 auto;
-      text-align: center;
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-title {
-      font-family: 'Montserrat', sans-serif;
-      font-size: clamp(2.5rem, 6.5vw, 4.75rem);
-      font-weight: 900;
-      color: var(--brand-dark);
-      line-height: 1.15;
-      margin-bottom: 1.5rem;
-    }
-
-    .hero-subtitle {
-      font-size: clamp(1.2rem, 3vw, 1.875rem);
-      font-weight: 500;
-      color: #475569;
-      margin: 0 auto 2rem;
-      max-width: 42rem;
-    }
-    .hero-subtitle strong { color: var(--brand-secondary); }
-
-    .social-proof {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: .5rem;
-      margin-bottom: 2rem;
-    }
-    .sp-badge {
-      font-size: .875rem;
-      font-weight: 700;
-      color: #475569;
-      background: rgba(255,255,255,.6);
-      padding: .25rem .75rem;
-      border-radius: 9999px;
-      box-shadow: 0 1px 2px rgba(0,0,0,.05);
-      border: 1px solid #fef3c7;
-    }
-    .sp-badge span { color: var(--brand-secondary); }
-
-    .sp-stars {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 4px;
-      font-size: 1.5rem;
-      line-height: 1;
-      color: #f59e0b;
-      letter-spacing: 2px;
-    }
-
-    /* =====================================================
-       CARROSSEL INFINITO
-    ===================================================== */
-    .carousel-container {
-      width: 100%;
-      overflow: hidden;
-      position: relative;
-      margin-bottom: 2.5rem;
-      -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
-              mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
-    }
-    .carousel-track {
-      display: flex;
-      width: max-content;
-      animation: scroll-carousel 28s linear infinite;
-    }
-    .carousel-track:hover { animation-play-state: paused; }
-
-    .carousel-item {
-      width: 320px;
-      height: 394px;
-      margin: 0 12px;
-      flex-shrink: 0;
-      border-radius: 1rem;
-      box-shadow: 0 10px 25px -5px rgba(0,0,0,.2);
-      border: 4px solid #fff;
-      object-fit: contain;
-      background: #fff;
-      transition: transform .3s ease;
-    }
-    .carousel-item:hover { transform: scale(1.05); }
-
-    @media (max-width: 767px) {
-      .carousel-item {
-        width: 260px;
-        height: 320px;
-      }
-    }
-
-    /* =====================================================
-       BOTÕES CTA
-    ===================================================== */
-    .btn-pill {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      padding: 1.25rem 2rem;
-      font-size: 1.125rem;
-      font-weight: 700;
-      color: #fff;
-      background-color: var(--brand-accent);
-      border-radius: 9999px;
-      box-shadow: 0 10px 20px rgba(34,197,94,.4);
-      transition: background-color .2s;
-      animation: heartbeat 1.5s ease-in-out infinite;
-    }
-    @media (min-width: 768px) {
-      .btn-pill { width: auto; font-size: 1.25rem; }
-    }
-    .btn-pill:hover { background-color: #16a34a; }
-
-    .btn-block {
-      display: block;
-      width: 100%;
-      padding: 1.5rem 2rem;
-      font-family: 'Montserrat', sans-serif;
-      font-size: clamp(1.125rem, 2.5vw, 1.5rem);
-      font-weight: 900;
-      color: #fff;
-      background-color: var(--brand-accent);
-      border-radius: 1rem;
-      text-align: center;
-      box-shadow: 0 15px 30px rgba(34,197,94,.3);
-      transition: background-color .2s;
-      animation: heartbeat 1.5s ease-in-out infinite;
-      margin-bottom: 1.5rem;
-    }
-    .btn-block:hover { background-color: #16a34a; }
-
-    .secure-msg {
-      margin-top: 1rem;
-      font-size: .875rem;
-      color: #64748b;
-      font-weight: 500;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: .5rem;
-    }
-
-    /* =====================================================
-       SEÇÃO BRANCA
-    ===================================================== */
-    .section-white {
-      padding: 4rem 1rem;
-      background: #fff;
-    }
-    @media (min-width: 768px) { .section-white { padding: 6rem 1rem; } }
-
-    .container { max-width: 64rem; margin: 0 auto; }
-
-    .section-header { text-align: center; margin-bottom: 3rem; }
-
-    .section-title {
-      font-family: 'Montserrat', sans-serif;
-      font-size: clamp(1.75rem, 4vw, 2.25rem);
-      font-weight: 800;
-      color: var(--brand-dark);
-      margin-bottom: 1rem;
-    }
-    .section-subtitle {
-      font-size: clamp(.95rem, 2vw, 1.125rem);
-      font-weight: 500;
-      color: #475569;
-    }
-    .section-subtitle u { color: var(--brand-secondary); font-weight: 700; }
-
-    .kit-box {
-      background: #fffbeb;
-      border-radius: 1.5rem;
-      padding: 2rem;
-      border: 1px solid var(--amber-200);
-      box-shadow: 0 1px 2px rgba(0,0,0,.05);
-      max-width: 56rem;
-      margin: 0 auto;
-    }
-    @media (min-width: 768px) { .kit-box { padding: 3rem; } }
-
-    .kit-box-title {
-      font-family: 'Montserrat', sans-serif;
-      font-size: clamp(1.25rem, 3vw, 1.875rem);
-      font-weight: 700;
-      color: var(--brand-dark);
-      margin-bottom: 2rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid var(--amber-200);
-      text-align: center;
-    }
-
-    .kit-list {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1rem;
-      max-width: 48rem;
-      margin: 0 auto;
-    }
-    @media (min-width: 640px) { .kit-list { grid-template-columns: 1fr 1fr; } }
-
-    .kit-list li {
-      display: flex;
-      align-items: center;
-      gap: .75rem;
-      background: #fff;
-      padding: .75rem;
-      border-radius: .75rem;
-      box-shadow: 0 1px 3px rgba(0,0,0,.08);
-      font-size: 1.0625rem;
-      font-weight: 500;
-      color: #374151;
-    }
-    .kit-list li .emoji { font-size: 1.5rem; }
-
-    .kit-box-footer {
-      margin-top: 2.5rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid var(--amber-200);
-      text-align: center;
-    }
-    .much-more {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 900;
-      font-size: 1.5rem;
-      color: var(--brand-secondary);
-      animation: pulse 2s cubic-bezier(0.4,0,0.6,1) infinite;
-    }
-
-    .section-cta { margin-top: 3rem; text-align: center; }
-
-    /* =====================================================
-       SEÇÃO ESCURA — BÔNUS
-    ===================================================== */
-    .section-dark {
-      padding: 4rem 1rem;
-      background-color: var(--brand-dark);
-      color: #fff;
-    }
-    @media (min-width: 768px) { .section-dark { padding: 6rem 1rem; } }
-
-    .bonus-badge {
-      display: inline-block;
-      padding: .25rem .75rem;
-      border-radius: 9999px;
-      background-color: #eab308;
-      color: var(--brand-dark);
-      font-weight: 700;
-      font-size: .875rem;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      margin-bottom: .75rem;
-    }
-    .bonus-title {
-      font-family: 'Montserrat', sans-serif;
-      font-size: clamp(1.875rem, 5vw, 3rem);
-      font-weight: 900;
-      margin-bottom: 1rem;
-    }
-    .bonus-subtitle { color: #fde68a; font-size: 1.125rem; }
-
-    .bonus-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      margin-top: 3rem;
-    }
-    @media (min-width: 768px) {
-      .bonus-grid { grid-template-columns: repeat(4, 1fr); gap: 2rem; }
-    }
-
-    .bonus-card {
-      background: rgba(255,255,255,.1);
-      padding: 1rem;
-      border-radius: 1rem;
-      border: 1px solid rgba(255,255,255,.2);
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-      transition: transform .3s;
-    }
-    .bonus-card:hover { transform: translateY(-8px); }
-
-    .bonus-card img {
-      width: 100%;
-      aspect-ratio: 240 / 180;
-      border-radius: .5rem;
-      margin-bottom: 1rem;
-      filter: drop-shadow(0 4px 6px rgba(0,0,0,.3));
-      object-fit: cover;
-    }
-    .bonus-card-footer { margin-top: auto; }
-    .bonus-card .old-price { color: #94a3b8; font-size: .875rem; margin-bottom: .25rem; }
-    .bonus-card .new-price { font-weight: 900; font-size: 1.25rem; color: #facc15; }
-
-    /* =====================================================
-       SEÇÃO AMBER — PROVA SOCIAL
-    ===================================================== */
-    .section-amber { padding: 4rem 1rem; background: #fffbeb; }
-
-    .testimonials {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-      justify-content: center;
-    }
-    @media (min-width: 768px) { .testimonials { flex-direction: row; } }
-
-    .testimonials img {
-      width: 100%;
-      aspect-ratio: 1024 / 443;
-      border-radius: .75rem;
-      box-shadow: 0 4px 6px rgba(0,0,0,.1);
-      border: 2px solid #fff;
-      object-fit: cover;
-    }
-    @media (min-width: 768px) { .testimonials img { width: 33.333%; } }
-
-    /* =====================================================
-       SEÇÃO OFERTA
-    ===================================================== */
-    .section-offer { padding: 4rem 1rem; background: #fff; }
-    @media (min-width: 768px) { .section-offer { padding: 6rem 1rem; } }
-
-    .offer-box {
-      max-width: 48rem;
-      margin: 0 auto;
-      text-align: center;
-      border: 4px solid var(--brand-accent);
-      border-radius: 1.5rem;
-      padding: 1.5rem;
-      box-shadow: 0 25px 50px rgba(34,197,94,.15);
-      position: relative;
-      background: #fff;
-    }
-    @media (min-width: 768px) { .offer-box { padding: 3rem; } }
-
-    .offer-badge {
-      position: absolute;
-      top: -1.5rem;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--brand-accent);
-      color: #fff;
-      font-weight: 700;
-      padding: .5rem 1.5rem;
-      border-radius: 9999px;
-      font-size: 1.125rem;
-      box-shadow: 0 4px 6px rgba(0,0,0,.12);
-      white-space: nowrap;
-    }
-
-    .offer-title {
-      font-family: 'Montserrat', sans-serif;
-      font-size: clamp(1.25rem, 3vw, 1.875rem);
-      font-weight: 900;
-      color: var(--brand-dark);
-      margin: 1rem 0 1.5rem;
-    }
-
-    .offer-checklist {
-      text-align: left;
-      max-width: 24rem;
-      margin: 0 auto 2rem;
-      display: flex;
-      flex-direction: column;
-      gap: .75rem;
-      font-weight: 500;
-      font-size: 1.125rem;
-      color: #374151;
-    }
-    .offer-checklist li { display: flex; align-items: center; gap: .5rem; }
-    .offer-checklist strong { color: var(--brand-dark); }
-
-    .price-box {
-      background: #f8fafc;
-      border-radius: .75rem;
-      padding: 1.5rem;
-      margin-bottom: 2rem;
-      border: 1px solid #e2e8f0;
-    }
-    .price-label  { color: #64748b; font-weight: 500; margin-bottom: .5rem; }
-    .price-old    { font-size: 1.25rem; font-weight: 700; color: #94a3b8; margin-bottom: .5rem; }
-    .price-main {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 900;
-      font-size: clamp(4rem, 12vw, 5.5rem);
-      color: var(--brand-accent);
-      line-height: 1;
-      margin: 1rem 0;
-    }
-    .price-currency { font-size: 1.875rem; vertical-align: top; }
-    .price-cents    { font-size: 2.25rem; }
-    .price-urgency  {
-      color: var(--brand-secondary);
-      font-weight: 700;
-      animation: pulse 2s cubic-bezier(0.4,0,0.6,1) infinite;
-    }
-
-    .strike-through { position: relative; display: inline-block; }
-    .strike-through::after {
-      content: "";
-      position: absolute;
-      left: 0; top: 50%;
-      height: 3px;
-      background: #dc2626;
-      width: 100%;
-      transform-origin: left center;
-      transform: translateY(-50%) scaleX(0);
-      animation: strike 2s ease-in-out 1s forwards;
-    }
-
-    .urgency-wrap { margin-bottom: 2rem; }
-    .urgency-header {
-      display: flex;
-      justify-content: space-between;
-      font-size: .875rem;
-      font-weight: 700;
-      color: var(--brand-secondary);
-      margin-bottom: .5rem;
-    }
-    .progress-track {
-      width: 100%;
-      background: #e2e8f0;
-      border-radius: 9999px;
-      height: 1rem;
-      overflow: hidden;
-    }
-    .progress-fill {
-      height: 1rem;
-      border-radius: 9999px;
-      background-color: var(--brand-secondary);
-      background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
-      background-size: 1rem 1rem;
-      animation: progress-stripes 1s linear infinite;
-      transition: width 1s ease-out;
-      width: 92%;
-    }
-    .cta-cidade       { margin-top: .75rem; font-size: .875rem; color: #475569; font-weight: 500; }
-    .cta-cidade.hidden { display: none; }
-    .cta-cidade .num   { color: var(--brand-secondary); font-weight: 700; }
-    .cta-cidade .cidade{ font-weight: 700; color: var(--brand-dark); }
-
-    /* =====================================================
-       SEÇÃO DOAÇÃO
-    ===================================================== */
-    .donation-section {
-      padding: 4rem 1rem;
-      background: #fff;
-      border-top: 1px solid #e2e8f0;
-    }
-
-    .donation-inner {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 2.5rem;
-      max-width: 52rem;
-      margin: 0 auto;
-      text-align: center;
-    }
-    @media (min-width: 768px) {
-      .donation-inner { flex-direction: row; align-items: center; text-align: left; }
-    }
-
-    .donation-img-wrap {
-      flex-shrink: 0;
-      width: 100%;
-      max-width: 340px;
-      background: transparent;
-      border: none;
-      border-radius: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.75rem;
-      text-align: center;
-    }
-    @media (min-width: 768px) {
-      .donation-img-wrap { max-width: 300px; }
-    }
-
-    .donation-ong-img {
-      width: 100%;
-      max-width: 300px;
-      border-radius: .625rem;
-      filter: drop-shadow(0 4px 8px rgba(0,0,0,.08));
-    }
-
-    .donation-ong-label {
-      font-size: .8125rem;
-      font-weight: 700;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-      color: #16a34a;
-      background: #dcfce7;
-      padding: .25rem .875rem;
-      border-radius: 9999px;
-    }
-
-    .donation-text {
-      text-align: left;
-      flex: 1;
-    }
-
-    .donation-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: .4rem;
-      font-size: .8125rem;
-      font-weight: 700;
-      letter-spacing: .07em;
-      text-transform: uppercase;
-      color: #0369a1;
-      background: #e0f2fe;
-      padding: .3rem 1rem;
-      border-radius: 9999px;
-      margin-bottom: 1rem;
-    }
-
-    .donation-text h3 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: clamp(1.25rem, 3vw, 1.625rem);
-      font-weight: 900;
-      margin-bottom: .875rem;
-      line-height: 1.35;
-      color: #0f172a;
-    }
-    .donation-text h3 em {
-      font-style: normal;
-      color: #16a34a;
-    }
-
-    .donation-text p {
-      color: #475569;
-      font-size: 1rem;
-      line-height: 1.75;
-      margin-bottom: 1.25rem;
-    }
-    .donation-text p strong { color: #0f172a; }
-
-    .donation-highlight {
-      display: flex;
-      align-items: center;
-      gap: .75rem;
-      background: #f0fdf4;
-      border: 1px solid #bbf7d0;
-      border-left: 4px solid #22c55e;
-      border-radius: .625rem;
-      padding: .875rem 1rem;
-      font-size: .9375rem;
-      font-weight: 600;
-      color: #166534;
-    }
-    .donation-highlight .dh-icon { font-size: 1.25rem; flex-shrink: 0; }
-
-    /* =====================================================
-       SEÇÃO GARANTIA
-    ===================================================== */
-    .guarantee-section {
-      padding: 4rem 1rem;
-      background: #fffbeb;
-      border-top: 1px solid var(--amber-200);
-    }
-
-    .guarantee-inner {
-      max-width: 52rem;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 2.5rem;
-      text-align: center;
-    }
-    @media (min-width: 768px) {
-      .guarantee-inner {
-        flex-direction: row;
-        align-items: center;
-        text-align: left;
-      }
-    }
-
-    .guarantee-inner > img {
-      flex-shrink: 0;
-      width: 200px;
-      height: 200px;
-      object-fit: contain;
-      filter: drop-shadow(0 8px 20px rgba(0,0,0,.15));
-    }
-    @media (min-width: 768px) {
-      .guarantee-inner > img { width: 220px; height: 220px; }
-    }
-
-    .guarantee-txt { flex: 1; }
-
-    .g-label {
-      display: inline-block;
-      font-size: .8125rem;
-      font-weight: 700;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      color: #0369a1;
-      background: #e0f2fe;
-      padding: .3rem 1rem;
-      border-radius: 9999px;
-      margin-bottom: .875rem;
-    }
-
-    .g-title {
-      font-family: 'Montserrat', sans-serif;
-      font-size: clamp(1.375rem, 3vw, 1.875rem);
-      font-weight: 900;
-      color: var(--brand-dark);
-      margin-bottom: .875rem;
-    }
-
-    .guarantee-txt p:last-child {
-      color: #475569;
-      font-size: 1rem;
-      line-height: 1.75;
-    }
-    .guarantee-txt p:last-child strong { color: var(--brand-dark); }
-
-    /* =====================================================
-       FOOTER
-    ===================================================== */
-    footer {
-      background: #111;
-      color: #94a3b8;
-      padding: 3rem 1rem;
-      text-align: center;
-      font-size: .875rem;
-    }
-    .footer-logo {
-      margin: 0 auto 1.5rem;
-      height: 2rem;
-      object-fit: contain;
-      opacity: .5;
-      filter: grayscale(1);
-      transition: filter .3s, opacity .3s;
-    }
-    .footer-logo:hover { filter: grayscale(0); opacity: 1; }
-
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      font-size: .75rem;
-      margin-top: 1rem;
-      flex-wrap: wrap;
-    }
-    .footer-links a { color: inherit; transition: color .2s; }
-    .footer-links a:hover { color: #fff; }
-
-    .footer-disclaimer {
-      margin: 2rem auto 0;
-      font-size: .75rem;
-      opacity: .4;
-      max-width: 42rem;
-      line-height: 1.5;
-    }
-
-    /* =====================================================
-       TOAST
-    ===================================================== */
-    .toast-notification {
-      position: fixed;
-      bottom: 20px;
-      left: 20px;
-      background-color: #1e293b;
-      color: #fff;
-      padding: 12px 20px;
-      border-radius: 8px;
-      box-shadow: 0 10px 25px -5px rgba(0,0,0,.3);
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      z-index: 9999;
-      transform: translateY(150%);
-      transition: transform .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      max-width: calc(100vw - 40px);
-    }
-    .toast-notification.show { transform: translateY(0); }
-    .toast-icon { background: #22c55e; border-radius: 50%; padding: 4px; flex-shrink: 0; display: flex; }
-    .toast-title { font-weight: 700; font-size: .875rem; }
-    .toast-time  { font-size: .75rem; color: #94a3b8; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Kit São João 2026 ✦</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --red:      #C0321A;
+  --red-dk:   #7A1A08;
+  --red-lt:   #F5C4B0;
+  --orange:   #E06A1A;
+  --yellow:   #F0B020;
+  --yellow-lt:#FDF3D0;
+  --yellow-dk:#7A5800;
+  --cream:    #FDF8F0;
+  --blush:    #FEF4E8;
+  --text:     #2A1208;
+  --muted:    #8A6040;
+  --border:   rgba(224,106,26,0.18);
+  --r-lg:     16px;
+  --r-xl:     24px;
+  --r-pill:   999px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── BANDEIRINHAS ── */
+.bandeirinhas {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 28px;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 3;
+}
+.bandeirinhas svg { display: block; width: 100%; }
+
+/* ── ONBOARDING ── */
+#onboarding {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--red-dk);
+}
+
+.ob-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Falling stars/sparks */
+.ob-spark {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--yellow);
+  animation: sparkFall linear infinite;
+}
+@keyframes sparkFall {
+  0%   { transform: translateY(-20px) rotate(0deg) scale(0.5); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 0.5; }
+  100% { transform: translateY(110vh) rotate(540deg) scale(1.2); opacity: 0; }
+}
+
+/* Bandeirinha strip across onboarding */
+.ob-bandeiras {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 30px;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.ob-slides {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 420px;
+  padding: 0 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.ob-slide {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  animation: slideIn 0.5s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+.ob-slide.active { display: flex; }
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(30px) scale(0.95); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.ob-emoji {
+  font-size: 72px;
+  margin-bottom: 20px;
+  animation: floatEmoji 3s ease-in-out infinite;
+  filter: drop-shadow(0 8px 24px rgba(0,0,0,0.35));
+}
+@keyframes floatEmoji {
+  0%,100% { transform: translateY(0px) rotate(-4deg); }
+  50%      { transform: translateY(-14px) rotate(4deg); }
+}
+
+.ob-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(26px, 7vw, 34px);
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 14px;
+  font-weight: 600;
+}
+.ob-title em { color: var(--yellow); font-style: italic; }
+
+.ob-desc {
+  font-size: 15px;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.65;
+  max-width: 320px;
+  margin-bottom: 32px;
+  font-weight: 300;
+}
+
+.ob-dots { display: flex; gap: 8px; margin-bottom: 28px; }
+.ob-dot {
+  width: 6px; height: 6px;
+  border-radius: 3px;
+  background: rgba(255,255,255,0.3);
+  transition: width 0.3s ease, background 0.3s ease;
+}
+.ob-dot.active { width: 20px; background: var(--yellow); }
+
+.ob-btn {
+  background: var(--yellow);
+  color: var(--red-dk);
+  border: none;
+  border-radius: var(--r-pill);
+  padding: 16px 40px;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 4px 24px rgba(240,176,32,0.4);
+  letter-spacing: 0.2px;
+  width: 100%;
+  max-width: 280px;
+}
+.ob-btn:active { transform: scale(0.97); }
+.ob-btn.secondary {
+  background: rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.8);
+  box-shadow: none;
+  margin-top: 10px;
+  padding: 12px 32px;
+  font-weight: 400;
+}
+
+.ob-skip {
+  position: absolute;
+  top: 40px; right: 20px;
+  color: rgba(255,255,255,0.45);
+  font-size: 13px;
+  cursor: pointer;
+  padding: 8px 12px;
+  z-index: 10;
+  font-family: 'DM Sans', sans-serif;
+}
+.ob-counter {
+  position: absolute;
+  top: 44px; left: 24px;
+  color: rgba(255,255,255,0.35);
+  font-size: 13px;
+  font-weight: 300;
+  z-index: 10;
+}
+
+.ob-formats {
+  display: flex; gap: 8px; flex-wrap: wrap;
+  justify-content: center; margin-bottom: 32px;
+}
+.ob-badge {
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  border-radius: var(--r-pill);
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  border: 1px solid rgba(255,255,255,0.2);
+  animation: badgePop 0.4s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+@keyframes badgePop {
+  from { opacity: 0; transform: scale(0.7); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.ob-checklist {
+  display: flex; flex-direction: column; gap: 12px;
+  width: 100%; margin-bottom: 32px;
+}
+.ob-check-item {
+  display: flex; align-items: center; gap: 14px;
+  background: rgba(255,255,255,0.1);
+  border-radius: var(--r-lg);
+  padding: 14px 16px; text-align: left;
+  animation: slideIn 0.5s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+.ob-check-icon { font-size: 24px; flex-shrink: 0; width: 36px; height: 36px; background: rgba(255,255,255,0.12); border-radius: var(--r-lg); display: flex; align-items: center; justify-content: center; }
+.ob-check-text { color: #fff; font-size: 14px; line-height: 1.4; }
+.ob-check-text strong { display: block; font-weight: 500; }
+.ob-check-text span { color: rgba(255,255,255,0.6); font-size: 12px; font-weight: 300; }
+
+#onboarding.exit { animation: overlayExit 0.6s cubic-bezier(0.4,0,0.2,1) forwards; }
+@keyframes overlayExit {
+  0%   { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.04); pointer-events: none; }
+}
+
+/* ── MAIN APP ── */
+#app {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  min-height: 100vh;
+}
+#app.visible { opacity: 1; transform: translateY(0); }
+
+/* Header */
+.app-header {
+  background: linear-gradient(160deg, var(--red-dk) 0%, var(--red) 50%, var(--orange) 100%);
+  position: relative;
+  overflow: hidden;
+  padding: 52px 20px 56px;
+  text-align: center;
+}
+
+.header-orbs { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.orb { position: absolute; border-radius: 50%; filter: blur(50px); opacity: 0.2; }
+.orb-1 { width: 220px; height: 220px; background: var(--yellow); top: -60px; right: -40px; }
+.orb-2 { width: 160px; height: 160px; background: var(--red-lt); bottom: -40px; left: -20px; }
+.orb-3 { width: 100px; height: 100px; background: #fff; top: 40%; left: 15%; }
+
+/* Festive fire/light at bottom of header */
+.header-fire {
+  position: absolute;
+  bottom: -1px; left: 0; right: 0;
+  height: 40px;
+  overflow: hidden;
+  line-height: 0;
+}
+.header-fire svg { display: block; width: 100%; }
+
+.header-eyebrow {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: var(--r-pill);
+  padding: 5px 14px;
+  font-size: 11px; color: rgba(255,255,255,0.85);
+  letter-spacing: 1.2px; text-transform: uppercase; font-weight: 500;
+  margin-bottom: 16px; position: relative; z-index: 2;
+}
+.header-eyebrow::before {
+  content: '';
+  width: 6px; height: 6px; background: #FFD700;
+  border-radius: 50%; animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%,100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.4; transform: scale(0.6); }
+}
+
+.header-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(30px, 8vw, 46px);
+  color: #fff; line-height: 1.1;
+  margin-bottom: 10px; position: relative; z-index: 2;
+}
+.header-title em { color: var(--yellow); font-style: italic; }
+
+.header-sub {
+  font-size: 14px; color: rgba(255,255,255,0.65);
+  font-weight: 300; position: relative; z-index: 2;
+}
+
+.header-stats {
+  display: flex; gap: 0;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  margin: 24px auto 0; max-width: 360px;
+  position: relative; z-index: 2;
+  backdrop-filter: blur(10px);
+}
+.stat-item { flex: 1; padding: 14px 8px; text-align: center; border-right: 1px solid rgba(255,255,255,0.1); }
+.stat-item:last-child { border-right: none; }
+.stat-num { display: block; font-family: 'Playfair Display', serif; font-size: 22px; color: #fff; font-weight: 600; }
+.stat-label { font-size: 10px; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 0.8px; font-weight: 500; }
+
+/* Wave */
+.wave-divider { margin-top: -1px; line-height: 0; background: var(--cream); }
+.wave-divider svg { display: block; width: 100%; }
+
+/* Search */
+.search-wrap { padding: 0 16px; margin: -24px auto 20px; max-width: 600px; position: relative; z-index: 10; }
+.search-box {
+  display: flex; align-items: center; gap: 10px;
+  background: #fff; border-radius: var(--r-pill);
+  padding: 14px 20px;
+  box-shadow: 0 4px 32px rgba(224,106,26,0.15), 0 1px 4px rgba(0,0,0,0.08);
+  border: 1.5px solid transparent;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.search-box:focus-within {
+  border-color: var(--orange);
+  box-shadow: 0 4px 32px rgba(224,106,26,0.25), 0 0 0 4px rgba(224,106,26,0.08);
+}
+.search-icon { color: var(--orange); font-size: 18px; flex-shrink: 0; }
+.search-box input {
+  border: none; outline: none;
+  font-size: 15px; font-family: 'DM Sans', sans-serif;
+  color: var(--text); flex: 1; background: transparent; font-weight: 400;
+}
+.search-box input::placeholder { color: var(--muted); font-weight: 300; }
+.search-clear { cursor: pointer; color: var(--muted); font-size: 18px; display: none; background: none; border: none; padding: 0; line-height: 1; transition: color 0.15s; }
+.search-clear:hover { color: var(--orange); }
+.search-clear.show { display: block; }
+
+/* Section */
+.section-wrap { max-width: 600px; margin: 0 auto; padding: 0 16px; }
+.section-label { font-size: 10px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--muted); font-weight: 500; margin-bottom: 12px; }
+
+/* Cat pills */
+.cats-scroll {
+  display: flex; gap: 8px;
+  overflow-x: auto; padding-bottom: 4px; margin-bottom: 24px;
+  scrollbar-width: none; -webkit-overflow-scrolling: touch;
+}
+.cats-scroll::-webkit-scrollbar { display: none; }
+.cat-pill {
+  display: flex; align-items: center; gap: 6px;
+  background: #fff;
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-pill);
+  padding: 9px 16px;
+  font-size: 13px; font-weight: 500; color: var(--muted);
+  cursor: pointer; white-space: nowrap;
+  transition: all 0.2s ease; flex-shrink: 0;
+  font-family: 'DM Sans', sans-serif;
+}
+.cat-pill:hover { border-color: var(--orange); color: var(--orange); }
+.cat-pill.active {
+  background: var(--red-dk);
+  border-color: var(--red-dk);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(122,26,8,0.3);
+}
+.cat-pill-emoji { font-size: 15px; }
+.cat-pill-count {
+  background: rgba(255,255,255,0.2);
+  border-radius: var(--r-pill);
+  padding: 1px 7px; font-size: 11px; font-weight: 400;
+}
+.cat-pill:not(.active) .cat-pill-count { background: var(--yellow-lt); color: var(--orange); }
+
+/* Items */
+.items-count { font-size: 13px; color: var(--muted); margin-bottom: 16px; font-weight: 300; }
+.items-count strong { color: var(--text); font-weight: 500; }
+
+.items-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 12px; margin-bottom: 32px;
+}
+@media (max-width: 380px) { .items-grid { grid-template-columns: 1fr 1fr; gap: 10px; } }
+@media (min-width: 540px) { .items-grid { grid-template-columns: repeat(3, 1fr); } }
+
+.item-card {
+  background: #fff;
+  border-radius: var(--r-xl);
+  border: 1px solid rgba(224,106,26,0.12);
+  padding: 18px 16px 42px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  display: flex; flex-direction: column; gap: 10px;
+  position: relative; overflow: hidden;
+  animation: cardIn 0.4s cubic-bezier(0.34,1.2,0.64,1) both;
+}
+.item-card::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(224,106,26,0.04) 0%, transparent 60%);
+  pointer-events: none;
+}
+.item-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(224,106,26,0.15);
+  border-color: rgba(224,106,26,0.28);
+}
+.item-card:active { transform: translateY(-1px); }
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(16px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.card-emoji-wrap {
+  width: 44px; height: 44px;
+  background: var(--yellow-lt);
+  border-radius: var(--r-lg);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  transition: transform 0.2s ease;
+}
+.item-card:hover .card-emoji-wrap { transform: scale(1.1) rotate(-5deg); }
+.card-name { font-size: 13px; font-weight: 500; color: var(--text); line-height: 1.3; flex: 1; }
+.card-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+.ctag { font-size: 9px; padding: 2px 7px; border-radius: var(--r-pill); font-weight: 500; letter-spacing: 0.3px; text-transform: uppercase; }
+.ctag-pdf     { background: #FFF0D6; color: #7A4A00; }
+.ctag-studio  { background: #EDE9FF; color: #4A3AAA; }
+.ctag-dxf     { background: #E0F5EA; color: #1A6B3A; }
+.ctag-imagens { background: #E6F0FF; color: #1A3FAA; }
+
+.card-arrow {
+  position: absolute; bottom: 14px; right: 14px;
+  width: 28px; height: 28px;
+  background: var(--yellow-lt);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; color: var(--orange);
+  transition: background 0.2s, transform 0.2s;
+}
+.item-card:hover .card-arrow { background: var(--orange); color: #fff; transform: translate(2px,-2px); }
+
+.empty-state { grid-column: 1/-1; text-align: center; padding: 40px 20px; }
+.empty-emoji { font-size: 48px; margin-bottom: 12px; }
+.empty-text  { font-size: 15px; color: var(--muted); font-weight: 300; }
+
+/* Tips */
+.tips-section {
+  background: var(--blush);
+  border-radius: var(--r-xl);
+  padding: 24px 20px; margin-bottom: 24px;
+}
+.tips-title { font-family: 'Playfair Display', serif; font-size: 17px; color: var(--red-dk); margin-bottom: 16px; font-weight: 600; }
+.tip-item { display: flex; gap: 12px; align-items: flex-start; padding: 12px 0; border-bottom: 1px solid rgba(224,106,26,0.1); }
+.tip-item:last-child { border-bottom: none; padding-bottom: 0; }
+.tip-icon { font-size: 20px; flex-shrink: 0; width: 36px; height: 36px; background: #fff; border-radius: var(--r-lg); display: flex; align-items: center; justify-content: center; }
+.tip-content strong { display: block; font-size: 13px; font-weight: 500; color: var(--red-dk); margin-bottom: 2px; }
+.tip-content span { font-size: 12px; color: var(--muted); font-weight: 300; line-height: 1.5; }
+
+/* Contact footer */
+.contact-footer {
+  background: var(--red-dk);
+  border-radius: var(--r-xl);
+  padding: 24px 20px; text-align: center;
+  margin-bottom: 20px; position: relative; overflow: hidden;
+}
+.contact-footer::before { content: '🎉'; position: absolute; font-size: 120px; opacity: 0.05; top: 50%; left: 50%; transform: translate(-50%,-50%); }
+.contact-footer h3 { font-family: 'Playfair Display', serif; font-size: 18px; color: #fff; margin-bottom: 6px; position: relative; }
+.contact-footer p { font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 20px; font-weight: 300; position: relative; }
+.contact-links { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; position: relative; }
+.contact-btn { display: inline-flex; align-items: center; gap: 7px; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: var(--r-pill); padding: 10px 18px; color: #fff; font-size: 13px; font-weight: 500; text-decoration: none; font-family: 'DM Sans', sans-serif; transition: background 0.2s; }
+.contact-btn:hover { background: rgba(255,255,255,0.22); }
+.footer-note { text-align: center; font-size: 11px; color: var(--muted); padding: 0 0 24px; font-weight: 300; }
+
+/* Floating sparks */
+.floating-sparks { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+.fs { position: absolute; bottom: -30px; font-size: 12px; opacity: 0; animation: floatSpark linear infinite; }
+@keyframes floatSpark {
+  0%   { transform: translateY(0) rotate(0deg); opacity: 0; }
+  10%  { opacity: 0.3; }
+  90%  { opacity: 0.1; }
+  100% { transform: translateY(-105vh) rotate(360deg); opacity: 0; }
+}
+
+/* ── "EM BREVE" MODAL ── */
+.modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(42,18,8,0.72);
+  z-index: 500; display: flex; align-items: flex-end; justify-content: center;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s ease;
+  backdrop-filter: blur(4px);
+}
+.modal-overlay.open { opacity: 1; pointer-events: all; }
+
+.modal-sheet {
+  background: var(--cream);
+  border-radius: 28px 28px 0 0;
+  padding: 8px 0 0;
+  width: 100%; max-width: 540px;
+  transform: translateY(100%);
+  transition: transform 0.35s cubic-bezier(0.34,1.1,0.64,1);
+  overflow: hidden;
+}
+.modal-overlay.open .modal-sheet { transform: translateY(0); }
+
+.modal-handle { width: 40px; height: 4px; background: rgba(0,0,0,0.12); border-radius: 2px; margin: 0 auto 20px; }
+.modal-body { padding: 0 24px 36px; }
+
+/* Em breve state (default) */
+.embreve-icon { font-size: 58px; text-align: center; margin-bottom: 16px; animation: floatEmoji 3s ease-in-out infinite; }
+@keyframes floatEmoji { 0%,100%{transform:translateY(0) rotate(-3deg);}50%{transform:translateY(-10px) rotate(3deg);} }
+
+.modal-title { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--red-dk); text-align: center; margin-bottom: 8px; font-weight: 600; }
+.modal-desc  { font-size: 14px; color: var(--muted); text-align: center; margin-bottom: 24px; font-weight: 300; line-height: 1.65; }
+
+/* progress bar */
+.progress-wrap { background: var(--yellow-lt); border-radius: var(--r-pill); height: 8px; overflow: hidden; margin-bottom: 8px; }
+.progress-bar  { height: 100%; width: 0; background: linear-gradient(90deg, var(--yellow), var(--orange)); border-radius: var(--r-pill); animation: progressGrow 2.2s cubic-bezier(0.4,0,0.2,1) 0.3s forwards; }
+@keyframes progressGrow { to { width: 65%; } }
+.progress-label { font-size: 11px; color: var(--muted); text-align: center; margin-bottom: 28px; font-weight: 300; }
+
+/* notify strip */
+.notify-strip {
+  display: flex; align-items: center; gap: 12px;
+  background: var(--yellow-lt);
+  border: 1px solid rgba(224,106,26,0.2);
+  border-radius: var(--r-xl);
+  padding: 14px 16px; margin-bottom: 20px;
+}
+.notify-strip-icon { font-size: 22px; flex-shrink: 0; }
+.notify-strip-text { font-size: 13px; color: var(--red-dk); font-weight: 400; line-height: 1.5; }
+.notify-strip-text strong { font-weight: 600; display: block; }
+
+.modal-close {
+  display: block; width: 100%;
+  background: var(--red-dk); color: #fff;
+  border: none; border-radius: var(--r-pill);
+  padding: 16px; font-size: 15px; font-weight: 500;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer; transition: background 0.2s, transform 0.15s;
+  box-shadow: 0 4px 20px rgba(122,26,8,0.3);
+}
+.modal-close:hover { background: var(--red); }
+.modal-close:active { transform: scale(0.98); }
+
+/* item name inside modal */
+.modal-item-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: #fff; border: 1px solid var(--border);
+  border-radius: var(--r-lg); padding: 10px 16px;
+  margin-bottom: 24px; font-size: 14px; font-weight: 500; color: var(--red-dk);
+}
+
+.scroll-hint { text-align: center; color: var(--muted); font-size: 12px; font-weight: 300; margin: -8px 0 24px; display: flex; align-items: center; justify-content: center; gap: 5px; }
+.scroll-hint-arrow { animation: bounceDown 1.5s ease-in-out infinite; }
+@keyframes bounceDown { 0%,100%{transform:translateY(0);}50%{transform:translateY(4px);} }
+</style>
 </head>
 <body>
 
-  <!-- ALERTA TOPO -->
-  <div class="top-alert">
-    🔥 OFERTA DE LANÇAMENTO: <span class="hl">89% DE DESCONTO</span> APENAS HOJE!
+<!-- ONBOARDING -->
+<div id="onboarding">
+  <div class="ob-bg" id="obBg"></div>
+
+  <!-- bandeirinhas SVG strip -->
+  <div class="ob-bandeiras">
+    <svg viewBox="0 0 400 30" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" height="30" width="100%">
+      <line x1="0" y1="8" x2="400" y2="8" stroke="rgba(255,255,255,0.25)" stroke-width="1.5"/>
+      <polygon points="0,8 12,8 6,22" fill="#E06A1A"/>
+      <polygon points="14,8 26,8 20,22" fill="#F0B020"/>
+      <polygon points="28,8 40,8 34,22" fill="#C0321A"/>
+      <polygon points="42,8 54,8 48,22" fill="#F0B020"/>
+      <polygon points="56,8 68,8 62,22" fill="#E06A1A"/>
+      <polygon points="70,8 82,8 76,22" fill="#C0321A"/>
+      <polygon points="84,8 96,8 90,22" fill="#F0B020"/>
+      <polygon points="98,8 110,8 104,22" fill="#E06A1A"/>
+      <polygon points="112,8 124,8 118,22" fill="#C0321A"/>
+      <polygon points="126,8 138,8 132,22" fill="#F0B020"/>
+      <polygon points="140,8 152,8 146,22" fill="#E06A1A"/>
+      <polygon points="154,8 166,8 160,22" fill="#C0321A"/>
+      <polygon points="168,8 180,8 174,22" fill="#F0B020"/>
+      <polygon points="182,8 194,8 188,22" fill="#E06A1A"/>
+      <polygon points="196,8 208,8 202,22" fill="#C0321A"/>
+      <polygon points="210,8 222,8 216,22" fill="#F0B020"/>
+      <polygon points="224,8 236,8 230,22" fill="#E06A1A"/>
+      <polygon points="238,8 250,8 244,22" fill="#C0321A"/>
+      <polygon points="252,8 264,8 258,22" fill="#F0B020"/>
+      <polygon points="266,8 278,8 272,22" fill="#E06A1A"/>
+      <polygon points="280,8 292,8 286,22" fill="#C0321A"/>
+      <polygon points="294,8 306,8 300,22" fill="#F0B020"/>
+      <polygon points="308,8 320,8 314,22" fill="#E06A1A"/>
+      <polygon points="322,8 334,8 328,22" fill="#C0321A"/>
+      <polygon points="336,8 348,8 342,22" fill="#F0B020"/>
+      <polygon points="350,8 362,8 356,22" fill="#E06A1A"/>
+      <polygon points="364,8 376,8 370,22" fill="#C0321A"/>
+      <polygon points="378,8 390,8 384,22" fill="#F0B020"/>
+      <polygon points="392,8 404,8 398,22" fill="#E06A1A"/>
+    </svg>
   </div>
 
-  <!-- HERO -->
-  <header class="hero">
-    <div class="hero-bg-deco" aria-hidden="true"></div>
+  <span class="ob-counter" id="obCounter">1 / 3</span>
+  <button class="ob-skip" onclick="skipOnboarding()">Pular →</button>
 
-    <div class="hero-inner">
-      <h1 class="hero-title animate-slide-up">Super Kit São João 2026</h1>
-
-      <h2 class="hero-subtitle">
-        Pronto em minutos: é só <strong>imprimir, montar e encantar</strong> todos os seus convidados!
-      </h2>
-
-      <div class="social-proof">
-        <p class="sp-badge">🏆 Mais de <span>2.137 unidades</span> vendidas</p>
-        <div class="sp-stars" aria-label="5 estrelas">
-          ★★★★★
-        </div>
+  <div class="ob-slides">
+    <!-- Slide 1 -->
+    <div class="ob-slide active" id="slide-0">
+      <div class="ob-emoji">🎉</div>
+      <h1 class="ob-title">Seu kit <em>São João</em><br>chegou!</h1>
+      <p class="ob-desc">Você tem acesso a um kit completo com artes exclusivas para arrasar nas vendas do São João 2026.</p>
+      <div class="ob-dots">
+        <div class="ob-dot active"></div><div class="ob-dot"></div><div class="ob-dot"></div>
       </div>
-
-      <!-- CARROSSEL — URLs diretas do R2 (sem cdn-cgi/image/) -->
-      <div class="carousel-container" aria-hidden="true">
-        <div class="carousel-track">
-
-          <!-- Set 1 -->
-          <img
-            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/Caixinhas-1%20(1).webp"
-            alt="Caixinhas" class="carousel-item"
-            width="240" height="296"
-            loading="eager" fetchpriority="high">
-
-          <img
-            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/Lembrancinhas-1.webp"
-            alt="Lembrancinhas" class="carousel-item"
-            width="240" height="296"
-            loading="eager">
-
-          <img
-            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/Bamboles.webp"
-            alt="Bambolês" class="carousel-item"
-            width="240" height="296"
-            loading="lazy">
-
-          <img
-            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/Frases-1.webp"
-            alt="Frases" class="carousel-item"
-            width="240" height="296"
-            loading="lazy">
-
-          <!-- Set 2 — duplicado para loop infinito -->
-          <img
-            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/Caixinhas-1%20(1).webp"
-            alt="" class="carousel-item"
-            width="240" height="296"
-            loading="lazy" aria-hidden="true">
-
-          <img
-            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/Lembrancinhas-1.webp"
-            alt="" class="carousel-item"
-            width="240" height="296"
-            loading="lazy" aria-hidden="true">
-
-          <img
-            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/Bamboles.webp"
-            alt="" class="carousel-item"
-            width="240" height="296"
-            loading="lazy" aria-hidden="true">
-
-          <img
-            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/Frases-1.webp"
-            alt="" class="carousel-item"
-            width="240" height="296"
-            loading="lazy" aria-hidden="true">
-        </div>
-      </div>
-
-      <!-- CTA 1 -->
-      <a href="https://pay.wiapy.com/6a0a5d8d0d76d746be336f6e" class="btn-pill">
-        👉 QUERO COMPRAR E RECEBER AGORA!
-      </a>
-
-      <p class="secure-msg">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="#22c55e" aria-hidden="true">
-          <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/>
-        </svg>
-        Pagamento 100% Seguro. Acesso Imediato.
-      </p>
+      <button class="ob-btn" onclick="nextSlide()">Continuar →</button>
     </div>
-  </header>
-
-  <!-- O QUE VOCÊ VAI RECEBER -->
-  <section class="section-white">
-    <div class="container">
-      <div class="section-header">
-        <h3 class="section-title">Temos tudo que você precisa...</h3>
-        <h4 class="section-subtitle">
-          ... e o que não encontrar, a gente consegue pra você
-          <u>sem custo adicional!</u>
-        </h4>
+    <!-- Slide 2 -->
+    <div class="ob-slide" id="slide-1">
+      <div class="ob-emoji">🎨</div>
+      <h1 class="ob-title">Formatos para <em>tudo</em></h1>
+      <p class="ob-desc">Cada item disponível nos formatos que você precisa:</p>
+      <div class="ob-formats">
+        <span class="ob-badge" style="animation-delay:.05s">📄 PDF para imprimir</span>
+        <span class="ob-badge" style="animation-delay:.12s">✏️ Studio para editar</span>
+        <span class="ob-badge" style="animation-delay:.19s">✂️ DXF para plotter</span>
+        <span class="ob-badge" style="animation-delay:.26s">🖼️ Mockups prontos</span>
       </div>
-
-      <div class="kit-box">
-        <h5 class="kit-box-title">Neste pacote completo você leva:</h5>
-        <ul class="kit-list">
-          <li><span class="emoji">🎁</span> Super Kit Lindas Caixinhas</li>
-          <li><span class="emoji">🎁</span> Super Kit Painéis Completos</li>
-          <li><span class="emoji">🎁</span> Super Kit Lembrancinhas</li>
-          <li><span class="emoji">🎁</span> Super Kit Cartões com Frases</li>
-          <li><span class="emoji">🎁</span> Super Kit Posts para Instagram</li>
-          <li><span class="emoji">🎁</span> Super Kit Artes em Bambolês</li>
-          <li><span class="emoji">🎁</span> Super Kit Decorações</li>
-          <li><span class="emoji">🎁</span> Super Kit Ilustrações</li>
-        </ul>
-        <div class="kit-box-footer">
-          <p class="much-more">E muuuuito mais!</p>
-        </div>
+      <div class="ob-dots">
+        <div class="ob-dot"></div><div class="ob-dot active"></div><div class="ob-dot"></div>
       </div>
-
-      <div class="section-cta">
-        <a href="https://pay.wiapy.com/6a0a5d8d0d76d746be336f6e" class="btn-pill">
-          QUERO GARANTIR MEU KIT COMPLETO
-        </a>
-      </div>
+      <button class="ob-btn" onclick="nextSlide()">Continuar →</button>
+      <button class="ob-btn secondary" onclick="prevSlide()">← Voltar</button>
     </div>
-  </section>
-
-  <!-- BÔNUS -->
-  <section class="section-dark">
-    <div class="container" style="text-align:center">
-      <span class="bonus-badge">Presentes Inclusos</span>
-      <h3 class="bonus-title">Bônus incríveis só HOJE!</h3>
-      <p class="bonus-subtitle">Comprando agora, você leva todos esses materiais adicionais de graça.</p>
-
-      <div class="bonus-grid">
-        <div class="bonus-card">
-          <img
-            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/Paineis.webp"
-            alt="Painéis" width="240" height="180" loading="lazy">
-          <div class="bonus-card-footer">
-            <p class="old-price">De <s>R$ 29,00</s></p>
-            <p class="new-price">100% GRÁTIS</p>
-          </div>
+    <!-- Slide 3 -->
+    <div class="ob-slide" id="slide-2">
+      <div class="ob-emoji">🚀</div>
+      <h1 class="ob-title">Como <em>navegar</em></h1>
+      <div class="ob-checklist">
+        <div class="ob-check-item" style="animation-delay:.05s">
+          <span class="ob-check-icon">🔍</span>
+          <div class="ob-check-text"><strong>Busque pelo nome</strong><span>Digite "caixa", "bandeirinha" e encontre na hora</span></div>
         </div>
-
-        <div class="bonus-card">
-          <img
-            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/Publicacoes-1.webp"
-            alt="Publicações" width="240" height="180" loading="lazy">
-          <div class="bonus-card-footer">
-            <p class="old-price">De <s>R$ 29,00</s></p>
-            <p class="new-price">100% GRÁTIS</p>
-          </div>
+        <div class="ob-check-item" style="animation-delay:.12s">
+          <span class="ob-check-icon">📂</span>
+          <div class="ob-check-text"><strong>Filtre por categoria</strong><span>Caixas, cards, adesivos, papelaria e muito mais</span></div>
         </div>
-
-        <div class="bonus-card">
-          <img
-            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/Cartaz-A4.webp"
-            alt="Cartaz" width="240" height="180" loading="lazy">
-          <div class="bonus-card-footer">
-            <p class="old-price">De <s>R$ 29,00</s></p>
-            <p class="new-price">100% GRÁTIS</p>
-          </div>
-        </div>
-
-        <div class="bonus-card">
-          <img
-            src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/Ilustracoes-1.webp"
-            alt="Ilustrações" width="240" height="180" loading="lazy">
-          <div class="bonus-card-footer">
-            <p class="old-price">De <s>R$ 29,00</s></p>
-            <p class="new-price">100% GRÁTIS</p>
-          </div>
+        <div class="ob-check-item" style="animation-delay:.19s">
+          <span class="ob-check-icon">⏳</span>
+          <div class="ob-check-text"><strong>Conteúdo em breve</strong><span>Os arquivos serão liberados em instantes após sua compra</span></div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- PROVA SOCIAL -->
-  <section class="section-amber">
-    <div class="container">
-      <h3 class="section-title" style="text-align:center;margin-bottom:3rem">
-        As pessoas estão amando tudo!
-      </h3>
-      <div class="testimonials">
-        <img
-          src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/prova-1-1024x443%20(1).webp"
-          alt="Depoimento de cliente 1"
-          width="340" height="147" loading="lazy">
-
-        <img
-          src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/prova-1024x443%20(1).webp"
-          alt="Depoimento de cliente 2"
-          width="340" height="147" loading="lazy">
-
-        <img
-          src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/prova2-1-1024x443%20(1).webp"
-          alt="Depoimento de cliente 3"
-          width="340" height="147" loading="lazy">
+      <div class="ob-dots">
+        <div class="ob-dot"></div><div class="ob-dot"></div><div class="ob-dot active"></div>
       </div>
+      <button class="ob-btn" onclick="finishOnboarding()">Acessar meu kit ✦</button>
+      <button class="ob-btn secondary" onclick="prevSlide()">← Voltar</button>
     </div>
-  </section>
+  </div>
+</div>
 
-  <!-- OFERTA & CHECKOUT -->
-  <section class="section-offer">
-    <div class="offer-box">
-      <div class="offer-badge">OFERTA ESPECIAL</div>
+<!-- MAIN APP -->
+<div id="app">
+  <div class="floating-sparks" id="floatingSparks"></div>
 
-      <h4 class="offer-title">ACESSO IMEDIATO COM MAIS DE 89% DE DESCONTO!</h4>
-
-      <ul class="offer-checklist">
-        <li>✅ <strong>Completo:</strong> acesso a todos os Kits</li>
-        <li>✅ Todos os <strong>Bônus Grátis</strong></li>
-        <li>✅ <strong>07 Dias</strong> de Garantia</li>
-        <li>✅ <strong>Acesso Vitalício</strong></li>
-      </ul>
-
-      <div class="price-box">
-        <p class="price-label">↓ HOJE COM DESCONTO ÚNICO ↓</p>
-        <p class="price-old">
-          Valor Total:
-          <span class="strike-through" style="color:var(--brand-secondary)">R$ 97,90</span>
-        </p>
-        <div class="price-main">
-          <span class="price-currency">R$</span>10<span class="price-cents">,00</span>
-        </div>
-        <p class="price-urgency">APROVEITE AGORA: Você NÃO vai encontrar esse preço depois.</p>
-      </div>
-
-      <div class="urgency-wrap">
-        <div class="urgency-header">
-          <span id="urgency-text">Unidades esgotando...</span>
-          <span>92% Reservado</span>
-        </div>
-        <div class="progress-track">
-          <div class="progress-fill" id="progress-bar"></div>
-        </div>
-        <p class="cta-cidade hidden">
-          🔥 <span class="num">319</span> pessoas em
-          <span class="cidade">sua cidade</span> já garantiram.
-        </p>
-      </div>
-
-      <a href="https://pay.wiapy.com/6a0a5d8d0d76d746be336f6e" class="btn-block">
-        👉 QUERO GARANTIR POR R$ 10!
-      </a>
-    </div>
-  </section>
-
-  <!-- SEÇÃO DOAÇÃO -->
-  <section class="donation-section">
-    <div class="container">
-      <div class="donation-inner">
-
-        <!-- Cartão logo ONG -->
-        <div class="donation-img-wrap">
-          <img
-            src="https://pub-80d3706d8b3c4936b06601bde5361dc6.r2.dev/WhatsApp%20Image%202026-05-17%20at%2017.33.06.webp"
-            onerror="this.style.display='none'"
-            alt="Logo ONG 4 Patas"
-            class="donation-ong-img"
-            width="500" height="116"
-            loading="lazy" decoding="async">
-          <span class="donation-ong-label">🐾 ONG 4 Patas</span>
-        </div>
-
-        <!-- Texto -->
-        <div class="donation-text">
-          <span class="donation-tag">
-            💙 Responsabilidade Social
-          </span>
-          <h3>Sua compra também <em>salva vidas</em></h3>
-          <p>
-            Parte do nosso lucro é destinado à <strong>ONG 4 Patas</strong>,
-            uma organização dedicada ao resgate e cuidado de animais em situação
-            de abandono e vulnerabilidade.
-          </p>
-          <div class="donation-highlight">
-            <span class="dh-icon">🐶</span>
-            Ao comprar, você faz parte dessa corrente do bem — sem nenhum custo a mais!
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- GARANTIA -->
-  <section class="guarantee-section">
-    <div class="guarantee-inner">
-        <img src="https://meusuperkit.com/wp-content/uploads/2026/01/garantia-7dias.webp"
-             onerror="this.src='https://placehold.co/250x250/fdf2f8/9d467e?text=Garantia'"
-             alt="Garantia 7 Dias"
-             width="250" height="250"
-             loading="lazy" decoding="async">
-        <div class="guarantee-txt">
-            <p class="g-label">Risco zero para você!</p>
-            <h4 class="g-title">Garantia Incondicional!</h4>
-            <p>
-                Ainda não tem certeza? Não se preocupe. Se o conteúdo descrito acima
-                não for o mesmo que você receber, você tem <strong>7 dias de garantia</strong>
-                e devolverei seu dinheiro sem burocracia!
-            </p>
-        </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <img src="https://meusuperkit.com/wp-content/uploads/elementor/thumbs/redes-reptuua1grmj3ktuz3xce4ebyf5iquuft7fuwezsp4-rhdp5n2mbm90xsc6x6rnbz76hhwyhwwkhxrwx6mp9c.png"
-         alt="Formas de Pagamento Aceitas" class="footer-logo"
-         width="200" height="32" loading="lazy">
-
-    <p>Copyright © 2026 Meu Super Kit. Todos os direitos reservados.</p>
-
-    <div class="footer-links">
-      <a href="#">Política de Privacidade</a> |
-      <a href="#">Termos de Uso</a> |
-      <a href="mailto:suporte@meusuperkit.com">Suporte</a>
+  <div class="app-header">
+    <div class="header-orbs">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
     </div>
 
-    <p class="footer-disclaimer">
-      Este site não faz parte do site do Facebook ou Facebook Inc.
-      Além disso, este site não é endossado pelo Facebook de nenhuma maneira.
-      FACEBOOK é uma marca comercial da FACEBOOK, Inc.
-    </p>
-  </footer>
-
-  <!-- TOAST -->
-  <div id="purchase-toast" class="toast-notification" role="status" aria-live="polite">
-    <div class="toast-icon" aria-hidden="true">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="white">
-        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+    <!-- bandeirinhas no header -->
+    <div class="bandeirinhas">
+      <svg viewBox="0 0 400 28" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" height="28" width="100%">
+        <line x1="0" y1="6" x2="400" y2="6" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+        <polygon points="0,6 12,6 6,20" fill="#F0B020"/>
+        <polygon points="14,6 26,6 20,20" fill="#E06A1A"/>
+        <polygon points="28,6 40,6 34,20" fill="#fff"/>
+        <polygon points="42,6 54,6 48,20" fill="#F0B020"/>
+        <polygon points="56,6 68,6 62,20" fill="#C0321A"/>
+        <polygon points="70,6 82,6 76,20" fill="#fff"/>
+        <polygon points="84,6 96,6 90,20" fill="#F0B020"/>
+        <polygon points="98,6 110,6 104,20" fill="#E06A1A"/>
+        <polygon points="112,6 124,6 118,20" fill="#fff"/>
+        <polygon points="126,6 138,6 132,20" fill="#C0321A"/>
+        <polygon points="140,6 152,6 146,20" fill="#F0B020"/>
+        <polygon points="154,6 166,6 160,20" fill="#E06A1A"/>
+        <polygon points="168,6 180,6 174,20" fill="#fff"/>
+        <polygon points="182,6 194,6 188,20" fill="#F0B020"/>
+        <polygon points="196,6 208,6 202,20" fill="#C0321A"/>
+        <polygon points="210,6 222,6 216,20" fill="#fff"/>
+        <polygon points="224,6 236,6 230,20" fill="#E06A1A"/>
+        <polygon points="238,6 250,6 244,20" fill="#F0B020"/>
+        <polygon points="252,6 264,6 258,20" fill="#C0321A"/>
+        <polygon points="266,6 278,6 272,20" fill="#fff"/>
+        <polygon points="280,6 292,6 286,20" fill="#F0B020"/>
+        <polygon points="294,6 306,6 300,20" fill="#E06A1A"/>
+        <polygon points="308,6 320,6 314,20" fill="#fff"/>
+        <polygon points="322,6 334,6 328,20" fill="#C0321A"/>
+        <polygon points="336,6 348,6 342,20" fill="#F0B020"/>
+        <polygon points="350,6 362,6 356,20" fill="#E06A1A"/>
+        <polygon points="364,6 376,6 370,20" fill="#fff"/>
+        <polygon points="378,6 390,6 384,20" fill="#C0321A"/>
+        <polygon points="392,6 404,6 398,20" fill="#F0B020"/>
       </svg>
     </div>
-    <div>
-      <p class="toast-title" id="toast-message">Alguém comprou o kit!</p>
-      <p class="toast-time">Há poucos segundos</p>
+
+    <div class="header-eyebrow">Kit digital exclusivo</div>
+    <h1 class="header-title">São João<br><em>2026</em> 🎉</h1>
+    <p class="header-sub">Toque em qualquer item para baixar</p>
+
+    <div class="header-stats">
+      <div class="stat-item">
+        <span class="stat-num" id="totalStat">–</span>
+        <span class="stat-label">Artes</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">5</span>
+        <span class="stat-label">Categorias</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">3</span>
+        <span class="stat-label">Formatos</span>
+      </div>
+    </div>
+
+    <div class="header-fire">
+      <svg viewBox="0 0 1440 40" preserveAspectRatio="none" height="40" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,40 L0,20 Q180,0 360,20 Q540,40 720,20 Q900,0 1080,20 Q1260,40 1440,20 L1440,40 Z" fill="#FDF8F0"/>
+      </svg>
     </div>
   </div>
 
-  <script>
-    (function () {
-      'use strict';
+  <div class="wave-divider">
+    <svg viewBox="0 0 1440 8" preserveAspectRatio="none" height="8" xmlns="http://www.w3.org/2000/svg">
+      <rect width="1440" height="8" fill="#FDF8F0"/>
+    </svg>
+  </div>
 
-      function init() {
-        var els = document.querySelectorAll('.cta-cidade');
-        if (els.length) {
-          fetch('https://ipapi.co/json/')
-            .then(function (r) { return r.ok ? r.json() : null; })
-            .then(function (d) {
-              if (d && d.city) {
-                els.forEach(function (el) {
-                  el.querySelector('.cidade').textContent = d.city;
-                  el.querySelector('.num').textContent = 300 + Math.floor(Math.random() * 50);
-                  el.classList.remove('hidden');
-                });
-              }
-            })
-            .catch(function () {});
-        }
+  <div style="position:relative;z-index:10;">
+    <div class="search-wrap">
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchInput" placeholder="Buscar... ex: caixa, balão, bandeirinha" oninput="onSearch()">
+        <button class="search-clear" id="searchClear" onclick="clearSearch()">✕</button>
+      </div>
+    </div>
 
-        var nomes  = ['Maria Silva','Ana Clara','Juliana','Beatriz','Camila C.','Fernanda','Gabriela','Larissa M.','Luana','Adriana','Amanda','Bruna','Carla','Carolina','Letícia','Mariana','Patrícia','Renata','Aline'];
-        var emojis = ['🎁','🛍️','✨','🔥','🎉','🥰'];
-        var toast  = document.getElementById('purchase-toast');
-        var msg    = document.getElementById('toast-message');
+    <div class="section-wrap">
+      <div class="section-label">Categorias</div>
+      <div class="cats-scroll" id="catScroll"></div>
 
-        function mostrarToast() {
-          msg.textContent = nomes[Math.floor(Math.random() * nomes.length)] + ' acabou de comprar! ' + emojis[Math.floor(Math.random() * emojis.length)];
-          toast.classList.add('show');
-          setTimeout(function () { toast.classList.remove('show'); }, 4000);
-        }
+      <div class="scroll-hint" id="scrollHint">
+        <span>Role para ver todos os itens</span>
+        <span class="scroll-hint-arrow">↓</span>
+      </div>
 
-        setTimeout(function () {
-          mostrarToast();
-          setInterval(mostrarToast, Math.floor(Math.random() * 13000) + 12000);
-        }, 3000);
+      <div class="items-count" id="itemsCount"></div>
+      <div class="items-grid" id="itemsGrid"></div>
 
-        var pct  = 92;
-        var bar  = document.getElementById('progress-bar');
-        var utxt = document.getElementById('urgency-text');
+      <div class="tips-section">
+        <h2 class="tips-title">💡 Dicas de uso</h2>
+        <div class="tip-item">
+          <div class="tip-icon">📄</div>
+          <div class="tip-content">
+            <strong>Arquivos PDF</strong>
+            <span>Prontos para imprimir em qualquer gráfica ou em casa. Sem precisar de software.</span>
+          </div>
+        </div>
+        <div class="tip-item">
+          <div class="tip-icon">✏️</div>
+          <div class="tip-content">
+            <strong>Arquivos Studio</strong>
+            <span>Abra no Silhouette Studio para personalizar nome, cor e textos antes de cortar.</span>
+          </div>
+        </div>
+        <div class="tip-item">
+          <div class="tip-icon">✂️</div>
+          <div class="tip-content">
+            <strong>Arquivos DXF</strong>
+            <span>Compatível com Cricut, Brother ScanNCut e qualquer plotter de recorte.</span>
+          </div>
+        </div>
+        <div class="tip-item">
+          <div class="tip-icon">📸</div>
+          <div class="tip-content">
+            <strong>Mockups & Fotos</strong>
+            <span>Use nas redes sociais para divulgar e aumentar suas vendas.</span>
+          </div>
+        </div>
+      </div>
 
-        setInterval(function () {
-          if (pct < 98 && Math.random() > 0.7) {
-            pct += 0.5;
-            bar.style.width = pct + '%';
-            if (pct >= 95) {
-              utxt.textContent = 'Últimas unidades!';
-              utxt.style.color     = '#dc2626';
-              utxt.style.animation = 'pulse 2s cubic-bezier(0.4,0,0.6,1) infinite';
-            }
-          }
-        }, 10000);
-      }
+      <div class="contact-footer">
+        <h3>Precisa de ajuda?</h3>
+        <p>Nossa equipe está aqui para te apoiar</p>
+        <div class="contact-links">
+          <a class="contact-btn" href="https://wa.me/5563981261836" target="_blank">💬 WhatsApp</a>
+          <a class="contact-btn" href="mailto:administrativo@alvoecom.com">✉️ E-mail</a>
+        </div>
+      </div>
 
-      if (document.readyState === 'complete') {
-        init();
-      } else {
-        window.addEventListener('load', init);
-      }
-    })();
-  </script>
+      <p class="footer-note">© 2026 Kit São João · Todos os direitos reservados</p>
+    </div>
+  </div>
+</div>
+
+<!-- EM BREVE MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal-sheet" id="modalSheet">
+    <div class="modal-handle"></div>
+    <div class="modal-body">
+      <div class="embreve-icon">⏳</div>
+      <h2 class="modal-title">Conteúdo em breve!</h2>
+
+      <div class="modal-item-badge" id="modalItemBadge">
+        <span id="modalItemEmoji"></span>
+        <span id="modalItemName"></span>
+      </div>
+
+      <div class="progress-wrap">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+      <p class="progress-label">Preparando seus arquivos...</p>
+
+      <div class="notify-strip">
+        <span class="notify-strip-icon">🔔</span>
+        <div class="notify-strip-text">
+          <strong>Aguarde alguns instantes</strong>
+          Seu conteúdo será liberado em breve. Assim que estiver pronto, você receberá uma notificação por e-mail.
+        </div>
+      </div>
+
+      <p class="modal-desc" style="margin-bottom:20px;">
+        Enquanto isso, explore as outras categorias do kit e planeje suas criações para o São João! 🎉
+      </p>
+
+      <button class="modal-close" onclick="forceClose()">Entendi, vou explorar o kit</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── DATA ──
+const ITEMS = [
+  // CAIXAS
+  { name:"Caixa Bandeirinha", cat:"caixas", emoji:"📦", tags:["pdf","studio"], url:"#", desc:"Caixa temática com estampa de bandeirinhas juninas." },
+  { name:"Caixa Chapéu de Palha", cat:"caixas", emoji:"🎩", tags:["pdf","studio"], url:"#", desc:"Caixa no formato de chapéu de palha, superespecial." },
+  { name:"Caixa Fogueira", cat:"caixas", emoji:"🔥", tags:["pdf","studio","dxf"], url:"#", desc:"Caixa com arte de fogueira junina." },
+  { name:"Caixa Milho", cat:"caixas", emoji:"🌽", tags:["pdf","studio"], url:"#", desc:"Caixa temática com estampa de milho." },
+  { name:"Caixa 2 Doces Festa", cat:"caixas", emoji:"🍬", tags:["pdf","studio"], url:"#", desc:"Caixinha para 2 doces com tema junino." },
+  { name:"Caixa Envelope Arraial", cat:"caixas", emoji:"💌", tags:["pdf","studio"], url:"#", desc:"Envelope estilo caixa decorado para o arraial." },
+  { name:"Caixa Quadrada Junina", cat:"caixas", emoji:"🎁", tags:["pdf","studio"], url:"#", desc:"Caixa quadrada com estampa junina vibrante." },
+  { name:"Cestinha Palha", cat:"caixas", emoji:"🧺", tags:["pdf","studio","dxf"], url:"#", desc:"Cestinha estilo palha, rústica e charmosa." },
+  { name:"Caixas em PDF", cat:"caixas", emoji:"📄", tags:["pdf"], url:"#", desc:"Todas as caixas prontas em PDF." },
+  { name:"Caixas em Studio", cat:"caixas", emoji:"📐", tags:["studio"], url:"#", desc:"Todos os modelos de caixas em Silhouette Studio." },
+  // CARDS & TAGS
+  { name:"Card Paçoca", cat:"cards", emoji:"🍡", tags:["card","studio"], url:"#", desc:"Card decorativo para acompanhar paçoca." },
+  { name:"Card Pé de Moleque", cat:"cards", emoji:"🍫", tags:["card","studio"], url:"#", desc:"Card para presente de pé de moleque." },
+  { name:"Card Milho Canjica", cat:"cards", emoji:"🌽", tags:["card","studio"], url:"#", desc:"Card temático para canjica e milho." },
+  { name:"Card Pipoca", cat:"cards", emoji:"🍿", tags:["card","studio"], url:"#", desc:"Card para pipoca junina personalizada." },
+  { name:"Card Chapéu Palha", cat:"cards", emoji:"🎩", tags:["card","studio"], url:"#", desc:"Card no formato chapéu de palha." },
+  { name:"Card Bandeirinha", cat:"cards", emoji:"🚩", tags:["card","studio"], url:"#", desc:"Card com bandeirinhas coloridas juninas." },
+  { name:"Tag Arraiá", cat:"cards", emoji:"🏷️", tags:["card","pdf"], url:"#", desc:"Tags temáticas para o arraial." },
+  { name:"Tag Casal Junino", cat:"cards", emoji:"👫", tags:["card","studio"], url:"#", desc:"Tag com ilustração de casal junino." },
+  { name:"Cartão Fogueira", cat:"cards", emoji:"🔥", tags:["card","studio"], url:"#", desc:"Cartão com arte de fogueira animada." },
+  { name:"Cartão Quadrilha", cat:"cards", emoji:"💃", tags:["card","studio"], url:"#", desc:"Cartão temático de quadrilha junina." },
+  { name:"Tags Gerais", cat:"cards", emoji:"🏷️", tags:["card","pdf"], url:"#", desc:"Variedade de tags juninas." },
+  // ADESIVOS
+  { name:"Adesivo Barra Chocolate Junino", cat:"adesivos", emoji:"🍫", tags:["pdf","studio"], url:"#", desc:"Adesivo junino para barra de chocolate." },
+  { name:"Adesivo Kit Kat Arraial", cat:"adesivos", emoji:"🎭", tags:["pdf","studio"], url:"#", desc:"Adesivo estilo Kit Kat com tema junino." },
+  { name:"Adesivo Milho Verde", cat:"adesivos", emoji:"🌽", tags:["pdf","studio"], url:"#", desc:"Adesivo temático de milho para embalagens." },
+  { name:"Kit Chaveiro Festa", cat:"adesivos", emoji:"🔑", tags:["studio","pdf"], url:"#", desc:"Kit de chaveiro personalizado para São João." },
+  { name:"Adesivo Paçoca Roll", cat:"adesivos", emoji:"🍡", tags:["pdf","studio"], url:"#", desc:"Adesivo para paçoca roll personalizada." },
+  { name:"Chaveiro Estrela Junina", cat:"adesivos", emoji:"⭐", tags:["studio","dxf"], url:"#", desc:"Chaveiro estrela com detalhes juninos." },
+  { name:"Most BomBom Festa", cat:"adesivos", emoji:"🍬", tags:["studio","pdf"], url:"#", desc:"Embrulho para bombom com tema junino." },
+  // PAPELARIA
+  { name:"Álbum Figurinhas São João", cat:"papelaria", emoji:"📒", tags:["pdf"], url:"#", desc:"Álbum de figurinhas temático junino." },
+  { name:"Livro Nossas Memórias", cat:"papelaria", emoji:"📔", tags:["pdf"], url:"#", desc:"Livro para registrar memórias do arraial." },
+  { name:"Bloquinho Junino", cat:"papelaria", emoji:"📝", tags:["pdf","studio"], url:"#", desc:"Bloquinho de anotações com tema junino." },
+  { name:"Marca Página Festa", cat:"papelaria", emoji:"🔖", tags:["pdf","studio"], url:"#", desc:"Marca página decorativo junino." },
+  { name:"Frases Juninas", cat:"papelaria", emoji:"💬", tags:["pdf"], url:"#", desc:"Banco de frases e ditados juninos." },
+  { name:"Capa Bandeirinha", cat:"papelaria", emoji:"🚩", tags:["pdf","studio"], url:"#", desc:"Capa decorativa com bandeirinhas coloridas." },
+  { name:"Convite Arraial", cat:"papelaria", emoji:"🎉", tags:["pdf","studio"], url:"#", desc:"Convite bonito para seu arraial." },
+  { name:"Cardápio Festa Junina", cat:"papelaria", emoji:"📋", tags:["pdf","studio"], url:"#", desc:"Cardápio temático para sua barraquinha." },
+  // EXTRAS
+  { name:"Sacola Junina 16x22", cat:"extras", emoji:"🛍️", tags:["studio","pdf","dxf"], url:"#", desc:"Sacola 16x22cm com tema junino." },
+  { name:"Envelope Foto Arraial", cat:"extras", emoji:"📷", tags:["studio","pdf"], url:"#", desc:"Envelope para foto estilo polaroid junino." },
+  { name:"Copo Americano Festa", cat:"extras", emoji:"🥤", tags:["studio","pdf"], url:"#", desc:"Arte junina para copo americano." },
+  { name:"Bolsa Xuxinha Junina", cat:"extras", emoji:"👜", tags:["studio","pdf","dxf"], url:"#", desc:"Bolsa xuxinha com estampa junina." },
+  { name:"Mockups São João", cat:"extras", emoji:"🖼️", tags:["imagens"], url:"#", desc:"Mockups profissionais para divulgação." },
+  { name:"Fotos para Divulgação", cat:"extras", emoji:"📸", tags:["imagens"], url:"#", desc:"Fotos prontas para anunciar seus produtos." },
+  { name:"Arquivos DXF Juninos", cat:"extras", emoji:"✂️", tags:["dxf"], url:"#", desc:"Todos os arquivos DXF para plotter." },
+  { name:"Arquivos Silhouette Studio", cat:"extras", emoji:"🔧", tags:["studio"], url:"#", desc:"Todos os .studio reunidos." },
+];
+
+const CATS = [
+  { id:"todos",    label:"Tudo",       emoji:"🎉" },
+  { id:"caixas",   label:"Caixas",     emoji:"📦" },
+  { id:"cards",    label:"Cards & Tags",emoji:"🎴" },
+  { id:"adesivos", label:"Adesivos",   emoji:"🍫" },
+  { id:"papelaria",label:"Papelaria",  emoji:"📋" },
+  { id:"extras",   label:"Extras",     emoji:"✨" },
+];
+
+const TAG_CLASS = { pdf:"ctag-pdf", studio:"ctag-studio", dxf:"ctag-dxf", imagens:"ctag-imagens", card:"ctag-pdf" };
+const TAG_LABEL = { pdf:"PDF", studio:"Studio", dxf:"DXF", imagens:"Fotos", card:"Card" };
+
+let currentCat = "todos";
+let searchVal  = "";
+let obSlide    = 0;
+
+// ── SPARKS ONBOARDING ──
+(function() {
+  const bg = document.getElementById('obBg');
+  const sparkColors = ['#F0B020','#E06A1A','#C0321A','#fff'];
+  for (let i = 0; i < 24; i++) {
+    const s = document.createElement('div');
+    s.className = 'ob-spark';
+    const sz = 4 + Math.random() * 6;
+    s.style.cssText = `
+      width:${sz}px;height:${sz}px;
+      left:${Math.random()*100}%;
+      background:${sparkColors[Math.floor(Math.random()*sparkColors.length)]};
+      animation-duration:${5+Math.random()*7}s;
+      animation-delay:${Math.random()*7}s;
+    `;
+    bg.appendChild(s);
+  }
+})();
+
+// ── FLOATING SPARKS MAIN ──
+(function() {
+  const container = document.getElementById('floatingSparks');
+  const symbols = ['✦','🌟','⭐','🎉','🎊','🌽'];
+  for (let i = 0; i < 12; i++) {
+    const h = document.createElement('div');
+    h.className = 'fs';
+    h.textContent = symbols[Math.floor(Math.random()*symbols.length)];
+    h.style.cssText = `
+      left:${5+Math.random()*90}%;
+      font-size:${10+Math.random()*10}px;
+      animation-duration:${20+Math.random()*14}s;
+      animation-delay:${Math.random()*18}s;
+    `;
+    container.appendChild(h);
+  }
+})();
+
+// ── ONBOARDING ──
+function nextSlide() { if(obSlide<2){obSlide++;showSlide(obSlide);} }
+function prevSlide() { if(obSlide>0){obSlide--;showSlide(obSlide);} }
+function showSlide(n) {
+  document.querySelectorAll('.ob-slide').forEach((s,i)=>s.classList.toggle('active',i===n));
+  document.getElementById('obCounter').textContent=(n+1)+' / 3';
+}
+function skipOnboarding(){finishOnboarding();}
+function finishOnboarding(){
+  const ob=document.getElementById('onboarding');
+  ob.classList.add('exit');
+  setTimeout(()=>{
+    ob.style.display='none';
+    document.getElementById('app').classList.add('visible');
+    try{localStorage.setItem('sj2026_ob','1');}catch(e){}
+  },600);
+}
+try{
+  if(localStorage.getItem('sj2026_ob')==='1'){
+    document.getElementById('onboarding').style.display='none';
+    document.getElementById('app').classList.add('visible');
+  }
+}catch(e){}
+
+// ── BUILD CATS ──
+function buildCats(){
+  const wrap=document.getElementById('catScroll');
+  wrap.innerHTML=CATS.map(c=>{
+    const count=c.id==='todos'?ITEMS.length:ITEMS.filter(i=>i.cat===c.id).length;
+    return `<button class="cat-pill${c.id===currentCat?' active':''}" onclick="selectCat('${c.id}')">
+      <span class="cat-pill-emoji">${c.emoji}</span>${c.label}
+      <span class="cat-pill-count">${count}</span>
+    </button>`;
+  }).join('');
+  document.getElementById('totalStat').textContent=ITEMS.length;
+}
+
+function selectCat(cat){
+  currentCat=cat;
+  buildCats();
+  renderItems();
+  document.getElementById('scrollHint').style.display='none';
+}
+
+// ── SEARCH ──
+function onSearch(){
+  searchVal=document.getElementById('searchInput').value.trim().toLowerCase();
+  document.getElementById('searchClear').classList.toggle('show',searchVal.length>0);
+  renderItems();
+}
+function clearSearch(){
+  document.getElementById('searchInput').value='';
+  searchVal='';
+  document.getElementById('searchClear').classList.remove('show');
+  renderItems();
+}
+
+// ── RENDER ──
+function renderItems(){
+  const grid=document.getElementById('itemsGrid');
+  const countEl=document.getElementById('itemsCount');
+  const filtered=ITEMS.filter(item=>{
+    const catOk=currentCat==='todos'||item.cat===currentCat;
+    const srchOk=!searchVal||item.name.toLowerCase().includes(searchVal)||item.desc.toLowerCase().includes(searchVal);
+    return catOk&&srchOk;
+  });
+  const labels={todos:'Todos os itens',caixas:'Caixas',cards:'Cards & Tags',adesivos:'Adesivos',papelaria:'Papelaria',extras:'Extras'};
+  countEl.innerHTML=`Mostrando <strong>${filtered.length}</strong> de ${ITEMS.length} itens`;
+  if(!filtered.length){
+    grid.innerHTML=`<div class="empty-state"><div class="empty-emoji">😢</div><p class="empty-text">Nada encontrado para "<strong>${searchVal}</strong>"</p></div>`;
+    return;
+  }
+  grid.innerHTML=filtered.map((item,i)=>{
+    const tagsHtml=item.tags.slice(0,2).map(t=>`<span class="ctag ${TAG_CLASS[t]||''}">${TAG_LABEL[t]||t}</span>`).join('');
+    return `<div class="item-card" style="animation-delay:${i*0.035}s" onclick="openModal(${ITEMS.indexOf(item)})">
+      <div class="card-emoji-wrap">${item.emoji}</div>
+      <div class="card-name">${item.name}</div>
+      <div class="card-tags">${tagsHtml}</div>
+      <div class="card-arrow">↗</div>
+    </div>`;
+  }).join('');
+}
+
+// ── EM BREVE MODAL ──
+function openModal(idx){
+  const item=ITEMS[idx];
+  document.getElementById('modalItemEmoji').textContent=item.emoji;
+  document.getElementById('modalItemName').textContent=item.name;
+  // reset progress bar animation
+  const pb=document.getElementById('progressBar');
+  pb.style.animation='none';
+  pb.offsetHeight; // reflow
+  pb.style.animation='';
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function closeModal(e){
+  if(e&&e.target!==document.getElementById('modalOverlay'))return;
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+function forceClose(){
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+document.addEventListener('keydown',e=>{if(e.key==='Escape')forceClose();});
+
+let touchStartY=0;
+document.getElementById('modalSheet').addEventListener('touchstart',e=>{touchStartY=e.touches[0].clientY;});
+document.getElementById('modalSheet').addEventListener('touchend',e=>{if(e.changedTouches[0].clientY-touchStartY>60)forceClose();});
+
+// ── INIT ──
+buildCats();
+renderItems();
+</script>
 </body>
 </html>

@@ -1,1 +1,964 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Super Kit Dia dos Namorados 2026</title>
 
+    <!-- ═══════════════════════════════════════════════════════
+         🚀 FIX #1 — PRELOAD DA IMAGEM LCP
+         Apontando para a pasta assets com o nome limpo.
+    ════════════════════════════════════════════════════════════ -->
+    <link rel="preload" as="image" href="./assets/lembrancinhas.webp" fetchpriority="high">
+
+    <!-- Preconnects limpos (Cloudflare R2 removido) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://ipapi.co">
+
+    <link rel="preload" as="style"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&family=Poppins:wght@500;700;800&display=swap"
+      onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+      <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&family=Poppins:wght@500;700;800&display=swap">
+    </noscript>
+
+    <script>
+    !function(f,b,e,v,n,t,s){
+        if(f.fbq)return;
+        n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];
+    }(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init','679523000263255');fbq('track','PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=679523000263255&ev=PageView&noscript=1"/></noscript>
+
+    <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+        font-family:'Montserrat',sans-serif;
+        background:#f9fafb;
+        color:#1f2937;
+        -webkit-font-smoothing:antialiased;
+        padding-bottom:90px;
+    }
+
+    :root{
+        --red:#cd0a09;
+        --darkred:#a30807;
+        --pink:#9d467e;
+        --lightpink:#fdf2f8;
+        --green:#22c55e;
+        --darkgreen:#16a34a;
+    }
+
+    .scarcity-bar{
+        background:var(--red);
+        color:#fff;
+        text-align:center;
+        padding:9px 16px;
+        font-size:14px;
+        font-weight:600;
+        position:sticky;
+        top:0;
+        z-index:50;
+        box-shadow:0 2px 8px rgba(0,0,0,.25);
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        gap:8px;
+    }
+    .pulse-dot{
+        display:inline-block;
+        width:8px;height:8px;
+        background:#fff;
+        border-radius:50%;
+        animation:pulseDot 1.5s ease-in-out infinite;
+        flex-shrink:0;
+    }
+    @keyframes pulseDot{0%,100%{opacity:1}50%{opacity:.4}}
+
+    .hero{
+        background:linear-gradient(to bottom,var(--lightpink),#fff);
+        padding:48px 20px 56px;
+        text-align:center;
+    }
+    .hero-inner{max-width:768px;margin:0 auto}
+
+    .hero h1{
+        font-family:'Poppins',sans-serif;
+        font-size:clamp(2.4rem,7vw,4.5rem);
+        font-weight:800;
+        color:var(--red);
+        line-height:1.15;
+        margin-bottom:20px;
+    }
+    .hero .subtitle{
+        font-size:clamp(1.2rem,3vw,1.6rem);
+        color:#374151;
+        font-weight:500;
+        margin-bottom:28px;
+    }
+
+    .stars-row{
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        gap:8px;
+        margin-bottom:32px;
+    }
+    .stars{color:#f59e0b;font-size:20px;letter-spacing:2px}
+    .units-badge{
+        font-size:13px;
+        font-weight:700;
+        color:#6b7280;
+        background:#f3f4f6;
+        padding:5px 14px;
+        border-radius:999px;
+        border:1px solid #e5e7eb;
+    }
+
+    .gallery{
+        display:grid;
+        grid-template-columns:repeat(2,1fr);
+        gap:12px;
+        margin-bottom:32px;
+        max-width:680px;
+        margin-left:auto;
+        margin-right:auto;
+    }
+    @media(min-width:560px){.gallery{grid-template-columns:repeat(4,1fr)}}
+    .gallery-item{
+        position:relative;
+        width:100%;
+        padding-bottom:100%;
+        border-radius:14px;
+        overflow:hidden;
+        border:1px solid #fce7f3;
+        box-shadow:0 2px 8px rgba(0,0,0,.07);
+        background:#fdf2f8;
+        transition:transform .3s;
+    }
+    .gallery-item:hover{transform:scale(1.04)}
+    .gallery-item img{
+        position:absolute;
+        inset:0;
+        width:100%;
+        height:100%;
+        object-fit:cover;
+        display:block;
+    }
+
+    .btn-hero{
+        display:block;
+        width:100%;
+        max-width:500px;
+        margin:0 auto;
+        background:var(--green);
+        color:#fff;
+        font-weight:800;
+        font-size:clamp(1.1rem,3vw,1.4rem);
+        padding:18px 24px;
+        border-radius:999px;
+        text-decoration:none;
+        text-align:center;
+        box-shadow:0 8px 28px rgba(34,197,94,.4);
+        animation:btnPulse 1.5s ease-in-out infinite;
+        transition:background .2s,transform .2s;
+    }
+    .btn-hero:hover{background:var(--darkgreen);transform:translateY(-2px)}
+    @keyframes btnPulse{0%,100%{box-shadow:0 8px 28px rgba(34,197,94,.4)}50%{box-shadow:0 8px 40px rgba(34,197,94,.7)}}
+
+    .trust-bar{
+        display:flex;
+        flex-wrap:wrap;
+        align-items:center;
+        justify-content:center;
+        gap:6px 18px;
+        margin-top:14px;
+        font-size:13px;
+        font-weight:700;
+        color:#6b7280;
+    }
+
+    .section{padding:64px 20px}
+    .section-white{background:#fff}
+    .section-gray{background:#f9fafb}
+    .section-pink{background:var(--lightpink)}
+    .container{max-width:768px;margin:0 auto}
+    .container-wide{max-width:920px;margin:0 auto}
+
+    .section-title{
+        font-family:'Poppins',sans-serif;
+        font-size:clamp(1.6rem,4.5vw,2.25rem);
+        font-weight:800;
+        text-align:center;
+        color:#111827;
+        margin-bottom:12px;
+    }
+    .section-sub{
+        text-align:center;
+        font-size:1.1rem;
+        color:#6b7280;
+        margin-bottom:36px;
+        line-height:1.6;
+    }
+    .accent{color:var(--red);border-bottom:2px solid var(--red)}
+
+    .features-box{
+        background:var(--lightpink);
+        border-radius:24px;
+        padding:32px 28px;
+        border:1px solid #fce7f3;
+        box-shadow:0 4px 18px rgba(0,0,0,.06);
+    }
+    .features-list{list-style:none;display:flex;flex-direction:column;gap:18px}
+    .features-list li{
+        display:flex;
+        align-items:center;
+        gap:12px;
+        font-size:1.1rem;
+        font-weight:500;
+        color:#1f2937;
+    }
+    .fi{font-size:1.5rem;flex-shrink:0}
+    .features-badge-wrap{margin-top:28px;text-align:center}
+    .features-badge{
+        display:inline-block;
+        background:var(--pink);
+        color:#fff;
+        font-weight:700;
+        padding:10px 28px;
+        border-radius:999px;
+        box-shadow:0 4px 14px rgba(157,70,126,.3);
+        font-size:1rem;
+    }
+
+    .btn-mid{
+        display:block;
+        width:100%;
+        background:var(--green);
+        color:#fff;
+        font-weight:800;
+        font-size:1.15rem;
+        padding:18px 24px;
+        border-radius:18px;
+        text-decoration:none;
+        text-align:center;
+        margin-top:32px;
+        box-shadow:0 4px 18px rgba(34,197,94,.3);
+        transition:background .2s,transform .2s;
+    }
+    .btn-mid:hover{background:var(--darkgreen);transform:translateY(-2px)}
+
+    .bonus-grid{
+        display:grid;
+        grid-template-columns:repeat(2,1fr);
+        gap:18px;
+    }
+    @media(min-width:600px){.bonus-grid{grid-template-columns:repeat(4,1fr)}}
+
+    .bonus-card{
+        background:#fff;
+        border-radius:20px;
+        padding:14px;
+        text-align:center;
+        border:1px solid #f3f4f6;
+        box-shadow:0 2px 10px rgba(0,0,0,.05);
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        transition:transform .3s;
+    }
+    .bonus-card:hover{transform:translateY(-4px)}
+
+    .bonus-tag{
+        display:inline-block;
+        background:var(--red);
+        color:#fff;
+        font-size:12px;
+        font-weight:800;
+        padding:5px 14px;
+        border-radius:999px;
+        margin-bottom:10px;
+        letter-spacing:.04em;
+        text-transform:uppercase;
+    }
+
+    .bonus-img-wrap{
+        position:relative;
+        width:100%;
+        padding-bottom:133%;
+        border-radius:10px;
+        overflow:hidden;
+        margin-bottom:10px;
+        background:#f3f4f6;
+    }
+    .bonus-img-wrap img{
+        position:absolute;inset:0;
+        width:100%;height:100%;
+        object-fit:cover;
+        display:block;
+        transition:transform .3s;
+    }
+    .bonus-card:hover .bonus-img-wrap img{transform:scale(1.05)}
+    .bonus-from{font-size:13px;color:#6b7280;margin-bottom:4px}
+    .bonus-free{font-weight:700;color:var(--green);font-size:1.05rem}
+
+    .proofs{display:flex;flex-direction:column;gap:20px}
+    .proofs img{
+        width:100%;
+        border-radius:18px;
+        box-shadow:0 2px 14px rgba(0,0,0,.07);
+        border:1px solid #f3f4f6;
+        display:block;
+        height:auto;
+    }
+
+    .offer-section{
+        background:var(--lightpink);
+        padding:64px 20px;
+        position:relative;
+        overflow:hidden;
+        text-align:center;
+    }
+    .offer-dots{
+        position:absolute;inset:0;
+        background-image:radial-gradient(var(--red) 1px,transparent 1px);
+        background-size:20px 20px;
+        opacity:.08;
+        pointer-events:none;
+    }
+    .offer-inner{max-width:640px;margin:0 auto;position:relative;z-index:1}
+    .offer-label{
+        font-size:13px;font-weight:800;
+        letter-spacing:.18em;
+        color:var(--red);
+        text-transform:uppercase;
+        margin-bottom:8px;
+    }
+    .offer-tag{
+        display:inline-block;
+        background:var(--red);
+        color:#fff;
+        font-weight:800;
+        font-size:clamp(.85rem,2vw,1.05rem);
+        padding:7px 18px;
+        border-radius:6px;
+        margin-bottom:32px;
+    }
+    .offer-box{
+        background:#fff;
+        border-radius:28px;
+        padding:32px 28px;
+        border:1px solid #fce7f3;
+        box-shadow:0 8px 36px rgba(0,0,0,.08);
+        margin-bottom:24px;
+        text-align:left;
+    }
+    .check-list{list-style:none;display:flex;flex-direction:column;gap:16px;margin-bottom:28px}
+    .check-list li{
+        display:flex;align-items:center;gap:12px;
+        font-size:1.05rem;font-weight:500;color:#374151;
+    }
+    .check-list .ci{color:var(--green);flex-shrink:0;width:24px;height:24px}
+    .offer-hr{border:none;border-top:1px solid #e5e7eb;margin:24px 0}
+    .offer-pre{
+        text-align:center;font-weight:700;
+        color:#6b7280;margin-bottom:8px;
+        font-size:1rem;
+        text-transform:uppercase;
+        letter-spacing:.05em;
+    }
+    .offer-from-price{
+        text-align:center;
+        font-size:1.25rem;
+        color:#9ca3af;
+        font-weight:700;
+        margin-bottom:8px;
+    }
+    .strike-wrap{position:relative;display:inline-block;padding:0 4px}
+    .strike-wrap::after{
+        content:"";
+        position:absolute;left:0;top:50%;
+        height:2px;background:var(--red);width:100%;
+        transform:translateY(-50%) scaleX(0);
+        transform-origin:left;
+        animation:doStrike 2s ease-in-out 1s forwards;
+    }
+    @keyframes doStrike{to{transform:translateY(-50%) scaleX(1)}}
+    .offer-price{
+        display:flex;align-items:flex-start;justify-content:center;
+        color:var(--green);font-weight:900;
+        line-height:1;margin-bottom:16px;
+    }
+    .op-pre{font-size:1.8rem;margin-top:10px;margin-right:4px}
+    .op-main{font-size:clamp(4rem,12vw,5.5rem)}
+    .op-cents{font-size:1.8rem;margin-top:10px;margin-left:4px}
+    .offer-urgency{
+        text-align:center;font-size:13px;
+        color:var(--red);font-weight:600;
+        margin-bottom:24px;
+    }
+    .btn-offer{
+        display:block;width:100%;
+        background:var(--green);color:#fff;
+        font-weight:800;
+        font-size:clamp(1.05rem,3vw,1.25rem);
+        padding:20px 24px;
+        border-radius:18px;
+        text-decoration:none;text-align:center;
+        box-shadow:0 0 28px rgba(34,197,94,.4);
+        transition:background .2s,transform .2s;
+    }
+    .btn-offer:hover{background:var(--darkgreen);transform:scale(1.02)}
+
+    .progress-wrap{
+        background:#fff;border-radius:999px;
+        padding:4px;border:1px solid #fce7f3;
+        margin-bottom:14px;height:32px;
+        box-shadow:0 2px 8px rgba(0,0,0,.05);overflow:hidden;
+    }
+    .progress-fill{
+        background:var(--red);height:100%;
+        border-radius:999px;width:92%;
+        display:flex;align-items:center;justify-content:center;
+        font-size:12px;font-weight:700;color:#fff;
+        position:relative;overflow:hidden;
+    }
+    .progress-shine{
+        position:absolute;inset:0;
+        background:linear-gradient(90deg,transparent,rgba(255,255,255,.25),transparent);
+        animation:shine 2s infinite;
+    }
+    @keyframes shine{0%{transform:skewX(-12deg) translateX(-200%)}100%{transform:skewX(-12deg) translateX(400%)}}
+
+    .city-badge{
+        background:#fff;border:1px solid #fce7f3;
+        border-radius:10px;padding:10px 16px;
+        font-size:14px;color:#6b7280;
+        box-shadow:0 2px 8px rgba(0,0,0,.04);
+        text-align:center;
+    }
+
+    .donation-section{
+        background:var(--lightpink);
+        padding:56px 20px;
+        text-align:center;
+    }
+    .donation-inner{
+        max-width:640px;
+        margin:0 auto;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        gap:28px;
+    }
+
+    .donation-ong-img{
+        width:100%;
+        max-width:500px;
+        height:auto;
+        border-radius:16px;
+        object-fit:cover;
+        border:3px solid #fff;
+        box-shadow:0 4px 18px rgba(205,10,9,.15);
+        flex-shrink:0;
+        display:block;
+    }
+
+    .donation-text h3{
+        font-family:'Poppins',sans-serif;
+        font-size:clamp(1.4rem,4vw,1.9rem);
+        font-weight:800;
+        color:#111827;
+        line-height:1.2;
+        margin-bottom:12px;
+    }
+    .donation-text h3 span{
+        display:inline-block;
+        background:var(--red);
+        color:#fff;
+        padding:2px 10px;
+        border-radius:6px;
+        transform:rotate(-1deg);
+        margin:4px 0;
+    }
+    .donation-text p{
+        font-size:1rem;
+        color:#374151;
+        line-height:1.7;
+        max-width:480px;
+        margin:0 auto;
+    }
+    .donation-text strong{color:var(--red)}
+
+    .guarantee-section{
+        background:#fff;
+        padding:64px 20px;
+        border-bottom:1px solid #e5e7eb;
+    }
+    .guarantee-inner{
+        max-width:900px;margin:0 auto;
+        display:flex;flex-direction:column;
+        align-items:center;gap:32px;
+    }
+    @media(min-width:640px){.guarantee-inner{flex-direction:row;justify-content:center}}
+    .guarantee-inner img{width:220px;flex-shrink:0;filter:drop-shadow(0 8px 16px rgba(0,0,0,.12))}
+    .guarantee-txt{text-align:center;max-width:480px}
+    @media(min-width:640px){.guarantee-txt{text-align:left}}
+    .g-label{
+        font-size:12px;font-weight:800;
+        letter-spacing:.14em;text-transform:uppercase;
+        color:var(--red);margin-bottom:8px;
+    }
+    .g-title{
+        font-family:'Poppins',sans-serif;
+        font-size:clamp(1.6rem,4vw,2rem);
+        font-weight:800;color:#111827;
+        margin-bottom:14px;
+    }
+    .guarantee-txt p{font-size:1rem;color:#6b7280;line-height:1.75}
+
+    footer{
+        background:#111827;color:#9ca3af;
+        padding:48px 20px;text-align:center;
+        font-size:14px;
+    }
+    footer p{margin-bottom:16px}
+    .footer-links{display:flex;justify-content:center;flex-wrap:wrap;gap:12px}
+    .footer-links a{color:#9ca3af;text-decoration:none;transition:color .2s}
+    .footer-links a:hover{color:#fff}
+    .footer-sep{color:#4b5563}
+
+    .sticky-cta{
+        display:none;
+        position:fixed;bottom:0;left:0;right:0;
+        padding:12px 16px;
+        background:#fff;
+        border-top:1px solid #e5e7eb;
+        box-shadow:0 -4px 20px rgba(0,0,0,.1);
+        z-index:40;
+        transform:translateY(100%);
+        transition:transform .3s;
+    }
+    @media(max-width:767px){.sticky-cta{display:block}}
+    .sticky-cta.visible{transform:translateY(0)}
+    .sticky-cta a{
+        display:block;
+        background:var(--green);color:#fff;
+        font-weight:800;font-size:1rem;
+        padding:14px;border-radius:14px;
+        text-decoration:none;text-align:center;
+        animation:btnPulse 1.5s ease-in-out infinite;
+    }
+
+    .toast{
+        position:fixed;left:16px;bottom:90px;
+        background:#fff;color:#111827;
+        font-size:13px;font-weight:500;
+        padding:12px 18px;border-radius:18px;
+        box-shadow:0 8px 28px rgba(0,0,0,.12);
+        z-index:50;display:flex;align-items:center;gap:10px;
+        opacity:0;transform:translateY(12px);
+        transition:opacity .4s,transform .4s;
+        pointer-events:none;
+        border:1px solid #fce7f3;
+        max-width:calc(100vw - 32px);
+    }
+    @media(min-width:768px){.toast{bottom:32px}}
+    .toast.show{opacity:1;transform:translateY(0)}
+    .toast-dot{
+        width:8px;height:8px;
+        background:var(--green);border-radius:50%;
+        flex-shrink:0;
+        animation:ping 1s ease-in-out infinite;
+    }
+    @keyframes ping{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.6);opacity:.5}}
+    </style>
+</head>
+<body>
+
+<!-- SCARCITY BAR -->
+<div class="scarcity-bar">
+    <span class="pulse-dot"></span>
+    Atenção: Oferta encerra quando o cronômetro zerar ou os estoques acabarem!
+</div>
+
+<!-- ══════════════ HERO ══════════════ -->
+<header class="hero">
+    <div class="hero-inner">
+        <h1>Super Kit Dia dos Namorados 2026</h1>
+        <p class="subtitle">Pronto em minutos: é só imprimir, montar e encantar ❤️</p>
+
+        <div class="stars-row">
+            <div class="stars">★★★★★</div>
+            <span class="units-badge">2.137 unidades vendidas</span>
+        </div>
+
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="./assets/lembrancinhas.webp"
+                     onerror="this.src='https://placehold.co/400x400/fdf2f8/9d467e?text=Lembrancinhas'"
+                     alt="Lembrancinhas"
+                     width="400" height="400"
+                     fetchpriority="high"
+                     decoding="sync">
+            </div>
+            <div class="gallery-item">
+                <img src="./assets/caixinhas.webp"
+                     onerror="this.src='https://placehold.co/400x400/fdf2f8/9d467e?text=Caixinhas'"
+                     alt="Caixinhas"
+                     width="400" height="400"
+                     loading="lazy" decoding="async">
+            </div>
+            <div class="gallery-item">
+                <img src="./assets/presentes.webp"
+                     onerror="this.src='https://placehold.co/400x400/fdf2f8/9d467e?text=Presentes'"
+                     alt="Presentes"
+                     width="400" height="400"
+                     loading="lazy" decoding="async">
+            </div>
+            <div class="gallery-item">
+                <img src="./assets/cartoes.webp"
+                     onerror="this.src='https://placehold.co/400x400/fdf2f8/9d467e?text=Cartões'"
+                     alt="Cartões"
+                     width="400" height="400"
+                     loading="lazy" decoding="async">
+            </div>
+        </div>
+
+        <a href="https://checkout.bemestarbrasil.online/" class="btn-hero">
+            👉 COMPRAR E RECEBER AGORA!
+        </a>
+
+        <div class="trust-bar">
+            <span>✅ Apenas R$10,00</span>
+            <span>⚡ Acesso imediato</span>
+            <span>🔒 Garantia 7 dias</span>
+        </div>
+    </div>
+</header>
+
+<!-- ══════════════ FEATURES ══════════════ -->
+<section class="section section-white">
+    <div class="container">
+        <h2 class="section-title">Temos tudo que você precisa...</h2>
+        <p class="section-sub">
+            ... e o que não encontrar, a gente consegue pra você
+            <strong class="accent">sem custo!</strong>
+        </p>
+        <div class="features-box">
+            <ul class="features-list">
+                <li><span class="fi">🎁</span> Super Kit Presentes</li>
+                <li><span class="fi">🎁</span> Super Kit Lindas Caixinhas</li>
+                <li><span class="fi">🎁</span> Super Kit Lembrancinhas</li>
+                <li><span class="fi">🎁</span> Super Kit Cartões com Frases</li>
+                <li><span class="fi">🎁</span> Super Kit Frases completas</li>
+                <li><span class="fi">🎁</span> Super Kit Publicações</li>
+                <li><span class="fi">🎁</span> Super Kit Ilustrações</li>
+            </ul>
+            <div class="features-badge-wrap">
+                <span class="features-badge">E muuuuito mais!</span>
+            </div>
+        </div>
+        <a href="https://checkout.bemestarbrasil.online/" class="btn-mid">
+            👉 QUERO MEU KIT POR R$10,00!
+        </a>
+    </div>
+</section>
+
+<!-- ══════════════ BÔNUS ══════════════ -->
+<section class="section section-gray">
+    <div class="container-wide">
+        <h2 class="section-title">Bônus incríveis <span style="color:var(--red)">só HOJE!</span></h2>
+        <div class="bonus-grid">
+
+            <div class="bonus-card">
+                <span class="bonus-tag">BÔNUS 1</span>
+                <div class="bonus-img-wrap">
+                    <img src="./assets/publicacoes.webp"
+                         onerror="this.src='https://placehold.co/300x400/eee/999?text=Publicações'"
+                         alt="Publicações"
+                         width="300" height="400"
+                         loading="lazy" decoding="async">
+                </div>
+                <p class="bonus-from">de <s style="color:#f87171">R$ 29</s></p>
+                <p class="bonus-free">100% GRÁTIS</p>
+            </div>
+
+            <div class="bonus-card">
+                <span class="bonus-tag">BÔNUS 2</span>
+                <div class="bonus-img-wrap">
+                    <img src="./assets/murais.webp"
+                         onerror="this.src='https://placehold.co/300x400/eee/999?text=Murais'"
+                         alt="Murais"
+                         width="300" height="400"
+                         loading="lazy" decoding="async">
+                </div>
+                <p class="bonus-from">de <s style="color:#f87171">R$ 29</s></p>
+                <p class="bonus-free">100% GRÁTIS</p>
+            </div>
+
+            <div class="bonus-card">
+                <span class="bonus-tag">BÔNUS 3</span>
+                <div class="bonus-img-wrap">
+                    <img src="./assets/frases.webp"
+                         onerror="this.src='https://placehold.co/300x400/eee/999?text=Frases'"
+                         alt="Frases"
+                         width="300" height="400"
+                         loading="lazy" decoding="async">
+                </div>
+                <p class="bonus-from">de <s style="color:#f87171">R$ 29</s></p>
+                <p class="bonus-free">100% GRÁTIS</p>
+            </div>
+
+            <div class="bonus-card">
+                <span class="bonus-tag">BÔNUS 4</span>
+                <div class="bonus-img-wrap">
+                    <img src="./assets/ilustracoes.webp"
+                         onerror="this.src='https://placehold.co/300x400/eee/999?text=Ilustrações'"
+                         alt="Ilustrações"
+                         width="300" height="400"
+                         loading="lazy" decoding="async">
+                </div>
+                <p class="bonus-from">de <s style="color:#f87171">R$ 29</s></p>
+                <p class="bonus-free">100% GRÁTIS</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════ PROVAS SOCIAIS ══════════════ -->
+<section class="section section-white">
+    <div class="container">
+        <h2 class="section-title">As pessoas estão amando tudo!</h2>
+        <div class="proofs">
+            <img src="./assets/prova1.webp"
+                 onerror="this.src='https://placehold.co/1024x443/f9fafb/d1d5db?text=Depoimento+1'"
+                 alt="Prova Social 1"
+                 width="1024" height="443"
+                 loading="lazy" decoding="async">
+            <img src="./assets/prova2.webp"
+                 onerror="this.src='https://placehold.co/1024x443/f9fafb/d1d5db?text=Depoimento+2'"
+                 alt="Prova Social 2"
+                 width="1024" height="443"
+                 loading="lazy" decoding="async">
+            <img src="./assets/prova3.webp"
+                 onerror="this.src='https://placehold.co/1024x443/f9fafb/d1d5db?text=Depoimento+3'"
+                 alt="Prova Social 3"
+                 width="1024" height="443"
+                 loading="lazy" decoding="async">
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════ OFERTA ══════════════ -->
+<section class="offer-section">
+    <div class="offer-dots"></div>
+    <div class="offer-inner">
+        <p class="offer-label">Oferta Especial</p>
+        <span class="offer-tag">ACESSO IMEDIATO COM MAIS DE 89% DE DESCONTO!</span>
+
+        <div class="offer-box">
+            <ul class="check-list">
+                <li>
+                    <svg class="ci" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    <span><strong>Completo:</strong> acesso a todos os Kits</span>
+                </li>
+                <li>
+                    <svg class="ci" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    <span>Todos os <strong>Bônus</strong></span>
+                </li>
+                <li>
+                    <svg class="ci" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    <span><strong>07 Dias</strong> de Garantia</span>
+                </li>
+                <li>
+                    <svg class="ci" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    <span><strong>Desconto</strong> de 89%</span>
+                </li>
+            </ul>
+
+            <hr class="offer-hr">
+
+            <p class="offer-pre">Hoje com desconto único</p>
+            <p class="offer-from-price">
+                De: <span class="strike-wrap">R$ 97,90</span>
+            </p>
+            <div class="offer-price">
+                <span class="op-pre">R$</span>
+                <span class="op-main">10</span>
+                <span class="op-cents">,00</span>
+            </div>
+            <p class="offer-urgency">
+                <strong>APROVEITE AGORA:</strong> Você NÃO vai encontrar esse preço depois.
+            </p>
+            <a href="https://checkout.bemestarbrasil.online/" class="btn-offer">
+                QUERO GARANTIR MEU KIT AGORA!
+            </a>
+        </div>
+
+        <div class="progress-wrap">
+            <div class="progress-fill">
+                <div class="progress-shine"></div>
+                92% (Unidades esgotando)
+            </div>
+        </div>
+
+        <div class="city-badge cta-cidade" data-numero="319">
+            📍 <strong class="num">319</strong> pessoas em
+            <strong class="cidade">sua cidade</strong> já garantiram o kit!
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════ DOAÇÃO ══════════════ -->
+<section class="donation-section">
+    <div class="donation-inner">
+        <img
+            src="./assets/ong.webp"
+            onerror="this.style.display='none'"
+            alt="ONG 4 Patas"
+            class="donation-ong-img"
+            width="500" height="116"
+            loading="lazy" decoding="async">
+        <div class="donation-text">
+            <h3>
+                ❤️ <span>Sua Compra Salva Vidas</span> ❤️
+                <br><span style="color:var(--red);background:none;padding:0;transform:none">PARTE DO LUCRO É DOADO</span>
+            </h3>
+            <p>
+                Parte do nosso lucro é destinado à <strong>ONG 4 Patas</strong>,
+                que resgata e cuida de animais em situação de abandono e vulnerabilidade.
+                Ao comprar, você também faz parte dessa corrente do bem. 🐾
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════ GARANTIA ══════════════ -->
+<section class="guarantee-section">
+    <div class="guarantee-inner">
+        <img src="https://meusuperkit.com/wp-content/uploads/2026/01/garantia-7dias.webp"
+             onerror="this.src='https://placehold.co/250x250/fdf2f8/9d467e?text=Garantia'"
+             alt="Garantia 7 Dias"
+             width="250" height="250"
+             loading="lazy" decoding="async">
+        <div class="guarantee-txt">
+            <p class="g-label">Risco zero para você!</p>
+            <h4 class="g-title">Garantia Incondicional!</h4>
+            <p>
+                Ainda não tem certeza? Não se preocupe. Se o conteúdo descrito acima
+                não for o mesmo que você receber, você tem <strong>7 dias de garantia</strong>
+                e devolverei seu dinheiro sem burocracia!
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer>
+    <p>Copyright &copy; 2026 Meu Super Kit. Todos os direitos reservados.</p>
+    <div class="footer-links">
+        <a href="https://meusuperkit.com/politica-de-publicidade/">Política de Privacidade</a>
+        <span class="footer-sep">|</span>
+        <a href="https://meusuperkit.com/termos-de-uso/">Termos de Uso</a>
+        <span class="footer-sep">|</span>
+        <a href="mailto:suporte@meusuperkit.com">Suporte</a>
+    </div>
+</footer>
+
+<!-- Sticky Mobile CTA -->
+<div class="sticky-cta" id="stickyCta">
+    <a href="https://checkout.bemestarbrasil.online/">GARANTIR POR R$10,00 ⚡</a>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast">
+    <div class="toast-dot"></div>
+    <span id="toastText">Alguém comprou o kit!</span>
+</div>
+
+<script>
+(function(){
+    const sc = document.getElementById('stickyCta');
+    window.addEventListener('scroll', function(){
+        sc.classList.toggle('visible', window.scrollY > 300);
+    }, {passive: true});
+
+    (async function(){
+        const aplicar = function(city){
+            document.querySelectorAll('.cta-cidade').forEach(function(el){
+                const n = el.querySelector('.num');
+                const c = el.querySelector('.cidade');
+                if(n) n.textContent = el.getAttribute('data-numero') || '319';
+                if(c) c.textContent = city || 'sua cidade';
+            });
+        };
+        const cached = sessionStorage.getItem('_uc');
+        if(cached) return aplicar(cached);
+        try{
+            const r = await fetch('https://ipapi.co/json/');
+            const d = await r.json();
+            if(d.city){ sessionStorage.setItem('_uc', d.city); return aplicar(d.city); }
+            const r2 = await fetch('https://ipwho.is/');
+            const d2 = await r2.json();
+            if(d2.city){ sessionStorage.setItem('_uc', d2.city); return aplicar(d2.city); }
+            aplicar(null);
+        } catch(e){ aplicar(null); }
+    })();
+
+    (function(){
+        const NOMES = ["Maria","Ana","Juliana","Beatriz","Camila","Fernanda","Gabriela","Larissa","Luana","Adriana","Aline","Amanda","Bruna","Carla","Carolina","Daniela","Letícia","Mariana","Patrícia","Renata"];
+        const EMOJIS = ["🎁","🛍️","✨","🔥","🎉","💖","🥰"];
+        const toast = document.getElementById('toast');
+        const txt = document.getElementById('toastText');
+        const rnd = function(a){ return a[Math.floor(Math.random() * a.length)]; };
+        function show(){
+            txt.innerHTML = '<strong style="color:var(--red)">' + rnd(NOMES) + '</strong> acabou de comprar um kit ' + rnd(EMOJIS);
+            toast.classList.add('show');
+            setTimeout(function(){ toast.classList.remove('show'); }, 4000);
+        }
+        setTimeout(show, 3000);
+        setInterval(show, 18000);
+    })();
+
+    window.addEventListener('load', function(){
+        (function(){
+            var t = document.createElement('script');
+            t.async = true;
+            t.src = 'https://connect.facebook.net/en_US/fbevents.js';
+            document.head.appendChild(t);
+        })();
+
+        (function(){
+            var s = document.createElement('script');
+            s.async = true;
+            s.src = 'https://www.googletagmanager.com/gtag/js?id=AW-10990947453';
+            document.head.appendChild(s);
+            s.onload = function(){
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'AW-10990947453');
+            };
+        })();
+
+        (function(){
+            var u = document.createElement('script');
+            u.async = true;
+            u.defer = true;
+            u.src = 'https://cdn.utmify.com.br/scripts/utms/latest.js';
+            u.setAttribute('data-utmify-prevent-xcod-sck', '');
+            u.setAttribute('data-utmify-prevent-subids', '');
+            document.head.appendChild(u);
+        })();
+    });
+})();
+</script>
+</body>
+</html>

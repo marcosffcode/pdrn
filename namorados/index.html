@@ -7,22 +7,16 @@
 
     <!-- ═══════════════════════════════════════════════════════
          🚀 FIX #1 — PRELOAD DA IMAGEM LCP
-         Browser descobre e baixa a imagem ANTES de parsear o body.
-         Sem isso o browser só vê a imagem depois de processar todo HTML+CSS.
-         fetchpriority="high" garante prioridade máxima na fila de rede.
+         Atualizado para buscar a imagem na mesma pasta (./)
     ════════════════════════════════════════════════════════════ -->
     <link rel="preload" as="image"
-          href="https://pub-80d3706d8b3c4936b06601bde5361dc6.r2.dev/lembrancinhas%20(1).webp"
+          href="./lembrancinhas%20(1).webp"
           fetchpriority="high">
 
-    <!-- Preconnects — mantidos e adicionado o CDN de imagens -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://pub-80d3706d8b3c4936b06601bde5361dc6.r2.dev" crossorigin>
     <link rel="dns-prefetch" href="https://ipapi.co">
-    <!-- ✂️ REMOVIDO: dns-prefetch do cdn.jsdelivr.net (lucide removido) -->
 
-    <!-- Fontes async — mantido exatamente igual -->
     <link rel="preload" as="style"
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&family=Poppins:wght@500;700;800&display=swap"
       onload="this.onload=null;this.rel='stylesheet'">
@@ -31,29 +25,15 @@
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&family=Poppins:wght@500;700;800&display=swap">
     </noscript>
 
-    <!-- ✂️ FIX #2 — LUCIDE COMPLETAMENTE REMOVIDO
-         O script era chamado (lucide.createIcons()) mas NENHUM elemento
-         data-lucide existe na página. Todos os ícones são SVGs inline.
-         Remover = -48 KB de JS + 1 menos request DNS+TCP+TLS na fase crítica. -->
-
-    <!-- ═══════════════════════════════════════════════════════
-         🚀 FIX #3 — META PIXEL: mantém fbq() inline (é minúsculo e necessário
-         para atribuição) mas o carregamento do fbevents.js é postergado para
-         depois do load event — não bloqueia mais o LCP.
-    ════════════════════════════════════════════════════════════ -->
     <script>
     !function(f,b,e,v,n,t,s){
         if(f.fbq)return;
         n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
         if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];
-        /* ← script tag criada depois do load, veja script no final do body */
     }(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
     fbq('init','679523000263255');fbq('track','PageView');
     </script>
     <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=679523000263255&ev=PageView&noscript=1"/></noscript>
-
-    <!-- ✂️ FIX #4 — UTMify e GTM movidos para depois do load event no final do body.
-         Esses scripts competiam por banda com a imagem LCP no mesmo momento crítico. -->
 
     <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -619,15 +599,10 @@
             <span class="units-badge">2.137 unidades vendidas</span>
         </div>
 
-        <!-- Gallery
-             🚀 FIX #5 — width + height em todas as imagens evita layout shifts
-             (o browser já reserva o espaço antes de baixar a imagem)
-             FIX #6 — só a imagem LCP usa fetchpriority="high" e decoding="sync"
-             As outras usam loading="lazy" + decoding="async" corretamente -->
         <div class="gallery">
             <div class="gallery-item">
-                <!-- LCP ELEMENT: sem loading="lazy", sem decoding="async" -->
-                <img src="/lembrancinhas (1).webp"
+                <!-- Alterado: ./ e espaços convertidos para %20 -->
+                <img src="./lembrancinhas%20(1).webp"
                      onerror="this.src='https://placehold.co/400x400/fdf2f8/9d467e?text=Lembrancinhas'"
                      alt="Lembrancinhas"
                      width="400" height="400"
@@ -635,21 +610,21 @@
                      decoding="sync">
             </div>
             <div class="gallery-item">
-                <img src="/caixinhas (1) (1).webp"
+                <img src="./caixinhas%20(1)%20(1).webp"
                      onerror="this.src='https://placehold.co/400x400/fdf2f8/9d467e?text=Caixinhas'"
                      alt="Caixinhas"
                      width="400" height="400"
                      loading="lazy" decoding="async">
             </div>
             <div class="gallery-item">
-                <img src="/presentes (1) (1).webp"
+                <img src="./presentes%20(1)%20(1).webp"
                      onerror="this.src='https://placehold.co/400x400/fdf2f8/9d467e?text=Presentes'"
                      alt="Presentes"
                      width="400" height="400"
                      loading="lazy" decoding="async">
             </div>
             <div class="gallery-item">
-                <img src="/cartoes (1) (1).webp"
+                <img src="./cartoes%20(1)%20(1).webp"
                      onerror="this.src='https://placehold.co/400x400/fdf2f8/9d467e?text=Cartões'"
                      alt="Cartões"
                      width="400" height="400"
@@ -706,7 +681,7 @@
             <div class="bonus-card">
                 <span class="bonus-tag">BÔNUS 1</span>
                 <div class="bonus-img-wrap">
-                    <img src="/publicacoes (1).webp"
+                    <img src="./publicacoes%20(1).webp"
                          onerror="this.src='https://placehold.co/300x400/eee/999?text=Publicações'"
                          alt="Publicações"
                          width="300" height="400"
@@ -719,7 +694,7 @@
             <div class="bonus-card">
                 <span class="bonus-tag">BÔNUS 2</span>
                 <div class="bonus-img-wrap">
-                    <img src="/murais (1).webp"
+                    <img src="./murais%20(1).webp"
                          onerror="this.src='https://placehold.co/300x400/eee/999?text=Murais'"
                          alt="Murais"
                          width="300" height="400"
@@ -732,7 +707,7 @@
             <div class="bonus-card">
                 <span class="bonus-tag">BÔNUS 3</span>
                 <div class="bonus-img-wrap">
-                    <img src="/frases (1).webp"
+                    <img src="./frases%20(1).webp"
                          onerror="this.src='https://placehold.co/300x400/eee/999?text=Frases'"
                          alt="Frases"
                          width="300" height="400"
@@ -745,7 +720,7 @@
             <div class="bonus-card">
                 <span class="bonus-tag">BÔNUS 4</span>
                 <div class="bonus-img-wrap">
-                    <img src="/ilustracoes (1).webp"
+                    <img src="./ilustracoes%20(1).webp"
                          onerror="this.src='https://placehold.co/300x400/eee/999?text=Ilustrações'"
                          alt="Ilustrações"
                          width="300" height="400"
@@ -764,17 +739,17 @@
     <div class="container">
         <h2 class="section-title">As pessoas estão amando tudo!</h2>
         <div class="proofs">
-            <img src="/prova1-1-1024x443 (2) (2).webp"
+            <img src="./prova1-1-1024x443%20(2)%20(2).webp"
                  onerror="this.src='https://placehold.co/1024x443/f9fafb/d1d5db?text=Depoimento+1'"
                  alt="Prova Social 1"
                  width="1024" height="443"
                  loading="lazy" decoding="async">
-            <img src="/prova2-1024x443 (1) (2).webp"
+            <img src="./prova2-1024x443%20(1)%20(2).webp"
                  onerror="this.src='https://placehold.co/1024x443/f9fafb/d1d5db?text=Depoimento+2'"
                  alt="Prova Social 2"
                  width="1024" height="443"
                  loading="lazy" decoding="async">
-            <img src="/prova3-1024x443 (1) (2).webp"
+            <img src="./prova3-1024x443%20(1)%20(2).webp"
                  onerror="this.src='https://placehold.co/1024x443/f9fafb/d1d5db?text=Depoimento+3'"
                  alt="Prova Social 3"
                  width="1024" height="443"
@@ -847,7 +822,7 @@
 <section class="donation-section">
     <div class="donation-inner">
         <img
-            src="/WhatsApp Image 2026-05-17 at 17.33.06.webp"
+            src="./WhatsApp%20Image%202026-05-17%20at%2017.33.06.webp"
             onerror="this.style.display='none'"
             alt="ONG 4 Patas"
             class="donation-ong-img"
@@ -910,21 +885,13 @@
     <span id="toastText">Alguém comprou o kit!</span>
 </div>
 
-<!-- ═══════════════════════════════════════════════════════════════════
-     🚀 FIX #3 (continuação) — Scripts de terceiros carregados APÓS o load event.
-     Isso garante que NENHUM desses scripts compete com a imagem LCP.
-     GTM, UTMify e fbevents.js só injetam seus elementos depois que a página
-     já pintou para o usuário — sem nenhum impacto na percepção de velocidade.
-════════════════════════════════════════════════════════════════════════ -->
 <script>
 (function(){
-    // ── Interações da página (sticky + toast) — rodam imediatamente ──
     const sc = document.getElementById('stickyCta');
     window.addEventListener('scroll', function(){
         sc.classList.toggle('visible', window.scrollY > 300);
     }, {passive: true});
 
-    // City badge (geolocalização)
     (async function(){
         const aplicar = function(city){
             document.querySelectorAll('.cta-cidade').forEach(function(el){
@@ -947,7 +914,6 @@
         } catch(e){ aplicar(null); }
     })();
 
-    // Toast social proof
     (function(){
         const NOMES = ["Maria","Ana","Juliana","Beatriz","Camila","Fernanda","Gabriela","Larissa","Luana","Adriana","Aline","Amanda","Bruna","Carla","Carolina","Daniela","Letícia","Mariana","Patrícia","Renata"];
         const EMOJIS = ["🎁","🛍️","✨","🔥","🎉","💖","🥰"];
@@ -963,9 +929,7 @@
         setInterval(show, 18000);
     })();
 
-    // ── Scripts de terceiros: só carregam depois do load event ──
     window.addEventListener('load', function(){
-        // Facebook Pixel — carrega fbevents.js após o LCP
         (function(){
             var t = document.createElement('script');
             t.async = true;
@@ -973,7 +937,6 @@
             document.head.appendChild(t);
         })();
 
-        // Google Analytics / Ads
         (function(){
             var s = document.createElement('script');
             s.async = true;
@@ -987,7 +950,6 @@
             };
         })();
 
-        // UTMify
         (function(){
             var u = document.createElement('script');
             u.async = true;

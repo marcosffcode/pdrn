@@ -116,6 +116,9 @@
 
         .price-strike { text-decoration: line-through; color: #ef4444; font-size: 16px; font-weight: 600; }
         .price-new { font-size: 38px; font-family: var(--font-heading); font-weight: 700; color: var(--accent-gold); display: block; margin: 8px 0; }
+        
+        /* NOVO: Estilo para a caixa de escassez (Timer) */
+        .timer-box { background: rgba(225, 29, 72, 0.1); border: 1px solid var(--accent-red); padding: 16px; border-radius: 8px; text-align: center; margin-bottom: 24px; box-shadow: 0 0 15px rgba(225, 29, 72, 0.15); }
     </style>
 </head>
 <body>
@@ -128,10 +131,14 @@
             <p class="text-gold text-center" style="font-weight: 600; font-size: 12px; letter-spacing: 2px; margin-bottom: 20px;">
                 Decodificação Energética Restrita
             </p>
-            <h1 class="text-center" style="font-size: 32px; margin-bottom: 24px;">
+            <h1 class="text-center" style="font-size: 32px; margin-bottom: 16px;">
                 Há um <span class="text-red">'Código Oculto'</span> no seu nome que dita o seu sucesso (ou fracasso).
             </h1>
-            <p class="text-center text-muted" style="font-size: 16px; margin-bottom: 40px;">
+            <!-- NOVO: Subtítulo para aumentar a dor inicial -->
+            <p class="text-center" style="font-size: 16px; margin-bottom: 24px; font-style: italic; color: #e2dbea;">
+                E enquanto você não decifrá-lo, continuará nadando contra a maré e atraindo escassez sem entender o porquê.
+            </p>
+            <p class="text-center text-muted" style="font-size: 15px; margin-bottom: 40px;">
                 Responda a estas perguntas e descubra se você está alinhado com sua verdadeira Vocação ou caminhando para um esgotamento.
             </p>
             <button class="btn btn-primary" onclick="startQuiz()">[ INICIAR LEITURA GRATUITA ]</button>
@@ -163,6 +170,15 @@
     <!-- PASSO 4: PAYWALL / OFERTA -->
     <div id="step-paywall" class="screen hidden">
         <div class="alert-badge">&#9888; ANÁLISE CONCLUÍDA COM ALERTAS</div>
+        
+        <!-- NOVO: Cronômetro de Urgência -->
+        <div class="timer-box">
+            <p style="font-size: 13px; color: #ff4c6d; font-weight: 700; margin-bottom: 6px; text-transform: uppercase;">
+                ⚠️ Atenção: Por segurança, seu dossiê será deletado em:
+            </p>
+            <span id="countdown-timer" style="font-size: 28px; font-weight: 700; color: #fff; letter-spacing: 2px; text-shadow: 0 0 10px rgba(255,255,255,0.3);">10:00</span>
+        </div>
+
         <h2 style="font-size: 26px; margin-bottom: 16px;">O que encontramos explica exatamente o seu cansaço, <span id="user-name-display" class="text-gold"></span>.</h2>
         
         <p class="text-muted" style="margin-bottom: 24px;">
@@ -189,9 +205,9 @@
             </p>
         </div>
 
-        <p style="margin-bottom: 24px; font-weight: 300; font-size: 15px;">
-            Nós geramos um Dossiê completo de 30 páginas, a sua <strong>Bússola Vocacional</strong>, baseado exclusivamente nos seus dados.
-            Um numerólogo cobraria <span class="price-strike">R$ 300</span> por essa leitura individual.
+        <!-- NOVO: Copy de Justificativa de Preço Melhorada -->
+        <p style="margin-bottom: 24px; font-weight: 300; font-size: 14px;">
+            A leitura profunda dos seus bloqueios exigiu processamento do nosso sistema. Para afastar curiosos e entregar a <strong>Bússola Vocacional de 30 páginas</strong> APENAS para quem está comprometido em mudar de vida, cobramos uma pequena taxa de emissão (menos que um lanche). Um numerólogo cobraria <span class="price-strike">R$ 300</span>.
         </p>
 
         <div class="text-center mb-4">
@@ -199,6 +215,11 @@
             <span class="price-new">Apenas R$ 17,00</span>
             <p style="font-size: 12px; color: var(--accent-gold); margin-top: 4px; font-weight: 600;">Acesso Imediato ao PDF</p>
         </div>
+
+        <!-- NOVO: Aversão à Perda antes do botão -->
+        <p style="font-size: 13px; color: #d1c4e9; text-align: center; margin-bottom: 16px; font-style: italic;">
+            Você pode fechar esta página agora e voltar para a mesma ansiedade e estagnação de sempre... Ou pode destravar seu código hoje.
+        </p>
 
         <!-- BOTÃO DE CHECKOUT EXTERNO -->
         <button id="btn-checkout" class="btn btn-gold" onclick="redirectToCheckout()">
@@ -272,12 +293,16 @@
     /* ==========================================================================
        LÓGICA DO FUNIL E QUIZ
        ========================================================================== */
+    // NOVO: Adicionado 3 perguntas vitais (Injustiça, Tempo Perdido, Comprometimento)
     const questions = [
         { text: "Como você se sente energeticamente no domingo à noite?", type: "choice", options: ["Equilibrado, pronto pra semana", "Uma ansiedade leve, um desconforto", "Um aperto no peito, vontade de sumir"] },
         { text: "No ambiente de trabalho atual, você sente que veste uma 'máscara' para ser aceito?", type: "choice", options: ["Sim, o tempo todo", "Às vezes", "Não, sou autêntico"] },
         { text: "Você sente que tem um potencial gigantesco adormecido e sugado por tarefas mecânicas?", type: "choice", options: ["Sim, sinto isso todos os dias", "Sinto uma confusão interna", "Não, me sinto no caminho certo"] },
+        { text: "Quando você vê pessoas com METADE do seu talento tendo o dobro do seu sucesso, qual é o seu primeiro pensamento?", type: "choice", options: ["Sinto que o universo está sendo injusto comigo", "Me sinto frustrado(a) por não saber o que eles sabem", "Tento ignorar, mas isso me consome por dentro"] },
+        { text: "Se você continuar exatamente no mesmo caminho de hoje pelos próximos 5 anos, como você estará?", type: "choice", options: ["Completamente esgotado(a) e doente", "Amargurado(a) por ter desperdiçado minha vida", "Na mesma estagnação financeira de sempre"] },
         { text: "Qual destas dores mais assombra seu subconsciente hoje?", type: "choice", options: ["A escassez financeira contínua", "Chegar aos 80 anos e perceber que desperdiçou a vida", "Nunca ser reconhecido pela sua essência"] },
         { text: "Você sente um cansaço físico inexplicável logo após interagir com chefes ou certos ambientes?", type: "choice", options: ["Sim, parece que sugam minha vitalidade", "Às vezes acontece", "Não, minha energia se mantém intacta"] },
+        { text: "Se o sistema detectar a raiz exata do seu bloqueio hoje, você está 100% disposto(a) a mudar suas atitudes para destravar sua vida?", type: "choice", options: ["Sim, custe o que custar. Não aguento mais", "Depende do que eu tiver que fazer"] },
         { text: "Qual o seu PRIMEIRO NOME exato de batismo? (Crucial para o cálculo).", type: "input", inputType: "text", placeholder: "Ex: Maria" },
         { text: "Qual a sua DATA DE NASCIMENTO exata? (Fundamental para mapear os bloqueios).", type: "input", inputType: "text", placeholder: "DD/MM/AAAA" }
     ];
@@ -341,11 +366,22 @@
         const val = document.getElementById('quiz-input').value.trim();
         if (!val) { alert("Preencha o campo para continuar."); return; }
 
-        if (currentQuestionIndex === 5) {
+        if (currentQuestionIndex === 8) { // Index do Nome
             userData.name = val.split(' ')[0]; // Pega primeiro nome
         }
-        if (currentQuestionIndex === 6) {
+        if (currentQuestionIndex === 9) { // Index da Data
             if(val.length < 10) { alert("Por favor, digite a data completa (DD/MM/AAAA)."); return; }
+            
+            // NOVO: Validação de data real para dar credibilidade
+            const parts = val.split('/');
+            const day = parseInt(parts[0], 10);
+            const month = parseInt(parts[1], 10);
+            const year = parseInt(parts[2], 10);
+            
+            if (day < 1 || day > 31 || month < 1 || month > 12 || year < 1920 || year > 2015) {
+                alert("O sistema detectou uma anomalia temporal. Por favor, insira uma data de nascimento válida."); return;
+            }
+
             userData.birth = val;
             
             // Dispara Lead (Fim do quiz)
@@ -361,18 +397,19 @@
         else startProcessing();
     }
 
-    // Tela de Carregamento Dramática com Lista
+    // Tela de Carregamento Dramática com Lista (Agora com nomes personalizados)
     function startProcessing() {
         hideAllScreens(); 
         document.getElementById('step-loading').classList.remove('hidden');
         const loadingList = document.getElementById('loading-list');
         loadingList.innerHTML = ''; 
 
+        // NOVO: Textos dinâmicos com os dados do lead
         const steps = [
             { text: "Conectando à matriz numerológica...", isAlert: false },
-            { text: "Calculando frequência do nome...", isAlert: false },
-            { text: "Cruzando trânsitos de nascimento...", isAlert: false },
-            { text: "⚠️ [ALERTA] Bloqueio Energético Detectado!", isAlert: true },
+            { text: `Calculando frequência do nome ${userData.name}...`, isAlert: false },
+            { text: `Cruzando trânsitos da data ${userData.birth}...`, isAlert: false },
+            { text: "⚠️ [ALERTA] Bloqueio Energético Severo Detectado!", isAlert: true },
             { text: "Compilando Dossiê Bússola Vocacional...", isAlert: false }
         ];
 
@@ -405,7 +442,7 @@
                     lastLi.innerHTML = `<span>✅</span> ${steps[steps.length - 1].text}`;
                     lastLi.style.color = "#10b981";
                 }
-                setTimeout(showPaywall, 1600); 
+                setTimeout(showPaywall, 1800); 
             }
         }, 1200);
     }
@@ -415,6 +452,29 @@
         document.getElementById('user-name-display').innerText = userData.name;
         document.getElementById('step-paywall').classList.remove('hidden');
         window.scrollTo(0, 0);
+        startTimer(); // NOVO: Inicia o cronômetro
+    }
+
+    // NOVO: Função do Cronômetro de Urgência
+    function startTimer() {
+        let timeLeft = 600; // 10 minutos
+        const timerEl = document.getElementById('countdown-timer');
+        
+        const interval = setInterval(() => {
+            let m = Math.floor(timeLeft / 60);
+            let s = timeLeft % 60;
+            
+            m = m < 10 ? '0' + m : m;
+            s = s < 10 ? '0' + s : s;
+            
+            timerEl.innerText = `${m}:${s}`;
+            
+            if (timeLeft <= 0) {
+                clearInterval(interval);
+                timerEl.innerText = "00:00";
+            }
+            timeLeft--;
+        }, 1000);
     }
 
     // Redirecionamento para o Checkout

@@ -99,12 +99,20 @@
         .paywall-box { background-color: var(--surface-color); border: 1px solid rgba(225, 29, 72, 0.3); border-radius: 12px; padding: 24px 20px; margin-bottom: 24px; }
         .blurred-result { filter: blur(5px); opacity: 0.6; font-family: monospace; font-size: 14px; margin: 16px 0; background: rgba(0,0,0,0.5); padding: 12px; border-radius: 8px; border: 1px solid #222; }
         .alert-badge { background: linear-gradient(90deg, rgba(225, 29, 72, 0.15), rgba(225, 29, 72, 0.05)); color: #ff4c6d; border-left: 3px solid var(--accent-red); padding: 10px 14px; font-weight: 700; font-size: 12px; display: inline-block; margin-bottom: 20px; }
-        .mockup-area { width: 100%; height: 220px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.05), rgba(255,255,255,0.02)); border: 1px dashed rgba(212, 175, 55, 0.4); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px; color: var(--accent-gold); font-size: 13px; text-align: center; }
+        .mockup-area { width: 100%; display: flex; align-items: center; justify-content: center; margin-bottom: 24px; }
+        .mockup-area img { max-width: 100%; height: auto; max-height: 280px; object-fit: contain; filter: drop-shadow(0 15px 25px rgba(0,0,0,0.6)); animation: float 6s ease-in-out infinite; }
         
+        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-8px); } 100% { transform: translateY(0px); } }
+
         /* Guarantee & Testimonials */
         .guarantee { display: flex; align-items: center; justify-content: center; gap: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 16px; border-radius: 8px; margin-bottom: 24px; }
         .guarantee p { font-size: 12px; color: var(--text-muted); line-height: 1.4; text-align: left; }
         .testimonial { background: linear-gradient(135deg, rgba(255,255,255,0.03), transparent); border: 1px solid rgba(255,255,255,0.05); border-top: 1px solid rgba(212, 175, 55, 0.2); padding: 16px; font-size: 13px; color: var(--text-muted); font-style: italic; margin-bottom: 16px; border-radius: 8px; font-weight: 300; }
+        .testimonial-author { display: flex; align-items: center; gap: 12px; margin-top: 12px; font-style: normal; }
+        .testimonial-author img { width: 42px; height: 42px; border-radius: 50%; object-fit: cover; border: 1px solid var(--accent-gold); box-shadow: 0 0 10px rgba(212, 175, 55, 0.2); }
+        .testimonial-author-info { display: flex; flex-direction: column; }
+        .testimonial-author-name { color: #fff; font-weight: 600; font-size: 13px; }
+        .testimonial-stars { color: var(--accent-gold); font-size: 10px; margin-top: 2px; letter-spacing: 1px; }
 
         .price-strike { text-decoration: line-through; color: #ef4444; font-size: 16px; font-weight: 600; }
         .price-new { font-size: 38px; font-family: var(--font-heading); font-weight: 700; color: var(--accent-gold); display: block; margin: 8px 0; }
@@ -165,7 +173,7 @@
 
         <!-- ESPAÇO PARA O MOCKUP VISUAL -->
         <div class="mockup-area">
-            📸 [INSERIR IMAGEM DO MOCKUP 3D AQUI]<br>Dossiê de 30 páginas
+            <img src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/ae79f77c-46ff-4683-a18c-e51c123a4373.webp" alt="Dossiê Bússola Vocacional">
         </div>
 
         <div class="paywall-box">
@@ -205,12 +213,53 @@
         </div>
 
         <!-- DEPOIMENTOS -->
-        <div>
+        <div style="margin-top: 8px;">
+            <h4 style="font-size: 12px; margin-bottom: 16px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; text-align: center;">
+                Relatos de Despertar
+            </h4>
+            
             <div class="testimonial">
-                "Eu tava ganhando bem mas vazio por dentro. A Bússola mostrou que minha alma precisa de criatividade. Descobri meu bloqueio e pedi demissão. A energia mudou na hora." <br><strong style="color: #fff;">— Pedro Henrique</strong>
+                "Eu tava ganhando bem mas vazio por dentro. A Bússola mostrou que minha alma precisa de criatividade. Descobri meu bloqueio e pedi demissão. A energia mudou na hora."
+                <div class="testimonial-author">
+                    <img src="https://pub-c1ef14dcbd7e48a5aa8b5fe1b95b7808.r2.dev/1569898367379.webp" alt="Pedro Henrique">
+                    <div class="testimonial-author-info">
+                        <span class="testimonial-author-name">Pedro Henrique</span>
+                        <span class="testimonial-stars">★★★★★</span>
+                    </div>
+                </div>
             </div>
+
             <div class="testimonial">
-                "O mapa revelou meus dons e onde minha energia flui melhor. A parte sobre os ambientes que sugavam minha vitalidade foi esclarecedora demais." <br><strong style="color: #fff;">— Bruno Costa</strong>
+                "Não esperava que fosse tão prático. A parte sobre minha marca pessoal explicou porque eu sempre me frustro em ambientes hierárquicos. Agora sei que tipo de empresa procurar."
+                <div class="testimonial-author">
+                    <img src="https://pub-c1ef14dcbd7e48a5aa8b5fe1b95b7808.r2.dev/1766791540332.webp" alt="Mariana Silva">
+                    <div class="testimonial-author-info">
+                        <span class="testimonial-author-name">Mariana Silva</span>
+                        <span class="testimonial-stars">★★★★★</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial">
+                "O mapa revelou meus dons e onde minha energia flui melhor. A parte sobre os ambientes que sugavam minha vitalidade foi esclarecedora demais. Mudei minha rota profissional e tudo clareou."
+                <div class="testimonial-author">
+                    <img src="https://pub-c1ef14dcbd7e48a5aa8b5fe1b95b7808.r2.dev/1734199869399.webp" alt="Camila Fontes">
+                    <div class="testimonial-author-info">
+                        <span class="testimonial-author-name">Camila Fontes</span>
+                        <span class="testimonial-stars">★★★★★</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial">
+                "Minha conta bancária não destravava de jeito nenhum. Descobrir a trava na minha data de nascimento foi um divisor de águas. Finalmente as coisas começaram a andar."
+                <div class="testimonial-author">
+                    <img src="https://pub-c1ef14dcbd7e48a5aa8b5fe1b95b7808.r2.dev/1718231122499.webp" alt="Juliana Santos">
+                    <div class="testimonial-author-info">
+                        <span class="testimonial-author-name">Juliana Santos</span>
+                        <span class="testimonial-stars">★★★★★</span>
+                    </div>
+                </div>
             </div>
         </div>
 

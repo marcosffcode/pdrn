@@ -80,7 +80,6 @@ body {
   100% { transform: translateY(110vh) rotate(540deg) scale(1.2); opacity: 0; }
 }
 
-/* Bandeirinha strip across onboarding */
 .ob-bandeiras {
   position: absolute;
   top: 0; left: 0; right: 0;
@@ -189,6 +188,8 @@ body {
   padding: 8px 12px;
   z-index: 10;
   font-family: 'DM Sans', sans-serif;
+  background: transparent;
+  border: none;
 }
 .ob-counter {
   position: absolute;
@@ -409,6 +410,7 @@ body {
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
   display: flex; flex-direction: column; gap: 10px;
   position: relative; overflow: hidden;
+  text-decoration: none;
   animation: cardIn 0.4s cubic-bezier(0.34,1.2,0.64,1) both;
 }
 .item-card::after {
@@ -444,6 +446,7 @@ body {
 .ctag-studio  { background: #EDE9FF; color: #4A3AAA; }
 .ctag-dxf     { background: #E0F5EA; color: #1A6B3A; }
 .ctag-imagens { background: #E6F0FF; color: #1A3FAA; }
+.ctag-drive   { background: #E8F0FE; color: #1967D2; } /* Style for Drive link */
 
 .card-arrow {
   position: absolute; bottom: 14px; right: 14px;
@@ -496,76 +499,6 @@ body {
   10%  { opacity: 0.3; }
   90%  { opacity: 0.1; }
   100% { transform: translateY(-105vh) rotate(360deg); opacity: 0; }
-}
-
-/* ── "EM BREVE" MODAL ── */
-.modal-overlay {
-  position: fixed; inset: 0;
-  background: rgba(42,18,8,0.72);
-  z-index: 500; display: flex; align-items: flex-end; justify-content: center;
-  opacity: 0; pointer-events: none;
-  transition: opacity 0.3s ease;
-  backdrop-filter: blur(4px);
-}
-.modal-overlay.open { opacity: 1; pointer-events: all; }
-
-.modal-sheet {
-  background: var(--cream);
-  border-radius: 28px 28px 0 0;
-  padding: 8px 0 0;
-  width: 100%; max-width: 540px;
-  transform: translateY(100%);
-  transition: transform 0.35s cubic-bezier(0.34,1.1,0.64,1);
-  overflow: hidden;
-}
-.modal-overlay.open .modal-sheet { transform: translateY(0); }
-
-.modal-handle { width: 40px; height: 4px; background: rgba(0,0,0,0.12); border-radius: 2px; margin: 0 auto 20px; }
-.modal-body { padding: 0 24px 36px; }
-
-/* Em breve state (default) */
-.embreve-icon { font-size: 58px; text-align: center; margin-bottom: 16px; animation: floatEmoji 3s ease-in-out infinite; }
-@keyframes floatEmoji { 0%,100%{transform:translateY(0) rotate(-3deg);}50%{transform:translateY(-10px) rotate(3deg);} }
-
-.modal-title { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--red-dk); text-align: center; margin-bottom: 8px; font-weight: 600; }
-.modal-desc  { font-size: 14px; color: var(--muted); text-align: center; margin-bottom: 24px; font-weight: 300; line-height: 1.65; }
-
-/* progress bar */
-.progress-wrap { background: var(--yellow-lt); border-radius: var(--r-pill); height: 8px; overflow: hidden; margin-bottom: 8px; }
-.progress-bar  { height: 100%; width: 0; background: linear-gradient(90deg, var(--yellow), var(--orange)); border-radius: var(--r-pill); animation: progressGrow 2.2s cubic-bezier(0.4,0,0.2,1) 0.3s forwards; }
-@keyframes progressGrow { to { width: 65%; } }
-.progress-label { font-size: 11px; color: var(--muted); text-align: center; margin-bottom: 28px; font-weight: 300; }
-
-/* notify strip */
-.notify-strip {
-  display: flex; align-items: center; gap: 12px;
-  background: var(--yellow-lt);
-  border: 1px solid rgba(224,106,26,0.2);
-  border-radius: var(--r-xl);
-  padding: 14px 16px; margin-bottom: 20px;
-}
-.notify-strip-icon { font-size: 22px; flex-shrink: 0; }
-.notify-strip-text { font-size: 13px; color: var(--red-dk); font-weight: 400; line-height: 1.5; }
-.notify-strip-text strong { font-weight: 600; display: block; }
-
-.modal-close {
-  display: block; width: 100%;
-  background: var(--red-dk); color: #fff;
-  border: none; border-radius: var(--r-pill);
-  padding: 16px; font-size: 15px; font-weight: 500;
-  font-family: 'DM Sans', sans-serif;
-  cursor: pointer; transition: background 0.2s, transform 0.15s;
-  box-shadow: 0 4px 20px rgba(122,26,8,0.3);
-}
-.modal-close:hover { background: var(--red); }
-.modal-close:active { transform: scale(0.98); }
-
-/* item name inside modal */
-.modal-item-badge {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: #fff; border: 1px solid var(--border);
-  border-radius: var(--r-lg); padding: 10px 16px;
-  margin-bottom: 24px; font-size: 14px; font-weight: 500; color: var(--red-dk);
 }
 
 .scroll-hint { text-align: center; color: var(--muted); font-size: 12px; font-weight: 300; margin: -8px 0 24px; display: flex; align-items: center; justify-content: center; gap: 5px; }
@@ -660,8 +593,8 @@ body {
           <div class="ob-check-text"><strong>Filtre por categoria</strong><span>Caixas, cards, adesivos, papelaria e muito mais</span></div>
         </div>
         <div class="ob-check-item" style="animation-delay:.19s">
-          <span class="ob-check-icon">⏳</span>
-          <div class="ob-check-text"><strong>Conteúdo em breve</strong><span>Os arquivos serão liberados em instantes após sua compra</span></div>
+          <span class="ob-check-icon">☁️</span>
+          <div class="ob-check-text"><strong>Download via Drive</strong><span>Os arquivos já estão liberados direto no Google Drive</span></div>
         </div>
       </div>
       <div class="ob-dots">
@@ -722,19 +655,19 @@ body {
 
     <div class="header-eyebrow">Kit digital exclusivo</div>
     <h1 class="header-title">São João<br><em>2026</em> 🎉</h1>
-    <p class="header-sub">Toque em qualquer item para baixar</p>
+    <p class="header-sub">Toque em qualquer pasta para baixar no Drive</p>
 
     <div class="header-stats">
       <div class="stat-item">
         <span class="stat-num" id="totalStat">–</span>
-        <span class="stat-label">Artes</span>
+        <span class="stat-label">Pastas</span>
       </div>
       <div class="stat-item">
-        <span class="stat-num">5</span>
+        <span class="stat-num" id="catStat">–</span>
         <span class="stat-label">Categorias</span>
       </div>
       <div class="stat-item">
-        <span class="stat-num">3</span>
+        <span class="stat-num">4</span>
         <span class="stat-label">Formatos</span>
       </div>
     </div>
@@ -756,7 +689,7 @@ body {
     <div class="search-wrap">
       <div class="search-box">
         <span class="search-icon">🔍</span>
-        <input type="text" id="searchInput" placeholder="Buscar... ex: caixa, balão, bandeirinha" oninput="onSearch()">
+        <input type="text" id="searchInput" placeholder="Buscar... ex: caixa, lembrancinhas, painéis" oninput="onSearch()">
         <button class="search-clear" id="searchClear" onclick="clearSearch()">✕</button>
       </div>
     </div>
@@ -766,7 +699,7 @@ body {
       <div class="cats-scroll" id="catScroll"></div>
 
       <div class="scroll-hint" id="scrollHint">
-        <span>Role para ver todos os itens</span>
+        <span>Role para ver todas as pastas</span>
         <span class="scroll-hint-arrow">↓</span>
       </div>
 
@@ -797,10 +730,10 @@ body {
           </div>
         </div>
         <div class="tip-item">
-          <div class="tip-icon">📸</div>
+          <div class="tip-icon">☁️</div>
           <div class="tip-content">
-            <strong>Mockups & Fotos</strong>
-            <span>Use nas redes sociais para divulgar e aumentar suas vendas.</span>
+            <strong>Acesso Vitalício</strong>
+            <span>Salve os links ou baixe para o seu computador. Você sempre terá acesso.</span>
           </div>
         </div>
       </div>
@@ -819,106 +752,31 @@ body {
   </div>
 </div>
 
-<!-- EM BREVE MODAL -->
-<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
-  <div class="modal-sheet" id="modalSheet">
-    <div class="modal-handle"></div>
-    <div class="modal-body">
-      <div class="embreve-icon">⏳</div>
-      <h2 class="modal-title">Conteúdo em breve!</h2>
-
-      <div class="modal-item-badge" id="modalItemBadge">
-        <span id="modalItemEmoji"></span>
-        <span id="modalItemName"></span>
-      </div>
-
-      <div class="progress-wrap">
-        <div class="progress-bar" id="progressBar"></div>
-      </div>
-      <p class="progress-label">Preparando seus arquivos...</p>
-
-      <div class="notify-strip">
-        <span class="notify-strip-icon">🔔</span>
-        <div class="notify-strip-text">
-          <strong>Aguarde alguns instantes</strong>
-          Seu conteúdo será liberado em breve. Assim que estiver pronto, você receberá uma notificação por e-mail.
-        </div>
-      </div>
-
-      <p class="modal-desc" style="margin-bottom:20px;">
-        Enquanto isso, explore as outras categorias do kit e planeje suas criações para o São João! 🎉
-      </p>
-
-      <button class="modal-close" onclick="forceClose()">Entendi, vou explorar o kit</button>
-    </div>
-  </div>
-</div>
-
 <script>
-// ── DATA ──
+// ── DATA: ATUALIZADO COM OS LINKS DO GOOGLE DRIVE ──
 const ITEMS = [
-  // CAIXAS
-  { name:"Caixa Bandeirinha", cat:"caixas", emoji:"📦", tags:["pdf","studio"], url:"#", desc:"Caixa temática com estampa de bandeirinhas juninas." },
-  { name:"Caixa Chapéu de Palha", cat:"caixas", emoji:"🎩", tags:["pdf","studio"], url:"#", desc:"Caixa no formato de chapéu de palha, superespecial." },
-  { name:"Caixa Fogueira", cat:"caixas", emoji:"🔥", tags:["pdf","studio","dxf"], url:"#", desc:"Caixa com arte de fogueira junina." },
-  { name:"Caixa Milho", cat:"caixas", emoji:"🌽", tags:["pdf","studio"], url:"#", desc:"Caixa temática com estampa de milho." },
-  { name:"Caixa 2 Doces Festa", cat:"caixas", emoji:"🍬", tags:["pdf","studio"], url:"#", desc:"Caixinha para 2 doces com tema junino." },
-  { name:"Caixa Envelope Arraial", cat:"caixas", emoji:"💌", tags:["pdf","studio"], url:"#", desc:"Envelope estilo caixa decorado para o arraial." },
-  { name:"Caixa Quadrada Junina", cat:"caixas", emoji:"🎁", tags:["pdf","studio"], url:"#", desc:"Caixa quadrada com estampa junina vibrante." },
-  { name:"Cestinha Palha", cat:"caixas", emoji:"🧺", tags:["pdf","studio","dxf"], url:"#", desc:"Cestinha estilo palha, rústica e charmosa." },
-  { name:"Caixas em PDF", cat:"caixas", emoji:"📄", tags:["pdf"], url:"#", desc:"Todas as caixas prontas em PDF." },
-  { name:"Caixas em Studio", cat:"caixas", emoji:"📐", tags:["studio"], url:"#", desc:"Todos os modelos de caixas em Silhouette Studio." },
-  // CARDS & TAGS
-  { name:"Card Paçoca", cat:"cards", emoji:"🍡", tags:["card","studio"], url:"#", desc:"Card decorativo para acompanhar paçoca." },
-  { name:"Card Pé de Moleque", cat:"cards", emoji:"🍫", tags:["card","studio"], url:"#", desc:"Card para presente de pé de moleque." },
-  { name:"Card Milho Canjica", cat:"cards", emoji:"🌽", tags:["card","studio"], url:"#", desc:"Card temático para canjica e milho." },
-  { name:"Card Pipoca", cat:"cards", emoji:"🍿", tags:["card","studio"], url:"#", desc:"Card para pipoca junina personalizada." },
-  { name:"Card Chapéu Palha", cat:"cards", emoji:"🎩", tags:["card","studio"], url:"#", desc:"Card no formato chapéu de palha." },
-  { name:"Card Bandeirinha", cat:"cards", emoji:"🚩", tags:["card","studio"], url:"#", desc:"Card com bandeirinhas coloridas juninas." },
-  { name:"Tag Arraiá", cat:"cards", emoji:"🏷️", tags:["card","pdf"], url:"#", desc:"Tags temáticas para o arraial." },
-  { name:"Tag Casal Junino", cat:"cards", emoji:"👫", tags:["card","studio"], url:"#", desc:"Tag com ilustração de casal junino." },
-  { name:"Cartão Fogueira", cat:"cards", emoji:"🔥", tags:["card","studio"], url:"#", desc:"Cartão com arte de fogueira animada." },
-  { name:"Cartão Quadrilha", cat:"cards", emoji:"💃", tags:["card","studio"], url:"#", desc:"Cartão temático de quadrilha junina." },
-  { name:"Tags Gerais", cat:"cards", emoji:"🏷️", tags:["card","pdf"], url:"#", desc:"Variedade de tags juninas." },
-  // ADESIVOS
-  { name:"Adesivo Barra Chocolate Junino", cat:"adesivos", emoji:"🍫", tags:["pdf","studio"], url:"#", desc:"Adesivo junino para barra de chocolate." },
-  { name:"Adesivo Kit Kat Arraial", cat:"adesivos", emoji:"🎭", tags:["pdf","studio"], url:"#", desc:"Adesivo estilo Kit Kat com tema junino." },
-  { name:"Adesivo Milho Verde", cat:"adesivos", emoji:"🌽", tags:["pdf","studio"], url:"#", desc:"Adesivo temático de milho para embalagens." },
-  { name:"Kit Chaveiro Festa", cat:"adesivos", emoji:"🔑", tags:["studio","pdf"], url:"#", desc:"Kit de chaveiro personalizado para São João." },
-  { name:"Adesivo Paçoca Roll", cat:"adesivos", emoji:"🍡", tags:["pdf","studio"], url:"#", desc:"Adesivo para paçoca roll personalizada." },
-  { name:"Chaveiro Estrela Junina", cat:"adesivos", emoji:"⭐", tags:["studio","dxf"], url:"#", desc:"Chaveiro estrela com detalhes juninos." },
-  { name:"Most BomBom Festa", cat:"adesivos", emoji:"🍬", tags:["studio","pdf"], url:"#", desc:"Embrulho para bombom com tema junino." },
-  // PAPELARIA
-  { name:"Álbum Figurinhas São João", cat:"papelaria", emoji:"📒", tags:["pdf"], url:"#", desc:"Álbum de figurinhas temático junino." },
-  { name:"Livro Nossas Memórias", cat:"papelaria", emoji:"📔", tags:["pdf"], url:"#", desc:"Livro para registrar memórias do arraial." },
-  { name:"Bloquinho Junino", cat:"papelaria", emoji:"📝", tags:["pdf","studio"], url:"#", desc:"Bloquinho de anotações com tema junino." },
-  { name:"Marca Página Festa", cat:"papelaria", emoji:"🔖", tags:["pdf","studio"], url:"#", desc:"Marca página decorativo junino." },
-  { name:"Frases Juninas", cat:"papelaria", emoji:"💬", tags:["pdf"], url:"#", desc:"Banco de frases e ditados juninos." },
-  { name:"Capa Bandeirinha", cat:"papelaria", emoji:"🚩", tags:["pdf","studio"], url:"#", desc:"Capa decorativa com bandeirinhas coloridas." },
-  { name:"Convite Arraial", cat:"papelaria", emoji:"🎉", tags:["pdf","studio"], url:"#", desc:"Convite bonito para seu arraial." },
-  { name:"Cardápio Festa Junina", cat:"papelaria", emoji:"📋", tags:["pdf","studio"], url:"#", desc:"Cardápio temático para sua barraquinha." },
-  // EXTRAS
-  { name:"Sacola Junina 16x22", cat:"extras", emoji:"🛍️", tags:["studio","pdf","dxf"], url:"#", desc:"Sacola 16x22cm com tema junino." },
-  { name:"Envelope Foto Arraial", cat:"extras", emoji:"📷", tags:["studio","pdf"], url:"#", desc:"Envelope para foto estilo polaroid junino." },
-  { name:"Copo Americano Festa", cat:"extras", emoji:"🥤", tags:["studio","pdf"], url:"#", desc:"Arte junina para copo americano." },
-  { name:"Bolsa Xuxinha Junina", cat:"extras", emoji:"👜", tags:["studio","pdf","dxf"], url:"#", desc:"Bolsa xuxinha com estampa junina." },
-  { name:"Mockups São João", cat:"extras", emoji:"🖼️", tags:["imagens"], url:"#", desc:"Mockups profissionais para divulgação." },
-  { name:"Fotos para Divulgação", cat:"extras", emoji:"📸", tags:["imagens"], url:"#", desc:"Fotos prontas para anunciar seus produtos." },
-  { name:"Arquivos DXF Juninos", cat:"extras", emoji:"✂️", tags:["dxf"], url:"#", desc:"Todos os arquivos DXF para plotter." },
-  { name:"Arquivos Silhouette Studio", cat:"extras", emoji:"🔧", tags:["studio"], url:"#", desc:"Todos os .studio reunidos." },
+  { name:"0. Lembrancinhas", cat:"caixas", emoji:"🎁", tags:["drive", "pdf","studio"], url:"https://drive.google.com/drive/u/2/folders/1OLjOkKuvnStMkZ87mpxMzK-QhGTIaCvY", desc:"Arquivos perfeitos para montagem de lembrancinhas juninas." },
+  { name:"1. Caixinhas", cat:"caixas", emoji:"📦", tags:["drive", "pdf","studio"], url:"https://drive.google.com/drive/u/2/folders/12ckXGGZhGIy4oPdZoeD5ES05swCeF8pL", desc:"Diversos modelos de caixinhas temáticas prontas para imprimir e montar." },
+  { name:"2. Ilustrações", cat:"elementos", emoji:"🖌️", tags:["drive", "imagens"], url:"https://drive.google.com/drive/u/2/folders/1ysJTQjV-24uSMwsh3qfmFey2PdxmgUVA", desc:"Ilustrações em alta qualidade para criar seus próprios projetos." },
+  { name:"3. Frases", cat:"elementos", emoji:"💬", tags:["drive", "imagens"], url:"https://drive.google.com/drive/u/2/folders/1uSfqW4Njd0MC0tMetBvYhKGXQoFL3zQN", desc:"Frases divertidas e temáticas em formato de imagem png." },
+  { name:"4. Papéis", cat:"elementos", emoji:"📄", tags:["drive", "imagens"], url:"https://drive.google.com/drive/u/2/folders/16qTElYP2rcXVkBDYoaJrV_l_QyGLK74T", desc:"Papéis digitais para fundos, estampas e texturas juninas." },
+  { name:"5. Bambolês", cat:"decoracao", emoji:"⭕", tags:["drive", "pdf"], url:"https://drive.google.com/drive/u/2/folders/1Q_KC_Ma0sJRCBrw6s_FxZ5SnnGEvx1wn", desc:"Artes circulares criativas para decoração usando bambolês." },
+  { name:"6. Publicações", cat:"extras", emoji:"📱", tags:["drive", "imagens"], url:"https://drive.google.com/drive/u/2/folders/11IVXBVYF1hmQ9ycUMZcAYzmHX5ruzsQv", desc:"Artes e templates prontos para o feed e stories das redes sociais." },
+  { name:"7. Painéis", cat:"decoracao", emoji:"🖼️", tags:["drive", "pdf"], url:"https://drive.google.com/drive/u/2/folders/183GXqTi3smCLrUphavYuifW92BLptlAC", desc:"Artes em tamanho grande para imprimir e montar painéis de fundo." },
+  { name:"8. Cartaz A4", cat:"decoracao", emoji:"📌", tags:["drive", "pdf"], url:"https://drive.google.com/drive/u/2/folders/1IBFnL__0-zGOwWbOLTLD_zo-46Vki9lX", desc:"Cartazes decorativos e informativos no formato folha A4." },
+  { name:"9. Kit Escolinha", cat:"extras", emoji:"🎒", tags:["drive", "pdf","studio"], url:"https://drive.google.com/drive/u/2/folders/1rkfA5FTtdUzbHCkuwBhFTt2SY73g5z7v", desc:"Arquivos especiais voltados para o público infantil, escolar e professores." },
 ];
 
 const CATS = [
-  { id:"todos",    label:"Tudo",       emoji:"🎉" },
-  { id:"caixas",   label:"Caixas",     emoji:"📦" },
-  { id:"cards",    label:"Cards & Tags",emoji:"🎴" },
-  { id:"adesivos", label:"Adesivos",   emoji:"🍫" },
-  { id:"papelaria",label:"Papelaria",  emoji:"📋" },
-  { id:"extras",   label:"Extras",     emoji:"✨" },
+  { id:"todos",     label:"Tudo",               emoji:"🎉" },
+  { id:"caixas",    label:"Caixas & Lembranças",emoji:"📦" },
+  { id:"elementos", label:"Elementos Gráficos", emoji:"🎨" },
+  { id:"decoracao", label:"Decoração & Festa",  emoji:"🎪" },
+  { id:"extras",    label:"Redes & Escolinha",  emoji:"✨" },
 ];
 
-const TAG_CLASS = { pdf:"ctag-pdf", studio:"ctag-studio", dxf:"ctag-dxf", imagens:"ctag-imagens", card:"ctag-pdf" };
-const TAG_LABEL = { pdf:"PDF", studio:"Studio", dxf:"DXF", imagens:"Fotos", card:"Card" };
+const TAG_CLASS = { pdf:"ctag-pdf", studio:"ctag-studio", dxf:"ctag-dxf", imagens:"ctag-imagens", drive:"ctag-drive" };
+const TAG_LABEL = { pdf:"PDF", studio:"Studio", dxf:"DXF", imagens:"Imagens", drive:"Drive" };
 
 let currentCat = "todos";
 let searchVal  = "";
@@ -995,7 +853,10 @@ function buildCats(){
       <span class="cat-pill-count">${count}</span>
     </button>`;
   }).join('');
+  
+  // Atualiza as estatísticas no Header
   document.getElementById('totalStat').textContent=ITEMS.length;
+  document.getElementById('catStat').textContent=CATS.length - 1;
 }
 
 function selectCat(cat){
@@ -1018,61 +879,35 @@ function clearSearch(){
   renderItems();
 }
 
-// ── RENDER ──
+// ── RENDER ITEMS ──
 function renderItems(){
   const grid=document.getElementById('itemsGrid');
   const countEl=document.getElementById('itemsCount');
+  
   const filtered=ITEMS.filter(item=>{
     const catOk=currentCat==='todos'||item.cat===currentCat;
     const srchOk=!searchVal||item.name.toLowerCase().includes(searchVal)||item.desc.toLowerCase().includes(searchVal);
     return catOk&&srchOk;
   });
-  const labels={todos:'Todos os itens',caixas:'Caixas',cards:'Cards & Tags',adesivos:'Adesivos',papelaria:'Papelaria',extras:'Extras'};
-  countEl.innerHTML=`Mostrando <strong>${filtered.length}</strong> de ${ITEMS.length} itens`;
+  
+  countEl.innerHTML=`Mostrando <strong>${filtered.length}</strong> de ${ITEMS.length} pastas`;
+  
   if(!filtered.length){
-    grid.innerHTML=`<div class="empty-state"><div class="empty-emoji">😢</div><p class="empty-text">Nada encontrado para "<strong>${searchVal}</strong>"</p></div>`;
+    grid.innerHTML=`<div class="empty-state"><div class="empty-emoji">😢</div><p class="empty-text">Nenhuma pasta encontrada para "<strong>${searchVal}</strong>"</p></div>`;
     return;
   }
+  
+  // Agora clicando ele chama window.open(item.url) direto pro Drive
   grid.innerHTML=filtered.map((item,i)=>{
-    const tagsHtml=item.tags.slice(0,2).map(t=>`<span class="ctag ${TAG_CLASS[t]||''}">${TAG_LABEL[t]||t}</span>`).join('');
-    return `<div class="item-card" style="animation-delay:${i*0.035}s" onclick="openModal(${ITEMS.indexOf(item)})">
+    const tagsHtml=item.tags.map(t=>`<span class="ctag ${TAG_CLASS[t]||''}">${TAG_LABEL[t]||t}</span>`).join('');
+    return `<a class="item-card" href="${item.url}" target="_blank" style="animation-delay:${i*0.035}s">
       <div class="card-emoji-wrap">${item.emoji}</div>
       <div class="card-name">${item.name}</div>
       <div class="card-tags">${tagsHtml}</div>
       <div class="card-arrow">↗</div>
-    </div>`;
+    </a>`;
   }).join('');
 }
-
-// ── EM BREVE MODAL ──
-function openModal(idx){
-  const item=ITEMS[idx];
-  document.getElementById('modalItemEmoji').textContent=item.emoji;
-  document.getElementById('modalItemName').textContent=item.name;
-  // reset progress bar animation
-  const pb=document.getElementById('progressBar');
-  pb.style.animation='none';
-  pb.offsetHeight; // reflow
-  pb.style.animation='';
-  document.getElementById('modalOverlay').classList.add('open');
-  document.body.style.overflow='hidden';
-}
-
-function closeModal(e){
-  if(e&&e.target!==document.getElementById('modalOverlay'))return;
-  document.getElementById('modalOverlay').classList.remove('open');
-  document.body.style.overflow='';
-}
-function forceClose(){
-  document.getElementById('modalOverlay').classList.remove('open');
-  document.body.style.overflow='';
-}
-
-document.addEventListener('keydown',e=>{if(e.key==='Escape')forceClose();});
-
-let touchStartY=0;
-document.getElementById('modalSheet').addEventListener('touchstart',e=>{touchStartY=e.touches[0].clientY;});
-document.getElementById('modalSheet').addEventListener('touchend',e=>{if(e.changedTouches[0].clientY-touchStartY>60)forceClose();});
 
 // ── INIT ──
 buildCats();

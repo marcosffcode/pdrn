@@ -51,13 +51,13 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --brand-dark:      #551F13;
-      --brand-primary:   #d97706;
+      --brand-dark:       #551F13;
+      --brand-primary:    #d97706;
       --brand-secondary: #dc2626;
-      --brand-accent:    #22c55e;
-      --amber-50:        #fffbeb;
-      --amber-100:       #fef3c7;
-      --amber-200:       #fde68a;
+      --brand-accent:     #22c55e;
+      --amber-50:         #fffbeb;
+      --amber-100:        #fef3c7;
+      --amber-200:        #fde68a;
       --red:             #dc2626;
     }
 
@@ -86,10 +86,10 @@
     }
     @keyframes heartbeat {
       0%,  100% { transform: scale(1); }
-      10%       { transform: scale(1.05); }
-      20%       { transform: scale(1); }
-      30%       { transform: scale(1.05); }
-      40%       { transform: scale(1); }
+      10%        { transform: scale(1.05); }
+      20%        { transform: scale(1); }
+      30%        { transform: scale(1.05); }
+      40%        { transform: scale(1); }
     }
     @keyframes slideUp {
       from { opacity: 0; transform: translateY(20px); }
@@ -447,10 +447,66 @@
     .bonus-card .new-price { font-weight: 900; font-size: 1.25rem; color: #facc15; }
 
     /* =====================================================
-       SEÇÃO AMBER — PROVA SOCIAL
+       SEÇÃO AMBER — PROVA SOCIAL (ATUALIZADO)
     ===================================================== */
     .section-amber { padding: 4rem 1rem; background: #fffbeb; }
 
+    /* Grid de Depoimentos com Foto */
+    .testimonials-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        max-width: 56rem;
+        margin: 0 auto 4rem; /* Espaço inferior para as próximas imagens */
+    }
+    @media(min-width: 768px) {
+        .testimonials-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+    }
+
+    .testimonial-card {
+        background: #fff;
+        padding: 1.5rem;
+        border-radius: 1rem;
+        box-shadow: 0 4px 10px rgba(0,0,0,.06);
+        border: 1px solid var(--amber-100);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .testi-header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .testi-avatar {
+        width: 3.5rem;
+        height: 3.5rem;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid var(--brand-primary);
+        box-shadow: 0 2px 5px rgba(0,0,0,.1);
+    }
+
+    .testi-info h4 {
+        font-weight: 700;
+        color: var(--brand-dark);
+        font-size: 1rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .testi-stars { color: #f59e0b; font-size: 0.875rem; letter-spacing: 1px; }
+
+    .testi-text {
+        font-size: 0.9375rem;
+        color: #475569;
+        font-style: italic;
+        line-height: 1.6;
+        flex-grow: 1;
+    }
+
+    /* Imagens de Resultados (Estilo existente mantido) */
     .testimonials {
       display: flex;
       flex-direction: column;
@@ -589,9 +645,9 @@
       transition: width 1s ease-out;
       width: 92%;
     }
-    .cta-cidade       { margin-top: .75rem; font-size: .875rem; color: #475569; font-weight: 500; }
+    .cta-cidade         { margin-top: .75rem; font-size: .875rem; color: #475569; font-weight: 500; }
     .cta-cidade.hidden { display: none; }
-    .cta-cidade .num   { color: var(--brand-secondary); font-weight: 700; }
+    .cta-cidade .num    { color: var(--brand-secondary); font-weight: 700; }
     .cta-cidade .cidade{ font-weight: 700; color: var(--brand-dark); }
 
     /* =====================================================
@@ -1022,11 +1078,70 @@
     </div>
   </section>
 
-  <!-- PROVA SOCIAL -->
+  <!-- PROVA SOCIAL (ATUALIZADA COM DEPOIMENTOS) -->
   <section class="section-amber">
     <div class="container">
-      <h3 class="section-title" style="text-align:center;margin-bottom:3rem">
+      <h3 class="section-title" style="text-align:center;margin-bottom:1rem">
         As pessoas estão amando tudo!
+      </h3>
+      <p class="section-subtitle" style="text-align:center;margin-bottom:3rem">
+         Veja quem já garantiu e montou suas surpresas.
+      </p>
+
+      <!-- GRID DE DEPOIMENTOS -->
+      <div class="testimonials-grid">
+          <!-- Depoimento 1 -->
+          <div class="testimonial-card">
+              <div class="testi-header">
+                  <img src="https://pub-c1ef14dcbd7e48a5aa8b5fe1b95b7808.r2.dev/1718231122499.webp" alt="Foto de Cliente 1" class="testi-avatar" loading="lazy">
+                  <div class="testi-info">
+                      <h4>Mariana S.</h4>
+                      <div class="testi-stars">★★★★★</div>
+                  </div>
+              </div>
+              <p class="testi-text">"Gente, salvou meu dia! Tinha esquecido completamente e em 15 minutos imprimi tudo na impressora de casa mesmo. A caixinha ficou perfeita e todo mundo amou a surpresa. Super recomendo pela praticidade!"</p>
+          </div>
+
+          <!-- Depoimento 2 -->
+          <div class="testimonial-card">
+              <div class="testi-header">
+                  <img src="https://pub-c1ef14dcbd7e48a5aa8b5fe1b95b7808.r2.dev/1766791540332.webp" alt="Foto de Cliente 2" class="testi-avatar" loading="lazy">
+                  <div class="testi-info">
+                      <h4>Carla Dias</h4>
+                      <div class="testi-stars">★★★★★</div>
+                  </div>
+              </div>
+              <p class="testi-text">"Eu não levo jeito nenhum pra trabalhos manuais, mas esse kit é muito fácil de montar. As instruções são claras e as artes são lindas. Pelo preço, vale muito a pena."</p>
+          </div>
+
+          <!-- Depoimento 3 -->
+          <div class="testimonial-card">
+              <div class="testi-header">
+                  <img src="https://pub-c1ef14dcbd7e48a5aa8b5fe1b95b7808.r2.dev/1569898367379.webp" alt="Foto de Cliente 3" class="testi-avatar" loading="lazy">
+                  <div class="testi-info">
+                      <h4>Fernanda Oliveira</h4>
+                      <div class="testi-stars">★★★★★</div>
+                  </div>
+              </div>
+              <p class="testi-text">"Adorei a variedade de cartões e as frases prontas. Dá um toque muito pessoal sem eu ter que ficar quebrando a cabeça pra escrever algo bonito. Usei pra complementar a decoração e ficou lindo."</p>
+          </div>
+
+          <!-- Depoimento 4 -->
+          <div class="testimonial-card">
+              <div class="testi-header">
+                  <img src="https://pub-c1ef14dcbd7e48a5aa8b5fe1b95b7808.r2.dev/1734199869399.webp" alt="Foto de Cliente 4" class="testi-avatar" loading="lazy">
+                  <div class="testi-info">
+                      <h4>Beatriz Lima</h4>
+                      <div class="testi-stars">★★★★★</div>
+                  </div>
+              </div>
+              <p class="testi-text">"Melhor investimento de 10 reais que já fiz! A qualidade dos arquivos é excelente e os bônus que vêm junto são ótimos também. Já estou usando as publicações nas minhas redes sociais. Comprarei de novo com certeza."</p>
+          </div>
+      </div>
+
+      <!-- IMAGENS DE RESULTADOS -->
+      <h3 class="section-title" style="text-align:center;margin-bottom:1rem">
+         Mais resultados de quem já comprou
       </h3>
       <div class="testimonials">
         <img
@@ -1225,7 +1340,7 @@
             bar.style.width = pct + '%';
             if (pct >= 95) {
               utxt.textContent = 'Últimas unidades!';
-              utxt.style.color     = '#dc2626';
+              utxt.style.color      = '#dc2626';
               utxt.style.animation = 'pulse 2s cubic-bezier(0.4,0,0.6,1) infinite';
             }
           }

@@ -7,22 +7,15 @@
 
     <!-- ═══════════════════════════════════════════════════════
          🚀 FIX #1 — PRELOAD DA IMAGEM LCP
-         Browser descobre e baixa a imagem ANTES de parsear o body.
-         Sem isso o browser só vê a imagem depois de processar todo HTML+CSS.
-         fetchpriority="high" garante prioridade máxima na fila de rede.
+         Apontando para a pasta assets com o nome limpo.
     ════════════════════════════════════════════════════════════ -->
-    <link rel="preload" as="image"
-          href="https://pub-80d3706d8b3c4936b06601bde5361dc6.r2.dev/lembrancinhas%20(1).webp"
-          fetchpriority="high">
+    <link rel="preload" as="image" href="/namorados/assets/lembrancinhas.webp" fetchpriority="high">
 
-    <!-- Preconnects — mantidos e adicionado o CDN de imagens -->
+    <!-- Preconnects limpos -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://pub-80d3706d8b3c4936b06601bde5361dc6.r2.dev" crossorigin>
     <link rel="dns-prefetch" href="https://ipapi.co">
-    <!-- ✂️ REMOVIDO: dns-prefetch do cdn.jsdelivr.net (lucide removido) -->
 
-    <!-- Fontes async — mantido exatamente igual -->
     <link rel="preload" as="style"
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&family=Poppins:wght@500;700;800&display=swap"
       onload="this.onload=null;this.rel='stylesheet'">
@@ -31,29 +24,15 @@
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&family=Poppins:wght@500;700;800&display=swap">
     </noscript>
 
-    <!-- ✂️ FIX #2 — LUCIDE COMPLETAMENTE REMOVIDO
-         O script era chamado (lucide.createIcons()) mas NENHUM elemento
-         data-lucide existe na página. Todos os ícones são SVGs inline.
-         Remover = -48 KB de JS + 1 menos request DNS+TCP+TLS na fase crítica. -->
-
-    <!-- ═══════════════════════════════════════════════════════
-         🚀 FIX #3 — META PIXEL: mantém fbq() inline (é minúsculo e necessário
-         para atribuição) mas o carregamento do fbevents.js é postergado para
-         depois do load event — não bloqueia mais o LCP.
-    ════════════════════════════════════════════════════════════ -->
     <script>
     !function(f,b,e,v,n,t,s){
         if(f.fbq)return;
         n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
         if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];
-        /* ← script tag criada depois do load, veja script no final do body */
     }(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
     fbq('init','679523000263255');fbq('track','PageView');
     </script>
     <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=679523000263255&ev=PageView&noscript=1"/></noscript>
-
-    <!-- ✂️ FIX #4 — UTMify e GTM movidos para depois do load event no final do body.
-         Esses scripts competiam por banda com a imagem LCP no mesmo momento crítico. -->
 
     <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -64,6 +43,7 @@
         color:#1f2937;
         -webkit-font-smoothing:antialiased;
         padding-bottom:90px;
+        overflow-x: hidden; /* Previne rolagem lateral indesejada */
     }
 
     :root{
@@ -73,6 +53,15 @@
         --lightpink:#fdf2f8;
         --green:#22c55e;
         --darkgreen:#16a34a;
+    }
+
+    /* --- ANIMAÇÃO HEARTBEAT (Novidade) --- */
+    @keyframes heartbeat {
+        0% { transform: scale(1); }
+        14% { transform: scale(1.05); }
+        28% { transform: scale(1); }
+        42% { transform: scale(1.05); }
+        70% { transform: scale(1); }
     }
 
     .scarcity-bar{
@@ -105,6 +94,7 @@
         background:linear-gradient(to bottom,var(--lightpink),#fff);
         padding:48px 20px 56px;
         text-align:center;
+        overflow: hidden; /* Importante para o carrossel */
     }
     .hero-inner{max-width:768px;margin:0 auto}
 
@@ -141,29 +131,39 @@
         border:1px solid #e5e7eb;
     }
 
-    .gallery{
-        display:grid;
-        grid-template-columns:repeat(2,1fr);
-        gap:12px;
-        margin-bottom:32px;
-        max-width:680px;
-        margin-left:auto;
-        margin-right:auto;
+    /* --- CARROSSEL INFINITO CSS (Modificado) --- */
+    .gallery-container {
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto 36px;
+        overflow: hidden;
+        /* Máscara para suavizar as bordas do carrossel */
+        mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
     }
-    @media(min-width:560px){.gallery{grid-template-columns:repeat(4,1fr)}}
-    .gallery-item{
+
+    .gallery-track {
+        display: flex;
+        gap: 16px;
+        width: max-content; /* Permite que os itens fiquem em uma linha */
+        /* A animação move a faixa para a esquerda. O tempo (25s) define a velocidade */
+        animation: scrollCarousel 25s linear infinite;
+    }
+
+    /* Largura fixa para os itens do carrossel para garantir o loop perfeito */
+    .carousel-item {
         position:relative;
-        width:100%;
-        padding-bottom:100%;
+        width: 200px; /* Largura fixa */
+        height: 200px; /* Altura fixa igual a largura */
+        flex-shrink: 0;
         border-radius:14px;
         overflow:hidden;
         border:1px solid #fce7f3;
         box-shadow:0 2px 8px rgba(0,0,0,.07);
         background:#fdf2f8;
-        transition:transform .3s;
     }
-    .gallery-item:hover{transform:scale(1.04)}
-    .gallery-item img{
+
+    .carousel-item img{
         position:absolute;
         inset:0;
         width:100%;
@@ -172,25 +172,38 @@
         display:block;
     }
 
-    .btn-hero{
+    /* A chave do loop infinito: mover exatamente a largura de um conjunto de itens */
+    /* Cálculo: (200px largura + 16px gap) * 4 itens = 864px */
+    @keyframes scrollCarousel {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-864px); }
+    }
+
+    /* --- BOTÕES COM HEARTBEAT (Modificado) --- */
+    .btn-hero, .btn-mid, .btn-offer, .sticky-cta a {
         display:block;
         width:100%;
-        max-width:500px;
-        margin:0 auto;
         background:var(--green);
         color:#fff;
         font-weight:800;
-        font-size:clamp(1.1rem,3vw,1.4rem);
-        padding:18px 24px;
         border-radius:999px;
         text-decoration:none;
         text-align:center;
-        box-shadow:0 8px 28px rgba(34,197,94,.4);
-        animation:btnPulse 1.5s ease-in-out infinite;
-        transition:background .2s,transform .2s;
+        box-shadow:0 8px 20px rgba(34,197,94,.4);
+        /* Nova animação de batida de coração */
+        animation: heartbeat 1.5s ease-in-out infinite both;
+        transition:background .2s;
     }
-    .btn-hero:hover{background:var(--darkgreen);transform:translateY(-2px)}
-    @keyframes btnPulse{0%,100%{box-shadow:0 8px 28px rgba(34,197,94,.4)}50%{box-shadow:0 8px 40px rgba(34,197,94,.7)}}
+    .btn-hero { max-width:500px; margin:0 auto; padding:18px 24px; font-size:clamp(1.1rem,3vw,1.4rem); }
+    .btn-mid { padding:18px 24px; font-size:1.15rem; border-radius:18px; margin-top:32px; }
+    .btn-offer { padding:20px 24px; font-size:clamp(1.05rem,3vw,1.25rem); border-radius:18px; }
+
+    .btn-hero:hover, .btn-mid:hover, .btn-offer:hover, .sticky-cta a:hover {
+        background:var(--darkgreen);
+        /* Pausa a animação no hover se desejar, ou remove a linha abaixo para continuar batendo */
+        /* animation-play-state: paused; */
+    }
+
 
     .trust-bar{
         display:flex;
@@ -257,23 +270,6 @@
         font-size:1rem;
     }
 
-    .btn-mid{
-        display:block;
-        width:100%;
-        background:var(--green);
-        color:#fff;
-        font-weight:800;
-        font-size:1.15rem;
-        padding:18px 24px;
-        border-radius:18px;
-        text-decoration:none;
-        text-align:center;
-        margin-top:32px;
-        box-shadow:0 4px 18px rgba(34,197,94,.3);
-        transition:background .2s,transform .2s;
-    }
-    .btn-mid:hover{background:var(--darkgreen);transform:translateY(-2px)}
-
     .bonus-grid{
         display:grid;
         grid-template-columns:repeat(2,1fr);
@@ -328,15 +324,63 @@
     .bonus-from{font-size:13px;color:#6b7280;margin-bottom:4px}
     .bonus-free{font-weight:700;color:var(--green);font-size:1.05rem}
 
-    .proofs{display:flex;flex-direction:column;gap:20px}
-    .proofs img{
-        width:100%;
-        border-radius:18px;
-        box-shadow:0 2px 14px rgba(0,0,0,.07);
-        border:1px solid #f3f4f6;
-        display:block;
-        height:auto;
+    /* --- NOVAS PROVAS SOCIAIS (Testimonials) --- */
+    .testimonials-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        max-width: 800px;
+        margin: 0 auto;
     }
+    @media(min-width: 768px) {
+        .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .testimonial-card {
+        background: #fff;
+        padding: 24px;
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        border: 1px solid #f3f4f6;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .testi-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 16px;
+    }
+
+    .testi-avatar {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid var(--lightpink);
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .testi-info h4 {
+        font-weight: 700;
+        color: #111827;
+        font-size: 1rem;
+        margin-bottom: 2px;
+    }
+
+    .testi-stars { color: #f59e0b; font-size: 14px; letter-spacing: 1px; }
+
+    .testi-text {
+        font-size: 0.95rem;
+        color: #4b5563;
+        font-style: italic;
+        line-height: 1.6;
+        flex-grow: 1;
+    }
+
+    /* --- FIM PROVAS SOCIAIS --- */
+
 
     .offer-section{
         background:var(--lightpink);
@@ -423,18 +467,6 @@
         color:var(--red);font-weight:600;
         margin-bottom:24px;
     }
-    .btn-offer{
-        display:block;width:100%;
-        background:var(--green);color:#fff;
-        font-weight:800;
-        font-size:clamp(1.05rem,3vw,1.25rem);
-        padding:20px 24px;
-        border-radius:18px;
-        text-decoration:none;text-align:center;
-        box-shadow:0 0 28px rgba(34,197,94,.4);
-        transition:background .2s,transform .2s;
-    }
-    .btn-offer:hover{background:var(--darkgreen);transform:scale(1.02)}
 
     .progress-wrap{
         background:#fff;border-radius:999px;
@@ -568,12 +600,8 @@
     @media(max-width:767px){.sticky-cta{display:block}}
     .sticky-cta.visible{transform:translateY(0)}
     .sticky-cta a{
-        display:block;
-        background:var(--green);color:#fff;
-        font-weight:800;font-size:1rem;
         padding:14px;border-radius:14px;
-        text-decoration:none;text-align:center;
-        animation:btnPulse 1.5s ease-in-out infinite;
+        font-size:1rem;
     }
 
     .toast{
@@ -608,7 +636,7 @@
     Atenção: Oferta encerra quando o cronômetro zerar ou os estoques acabarem!
 </div>
 
-<!-- ══════════════ HERO ══════════════ -->
+<!-- ══════════════ HERO (COM CARROSSEL INFINITO) ══════════════ -->
 <header class="hero">
     <div class="hero-inner">
         <h1>Super Kit Dia dos Namorados 2026</h1>
@@ -619,43 +647,40 @@
             <span class="units-badge">2.137 unidades vendidas</span>
         </div>
 
-        <!-- Gallery
-             🚀 FIX #5 — width + height em todas as imagens evita layout shifts
-             (o browser já reserva o espaço antes de baixar a imagem)
-             FIX #6 — só a imagem LCP usa fetchpriority="high" e decoding="sync"
-             As outras usam loading="lazy" + decoding="async" corretamente -->
-        <div class="gallery">
-            <div class="gallery-item">
-                <!-- LCP ELEMENT: sem loading="lazy", sem decoding="async" -->
-                <img src="https://pub-80d3706d8b3c4936b06601bde5361dc6.r2.dev/lembrancinhas%20(1).webp"
-                     onerror="this.src='https://placehold.co/400x400/fdf2f8/9d467e?text=Lembrancinhas'"
-                     alt="Lembrancinhas"
-                     width="400" height="400"
-                     fetchpriority="high"
-                     decoding="sync">
-            </div>
-            <div class="gallery-item">
-                <img src="https://pub-80d3706d8b3c4936b06601bde5361dc6.r2.dev/caixinhas%20(1)%20(1).webp"
-                     onerror="this.src='https://placehold.co/400x400/fdf2f8/9d467e?text=Caixinhas'"
-                     alt="Caixinhas"
-                     width="400" height="400"
-                     loading="lazy" decoding="async">
-            </div>
-            <div class="gallery-item">
-                <img src="https://pub-80d3706d8b3c4936b06601bde5361dc6.r2.dev/presentes%20(1)%20(1).webp"
-                     onerror="this.src='https://placehold.co/400x400/fdf2f8/9d467e?text=Presentes'"
-                     alt="Presentes"
-                     width="400" height="400"
-                     loading="lazy" decoding="async">
-            </div>
-            <div class="gallery-item">
-                <img src="https://pub-80d3706d8b3c4936b06601bde5361dc6.r2.dev/cartoes%20(1)%20(1).webp"
-                     onerror="this.src='https://placehold.co/400x400/fdf2f8/9d467e?text=Cartões'"
-                     alt="Cartões"
-                     width="400" height="400"
-                     loading="lazy" decoding="async">
+        <!-- NOVO CONTAINER DO CARROSSEL INFINITO -->
+        <div class="gallery-container">
+            <!-- A faixa que se move, contendo os itens duplicados -->
+            <div class="gallery-track">
+                <!-- GRUPO 1 DE IMAGENS -->
+                <div class="carousel-item">
+                    <img src="/namorados/assets/lembrancinhas.webp" onerror="this.src='https://placehold.co/400x400/fdf2f8/9d467e?text=Lembrancinhas'" alt="Lembrancinhas" width="200" height="200" fetchpriority="high">
+                </div>
+                <div class="carousel-item">
+                    <img src="/namorados/assets/caixinhas.webp" onerror="this.src='https://placehold.co/400x400/fdf2f8/9d467e?text=Caixinhas'" alt="Caixinhas" width="200" height="200" loading="lazy">
+                </div>
+                <div class="carousel-item">
+                    <img src="/namorados/assets/presentes.webp" onerror="this.src='https://placehold.co/400x400/fdf2f8/9d467e?text=Presentes'" alt="Presentes" width="200" height="200" loading="lazy">
+                </div>
+                <div class="carousel-item">
+                    <img src="/namorados/assets/cartoes.webp" onerror="this.src='https://placehold.co/400x400/fdf2f8/9d467e?text=Cartões'" alt="Cartões" width="200" height="200" loading="lazy">
+                </div>
+
+                <!-- GRUPO 2 DE IMAGENS (DUPLICADO PARA O LOOP) -->
+                <div class="carousel-item">
+                    <img src="/namorados/assets/lembrancinhas.webp" onerror="this.src='https://placehold.co/400x400/fdf2f8/9d467e?text=Lembrancinhas'" alt="Lembrancinhas" width="200" height="200" loading="lazy">
+                </div>
+                <div class="carousel-item">
+                    <img src="/namorados/assets/caixinhas.webp" onerror="this.src='https://placehold.co/400x400/fdf2f8/9d467e?text=Caixinhas'" alt="Caixinhas" width="200" height="200" loading="lazy">
+                </div>
+                <div class="carousel-item">
+                    <img src="/namorados/assets/presentes.webp" onerror="this.src='https://placehold.co/400x400/fdf2f8/9d467e?text=Presentes'" alt="Presentes" width="200" height="200" loading="lazy">
+                </div>
+                <div class="carousel-item">
+                    <img src="/namorados/assets/cartoes.webp" onerror="this.src='https://placehold.co/400x400/fdf2f8/9d467e?text=Cartões'" alt="Cartões" width="200" height="200" loading="lazy">
+                </div>
             </div>
         </div>
+        <!-- FIM DO CARROSSEL -->
 
         <a href="https://checkout.bemestarbrasil.online/" class="btn-hero">
             👉 COMPRAR E RECEBER AGORA!
@@ -706,7 +731,7 @@
             <div class="bonus-card">
                 <span class="bonus-tag">BÔNUS 1</span>
                 <div class="bonus-img-wrap">
-                    <img src="https://pub-80d3706d8b3c4936b06601bde5361dc6.r2.dev/publicacoes%20(1).webp"
+                    <img src="/namorados/assets/publicacoes.webp"
                          onerror="this.src='https://placehold.co/300x400/eee/999?text=Publicações'"
                          alt="Publicações"
                          width="300" height="400"
@@ -719,7 +744,7 @@
             <div class="bonus-card">
                 <span class="bonus-tag">BÔNUS 2</span>
                 <div class="bonus-img-wrap">
-                    <img src="https://pub-80d3706d8b3c4936b06601bde5361dc6.r2.dev/murais%20(1).webp"
+                    <img src="/namorados/assets/murais.webp"
                          onerror="this.src='https://placehold.co/300x400/eee/999?text=Murais'"
                          alt="Murais"
                          width="300" height="400"
@@ -732,7 +757,7 @@
             <div class="bonus-card">
                 <span class="bonus-tag">BÔNUS 3</span>
                 <div class="bonus-img-wrap">
-                    <img src="https://pub-80d3706d8b3c4936b06601bde5361dc6.r2.dev/frases%20(1).webp"
+                    <img src="/namorados/assets/frases.webp"
                          onerror="this.src='https://placehold.co/300x400/eee/999?text=Frases'"
                          alt="Frases"
                          width="300" height="400"
@@ -745,7 +770,7 @@
             <div class="bonus-card">
                 <span class="bonus-tag">BÔNUS 4</span>
                 <div class="bonus-img-wrap">
-                    <img src="https://pub-80d3706d8b3c4936b06601bde5361dc6.r2.dev/ilustracoes%20(1).webp"
+                    <img src="/namorados/assets/ilustracoes.webp"
                          onerror="this.src='https://placehold.co/300x400/eee/999?text=Ilustrações'"
                          alt="Ilustrações"
                          width="300" height="400"
@@ -759,22 +784,81 @@
     </div>
 </section>
 
-<!-- ══════════════ PROVAS SOCIAIS ══════════════ -->
+<!-- ══════════════ PROVAS SOCIAIS (COM FOTOS REAIS) ══════════════ -->
 <section class="section section-white">
-    <div class="container">
+    <div class="container-wide">
         <h2 class="section-title">As pessoas estão amando tudo!</h2>
+        <p class="section-sub">Veja quem já garantiu e montou suas surpresas.</p>
+
+        <div class="testimonials-grid">
+            <!-- Depoimento 1 -->
+            <div class="testimonial-card">
+                <div class="testi-header">
+                    <img src="https://pub-c1ef14dcbd7e48a5aa8b5fe1b95b7808.r2.dev/1718231122499.webp" alt="Foto de Cliente 1" class="testi-avatar" loading="lazy">
+                    <div class="testi-info">
+                        <h4>Mariana S.</h4>
+                        <div class="testi-stars">★★★★★</div>
+                    </div>
+                </div>
+                <p class="testi-text">"Gente, salvou meu dia! Tinha esquecido completamente do presente e em 15 minutos imprimi tudo na impressora de casa mesmo. A caixinha ficou perfeita e meu namorado amou a surpresa. Super recomendo pela praticidade!"</p>
+            </div>
+
+            <!-- Depoimento 2 -->
+            <div class="testimonial-card">
+                <div class="testi-header">
+                    <img src="https://pub-c1ef14dcbd7e48a5aa8b5fe1b95b7808.r2.dev/1766791540332.webp" alt="Foto de Cliente 2" class="testi-avatar" loading="lazy">
+                    <div class="testi-info">
+                        <h4>Carla Dias</h4>
+                        <div class="testi-stars">★★★★★</div>
+                    </div>
+                </div>
+                <p class="testi-text">"Eu não levo jeito nenhum pra trabalhos manuais, mas esse kit é muito fácil de montar. As instruções são claras e as artes são lindas, parece coisa cara de loja de presentes. Pelo preço, vale muito a pena."</p>
+            </div>
+
+            <!-- Depoimento 3 -->
+            <div class="testimonial-card">
+                <div class="testi-header">
+                    <img src="https://pub-c1ef14dcbd7e48a5aa8b5fe1b95b7808.r2.dev/1569898367379.webp" alt="Foto de Cliente 3" class="testi-avatar" loading="lazy">
+                    <div class="testi-info">
+                        <h4>Fernanda Oliveira</h4>
+                        <div class="testi-stars">★★★★★</div>
+                    </div>
+                </div>
+                <p class="testi-text">"Adorei a variedade de cartões e as frases prontas. Dá um toque muito pessoal pro presente sem eu ter que ficar quebrando a cabeça pra escrever algo bonito. Usei pra complementar um presente maior e ficou lindo."</p>
+            </div>
+
+            <!-- Depoimento 4 -->
+            <div class="testimonial-card">
+                <div class="testi-header">
+                    <img src="https://pub-c1ef14dcbd7e48a5aa8b5fe1b95b7808.r2.dev/1734199869399.webp" alt="Foto de Cliente 4" class="testi-avatar" loading="lazy">
+                    <div class="testi-info">
+                        <h4>Beatriz Lima</h4>
+                        <div class="testi-stars">★★★★★</div>
+                    </div>
+                </div>
+                <p class="testi-text">"Melhor investimento de 10 reais que já fiz! A qualidade dos arquivos é excelente e os bônus que vêm junto são ótimos também. Já estou usando as publicações nas minhas redes sociais. Comprarei de novo com certeza."</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════ MAIS PROVAS SOCIAIS (FOTOS) ══════════════ -->
+<section class="section section-white" style="padding-top: 0;">
+    <div class="container-wide">
+        <h2 class="section-title">Mais resultados de quem já comprou</h2>
+        <p class="section-sub">Confira as fotos que nossos clientes enviaram!</p>
         <div class="proofs">
-            <img src="https://pub-80d3706d8b3c4936b06601bde5361dc6.r2.dev/prova1-1-1024x443%20(2)%20(2).webp"
+            <img src="/namorados/assets/prova1.webp"
                  onerror="this.src='https://placehold.co/1024x443/f9fafb/d1d5db?text=Depoimento+1'"
                  alt="Prova Social 1"
                  width="1024" height="443"
                  loading="lazy" decoding="async">
-            <img src="https://pub-80d3706d8b3c4936b06601bde5361dc6.r2.dev/prova2-1024x443%20(1)%20(2).webp"
+            <img src="/namorados/assets/prova2.webp"
                  onerror="this.src='https://placehold.co/1024x443/f9fafb/d1d5db?text=Depoimento+2'"
                  alt="Prova Social 2"
                  width="1024" height="443"
                  loading="lazy" decoding="async">
-            <img src="https://pub-80d3706d8b3c4936b06601bde5361dc6.r2.dev/prova3-1024x443%20(1)%20(2).webp"
+            <img src="/namorados/assets/prova3.webp"
                  onerror="this.src='https://placehold.co/1024x443/f9fafb/d1d5db?text=Depoimento+3'"
                  alt="Prova Social 3"
                  width="1024" height="443"
@@ -847,7 +931,7 @@
 <section class="donation-section">
     <div class="donation-inner">
         <img
-            src="https://pub-80d3706d8b3c4936b06601bde5361dc6.r2.dev/WhatsApp%20Image%202026-05-17%20at%2017.33.06.webp"
+            src="/namorados/assets/ong.webp"
             onerror="this.style.display='none'"
             alt="ONG 4 Patas"
             class="donation-ong-img"
@@ -910,21 +994,13 @@
     <span id="toastText">Alguém comprou o kit!</span>
 </div>
 
-<!-- ═══════════════════════════════════════════════════════════════════
-     🚀 FIX #3 (continuação) — Scripts de terceiros carregados APÓS o load event.
-     Isso garante que NENHUM desses scripts compete com a imagem LCP.
-     GTM, UTMify e fbevents.js só injetam seus elementos depois que a página
-     já pintou para o usuário — sem nenhum impacto na percepção de velocidade.
-════════════════════════════════════════════════════════════════════════ -->
 <script>
 (function(){
-    // ── Interações da página (sticky + toast) — rodam imediatamente ──
     const sc = document.getElementById('stickyCta');
     window.addEventListener('scroll', function(){
         sc.classList.toggle('visible', window.scrollY > 300);
     }, {passive: true});
 
-    // City badge (geolocalização)
     (async function(){
         const aplicar = function(city){
             document.querySelectorAll('.cta-cidade').forEach(function(el){
@@ -947,7 +1023,6 @@
         } catch(e){ aplicar(null); }
     })();
 
-    // Toast social proof
     (function(){
         const NOMES = ["Maria","Ana","Juliana","Beatriz","Camila","Fernanda","Gabriela","Larissa","Luana","Adriana","Aline","Amanda","Bruna","Carla","Carolina","Daniela","Letícia","Mariana","Patrícia","Renata"];
         const EMOJIS = ["🎁","🛍️","✨","🔥","🎉","💖","🥰"];
@@ -963,9 +1038,7 @@
         setInterval(show, 18000);
     })();
 
-    // ── Scripts de terceiros: só carregam depois do load event ──
     window.addEventListener('load', function(){
-        // Facebook Pixel — carrega fbevents.js após o LCP
         (function(){
             var t = document.createElement('script');
             t.async = true;
@@ -973,7 +1046,6 @@
             document.head.appendChild(t);
         })();
 
-        // Google Analytics / Ads
         (function(){
             var s = document.createElement('script');
             s.async = true;
@@ -987,7 +1059,6 @@
             };
         })();
 
-        // UTMify
         (function(){
             var u = document.createElement('script');
             u.async = true;

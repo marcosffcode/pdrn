@@ -894,6 +894,40 @@
     .toast-icon { background: #22c55e; border-radius: 50%; padding: 4px; flex-shrink: 0; display: flex; }
     .toast-title { font-weight: 700; font-size: .875rem; }
     .toast-time  { font-size: .75rem; color: #94a3b8; }
+
+/* =====================================================
+   NOVA SEÇÃO DE PROVAS SOCIAIS (MOLDES)
+===================================================== */
+.proofs {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .proofs {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+.proofs img {
+  width: 100%;
+  height: auto; /* Isso impede o achatamento! */
+  border-radius: .75rem; /* Arredondamento padrão do seu site */
+  box-shadow: 0 4px 6px rgba(0,0,0,.1);
+  object-fit: cover;
+}
+
+@media (min-width: 768px) {
+  .proofs img {
+    width: 50%; /* Divide o espaço igualmente entre as duas imagens no PC */
+  }
+}
+
+
+    
   </style>
 </head>
 <body>
@@ -991,7 +1025,26 @@
     </div>
   </header>
 
-
+<!-- ══════════════ MAIS PROVAS SOCIAIS (FOTOS) ══════════════ -->
+<section class="section section-white" style="padding-top: 0;">
+    <div class="container">
+        <h3 class="section-title" style="text-align: center;">O Kit Ideal para sua festa junina!</h3>
+        
+        <div class="proofs">
+            <img src="/saojoao/assets/molde4.webp"
+                 onerror="this.src='https://placehold.co/1024x443/f9fafb/d1d5db?text=Depoimento+1'"
+                 alt="Prova Social 1"
+                 width="1024" height="443"
+                 loading="lazy" decoding="async">
+                 
+            <img src="/saojoao/assets/molde3.webp"
+                 onerror="this.src='https://placehold.co/1024x443/f9fafb/d1d5db?text=Depoimento+2'"
+                 alt="Prova Social 2"
+                 width="1024" height="443"
+                 loading="lazy" decoding="async">
+        </div>
+    </div>
+</section>
   
 
   <!-- O QUE VOCÊ VAI RECEBER -->

@@ -225,10 +225,9 @@
                 Aperte o play para descobrir a <span class="font-bold text-black bg-yellow-200 px-1">técnica simples de 3 minutos</span> que arranca o cheiro impregnado pela raiz, resgata suas roupas perdidas e devolve a sua dignidade.
             </p>
 
-            <!-- Video Vturb -->
-            <div class="w-full max-w-[400px] mx-auto rounded-xl shadow-2xl relative border-2 border-gray-100 overflow-hidden mt-2">
-                <vturb-smartplayer id="vid-6a13b162b28e4eb31f80b0f3" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"></vturb-smartplayer> 
-                <script type="text/javascript"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/8517e3d1-7796-43ee-bf69-c35b2f2f45b1/players/6a13b162b28e4eb31f80b0f3/v4/player.js", s.async=!0,document.head.appendChild(s); </script>
+            <!-- Video Vturb - Container Vazio (Injetado via JS depois) -->
+            <div id="video-wrapper" class="w-full max-w-[400px] mx-auto rounded-xl shadow-2xl relative border-2 border-gray-100 overflow-hidden mt-2 min-h-[200px] bg-gray-50 flex items-center justify-center">
+                <span id="video-loading-text" class="text-sm text-gray-400 font-medium animate-pulse">Carregando vídeo...</span>
             </div>
 
             <div class="mt-8 text-gray-400 text-sm flex gap-4">
@@ -493,6 +492,25 @@
 
         function showVSL() {
             switchScreen(screens.vsl);
+            
+            // Injeta o Vturb APENAS quando a tela da VSL abrir, evitando autoplay oculto
+            const videoWrapper = document.getElementById('video-wrapper');
+            const loadingText = document.getElementById('video-loading-text');
+            
+            if (videoWrapper && !document.getElementById('vid-6a13b162b28e4eb31f80b0f3')) {
+                if(loadingText) loadingText.style.display = 'none';
+                videoWrapper.classList.remove('min-h-[200px]', 'bg-gray-50', 'flex', 'items-center', 'justify-center');
+                
+                // Adiciona a tag do player
+                videoWrapper.innerHTML = '<vturb-smartplayer id="vid-6a13b162b28e4eb31f80b0f3" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"></vturb-smartplayer>';
+                
+                // Adiciona o script de execução do Vturb dinamicamente
+                const scriptVturb = document.createElement("script"); 
+                scriptVturb.type = "text/javascript";
+                scriptVturb.src = "https://scripts.converteai.net/8517e3d1-7796-43ee-bf69-c35b2f2f45b1/players/6a13b162b28e4eb31f80b0f3/v4/player.js";
+                scriptVturb.async = true;
+                document.head.appendChild(scriptVturb);
+            }
         }
 
     </script>

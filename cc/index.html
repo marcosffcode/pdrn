@@ -98,6 +98,30 @@
             display: none !important;
         }
     </style>
+
+    <!-- Facebook Pixel -->
+    <script>
+      !function(f,b,e,v,n,t,s){
+        if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window,document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init','983099520935499');
+      fbq('track','PageView');
+    </script>
+    <noscript>
+      <img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=983099520935499&ev=PageView&noscript=1">
+    </noscript>
+
+    <!-- Utmify -->
+    <script src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+      data-utmify-prevent-xcod-sck
+      data-utmify-prevent-subids
+      async defer></script>
 </head>
 <body class="min-h-screen flex flex-col antialiased">
 
@@ -138,11 +162,11 @@
 
         <!-- Question Container -->
         <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8 w-full border border-gray-100 min-h-[400px] flex flex-col">
-            <h2 id="question-text" class="text-2xl font-bold text-brand-dark mb-8 leading-snug">
+            <h2 id="question-text" class="text-lg md:text-xl font-bold text-brand-dark mb-6 leading-snug">
                 Carregando pergunta...
             </h2>
             
-            <div id="options-container" class="flex flex-col gap-4 flex-grow justify-center">
+            <div id="options-container" class="flex flex-col gap-3 flex-grow justify-center">
                 <!-- Opções injetadas via JS -->
             </div>
         </div>
@@ -174,20 +198,20 @@
 
     <main id="screen-vsl" class="flex-grow flex flex-col justify-start items-center p-0 w-full hidden-screen bg-white">
         <!-- Topo Preto Clean -->
-        <div class="w-full bg-brand-dark py-2 px-4 text-center">
-            <span class="text-gray-300 text-xs font-medium tracking-wide">
+        <div class="w-full bg-brand-dark py-1.5 px-4 text-center">
+            <span class="text-gray-300 text-[10px] md:text-[11px] font-medium tracking-wide">
                 <i class="fa-solid fa-circle-exclamation text-yellow-500 mr-1"></i> Atenção: Assista até o final, este vídeo pode sair do ar hoje.
             </span>
         </div>
 
-        <div class="max-w-4xl mx-auto w-full p-4 md:p-8 pt-6 md:pt-8 flex flex-col items-center text-center">
+        <div class="max-w-4xl mx-auto w-full p-4 md:p-6 pt-4 flex flex-col items-center text-center">
             
-            <h1 class="text-2xl md:text-4xl font-black text-brand-dark mb-4 leading-tight uppercase">
-                <span class="bg-red-600 text-white px-2 py-1 rounded inline-block mb-1 md:mb-0 text-sm md:text-base">DIAGNÓSTICO CONCLUÍDO:</span><br>
+            <h1 class="text-lg md:text-xl font-black text-brand-dark mb-3 leading-tight uppercase">
+                <span class="bg-red-600 text-white px-2 py-0.5 rounded inline-block mb-1 text-[10px] md:text-xs tracking-wider">DIAGNÓSTICO CONCLUÍDO:</span><br>
                 A causa oculta que faz o seu corpo exalar mau cheiro e destrói as suas roupas <span class="text-red-600 underline decoration-red-600 decoration-2 underline-offset-4">(e como desativar isso hoje).</span>
             </h1>
 
-            <p class="text-base md:text-lg text-gray-700 font-medium mb-6 max-w-3xl leading-relaxed">
+            <p class="text-[13px] md:text-sm text-gray-700 font-medium mb-4 max-w-3xl leading-relaxed">
                 Aperte o play para descobrir a <span class="font-bold text-black bg-yellow-200 px-1">técnica simples de 3 minutos</span> que arranca o cheiro impregnado pela raiz, resgata suas roupas perdidas e devolve a sua dignidade.
             </p>
 
@@ -369,7 +393,7 @@
             questionData.options.forEach((optText, index) => {
                 const btn = document.createElement('button');
                 // Retirada classe 'slide-up' e 'animationDelay' para renderização instantânea
-                btn.className = `option-btn w-full text-left p-4 md:p-5 rounded-xl border-2 border-gray-200 bg-gray-50 hover:bg-green-50 hover:border-green-300 text-gray-700 font-medium text-base md:text-lg`;
+                btn.className = `option-btn w-full text-left p-4 rounded-xl border-2 border-gray-200 bg-gray-50 hover:bg-green-50 hover:border-green-300 text-gray-700 font-medium text-sm md:text-base`;
                 
                 // Formatação do texto: Destacar a Letra
                 const firstParen = optText.indexOf(')');

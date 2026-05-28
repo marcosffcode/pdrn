@@ -121,13 +121,15 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 
     <!-- VTurb Scripts (Otimização de Carregamento) -->
     <script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
-    <link rel="preload" href="https://scripts.converteai.net/8517e3d1-7796-43ee-bf69-c35b2f2f45b1/players/6a13b162b28e4eb31f80b0f3/v4/player.js" as="script">
-    <link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
-    <link rel="preload" href="https://cdn.converteai.net/8517e3d1-7796-43ee-bf69-c35b2f2f45b1/6a13b132b76950cfcfb326e7/main.m3u8" as="fetch">
-    <link rel="dns-prefetch" href="https://cdn.converteai.net">
-    <link rel="dns-prefetch" href="https://scripts.converteai.net">
-    <link rel="dns-prefetch" href="https://images.converteai.net">
-    <link rel="dns-prefetch" href="https://license.vturb.com">
+<link rel="preload" href="https://scripts.converteai.net/8517e3d1-7796-43ee-bf69-c35b2f2f45b1/players/6a18be4323128d09f93ff86e/v4/player.js" as="script">
+<link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
+<link rel="preload" href="https://cdn.converteai.net/8517e3d1-7796-43ee-bf69-c35b2f2f45b1/6a18be16987d9d099e23964a/main.m3u8" as="fetch">
+<link rel="dns-prefetch" href="https://cdn.converteai.net">
+<link rel="dns-prefetch" href="https://scripts.converteai.net">
+<link rel="dns-prefetch" href="https://images.converteai.net">
+<link rel="dns-prefetch" href="https://license.vturb.com">
+
+    
 </head>
 <body class="min-h-screen flex flex-col antialiased">
 
@@ -437,17 +439,17 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
             const videoWrapper = document.getElementById('video-wrapper');
             const loadingText = document.getElementById('video-loading-text');
             
-            if (videoWrapper && !document.getElementById('vid-6a13b162b28e4eb31f80b0f3')) {
+            if (videoWrapper && !document.getElementById('vid-6a18be4323128d09f93ff86e')) {
                 if(loadingText) loadingText.style.display = 'none';
                 videoWrapper.classList.remove('min-h-[200px]', 'bg-gray-50', 'flex', 'items-center', 'justify-center');
                 
                 // Adiciona a tag do player
-                videoWrapper.innerHTML = '<vturb-smartplayer id="vid-6a13b162b28e4eb31f80b0f3" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"></vturb-smartplayer>';
+                videoWrapper.innerHTML = '<vturb-smartplayer id="vid-6a18be4323128d09f93ff86e" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"></vturb-smartplayer>';
                 
                 // Adiciona o script de execução do Vturb dinamicamente
                 const scriptVturb = document.createElement("script"); 
                 scriptVturb.type = "text/javascript";
-                scriptVturb.src = "https://scripts.converteai.net/8517e3d1-7796-43ee-bf69-c35b2f2f45b1/players/6a13b162b28e4eb31f80b0f3/v4/player.js";
+                scriptVturb.src = "https://scripts.converteai.net/8517e3d1-7796-43ee-bf69-c35b2f2f45b1/players/6a18be4323128d09f93ff86e/v4/player.js";
                 scriptVturb.async = true;
                 document.head.appendChild(scriptVturb);
             }

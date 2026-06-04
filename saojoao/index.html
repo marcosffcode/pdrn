@@ -188,7 +188,6 @@
       z-index: 1;
     }
 
-    /* ── HERO: badge de urgência ── */
     .hero-urgency-badge {
       display: inline-flex;
       align-items: center;
@@ -228,7 +227,6 @@
     }
     .hero-subtitle strong { color: var(--brand-secondary); }
 
-    /* ── HERO: valor total salvo ── */
     .hero-value-banner {
       display: inline-flex;
       align-items: center;
@@ -399,7 +397,6 @@
     }
     .btn-block:hover { filter: brightness(1.08); box-shadow: 0 18px 36px rgba(34,197,94,.45); }
 
-    /* Mini garantia inline */
     .inline-guarantee {
       display: flex;
       align-items: center;
@@ -559,7 +556,6 @@
       margin-bottom: 1.25rem;
     }
 
-    /* Barra de valor total */
     .bonus-total-bar {
       display: flex;
       flex-direction: column;
@@ -586,7 +582,6 @@
       color: #facc15;
     }
 
-    /* Nota de urgência */
     .bonus-urgency-note {
       display: block;
       margin: 0 auto 1.75rem;
@@ -604,7 +599,6 @@
       box-sizing: border-box;
     }
 
-    /* Grid de cards — mobile-first */
     .bonus-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -624,7 +618,7 @@
       text-align: center;
       display: flex;
       flex-direction: column;
-      min-width: 0;         /* essencial: impede overflow no grid */
+      min-width: 0;
       box-sizing: border-box;
       transition: transform .3s;
     }
@@ -712,7 +706,6 @@
     .testi-stars          { color: #f59e0b; font-size: .875rem; letter-spacing: 1px; }
     .testi-text           { font-size: .9375rem; color: #475569; font-style: italic; line-height: 1.6; flex-grow: 1; }
 
-    /* Imagens de resultado */
     .testimonials {
       display: flex;
       flex-direction: column;
@@ -730,7 +723,6 @@
     }
     @media (min-width: 768px) { .testimonials img { width: 33.333%; } }
 
-    /* CTA pós-depoimentos */
     .post-testimonial-cta {
       margin-top: 3rem;
       text-align: center;
@@ -743,7 +735,7 @@
     }
 
     /* =====================================================
-       SEÇÃO OFERTA
+       SEÇÃO OFERTA — CORREÇÕES DE RESPONSIVIDADE
     ===================================================== */
     .section-offer { padding: 4rem 1rem; background: #fff; }
     @media (min-width: 768px) { .section-offer { padding: 6rem 1rem; } }
@@ -754,11 +746,12 @@
       text-align: center;
       border: 4px solid var(--brand-accent);
       border-radius: 1.5rem;
-      padding: 1.5rem;
+      padding: 1.5rem 1rem;
       box-shadow: 0 25px 50px rgba(34,197,94,.15);
       position: relative;
       background: #fff;
     }
+    @media (min-width: 480px) { .offer-box { padding: 1.5rem; } }
     @media (min-width: 768px) { .offer-box { padding: 3rem; } }
 
     .offer-badge {
@@ -778,94 +771,164 @@
 
     .offer-title {
       font-family: 'Montserrat', sans-serif;
-      font-size: clamp(1.25rem, 3vw, 1.875rem);
+      font-size: clamp(1.125rem, 3.5vw, 1.875rem);
       font-weight: 900;
       color: var(--brand-dark);
       margin: 1rem 0 1.5rem;
+      line-height: 1.25;
     }
 
+    /* ── CHECKLIST: ícone + label + valor em linha, sem quebra ── */
     .offer-checklist {
       text-align: left;
-      max-width: 24rem;
+      max-width: 26rem;
       margin: 0 auto 2rem;
       display: flex;
       flex-direction: column;
-      gap: .75rem;
-      font-weight: 500;
-      font-size: 1.125rem;
-      color: #374151;
+      gap: .625rem;
     }
-    .offer-checklist li { display: flex; align-items: center; gap: .5rem; }
-    .offer-checklist strong { color: var(--brand-dark); }
 
-    /* Bloco de valor total visível */
+    .offer-checklist li {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      font-size: clamp(.9rem, 2.5vw, 1.0625rem);
+      font-weight: 500;
+      color: #374151;
+      line-height: 1.3;
+    }
+
+    /* Ícone fixo, não encolhe */
+    .offer-checklist li .ck-icon {
+      flex-shrink: 0;
+      font-size: 1.1rem;
+      line-height: 1;
+    }
+
+    /* Texto principal ocupa o espaço disponível */
+    .offer-checklist li .ck-text {
+      flex: 1;
+      min-width: 0;
+    }
+
+    /* Valor monetário: nunca quebra, alinha à direita */
+    .offer-checklist li .ck-val {
+      flex-shrink: 0;
+      white-space: nowrap;
+      font-weight: 700;
+      color: var(--brand-accent);
+      font-size: clamp(.85rem, 2vw, 1rem);
+      margin-left: auto;
+      padding-left: .5rem;
+    }
+
+    /* ── VALUE BREAKDOWN: tabela de duas colunas sem quebra ── */
     .value-breakdown {
       background: #f8fafc;
       border-radius: .75rem;
-      padding: 1.25rem 1.5rem;
+      padding: 1rem;
       margin-bottom: 1.5rem;
       border: 1px solid #e2e8f0;
       text-align: left;
     }
+    @media (min-width: 480px) { .value-breakdown { padding: 1.25rem 1.5rem; } }
+
     .vb-title {
       font-weight: 700;
-      font-size: .875rem;
+      font-size: .8125rem;
       color: #64748b;
       text-transform: uppercase;
       letter-spacing: .06em;
       margin-bottom: .75rem;
     }
+
     .vb-row {
       display: flex;
       justify-content: space-between;
-      font-size: .9375rem;
+      align-items: center;
+      gap: .5rem;
+      font-size: clamp(.8rem, 2.2vw, .9375rem);
       color: #374151;
-      padding: .35rem 0;
+      padding: .3rem 0;
       border-bottom: 1px dashed #e2e8f0;
     }
     .vb-row:last-child { border-bottom: none; }
-    .vb-row .vb-name   { font-weight: 500; }
-    .vb-row .vb-val    { font-weight: 700; color: #94a3b8; text-decoration: line-through; }
+
+    /* Nome do item: ocupa espaço disponível, pode quebrar */
+    .vb-row .vb-name {
+      font-weight: 500;
+      flex: 1;
+      min-width: 0;
+      padding-right: .5rem;
+      line-height: 1.3;
+    }
+
+    /* Valor: NUNCA quebra, alinha à direita */
+    .vb-row .vb-val {
+      flex-shrink: 0;
+      white-space: nowrap;
+      font-weight: 700;
+      color: #94a3b8;
+      text-decoration: line-through;
+      font-size: clamp(.8rem, 2vw, .9375rem);
+    }
+
     .vb-total-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: .5rem;
       margin-top: .75rem;
       padding-top: .75rem;
       border-top: 2px solid #e2e8f0;
     }
-    .vb-total-row .vb-label { font-weight: 800; font-size: 1rem; color: #1e293b; }
+
+    .vb-total-row .vb-label {
+      font-weight: 800;
+      font-size: clamp(.875rem, 2.5vw, 1rem);
+      color: #1e293b;
+      flex-shrink: 0;
+    }
+
     .vb-total-row .vb-amount {
       font-family: 'Montserrat', sans-serif;
       font-weight: 900;
-      font-size: 1.25rem;
+      font-size: clamp(1rem, 3vw, 1.25rem);
       color: #94a3b8;
       text-decoration: line-through;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
 
+    /* ── PRICE BOX ── */
     .price-box {
       background: #f0fdf4;
       border-radius: .75rem;
-      padding: 1.5rem;
+      padding: 1.25rem 1rem;
       margin-bottom: 1.5rem;
       border: 2px solid #bbf7d0;
     }
-    .price-label  { color: #64748b; font-weight: 500; margin-bottom: .5rem; }
-    .price-old    { font-size: 1.25rem; font-weight: 700; color: #94a3b8; margin-bottom: .5rem; }
+    @media (min-width: 480px) { .price-box { padding: 1.5rem; } }
+
+    .price-label  { color: #64748b; font-weight: 500; margin-bottom: .5rem; font-size: clamp(.875rem, 2vw, 1rem); }
+    .price-old    { font-size: clamp(1rem, 3vw, 1.25rem); font-weight: 700; color: #94a3b8; margin-bottom: .5rem; }
+
     .price-main {
       font-family: 'Montserrat', sans-serif;
       font-weight: 900;
-      font-size: clamp(4rem, 12vw, 5.5rem);
+      font-size: clamp(3.5rem, 14vw, 5.5rem);
       color: var(--brand-accent);
       line-height: 1;
       margin: 1rem 0;
     }
-    .price-currency { font-size: 1.875rem; vertical-align: top; }
-    .price-cents    { font-size: 2.25rem; }
+    .price-currency { font-size: clamp(1.5rem, 4vw, 1.875rem); vertical-align: top; }
+    .price-cents    { font-size: clamp(1.75rem, 5vw, 2.25rem); }
     .price-urgency  {
       color: var(--brand-secondary);
       font-weight: 700;
       animation: pulse 2s cubic-bezier(0.4,0,0.6,1) infinite;
+      font-size: clamp(.8125rem, 2.2vw, .9375rem);
+      line-height: 1.4;
     }
 
     .strike-through { position: relative; display: inline-block; }
@@ -881,16 +944,17 @@
       animation: strike 2s ease-in-out 1s forwards;
     }
 
-    /* Countdown dentro da oferta */
+    /* ── COUNTDOWN ── */
     .offer-countdown {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: .75rem;
+      gap: .5rem;
       margin-bottom: 1.5rem;
+      flex-wrap: wrap;
     }
     .offer-countdown .oc-label {
-      font-size: .875rem;
+      font-size: clamp(.75rem, 2vw, .875rem);
       font-weight: 700;
       color: var(--brand-secondary);
       white-space: nowrap;
@@ -908,7 +972,7 @@
       color: #facc15;
       font-family: 'Montserrat', sans-serif;
       font-weight: 900;
-      font-size: 1.5rem;
+      font-size: clamp(1.25rem, 4vw, 1.5rem);
       min-width: 2.5rem;
       padding: .4rem .5rem .2rem;
       border-radius: .4rem;
@@ -925,6 +989,7 @@
     }
     .oc-sep { font-weight: 900; color: var(--brand-secondary); font-size: 1.25rem; line-height: 1; margin-bottom: .75rem; }
 
+    /* ── URGENCY BAR ── */
     .urgency-wrap { margin-bottom: 1.5rem; }
     .urgency-header {
       display: flex;
@@ -956,7 +1021,7 @@
     .cta-cidade .num    { color: var(--brand-secondary); font-weight: 700; }
     .cta-cidade .cidade { font-weight: 700; color: var(--brand-dark); }
 
-    /* Garantia mini (abaixo do CTA principal) */
+    /* ── GARANTIA MINI ── */
     .guarantee-mini {
       display: flex;
       align-items: center;
@@ -966,10 +1031,12 @@
       border: 1px solid #bbf7d0;
       border-radius: .625rem;
       padding: .6rem 1rem;
-      font-size: .875rem;
+      font-size: clamp(.8rem, 2vw, .875rem);
       font-weight: 600;
       color: #166534;
       margin-bottom: 1rem;
+      text-align: left;
+      line-height: 1.4;
     }
     .guarantee-mini img {
       width: 30px;
@@ -978,7 +1045,7 @@
       flex-shrink: 0;
     }
 
-    /* Meios de pagamento */
+    /* ── MEIOS DE PAGAMENTO ── */
     .payment-methods {
       display: flex;
       align-items: center;
@@ -1337,7 +1404,6 @@
 
     <div class="hero-inner">
 
-      <!-- MELHORIA #1: Headline focada na transformação, não no produto -->
       <h1 class="hero-title animate-slide-up">
         Transforme sua festa junina<br>
         em <em>15 minutos</em>, sem habilidade<br>
@@ -1348,8 +1414,6 @@
         É só <strong>imprimir, montar e encantar</strong> seus convidados.<br>
         Tudo pronto para usar, mesmo na véspera da festa!
       </h2>
-
-      <!-- MELHORIA #2: Âncora de valor antes do preço -->
 
       <div class="social-proof">
         <p class="sp-badge">🏆 Mais de <span>2.137 unidades</span> vendidas</p>
@@ -1401,12 +1465,10 @@
         </div>
       </div>
 
-      <!-- MELHORIA #3: CTA com foco no resultado -->
       <a href="https://pagamento.bemestarbrasil.online/" class="btn-pill">
         👉 QUERO RECEBER AGORA!
       </a>
 
-      <!-- MELHORIA #4: Garantia visível no hero -->
       <p class="secure-msg" style="margin-top:.75rem">
         🔒 Pagamento 100% Seguro &nbsp;|&nbsp; ✅ Acesso Imediato 
       </p>
@@ -1533,7 +1595,6 @@
         Veja quem já garantiu e montou suas surpresas.
       </p>
 
-      <!-- MELHORIA #6: Depoimentos específicos com situação + resultado -->
       <div class="testimonials-grid">
 
         <div class="testimonial-card">
@@ -1591,14 +1652,12 @@
         <img src="/saojoao/assets/prova3.webp" alt="Resultado de cliente 3" width="340" height="147" loading="lazy">
       </div>
 
-      <!-- MELHORIA #7: CTA logo após o pico emocional dos depoimentos -->
       <div class="post-testimonial-cta">
         <h3 class="section-title">Você também pode ter essa festa!</h3>
         <p>Mais de 2.137 famílias já garantiram. Garanta o seu agora por apenas R$ 10.</p>
         <a href="https://pagamento.bemestarbrasil.online/" class="btn-pill" style="max-width:420px;margin:0 auto">
           SIM, QUERO GARANTIR AGORA →
         </a>
-        
       </div>
 
     </div>
@@ -1613,24 +1672,53 @@
 
       <h4 class="offer-title">ACESSO IMEDIATO COM MAIS DE 89% DE DESCONTO!</h4>
 
+      <!-- Checklist corrigida: ícone + texto + valor sempre em 1 linha -->
       <ul class="offer-checklist">
-        <li>✅ <strong>Completo:</strong> acesso a todos os Kits</li>
-        <li>✅ Todos os <strong>Bônus Grátis</strong> (R$ 116,00)</li>
-        <li>✅ <strong>07 Dias</strong> de Garantia Incondicional</li>
-        <li>✅ <strong>Acesso Vitalício</strong> e Imediato</li>
+        <li>
+          <span class="ck-icon">✅</span>
+          <span class="ck-text"><strong>Completo:</strong> acesso a todos os Kits</span>
+        </li>
+        <li>
+          <span class="ck-icon">✅</span>
+          <span class="ck-text">Todos os <strong>Bônus Grátis</strong></span>
+          <span class="ck-val">(R$ 116,00)</span>
+        </li>
+        <li>
+          <span class="ck-icon">✅</span>
+          <span class="ck-text"><strong>07 Dias</strong> de Garantia Incondicional</span>
+        </li>
+        <li>
+          <span class="ck-icon">✅</span>
+          <span class="ck-text"><strong>Acesso Vitalício</strong> e Imediato</span>
+        </li>
       </ul>
 
-      <!-- MELHORIA #8: Breakdown de valor antes do preço -->
+      <!-- Value breakdown corrigido: valores nunca quebram -->
       <div class="value-breakdown">
         <p class="vb-title">O que você está levando:</p>
-        <div class="vb-row"><span class="vb-name">Super Kit Completo (8 kits)</span><span class="vb-val">R$ 97,90</span></div>
-        <div class="vb-row"><span class="vb-name">+ Painéis Completos (Bônus)</span><span class="vb-val">R$ 29,00</span></div>
-        <div class="vb-row"><span class="vb-name">+ Publicações p/ Instagram (Bônus)</span><span class="vb-val">R$ 29,00</span></div>
-        <div class="vb-row"><span class="vb-name">+ Cartaz (Bônus)</span><span class="vb-val">R$ 29,00</span></div>
-        <div class="vb-row"><span class="vb-name">+ Ilustrações (Bônus)</span><span class="vb-val">R$ 29,00</span></div>
+        <div class="vb-row">
+          <span class="vb-name">Super Kit Completo (8 kits)</span>
+          <span class="vb-val">R$&nbsp;97,90</span>
+        </div>
+        <div class="vb-row">
+          <span class="vb-name">+ Painéis Completos (Bônus)</span>
+          <span class="vb-val">R$&nbsp;29,00</span>
+        </div>
+        <div class="vb-row">
+          <span class="vb-name">+ Posts p/ Instagram (Bônus)</span>
+          <span class="vb-val">R$&nbsp;29,00</span>
+        </div>
+        <div class="vb-row">
+          <span class="vb-name">+ Cartaz (Bônus)</span>
+          <span class="vb-val">R$&nbsp;29,00</span>
+        </div>
+        <div class="vb-row">
+          <span class="vb-name">+ Ilustrações (Bônus)</span>
+          <span class="vb-val">R$&nbsp;29,00</span>
+        </div>
         <div class="vb-total-row">
           <span class="vb-label">Valor total real</span>
-          <span class="vb-amount">R$ 213,90</span>
+          <span class="vb-amount">R$&nbsp;213,90</span>
         </div>
       </div>
 
@@ -1638,7 +1726,7 @@
         <p class="price-label">↓ HOJE COM DESCONTO ÚNICO ↓</p>
         <p class="price-old">
           Tudo isso por apenas:
-          <span class="strike-through" style="color:var(--brand-secondary)">R$ 97,90</span>
+          <span class="strike-through" style="color:var(--brand-secondary)">R$&nbsp;97,90</span>
         </p>
         <div class="price-main">
           <span class="price-currency">R$</span>10<span class="price-cents">,00</span>
@@ -1646,7 +1734,6 @@
         <p class="price-urgency">⚠️ Você NÃO vai encontrar esse preço depois desta página.</p>
       </div>
 
-      <!-- MELHORIA #9: Countdown dentro da oferta -->
       <div class="offer-countdown">
         <span class="oc-label">⏱ Oferta expira em:</span>
         <div class="oc-digits">
@@ -1672,7 +1759,6 @@
         </p>
       </div>
 
-      <!-- MELHORIA #10: Garantia visível ANTES do botão de compra -->
       <div class="guarantee-mini">
         <img src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/7-dias-garantia.webp"
              alt="Garantia 7 dias">
@@ -1683,12 +1769,11 @@
         👉 QUERO GARANTIR POR R$ 10 AGORA!
       </a>
 
-      
     </div>
   </section>
 
   <!-- ═══════════════════════════════════════════════════
-       MELHORIA #11: FAQ — elimina objeções finais
+       FAQ
   ═══════════════════════════════════════════════════ -->
   <section class="faq-section">
     <div class="container">
@@ -1761,7 +1846,6 @@
 
       </div>
 
-      <!-- CTA final dentro do FAQ -->
       <div style="text-align:center;margin-top:2.5rem">
         <a href="https://pagamento.bemestarbrasil.online/" class="btn-pill" style="max-width:380px;margin:0 auto">
           QUERO MEU KIT POR R$ 10 →
@@ -1840,11 +1924,6 @@
       FACEBOOK é uma marca comercial da FACEBOOK, Inc.
     </p>
   </footer>
-
-  <!-- ═══════════════════════════════════════════════════
-       STICKY CTA — MOBILE
-  ═══════════════════════════════════════════════════ -->
-  
 
   <!-- ═══════════════════════════════════════════════════
        TOAST

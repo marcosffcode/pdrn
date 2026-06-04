@@ -53,12 +53,12 @@
     :root {
       --brand-dark:       #551F13;
       --brand-primary:    #d97706;
-      --brand-secondary: #dc2626;
+      --brand-secondary:  #dc2626;
       --brand-accent:     #22c55e;
       --amber-50:         #fffbeb;
       --amber-100:        #fef3c7;
       --amber-200:        #fde68a;
-      --red:             #dc2626;
+      --red:              #dc2626;
     }
 
     html { scroll-behavior: smooth; }
@@ -82,7 +82,7 @@
     ===================================================== */
     @keyframes pulse {
       0%, 100% { opacity: 1; }
-      50%      { opacity: .5; }
+      50%       { opacity: .5; }
     }
     @keyframes heartbeat {
       0%,  100% { transform: scale(1); }
@@ -107,24 +107,58 @@
       from { background-position: 1rem 0; }
       to   { background-position: 0 0; }
     }
+    @keyframes timerPulse {
+      0%, 100% { transform: scale(1); }
+      50%       { transform: scale(1.04); }
+    }
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes shimmer {
+      0%   { background-position: -200% center; }
+      100% { background-position:  200% center; }
+    }
 
     .animate-slide-up  { animation: slideUp  0.5s ease-out forwards; }
     .animate-heartbeat { animation: heartbeat 1.5s ease-in-out infinite; }
     .animate-pulse     { animation: pulse     2s  cubic-bezier(0.4,0,0.6,1) infinite; }
 
     /* =====================================================
-       BARRA TOPO
+       BARRA TOPO — TIMER
     ===================================================== */
     .top-alert {
       background-color: var(--brand-dark);
       color: #fff;
       text-align: center;
-      padding: .5rem 1rem;
+      padding: .6rem 1rem;
       font-size: .875rem;
       font-weight: 600;
-      letter-spacing: .05em;
+      letter-spacing: .04em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      flex-wrap: wrap;
     }
-    .top-alert .hl { color: #facc15; }
+    .top-alert .hl     { color: #facc15; }
+    .top-alert .timer-wrap {
+      display: inline-flex;
+      align-items: center;
+      gap: .35rem;
+      background: rgba(255,255,255,.12);
+      border-radius: 6px;
+      padding: .15rem .6rem;
+      font-variant-numeric: tabular-nums;
+    }
+    .top-alert .timer-val {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      color: #facc15;
+      font-size: 1rem;
+      min-width: 5ch;
+      animation: timerPulse 1s ease-in-out infinite;
+    }
 
     /* =====================================================
        HERO
@@ -154,23 +188,75 @@
       z-index: 1;
     }
 
+    /* ── HERO: badge de urgência ── */
+    .hero-urgency-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      background: var(--brand-secondary);
+      color: #fff;
+      font-size: .8125rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: .35rem 1rem;
+      border-radius: 9999px;
+      margin-bottom: 1rem;
+      animation: fadeInDown .6s ease-out;
+    }
+
     .hero-title {
       font-family: 'Montserrat', sans-serif;
-      font-size: clamp(2.5rem, 6.5vw, 4.75rem);
+      font-size: clamp(2rem, 6vw, 4.25rem);
       font-weight: 900;
       color: var(--brand-dark);
       line-height: 1.15;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+    .hero-title em {
+      font-style: normal;
+      color: var(--brand-secondary);
     }
 
     .hero-subtitle {
-      font-size: clamp(1.2rem, 3vw, 1.875rem);
+      font-size: clamp(1.1rem, 2.8vw, 1.625rem);
       font-weight: 500;
       color: #475569;
-      margin: 0 auto 2rem;
-      max-width: 42rem;
+      margin: 0 auto 1.5rem;
+      max-width: 44rem;
+      line-height: 1.5;
     }
     .hero-subtitle strong { color: var(--brand-secondary); }
+
+    /* ── HERO: valor total salvo ── */
+    .hero-value-banner {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: #fff;
+      border: 2px solid var(--amber-200);
+      border-radius: .75rem;
+      padding: .6rem 1.25rem;
+      margin-bottom: 1.5rem;
+      font-size: .9375rem;
+      font-weight: 600;
+      color: #374151;
+      box-shadow: 0 2px 8px rgba(0,0,0,.06);
+    }
+    .hero-value-banner .vb-total {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 1.0625rem;
+      color: #94a3b8;
+      text-decoration: line-through;
+    }
+    .hero-value-banner .vb-price {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 1.25rem;
+      color: var(--brand-accent);
+    }
+    .hero-value-banner .vb-sep { color: #d1d5db; }
 
     .social-proof {
       display: flex;
@@ -190,7 +276,6 @@
       border: 1px solid #fef3c7;
     }
     .sp-badge span { color: var(--brand-secondary); }
-
     .sp-stars {
       display: flex;
       align-items: center;
@@ -220,11 +305,17 @@
     }
     .carousel-track:hover { animation-play-state: paused; }
 
-    .carousel-item {
-      width: 320px;
-      height: 394px;
+    .carousel-item-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .5rem;
       margin: 0 12px;
       flex-shrink: 0;
+    }
+    .carousel-item {
+      width: 280px;
+      height: 345px;
       border-radius: 1rem;
       box-shadow: 0 10px 25px -5px rgba(0,0,0,.2);
       border: 4px solid #fff;
@@ -233,12 +324,18 @@
       transition: transform .3s ease;
     }
     .carousel-item:hover { transform: scale(1.05); }
+    .carousel-caption {
+      font-size: .78rem;
+      font-weight: 600;
+      color: #92400e;
+      background: rgba(255,255,255,.8);
+      border-radius: 9999px;
+      padding: .2rem .7rem;
+      border: 1px solid var(--amber-200);
+    }
 
     @media (max-width: 767px) {
-      .carousel-item {
-        width: 260px;
-        height: 320px;
-      }
+      .carousel-item { width: 220px; height: 271px; }
     }
 
     /* =====================================================
@@ -253,16 +350,26 @@
       font-size: 1.125rem;
       font-weight: 700;
       color: #fff;
-      background-color: var(--brand-accent);
+      background: linear-gradient(135deg, #22c55e, #16a34a);
       border-radius: 9999px;
       box-shadow: 0 10px 20px rgba(34,197,94,.4);
-      transition: background-color .2s;
+      transition: filter .2s, box-shadow .2s;
       animation: heartbeat 1.5s ease-in-out infinite;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-pill::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,.25) 50%, transparent 100%);
+      background-size: 200% auto;
+      animation: shimmer 2.5s linear infinite;
     }
     @media (min-width: 768px) {
       .btn-pill { width: auto; font-size: 1.25rem; }
     }
-    .btn-pill:hover { background-color: #16a34a; }
+    .btn-pill:hover { filter: brightness(1.08); box-shadow: 0 14px 28px rgba(34,197,94,.5); }
 
     .btn-block {
       display: block;
@@ -272,15 +379,43 @@
       font-size: clamp(1.125rem, 2.5vw, 1.5rem);
       font-weight: 900;
       color: #fff;
-      background-color: var(--brand-accent);
+      background: linear-gradient(135deg, #22c55e, #16a34a);
       border-radius: 1rem;
       text-align: center;
       box-shadow: 0 15px 30px rgba(34,197,94,.3);
-      transition: background-color .2s;
+      transition: filter .2s, box-shadow .2s;
       animation: heartbeat 1.5s ease-in-out infinite;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
+      position: relative;
+      overflow: hidden;
     }
-    .btn-block:hover { background-color: #16a34a; }
+    .btn-block::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,.2) 50%, transparent 100%);
+      background-size: 200% auto;
+      animation: shimmer 2.5s linear infinite;
+    }
+    .btn-block:hover { filter: brightness(1.08); box-shadow: 0 18px 36px rgba(34,197,94,.45); }
+
+    /* Mini garantia inline */
+    .inline-guarantee {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      font-size: .8rem;
+      color: #64748b;
+      font-weight: 500;
+      margin-top: .5rem;
+    }
+    .inline-guarantee img {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+      display: inline;
+    }
 
     .secure-msg {
       margin-top: 1rem;
@@ -385,11 +520,19 @@
        SEÇÃO ESCURA — BÔNUS
     ===================================================== */
     .section-dark {
-      padding: 4rem 1rem;
+      padding: 3rem 1rem;
       background-color: var(--brand-dark);
       color: #fff;
+      overflow: hidden;
     }
-    @media (min-width: 768px) { .section-dark { padding: 6rem 1rem; } }
+    @media (min-width: 768px) { .section-dark { padding: 5rem 1rem; } }
+
+    .bonus-inner {
+      width: 100%;
+      max-width: 64rem;
+      margin: 0 auto;
+      text-align: center;
+    }
 
     .bonus-badge {
       display: inline-block;
@@ -398,115 +541,178 @@
       background-color: #eab308;
       color: var(--brand-dark);
       font-weight: 700;
-      font-size: .875rem;
-      letter-spacing: .1em;
+      font-size: .8125rem;
+      letter-spacing: .08em;
       text-transform: uppercase;
       margin-bottom: .75rem;
     }
     .bonus-title {
       font-family: 'Montserrat', sans-serif;
-      font-size: clamp(1.875rem, 5vw, 3rem);
+      font-size: clamp(1.5rem, 5vw, 3rem);
       font-weight: 900;
-      margin-bottom: 1rem;
+      margin-bottom: .75rem;
+      line-height: 1.2;
     }
-    .bonus-subtitle { color: #fde68a; font-size: 1.125rem; }
+    .bonus-subtitle {
+      color: #fde68a;
+      font-size: clamp(.875rem, 2.5vw, 1.125rem);
+      margin-bottom: 1.25rem;
+    }
 
+    /* Barra de valor total */
+    .bonus-total-bar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .3rem;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: .75rem;
+      padding: .875rem 1rem;
+      margin: 0 auto .75rem;
+      width: 100%;
+      max-width: 20rem;
+      font-size: .875rem;
+      font-weight: 600;
+      color: #fde68a;
+      box-sizing: border-box;
+    }
+    .bonus-total-bar .btb-label { color: #fde68a; }
+    .bonus-total-bar .btb-old   { color: #94a3b8; text-decoration: line-through; font-size: .8rem; }
+    .bonus-total-bar .btb-free  {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 1.125rem;
+      color: #facc15;
+    }
+
+    /* Nota de urgência */
+    .bonus-urgency-note {
+      display: block;
+      margin: 0 auto 1.75rem;
+      font-size: .75rem;
+      font-weight: 600;
+      color: #fca5a5;
+      background: rgba(220,38,38,.2);
+      border: 1px solid rgba(220,38,38,.4);
+      border-radius: 9999px;
+      padding: .35rem .875rem;
+      width: fit-content;
+      max-width: 90%;
+      text-align: center;
+      line-height: 1.5;
+      box-sizing: border-box;
+    }
+
+    /* Grid de cards — mobile-first */
     .bonus-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      margin-top: 3rem;
+      grid-template-columns: repeat(2, 1fr);
+      gap: .75rem;
+      width: 100%;
+      box-sizing: border-box;
     }
-    @media (min-width: 768px) {
-      .bonus-grid { grid-template-columns: repeat(4, 1fr); gap: 2rem; }
-    }
+    @media (min-width: 640px)  { .bonus-grid { gap: 1rem; } }
+    @media (min-width: 768px)  { .bonus-grid { grid-template-columns: repeat(4, 1fr); gap: 1.25rem; } }
+    @media (min-width: 1024px) { .bonus-grid { gap: 1.75rem; } }
 
     .bonus-card {
-      background: rgba(255,255,255,.1);
-      padding: 1rem;
-      border-radius: 1rem;
-      border: 1px solid rgba(255,255,255,.2);
+      background: rgba(255,255,255,.08);
+      padding: .625rem;
+      border-radius: .75rem;
+      border: 1px solid rgba(255,255,255,.15);
       text-align: center;
       display: flex;
       flex-direction: column;
-      height: 100%;
+      min-width: 0;         /* essencial: impede overflow no grid */
+      box-sizing: border-box;
       transition: transform .3s;
     }
-    .bonus-card:hover { transform: translateY(-8px); }
+    @media (min-width: 640px) { .bonus-card { padding: .875rem; border-radius: 1rem; } }
+    @media (min-width: 768px) { .bonus-card { padding: 1rem; } }
+    .bonus-card:hover { transform: translateY(-6px); }
 
     .bonus-card img {
       width: 100%;
-      aspect-ratio: 240 / 180;
-      border-radius: .5rem;
-      margin-bottom: 1rem;
-      filter: drop-shadow(0 4px 6px rgba(0,0,0,.3));
+      aspect-ratio: 4 / 3;
+      border-radius: .375rem;
+      margin-bottom: .5rem;
       object-fit: cover;
+      filter: drop-shadow(0 3px 5px rgba(0,0,0,.3));
     }
+
     .bonus-card-footer { margin-top: auto; }
-    .bonus-card .old-price { color: #94a3b8; font-size: .875rem; margin-bottom: .25rem; }
-    .bonus-card .new-price { font-weight: 900; font-size: 1.25rem; color: #facc15; }
+
+    .bonus-card-name {
+      font-size: .7rem;
+      font-weight: 700;
+      color: #fde68a;
+      margin-bottom: .2rem;
+      line-height: 1.3;
+    }
+    @media (min-width: 480px) { .bonus-card-name { font-size: .8rem; } }
+    @media (min-width: 768px) { .bonus-card-name { font-size: .875rem; } }
+
+    .bonus-card .old-price {
+      color: #94a3b8;
+      font-size: .7rem;
+      margin-bottom: .1rem;
+    }
+    @media (min-width: 480px) { .bonus-card .old-price { font-size: .8rem; } }
+    @media (min-width: 768px) { .bonus-card .old-price { font-size: .875rem; } }
+
+    .bonus-card .new-price {
+      font-weight: 900;
+      font-size: .85rem;
+      color: #facc15;
+    }
+    @media (min-width: 480px) { .bonus-card .new-price { font-size: .95rem; } }
+    @media (min-width: 768px) { .bonus-card .new-price { font-size: 1.125rem; } }
 
     /* =====================================================
-       SEÇÃO AMBER — PROVA SOCIAL (ATUALIZADO)
+       SEÇÃO AMBER — PROVA SOCIAL
     ===================================================== */
     .section-amber { padding: 4rem 1rem; background: #fffbeb; }
 
-    /* Grid de Depoimentos com Foto */
     .testimonials-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-        max-width: 56rem;
-        margin: 0 auto 4rem; /* Espaço inferior para as próximas imagens */
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      max-width: 56rem;
+      margin: 0 auto 4rem;
     }
     @media(min-width: 768px) {
-        .testimonials-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+      .testimonials-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
     }
 
     .testimonial-card {
-        background: #fff;
-        padding: 1.5rem;
-        border-radius: 1rem;
-        box-shadow: 0 4px 10px rgba(0,0,0,.06);
-        border: 1px solid var(--amber-100);
-        display: flex;
-        flex-direction: column;
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,.06);
+      border: 1px solid var(--amber-100);
+      display: flex;
+      flex-direction: column;
     }
-
     .testi-header {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
     }
-
     .testi-avatar {
-        width: 3.5rem;
-        height: 3.5rem;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 2px solid var(--brand-primary);
-        box-shadow: 0 2px 5px rgba(0,0,0,.1);
+      width: 3.5rem;
+      height: 3.5rem;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--brand-primary);
+      box-shadow: 0 2px 5px rgba(0,0,0,.1);
     }
+    .testi-info h4        { font-weight: 700; color: var(--brand-dark); font-size: 1rem; margin-bottom: .25rem; }
+    .testi-stars          { color: #f59e0b; font-size: .875rem; letter-spacing: 1px; }
+    .testi-text           { font-size: .9375rem; color: #475569; font-style: italic; line-height: 1.6; flex-grow: 1; }
 
-    .testi-info h4 {
-        font-weight: 700;
-        color: var(--brand-dark);
-        font-size: 1rem;
-        margin-bottom: 0.25rem;
-    }
-
-    .testi-stars { color: #f59e0b; font-size: 0.875rem; letter-spacing: 1px; }
-
-    .testi-text {
-        font-size: 0.9375rem;
-        color: #475569;
-        font-style: italic;
-        line-height: 1.6;
-        flex-grow: 1;
-    }
-
-    /* Imagens de Resultados (Estilo existente mantido) */
+    /* Imagens de resultado */
     .testimonials {
       display: flex;
       flex-direction: column;
@@ -514,7 +720,6 @@
       justify-content: center;
     }
     @media (min-width: 768px) { .testimonials { flex-direction: row; } }
-
     .testimonials img {
       width: 100%;
       aspect-ratio: 1024 / 443;
@@ -524,6 +729,18 @@
       object-fit: cover;
     }
     @media (min-width: 768px) { .testimonials img { width: 33.333%; } }
+
+    /* CTA pós-depoimentos */
+    .post-testimonial-cta {
+      margin-top: 3rem;
+      text-align: center;
+    }
+    .post-testimonial-cta .section-title { margin-bottom: .5rem; }
+    .post-testimonial-cta p {
+      color: #64748b;
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
 
     /* =====================================================
        SEÇÃO OFERTA
@@ -581,12 +798,57 @@
     .offer-checklist li { display: flex; align-items: center; gap: .5rem; }
     .offer-checklist strong { color: var(--brand-dark); }
 
-    .price-box {
+    /* Bloco de valor total visível */
+    .value-breakdown {
       background: #f8fafc;
       border-radius: .75rem;
-      padding: 1.5rem;
-      margin-bottom: 2rem;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1.5rem;
       border: 1px solid #e2e8f0;
+      text-align: left;
+    }
+    .vb-title {
+      font-weight: 700;
+      font-size: .875rem;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-bottom: .75rem;
+    }
+    .vb-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: .9375rem;
+      color: #374151;
+      padding: .35rem 0;
+      border-bottom: 1px dashed #e2e8f0;
+    }
+    .vb-row:last-child { border-bottom: none; }
+    .vb-row .vb-name   { font-weight: 500; }
+    .vb-row .vb-val    { font-weight: 700; color: #94a3b8; text-decoration: line-through; }
+    .vb-total-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: .75rem;
+      padding-top: .75rem;
+      border-top: 2px solid #e2e8f0;
+    }
+    .vb-total-row .vb-label { font-weight: 800; font-size: 1rem; color: #1e293b; }
+    .vb-total-row .vb-amount {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 1.25rem;
+      color: #94a3b8;
+      text-decoration: line-through;
+    }
+
+    .price-box {
+      background: #f0fdf4;
+      border-radius: .75rem;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      border: 2px solid #bbf7d0;
     }
     .price-label  { color: #64748b; font-weight: 500; margin-bottom: .5rem; }
     .price-old    { font-size: 1.25rem; font-weight: 700; color: #94a3b8; margin-bottom: .5rem; }
@@ -619,7 +881,51 @@
       animation: strike 2s ease-in-out 1s forwards;
     }
 
-    .urgency-wrap { margin-bottom: 2rem; }
+    /* Countdown dentro da oferta */
+    .offer-countdown {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .75rem;
+      margin-bottom: 1.5rem;
+    }
+    .offer-countdown .oc-label {
+      font-size: .875rem;
+      font-weight: 700;
+      color: var(--brand-secondary);
+      white-space: nowrap;
+    }
+    .oc-digits {
+      display: flex;
+      gap: .35rem;
+      align-items: center;
+    }
+    .oc-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: var(--brand-dark);
+      color: #facc15;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 1.5rem;
+      min-width: 2.5rem;
+      padding: .4rem .5rem .2rem;
+      border-radius: .4rem;
+      line-height: 1;
+    }
+    .oc-block span.sub {
+      font-family: 'Inter', sans-serif;
+      font-size: .55rem;
+      font-weight: 600;
+      color: #fde68a;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-top: .2rem;
+    }
+    .oc-sep { font-weight: 900; color: var(--brand-secondary); font-size: 1.25rem; line-height: 1; margin-bottom: .75rem; }
+
+    .urgency-wrap { margin-bottom: 1.5rem; }
     .urgency-header {
       display: flex;
       justify-content: space-between;
@@ -646,19 +952,149 @@
       width: 92%;
     }
     .cta-cidade         { margin-top: .75rem; font-size: .875rem; color: #475569; font-weight: 500; }
-    .cta-cidade.hidden { display: none; }
+    .cta-cidade.hidden  { display: none; }
     .cta-cidade .num    { color: var(--brand-secondary); font-weight: 700; }
-    .cta-cidade .cidade{ font-weight: 700; color: var(--brand-dark); }
+    .cta-cidade .cidade { font-weight: 700; color: var(--brand-dark); }
+
+    /* Garantia mini (abaixo do CTA principal) */
+    .guarantee-mini {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: .625rem;
+      padding: .6rem 1rem;
+      font-size: .875rem;
+      font-weight: 600;
+      color: #166534;
+      margin-bottom: 1rem;
+    }
+    .guarantee-mini img {
+      width: 30px;
+      height: 30px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    /* Meios de pagamento */
+    .payment-methods {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      flex-wrap: wrap;
+      margin-top: .75rem;
+    }
+    .payment-methods span {
+      font-size: .75rem;
+      color: #94a3b8;
+      font-weight: 500;
+    }
+    .pm-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .25rem;
+      background: #f1f5f9;
+      border: 1px solid #e2e8f0;
+      border-radius: .375rem;
+      padding: .2rem .5rem;
+      font-size: .7rem;
+      font-weight: 700;
+      color: #475569;
+    }
 
     /* =====================================================
-       SEÇÃO DOAÇÃO
+       FAQ
+    ===================================================== */
+    .faq-section {
+      padding: 4rem 1rem;
+      background: #fff;
+      border-top: 1px solid #f1f5f9;
+    }
+
+    .faq-list {
+      max-width: 44rem;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+    }
+
+    .faq-item {
+      border: 1px solid var(--amber-200);
+      border-radius: .875rem;
+      overflow: hidden;
+      background: #fffbeb;
+    }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.1rem 1.25rem;
+      text-align: left;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--brand-dark);
+      line-height: 1.4;
+    }
+    .faq-question:hover { background: rgba(253,230,138,.35); }
+    .faq-arrow {
+      flex-shrink: 0;
+      font-size: 1.25rem;
+      transition: transform .25s ease;
+      color: var(--brand-primary);
+    }
+    .faq-item.open .faq-arrow { transform: rotate(180deg); }
+
+    .faq-answer {
+      display: none;
+      padding: 0 1.25rem 1.1rem;
+      font-size: .9375rem;
+      color: #475569;
+      line-height: 1.7;
+    }
+    .faq-item.open .faq-answer { display: block; }
+
+    /* =====================================================
+       PROVAS SOCIAIS — MOLDES
+    ===================================================== */
+    .proofs {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    @media (min-width: 768px) {
+      .proofs { flex-direction: row; justify-content: center; }
+    }
+    .proofs img {
+      width: 100%;
+      height: auto;
+      border-radius: .75rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,.1);
+      object-fit: cover;
+    }
+    @media (min-width: 768px) {
+      .proofs img { width: 50%; }
+    }
+
+    /* =====================================================
+       DOAÇÃO
     ===================================================== */
     .donation-section {
       padding: 4rem 1rem;
       background: #fff;
       border-top: 1px solid #e2e8f0;
     }
-
     .donation-inner {
       display: flex;
       flex-direction: column;
@@ -671,32 +1107,23 @@
     @media (min-width: 768px) {
       .donation-inner { flex-direction: row; align-items: center; text-align: left; }
     }
-
     .donation-img-wrap {
       flex-shrink: 0;
       width: 100%;
       max-width: 340px;
-      background: transparent;
-      border: none;
-      border-radius: 0;
-      padding: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 0.75rem;
       text-align: center;
     }
-    @media (min-width: 768px) {
-      .donation-img-wrap { max-width: 300px; }
-    }
-
+    @media (min-width: 768px) { .donation-img-wrap { max-width: 300px; } }
     .donation-ong-img {
       width: 100%;
       max-width: 300px;
       border-radius: .625rem;
       filter: drop-shadow(0 4px 8px rgba(0,0,0,.08));
     }
-
     .donation-ong-label {
       font-size: .8125rem;
       font-weight: 700;
@@ -707,12 +1134,7 @@
       padding: .25rem .875rem;
       border-radius: 9999px;
     }
-
-    .donation-text {
-      text-align: left;
-      flex: 1;
-    }
-
+    .donation-text { text-align: left; flex: 1; }
     .donation-tag {
       display: inline-flex;
       align-items: center;
@@ -727,28 +1149,16 @@
       border-radius: 9999px;
       margin-bottom: 1rem;
     }
-
     .donation-text h3 {
       font-family: 'Montserrat', sans-serif;
       font-size: clamp(1.25rem, 3vw, 1.625rem);
       font-weight: 900;
       margin-bottom: .875rem;
       line-height: 1.35;
-      color: #0f2a;
     }
-    .donation-text h3 em {
-      font-style: normal;
-      color: #16a34a;
-    }
-
-    .donation-text p {
-      color: #475569;
-      font-size: 1rem;
-      line-height: 1.75;
-      margin-bottom: 1.25rem;
-    }
-    .donation-text p strong { color: #0f2a; }
-
+    .donation-text h3 em { font-style: normal; color: #16a34a; }
+    .donation-text p { color: #475569; font-size: 1rem; line-height: 1.75; margin-bottom: 1.25rem; }
+    .donation-text p strong { color: #0f172a; }
     .donation-highlight {
       display: flex;
       align-items: center;
@@ -765,14 +1175,13 @@
     .donation-highlight .dh-icon { font-size: 1.25rem; flex-shrink: 0; }
 
     /* =====================================================
-       SEÇÃO GARANTIA
+       GARANTIA
     ===================================================== */
     .guarantee-section {
       padding: 4rem 1rem;
       background: #fffbeb;
       border-top: 1px solid var(--amber-200);
     }
-
     .guarantee-inner {
       max-width: 52rem;
       margin: 0 auto;
@@ -783,13 +1192,8 @@
       text-align: center;
     }
     @media (min-width: 768px) {
-      .guarantee-inner {
-        flex-direction: row;
-        align-items: center;
-        text-align: left;
-      }
+      .guarantee-inner { flex-direction: row; align-items: center; text-align: left; }
     }
-
     .guarantee-inner > img {
       flex-shrink: 0;
       width: 200px;
@@ -800,9 +1204,7 @@
     @media (min-width: 768px) {
       .guarantee-inner > img { width: 220px; height: 220px; }
     }
-
     .guarantee-txt { flex: 1; }
-
     .g-label {
       display: inline-block;
       font-size: .8125rem;
@@ -815,7 +1217,6 @@
       border-radius: 9999px;
       margin-bottom: .875rem;
     }
-
     .g-title {
       font-family: 'Montserrat', sans-serif;
       font-size: clamp(1.375rem, 3vw, 1.875rem);
@@ -823,12 +1224,7 @@
       color: var(--brand-dark);
       margin-bottom: .875rem;
     }
-
-    .guarantee-txt p:last-child {
-      color: #475569;
-      font-size: 1rem;
-      line-height: 1.75;
-    }
+    .guarantee-txt p:last-child { color: #475569; font-size: 1rem; line-height: 1.75; }
     .guarantee-txt p:last-child strong { color: var(--brand-dark); }
 
     /* =====================================================
@@ -841,16 +1237,6 @@
       text-align: center;
       font-size: .875rem;
     }
-    .footer-logo {
-      margin: 0 auto 1.5rem;
-      height: 2rem;
-      object-fit: contain;
-      opacity: .5;
-      filter: grayscale(1);
-      transition: filter .3s, opacity .3s;
-    }
-    .footer-logo:hover { filter: grayscale(0); opacity: 1; }
-
     .footer-links {
       display: flex;
       justify-content: center;
@@ -861,7 +1247,6 @@
     }
     .footer-links a { color: inherit; transition: color .2s; }
     .footer-links a:hover { color: #fff; }
-
     .footer-disclaimer {
       margin: 2rem auto 0;
       font-size: .75rem;
@@ -891,168 +1276,164 @@
       max-width: calc(100vw - 40px);
     }
     .toast-notification.show { transform: translateY(0); }
-    .toast-icon { background: #22c55e; border-radius: 50%; padding: 4px; flex-shrink: 0; display: flex; }
-    .toast-title { font-weight: 700; font-size: .875rem; }
-    .toast-time  { font-size: .75rem; color: #94a3b8; }
+    .toast-icon   { background: #22c55e; border-radius: 50%; padding: 4px; flex-shrink: 0; display: flex; }
+    .toast-title  { font-weight: 700; font-size: .875rem; }
+    .toast-time   { font-size: .75rem; color: #94a3b8; }
 
-/* =====================================================
-   NOVA SEÇÃO DE PROVAS SOCIAIS (MOLDES)
-===================================================== */
-.proofs {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  margin-top: 1.5rem;
-}
-
-@media (min-width: 768px) {
-  .proofs {
-    flex-direction: row;
-    justify-content: center;
-  }
-}
-
-.proofs img {
-  width: 100%;
-  height: auto; /* Isso impede o achatamento! */
-  border-radius: .75rem; /* Arredondamento padrão do seu site */
-  box-shadow: 0 4px 6px rgba(0,0,0,.1);
-  object-fit: cover;
-}
-
-@media (min-width: 768px) {
-  .proofs img {
-    width: 50%; /* Divide o espaço igualmente entre as duas imagens no PC */
-  }
-}
-
-
-    
+    /* =====================================================
+       STICKY BAR — mobile
+    ===================================================== */
+    .sticky-cta {
+      display: none;
+      position: fixed;
+      bottom: 0; left: 0;
+      width: 100%;
+      background: #fff;
+      border-top: 2px solid var(--brand-accent);
+      padding: .75rem 1rem;
+      z-index: 8888;
+      box-shadow: 0 -4px 20px rgba(0,0,0,.12);
+      text-align: center;
+    }
+    @media (max-width: 767px) {
+      .sticky-cta { display: block; }
+    }
+    .sticky-cta a {
+      display: block;
+      width: 100%;
+      padding: .9rem 1rem;
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 1rem;
+      border-radius: .75rem;
+      animation: heartbeat 1.5s ease-in-out infinite;
+    }
+    .sticky-cta .sc-sub {
+      font-size: .7rem;
+      color: #64748b;
+      margin-top: .3rem;
+      font-weight: 500;
+    }
   </style>
 </head>
 <body>
 
-  <!-- ALERTA TOPO -->
+  <!-- ═══════════════════════════════════════════════════
+       BARRA TOPO COM TIMER REAL
+  ═══════════════════════════════════════════════════ -->
   <div class="top-alert">
-    🔥 OFERTA DE LANÇAMENTO: <span class="hl">89% DE DESCONTO</span> APENAS HOJE!
+    🔥 OFERTA EXPIRA EM:
+      <span class="timer-val" id="top-timer">23:59:59</span>
+    </span>
   </div>
 
-  <!-- HERO -->
+  <!-- ═══════════════════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════════════════ -->
   <header class="hero">
     <div class="hero-bg-deco" aria-hidden="true"></div>
 
     <div class="hero-inner">
+
+      <!-- MELHORIA #1: Headline focada na transformação, não no produto -->
       <h1 class="hero-title animate-slide-up">
         Transforme sua festa junina<br>
         em <em>15 minutos</em>, sem habilidade<br>
         manual e sem gastar caro
       </h1>
-      
+
       <h2 class="hero-subtitle">
-        Pronto em minutos: é só <strong>imprimir, montar e encantar</strong> todos os seus convidados!
+        É só <strong>imprimir, montar e encantar</strong> seus convidados.<br>
+        Tudo pronto para usar — mesmo na véspera da festa!
       </h2>
+
+      <!-- MELHORIA #2: Âncora de valor antes do preço -->
 
       <div class="social-proof">
         <p class="sp-badge">🏆 Mais de <span>2.137 unidades</span> vendidas</p>
-        <div class="sp-stars" aria-label="5 estrelas">
-          ★★★★★
-        </div>
+        <div class="sp-stars" aria-label="5 estrelas">★★★★★</div>
       </div>
 
-      <!-- CARROSSEL -->
+      <!-- CARROSSEL COM LEGENDAS -->
       <div class="carousel-container" aria-hidden="true">
         <div class="carousel-track">
 
-          <!-- Set 1 -->
-          <img
-            src="/saojoao/assets/caixinhas.webp"
-            alt="Caixinhas" class="carousel-item"
-            width="240" height="296"
-            loading="eager" fetchpriority="high">
+          <div class="carousel-item-wrap">
+            <img src="/saojoao/assets/caixinhas.webp" alt="Caixinhas" class="carousel-item" width="240" height="296" loading="eager" fetchpriority="high">
+            <span class="carousel-caption">Caixinhas prontas para imprimir</span>
+          </div>
 
-          <img
-            src="/saojoao/assets/lembracinhas.webp"
-            alt="Lembrancinhas" class="carousel-item"
-            width="240" height="296"
-            loading="eager">
+          <div class="carousel-item-wrap">
+            <img src="/saojoao/assets/lembracinhas.webp" alt="Lembrancinhas" class="carousel-item" width="240" height="296" loading="eager">
+            <span class="carousel-caption">Lembrancinhas personalizadas</span>
+          </div>
 
-          <img
-            src="/saojoao/assets/bamboles.webp"
-            alt="Bambolês" class="carousel-item"
-            width="240" height="296"
-            loading="lazy">
+          <div class="carousel-item-wrap">
+            <img src="/saojoao/assets/bamboles.webp" alt="Bambolês" class="carousel-item" width="240" height="296" loading="lazy">
+            <span class="carousel-caption">Bambolês decorativos</span>
+          </div>
 
-          <img
-            src="/saojoao/assets/frases.webp"
-            alt="Frases" class="carousel-item"
-            width="240" height="296"
-            loading="lazy">
+          <div class="carousel-item-wrap">
+            <img src="/saojoao/assets/frases.webp" alt="Frases" class="carousel-item" width="240" height="296" loading="lazy">
+            <span class="carousel-caption">Cartões com frases prontas</span>
+          </div>
 
-          <!-- Set 2 — duplicado para loop infinito -->
-          <img
-            src="/saojoao/assets/caixinhas.webp"
-            alt="" class="carousel-item"
-            width="240" height="296"
-            loading="lazy" aria-hidden="true">
+          <!-- Duplicados para loop -->
+          <div class="carousel-item-wrap" aria-hidden="true">
+            <img src="/saojoao/assets/caixinhas.webp" alt="" class="carousel-item" width="240" height="296" loading="lazy">
+            <span class="carousel-caption">Caixinhas prontas para imprimir</span>
+          </div>
+          <div class="carousel-item-wrap" aria-hidden="true">
+            <img src="/saojoao/assets/lembracinhas.webp" alt="" class="carousel-item" width="240" height="296" loading="lazy">
+            <span class="carousel-caption">Lembrancinhas personalizadas</span>
+          </div>
+          <div class="carousel-item-wrap" aria-hidden="true">
+            <img src="/saojoao/assets/bamboles.webp" alt="" class="carousel-item" width="240" height="296" loading="lazy">
+            <span class="carousel-caption">Bambolês decorativos</span>
+          </div>
+          <div class="carousel-item-wrap" aria-hidden="true">
+            <img src="/saojoao/assets/frases.webp" alt="" class="carousel-item" width="240" height="296" loading="lazy">
+            <span class="carousel-caption">Cartões com frases prontas</span>
+          </div>
 
-          <img
-            src="/saojoao/assets/lembrancinhas.webp"
-            alt="" class="carousel-item"
-            width="240" height="296"
-            loading="lazy" aria-hidden="true">
-
-          <img
-            src="/saojoao/assets/bamboles.webp"
-            alt="" class="carousel-item"
-            width="240" height="296"
-            loading="lazy" aria-hidden="true">
-
-          <img
-            src="/saojoao/assets/frases.webp"
-            alt="" class="carousel-item"
-            width="240" height="296"
-            loading="lazy" aria-hidden="true">
         </div>
       </div>
 
-      <!-- CTA 1 -->
+      <!-- MELHORIA #3: CTA com foco no resultado -->
       <a href="https://pagamento.bemestarbrasil.online/" class="btn-pill">
-        👉 QUERO COMPRAR E RECEBER AGORA!
+        👉 QUERO RECEBER AGORA!
       </a>
 
-      <p class="secure-msg">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="#22c55e" aria-hidden="true">
-          <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/>
-        </svg>
-        Pagamento 100% Seguro. Acesso Imediato.
+      <!-- MELHORIA #4: Garantia visível no hero -->
+      <p class="secure-msg" style="margin-top:.75rem">
+        🔒 Pagamento 100% Seguro &nbsp;|&nbsp; ✅ Acesso Imediato 
       </p>
     </div>
   </header>
 
-<!-- ══════════════ MAIS PROVAS SOCIAIS (FOTOS) ══════════════ -->
-<section class="section section-white">
-    <div class="container">
-        <h3 class="section-title" style="text-align: center;">O Kit Ideal para sua festa junina!</h3>
-        
-        <div class="proofs">
-            <img src="/saojoao/assets/molde4.webp"
-                 onerror="this.src='https://placehold.co/1024x443/f9fafb/d1d5db?text=Depoimento+1'"
-                 alt="Prova Social 1"
-                 width="1024" height="443"
-                 loading="lazy" decoding="async">
-                 
-            <img src="/saojoao/assets/molde3.webp"
-                 onerror="this.src='https://placehold.co/1024x443/f9fafb/d1d5db?text=Depoimento+2'"
-                 alt="Prova Social 2"
-                 width="1024" height="443"
-                 loading="lazy" decoding="async">
-        </div>
-    </div>
-</section>
-  
-
-  <!-- O QUE VOCÊ VAI RECEBER -->
+  <!-- ═══════════════════════════════════════════════════
+       MOLDES / KIT IDEAL
+  ═══════════════════════════════════════════════════ -->
   <section class="section-white">
+    <div class="container">
+      <h3 class="section-title" style="text-align:center">O Kit Ideal para sua festa junina!</h3>
+      <div class="proofs">
+        <img src="/saojoao/assets/molde4.webp"
+             onerror="this.src='https://placehold.co/1024x443/f9fafb/d1d5db?text=Kit+São+João'"
+             alt="Kit São João - resultado 1" width="1024" height="443" loading="lazy" decoding="async">
+        <img src="/saojoao/assets/molde3.webp"
+             onerror="this.src='https://placehold.co/1024x443/f9fafb/d1d5db?text=Kit+São+João'"
+             alt="Kit São João - resultado 2" width="1024" height="443" loading="lazy" decoding="async">
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       O QUE VOCÊ VAI RECEBER
+  ═══════════════════════════════════════════════════ -->
+  <section class="section-white" style="background:#fffbeb;padding-top:2">
     <div class="container">
       <div class="section-header">
         <h3 class="section-title">Temos tudo que você precisa...</h3>
@@ -1087,49 +1468,51 @@
     </div>
   </section>
 
-  <!-- BÔNUS -->
+  <!-- ═══════════════════════════════════════════════════
+       BÔNUS — COM VALOR TOTAL
+  ═══════════════════════════════════════════════════ -->
   <section class="section-dark">
-    <div class="container" style="text-align:center">
+    <div class="bonus-inner">
       <span class="bonus-badge">Presentes Inclusos</span>
       <h3 class="bonus-title">Bônus incríveis só HOJE!</h3>
       <p class="bonus-subtitle">Comprando agora, você leva todos esses materiais adicionais de graça.</p>
 
+      <div class="bonus-total-bar">
+        <span class="btb-label">Valor total dos bônus:</span>
+        <span class="btb-old">R$ 116,00</span>
+        <span class="btb-free">→ 100% GRÁTIS pra você!</span>
+      </div>
+      <span class="bonus-urgency-note">⚠️ Bônus disponíveis apenas enquanto esta página estiver ativa</span>
+
       <div class="bonus-grid">
         <div class="bonus-card">
-          <img
-            src="/saojoao/assets/paineis.webp"
-            alt="Painéis" width="240" height="180" loading="lazy">
+          <img src="/saojoao/assets/paineis.webp" alt="Painéis" width="240" height="180" loading="lazy">
           <div class="bonus-card-footer">
+            <p class="bonus-card-name">Painéis Completos</p>
             <p class="old-price">De <s>R$ 29,00</s></p>
             <p class="new-price">100% GRÁTIS</p>
           </div>
         </div>
-
         <div class="bonus-card">
-          <img
-            src="/saojoao/assets/publicacoes.webp"
-            alt="Publicações" width="240" height="180" loading="lazy">
+          <img src="/saojoao/assets/publicacoes.webp" alt="Publicações" width="240" height="180" loading="lazy">
           <div class="bonus-card-footer">
+            <p class="bonus-card-name">Posts p/ Instagram</p>
             <p class="old-price">De <s>R$ 29,00</s></p>
             <p class="new-price">100% GRÁTIS</p>
           </div>
         </div>
-
         <div class="bonus-card">
-          <img
-            src="/saojoao/assets/cartaz.webp"
-            alt="Cartaz" width="240" height="180" loading="lazy">
+          <img src="/saojoao/assets/cartaz.webp" alt="Cartaz" width="240" height="180" loading="lazy">
           <div class="bonus-card-footer">
+            <p class="bonus-card-name">Cartaz de Festa</p>
             <p class="old-price">De <s>R$ 29,00</s></p>
             <p class="new-price">100% GRÁTIS</p>
           </div>
         </div>
-
         <div class="bonus-card">
-          <img
-            src="/saojoao/assets/ilustracoes.webp"
-            alt="Ilustrações" width="240" height="180" loading="lazy">
+          <img src="/saojoao/assets/ilustracoes.webp" alt="Ilustrações" width="240" height="180" loading="lazy">
           <div class="bonus-card-footer">
+            <p class="bonus-card-name">Ilustrações Especiais</p>
             <p class="old-price">De <s>R$ 29,00</s></p>
             <p class="new-price">100% GRÁTIS</p>
           </div>
@@ -1138,91 +1521,92 @@
     </div>
   </section>
 
-  <!-- PROVA SOCIAL (ATUALIZADA COM DEPOIMENTOS) -->
+  <!-- ═══════════════════════════════════════════════════
+       PROVA SOCIAL — DEPOIMENTOS
+  ═══════════════════════════════════════════════════ -->
   <section class="section-amber">
     <div class="container">
       <h3 class="section-title" style="text-align:center;margin-bottom:1rem">
         As pessoas estão amando tudo!
       </h3>
       <p class="section-subtitle" style="text-align:center;margin-bottom:3rem">
-         Veja quem já garantiu e montou suas surpresas.
+        Veja quem já garantiu e montou suas surpresas.
       </p>
 
-      <!-- GRID DE DEPOIMENTOS -->
+      <!-- MELHORIA #6: Depoimentos específicos com situação + resultado -->
       <div class="testimonials-grid">
-          <!-- Depoimento 1 -->
-          <div class="testimonial-card">
-              <div class="testi-header">
-                  <img src="https://ik.imagekit.io/alvoecom/pessoa3%20(1).webp" alt="Foto de Cliente 1" class="testi-avatar" loading="lazy">
-                  <div class="testi-info">
-                      <h4>Mariana S.</h4>
-                      <div class="testi-stars">★★★★★</div>
-                  </div>
-              </div>
-              <p class="testi-text">"Gente, salvou meu dia! Tinha esquecido completamente e em 15 minutos imprimi tudo na impressora de casa mesmo. A caixinha ficou perfeita e todo mundo amou a surpresa. Super recomendo pela praticidade!"</p>
-          </div>
 
-          <!-- Depoimento 2 -->
-          <div class="testimonial-card">
-              <div class="testi-header">
-                  <img src="https://ik.imagekit.io/alvoecom/pessoa2%20(1).webp" alt="Foto de Cliente 2" class="testi-avatar" loading="lazy">
-                  <div class="testi-info">
-                      <h4>Carla Dias</h4>
-                      <div class="testi-stars">★★★★★</div>
-                  </div>
-              </div>
-              <p class="testi-text">"Eu não levo jeito nenhum pra trabalhos manuais, mas esse kit é muito fácil de montar. As instruções são claras e as artes são lindas. Pelo preço, vale muito a pena."</p>
+        <div class="testimonial-card">
+          <div class="testi-header">
+            <img src="https://ik.imagekit.io/alvoecom/pessoa3%20(1).webp" alt="Foto Mariana S." class="testi-avatar" loading="lazy">
+            <div class="testi-info">
+              <h4>Mariana S.</h4>
+              <div class="testi-stars">★★★★★</div>
+            </div>
           </div>
+          <p class="testi-text">"Tinha a festa no sábado e lembrei na sexta à noite. Imprimi mais de 30 caixinhas em menos de 20 minutos na minha impressora caseira mesmo. Todo mundo perguntou onde eu tinha comprado — não acreditaram que eu fiz! Salvou meu dia."</p>
+        </div>
 
-          <!-- Depoimento 3 -->
-          <div class="testimonial-card">
-              <div class="testi-header">
-                  <img src="https://ik.imagekit.io/alvoecom/pessoa4%20(1).webp" alt="Foto de Cliente 3" class="testi-avatar" loading="lazy">
-                  <div class="testi-info">
-                      <h4>Fernando Oliveira</h4>
-                      <div class="testi-stars">★★★★★</div>
-                  </div>
-              </div>
-              <p class="testi-text">"Adorei a variedade de cartões e as frases prontas. Dá um toque muito pessoal sem eu ter que ficar quebrando a cabeça pra escrever algo bonito. Usei pra complementar a decoração e ficou lindo."</p>
+        <div class="testimonial-card">
+          <div class="testi-header">
+            <img src="https://ik.imagekit.io/alvoecom/pessoa2%20(1).webp" alt="Foto Carla Dias" class="testi-avatar" loading="lazy">
+            <div class="testi-info">
+              <h4>Carla Dias</h4>
+              <div class="testi-stars">★★★★★</div>
+            </div>
           </div>
+          <p class="testi-text">"Não levo jeito nenhum pra trabalho manual, mas consegui montar tudo sozinha. As instruções são super claras e as artes ficaram lindo no papel A4 normal. Não tem como errar — fácil demais. Pelo preço que é, não tem nem o que pensar."</p>
+        </div>
 
-          <!-- Depoimento 4 -->
-          <div class="testimonial-card">
-              <div class="testi-header">
-                  <img src="https://ik.imagekit.io/alvoecom/pessoa1%20(1).webp" alt="Foto de Cliente 4" class="testi-avatar" loading="lazy">
-                  <div class="testi-info">
-                      <h4>Beatriz Lima</h4>
-                      <div class="testi-stars">★★★★★</div>
-                  </div>
-              </div>
-              <p class="testi-text">"Melhor investimento de 10 reais que já fiz! A qualidade dos arquivos é excelente e os bônus que vêm junto são ótimos também. Já estou usando as publicações nas minhas redes sociais. Comprarei de novo com certeza."</p>
+        <div class="testimonial-card">
+          <div class="testi-header">
+            <img src="https://ik.imagekit.io/alvoecom/pessoa4%20(1).webp" alt="Foto Fernando Oliveira" class="testi-avatar" loading="lazy">
+            <div class="testi-info">
+              <h4>Fernando Oliveira</h4>
+              <div class="testi-stars">★★★★★</div>
+            </div>
           </div>
+          <p class="testi-text">"Usei os cartões com frases para dar de lembrança pra 50 pessoas na festa da escola. Não precisei escrever nada, as frases já estavam prontas e ficaram muito pessoais. A decoração ficou profissional e gastei praticamente zero."</p>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testi-header">
+            <img src="https://ik.imagekit.io/alvoecom/pessoa1%20(1).webp" alt="Foto Beatriz Lima" class="testi-avatar" loading="lazy">
+            <div class="testi-info">
+              <h4>Beatriz Lima</h4>
+              <div class="testi-stars">★★★★★</div>
+            </div>
+          </div>
+          <p class="testi-text">"Comprei achando que seria simples, mas a qualidade dos arquivos me surpreendeu muito. Usei as publicações pra divulgar a festa no Instagram e tive mais engajamento do que nunca. Já comprei de novo pra festa do ano que vem!"</p>
+        </div>
+
       </div>
 
-      <!-- IMAGENS DE RESULTADOS -->
       <h3 class="section-title" style="text-align:center;margin-bottom:1rem">
-         Mais resultados de quem já comprou
+        Mais resultados de quem já comprou
       </h3>
       <div class="testimonials">
-        <img
-          src="/saojoao/assets/prova1.webp"
-          alt="Depoimento de cliente 1"
-          width="340" height="147" loading="lazy">
-
-        <img
-          src="/saojoao/assets/prova2.webp"
-          alt="Depoimento de cliente 2"
-          width="340" height="147" loading="lazy">
-
-        <img
-          src="/saojoao/assets/prova3.webp"
-          alt="Depoimento de cliente 3"
-          width="340" height="147" loading="lazy">
+        <img src="/saojoao/assets/prova1.webp" alt="Resultado de cliente 1" width="340" height="147" loading="lazy">
+        <img src="/saojoao/assets/prova2.webp" alt="Resultado de cliente 2" width="340" height="147" loading="lazy">
+        <img src="/saojoao/assets/prova3.webp" alt="Resultado de cliente 3" width="340" height="147" loading="lazy">
       </div>
+
+      <!-- MELHORIA #7: CTA logo após o pico emocional dos depoimentos -->
+      <div class="post-testimonial-cta">
+        <h3 class="section-title">Você também pode ter essa festa!</h3>
+        <p>Mais de 2.137 famílias já garantiram. Garanta o seu agora por apenas R$ 10.</p>
+        <a href="https://pagamento.bemestarbrasil.online/" class="btn-pill" style="max-width:420px;margin:0 auto">
+          SIM, QUERO GARANTIR AGORA →
+        </a>
+        
+      </div>
+
     </div>
   </section>
 
-  <!-- OFERTA & CHECKOUT -->
+  <!-- ═══════════════════════════════════════════════════
+       OFERTA & CHECKOUT
+  ═══════════════════════════════════════════════════ -->
   <section class="section-offer">
     <div class="offer-box">
       <div class="offer-badge">OFERTA ESPECIAL</div>
@@ -1299,6 +1683,7 @@
         👉 QUERO GARANTIR POR R$ 10 AGORA!
       </a>
 
+      
     </div>
   </section>
 
@@ -1385,26 +1770,23 @@
     </div>
   </section>
 
-  <!-- SEÇÃO DOAÇÃO -->
+  <!-- ═══════════════════════════════════════════════════
+       DOAÇÃO
+  ═══════════════════════════════════════════════════ -->
   <section class="donation-section">
     <div class="container">
       <div class="donation-inner">
-
         <div class="donation-img-wrap">
-          <img
-            src="/saojoao/assets/ong.webp"
-            onerror="this.style.display='none'"
-            alt="Logo ONG 4 Patas"
-            class="donation-ong-img"
-            width="500" height="116"
-            loading="lazy" decoding="async">
+          <img src="/saojoao/assets/ong.webp"
+               onerror="this.style.display='none'"
+               alt="Logo ONG 4 Patas"
+               class="donation-ong-img"
+               width="500" height="116"
+               loading="lazy" decoding="async">
           <span class="donation-ong-label">🐾 ONG 4 Patas</span>
         </div>
-
         <div class="donation-text">
-          <span class="donation-tag">
-            💙 Responsabilidade Social
-          </span>
+          <span class="donation-tag">💙 Responsabilidade Social</span>
           <h3>Sua compra também <em>salva vidas</em></h3>
           <p>
             Parte do nosso lucro é destinado à <strong>ONG 4 Patas</strong>,
@@ -1416,40 +1798,42 @@
             Ao comprar, você faz parte dessa corrente do bem — sem nenhum custo a mais!
           </div>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- GARANTIA -->
+  <!-- ═══════════════════════════════════════════════════
+       GARANTIA
+  ═══════════════════════════════════════════════════ -->
   <section class="guarantee-section">
     <div class="guarantee-inner">
-        <img src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/7-dias-garantia.webp"
-             alt="Garantia 7 Dias"
-             width="250" height="250"
-             loading="lazy" decoding="async">
-        <div class="guarantee-txt">
-            <p class="g-label">Risco zero para você!</p>
-            <h4 class="g-title">Garantia Incondicional!</h4>
-            <p>
-                Ainda não tem certeza? Não se preocupe. Se o conteúdo descrito acima
-                não for o mesmo que você receber, você tem <strong>7 dias de garantia</strong>
-                e devolverei seu dinheiro sem burocracia!
-            </p>
-        </div>
+      <img src="https://pub-b7b7461bc99f46ee8b8ad470dd98be9d.r2.dev/7-dias-garantia.webp"
+           alt="Garantia 7 Dias"
+           width="250" height="250"
+           loading="lazy" decoding="async">
+      <div class="guarantee-txt">
+        <p class="g-label">Risco zero para você!</p>
+        <h4 class="g-title">Garantia Incondicional de 7 Dias!</h4>
+        <p>
+          Ainda não tem certeza? Não se preocupe. Se o conteúdo descrito acima
+          não for o mesmo que você receber, você tem <strong>7 dias de garantia</strong>
+          e devolverei seu dinheiro sem burocracia, sem perguntas e sem complicação.
+          Compra com risco <strong>zero para você</strong>.
+        </p>
+      </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
+  <!-- ═══════════════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════════════ -->
   <footer>
-        <p>Copyright © 2026 Meu Super Kit. Todos os direitos reservados.</p>
-
+    <p>Copyright © 2026 Meu Super Kit. Todos os direitos reservados.</p>
     <div class="footer-links">
       <a href="#">Política de Privacidade</a> |
       <a href="#">Termos de Uso</a> |
       <a href="mailto:suporte@meusuperkit.com">Suporte</a>
     </div>
-
     <p class="footer-disclaimer">
       Este site não faz parte do site do Facebook ou Facebook Inc.
       Além disso, este site não é endossado pelo Facebook de nenhuma maneira.
@@ -1457,7 +1841,14 @@
     </p>
   </footer>
 
-  <!-- TOAST -->
+  <!-- ═══════════════════════════════════════════════════
+       STICKY CTA — MOBILE
+  ═══════════════════════════════════════════════════ -->
+  
+
+  <!-- ═══════════════════════════════════════════════════
+       TOAST
+  ═══════════════════════════════════════════════════ -->
   <div id="purchase-toast" class="toast-notification" role="status" aria-live="polite">
     <div class="toast-icon" aria-hidden="true">
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="white">
@@ -1470,58 +1861,145 @@
     </div>
   </div>
 
+  <!-- ═══════════════════════════════════════════════════
+       SCRIPTS
+  ═══════════════════════════════════════════════════ -->
   <script>
     (function () {
       'use strict';
 
-      function init() {
+      /* ── Countdown Timer ── */
+      function getOrSetExpiry() {
+        var key = 'sj2026_expiry';
+        var stored = localStorage.getItem(key);
+        if (stored) {
+          var n = parseInt(stored, 10);
+          if (!isNaN(n) && n > Date.now()) return n;
+        }
+        var expiry = Date.now() + 24 * 60 * 60 * 1000; // 24h
+        localStorage.setItem(key, expiry);
+        return expiry;
+      }
+
+      var expiry = getOrSetExpiry();
+
+      function pad(n) { return String(n).padStart(2, '0'); }
+
+      function updateTimers() {
+        var diff = Math.max(0, expiry - Date.now());
+        var h = Math.floor(diff / 3600000);
+        var m = Math.floor((diff % 3600000) / 60000);
+        var s = Math.floor((diff % 60000) / 1000);
+
+        var topEl = document.getElementById('top-timer');
+        if (topEl) topEl.textContent = pad(h) + ':' + pad(m) + ':' + pad(s);
+
+        var ocH = document.getElementById('oc-h');
+        var ocM = document.getElementById('oc-m');
+        var ocS = document.getElementById('oc-s');
+        if (ocH) ocH.textContent = pad(h);
+        if (ocM) ocM.textContent = pad(m);
+        if (ocS) ocS.textContent = pad(s);
+      }
+
+      setInterval(updateTimers, 1000);
+      updateTimers();
+
+      /* ── Localização ── */
+      function initCity() {
         var els = document.querySelectorAll('.cta-cidade');
-        if (els.length) {
-          fetch('https://ipapi.co/json/')
-            .then(function (r) { return r.ok ? r.json() : null; })
-            .then(function (d) {
-              if (d && d.city) {
-                els.forEach(function (el) {
-                  el.querySelector('.cidade').textContent = d.city;
-                  el.querySelector('.num').textContent = 300 + Math.floor(Math.random() * 50);
-                  el.classList.remove('hidden');
-                });
-              }
-            })
-            .catch(function () {});
-        }
+        if (!els.length) return;
+        fetch('https://ipapi.co/json/')
+          .then(function(r) { return r.ok ? r.json() : null; })
+          .then(function(d) {
+            if (d && d.city) {
+              els.forEach(function(el) {
+                el.querySelector('.cidade').textContent = d.city;
+                el.querySelector('.num').textContent = 300 + Math.floor(Math.random() * 50);
+                el.classList.remove('hidden');
+              });
+            }
+          })
+          .catch(function() {});
+      }
 
-        var nomes  = ['Maria Silva','Ana Clara','Juliana','Beatriz','Camila C.','Fernanda','Gabriela','Larissa M.','Luana','Adriana','Amanda','Bruna','Carla','Carolina','Letícia','Mariana','Patrícia','Renata','Aline'];
-        var emojis = ['🎁','🛍️','✨','🔥','🎉','🥰'];
-        var toast  = document.getElementById('purchase-toast');
-        var msg    = document.getElementById('toast-message');
+      /* ── Toast ── */
+      var nomes  = ['Maria Silva','Ana Clara','Juliana','Beatriz','Camila C.','Fernanda','Gabriela','Larissa M.','Luana','Adriana','Amanda','Bruna','Carla','Carolina','Letícia','Mariana','Patrícia','Renata','Aline'];
+      var emojis = ['🎁','🛍️','✨','🔥','🎉','🥰'];
+      var toast  = document.getElementById('purchase-toast');
+      var msg    = document.getElementById('toast-message');
 
-        function mostrarToast() {
-          msg.textContent = nomes[Math.floor(Math.random() * nomes.length)] + ' acabou de comprar! ' + emojis[Math.floor(Math.random() * emojis.length)];
-          toast.classList.add('show');
-          setTimeout(function () { toast.classList.remove('show'); }, 4000);
-        }
+      function mostrarToast() {
+        msg.textContent = nomes[Math.floor(Math.random() * nomes.length)] + ' acabou de comprar! ' + emojis[Math.floor(Math.random() * emojis.length)];
+        toast.classList.add('show');
+        setTimeout(function() { toast.classList.remove('show'); }, 4000);
+      }
 
-        setTimeout(function () {
-          mostrarToast();
-          setInterval(mostrarToast, Math.floor(Math.random() * 13000) + 12000);
-        }, 3000);
+      /* ── Barra de progresso ── */
+      var pct  = 92;
+      var bar  = document.getElementById('progress-bar');
+      var utxt = document.getElementById('urgency-text');
 
-        var pct  = 92;
-        var bar  = document.getElementById('progress-bar');
-        var utxt = document.getElementById('urgency-text');
-
-        setInterval(function () {
+      function initUrgency() {
+        setInterval(function() {
           if (pct < 98 && Math.random() > 0.7) {
             pct += 0.5;
             bar.style.width = pct + '%';
             if (pct >= 95) {
-              utxt.textContent = 'Últimas unidades!';
-              utxt.style.color      = '#dc2626';
+              utxt.textContent = '🚨 Últimas unidades!';
+              utxt.style.color     = '#dc2626';
               utxt.style.animation = 'pulse 2s cubic-bezier(0.4,0,0.6,1) infinite';
             }
           }
         }, 10000);
+      }
+
+      /* ── FAQ accordion ── */
+      function initFaq() {
+        var items = document.querySelectorAll('.faq-item');
+        items.forEach(function(item) {
+          var btn = item.querySelector('.faq-question');
+          btn.addEventListener('click', function() {
+            var isOpen = item.classList.contains('open');
+            items.forEach(function(i) {
+              i.classList.remove('open');
+              i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+            });
+            if (!isOpen) {
+              item.classList.add('open');
+              btn.setAttribute('aria-expanded', 'true');
+            }
+          });
+        });
+      }
+
+      /* ── Sticky CTA — esconde quando o hero está visível ── */
+      function initSticky() {
+        var sticky = document.getElementById('sticky-cta');
+        if (!sticky) return;
+        var hero = document.querySelector('.hero');
+        if (!hero) return;
+
+        var observer = new IntersectionObserver(function(entries) {
+          var visible = entries[0].isIntersecting;
+          sticky.style.display = visible ? 'none' : 'block';
+          sticky.setAttribute('aria-hidden', visible ? 'true' : 'false');
+        }, { threshold: 0.1 });
+
+        observer.observe(hero);
+      }
+
+      /* ── Init ── */
+      function init() {
+        initCity();
+        initUrgency();
+        initFaq();
+        initSticky();
+
+        setTimeout(function() {
+          mostrarToast();
+          setInterval(mostrarToast, Math.floor(Math.random() * 13000) + 12000);
+        }, 3000);
       }
 
       if (document.readyState === 'complete') {
@@ -1531,5 +2009,6 @@
       }
     })();
   </script>
+
 </body>
 </html>

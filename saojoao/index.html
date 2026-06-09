@@ -218,8 +218,7 @@
       width: max-content;
       animation: scroll-carousel 28s linear infinite;
     }
-    .carousel-track:hover { animation-play-state: paused; }
-
+    
     .carousel-item {
       width: 320px;
       height: 394px;
@@ -238,6 +237,41 @@
       .carousel-item {
         width: 260px;
         height: 320px;
+      }
+    }
+
+    /* =====================================================
+       CARROSSEL KIT (350x350)
+    ===================================================== */
+    .carousel-kit {
+      margin-top: 1.5rem;
+      margin-bottom: 0;
+    }
+
+    .carousel-track-kit {
+      display: flex;
+      width: max-content;
+      animation: scroll-carousel 40s linear infinite;
+    }
+
+    .carousel-item-kit {
+      width: 350px;
+      height: 350px;
+      margin: 0 12px;
+      flex-shrink: 0;
+      border-radius: 1rem;
+      box-shadow: 0 10px 25px -5px rgba(0,0,0,.2);
+      border: 4px solid #fff;
+      object-fit: cover;
+      background: #fff;
+      transition: transform .3s ease;
+    }
+    .carousel-item-kit:hover { transform: scale(1.05); }
+
+    @media (max-width: 767px) {
+      .carousel-item-kit {
+        width: 260px;
+        height: 260px;
       }
     }
 
@@ -447,17 +481,16 @@
     .bonus-card .new-price { font-weight: 900; font-size: 1.25rem; color: #facc15; }
 
     /* =====================================================
-       SEÇÃO AMBER — PROVA SOCIAL (ATUALIZADO)
+       SEÇÃO AMBER — PROVA SOCIAL
     ===================================================== */
     .section-amber { padding: 4rem 1rem; background: #fffbeb; }
 
-    /* Grid de Depoimentos com Foto */
     .testimonials-grid {
         display: grid;
         grid-template-columns: 1fr;
         gap: 1.5rem;
         max-width: 56rem;
-        margin: 0 auto 4rem; /* Espaço inferior para as próximas imagens */
+        margin: 0 auto 4rem;
     }
     @media(min-width: 768px) {
         .testimonials-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
@@ -506,7 +539,6 @@
         flex-grow: 1;
     }
 
-    /* Imagens de Resultados (Estilo existente mantido) */
     .testimonials {
       display: flex;
       flex-direction: column;
@@ -895,39 +927,6 @@
     .toast-title { font-weight: 700; font-size: .875rem; }
     .toast-time  { font-size: .75rem; color: #94a3b8; }
 
-/* =====================================================
-   NOVA SEÇÃO DE PROVAS SOCIAIS (MOLDES)
-===================================================== */
-.proofs {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  margin-top: 1.5rem;
-}
-
-@media (min-width: 768px) {
-  .proofs {
-    flex-direction: row;
-    justify-content: center;
-  }
-}
-
-.proofs img {
-  width: 100%;
-  height: auto; /* Isso impede o achatamento! */
-  border-radius: .75rem; /* Arredondamento padrão do seu site */
-  box-shadow: 0 4px 6px rgba(0,0,0,.1);
-  object-fit: cover;
-}
-
-@media (min-width: 768px) {
-  .proofs img {
-    width: 50%; /* Divide o espaço igualmente entre as duas imagens no PC */
-  }
-}
-
-
-    
   </style>
 </head>
 <body>
@@ -955,59 +954,18 @@
         </div>
       </div>
 
-      <!-- CARROSSEL -->
+      <!-- CARROSSEL HERO -->
       <div class="carousel-container" aria-hidden="true">
         <div class="carousel-track">
-
-          <!-- Set 1 -->
-          <img
-            src="/saojoao/assets/caixinhas.webp"
-            alt="Caixinhas" class="carousel-item"
-            width="240" height="296"
-            loading="eager" fetchpriority="high">
-
-          <img
-            src="/saojoao/assets/lembracinhas.webp"
-            alt="Lembrancinhas" class="carousel-item"
-            width="240" height="296"
-            loading="eager">
-
-          <img
-            src="/saojoao/assets/bamboles.webp"
-            alt="Bambolês" class="carousel-item"
-            width="240" height="296"
-            loading="lazy">
-
-          <img
-            src="/saojoao/assets/frases.webp"
-            alt="Frases" class="carousel-item"
-            width="240" height="296"
-            loading="lazy">
-
-          <!-- Set 2 — duplicado para loop infinito -->
-          <img
-            src="/saojoao/assets/caixinhas.webp"
-            alt="" class="carousel-item"
-            width="240" height="296"
-            loading="lazy" aria-hidden="true">
-
-          <img
-            src="/saojoao/assets/lembrancinhas.webp"
-            alt="" class="carousel-item"
-            width="240" height="296"
-            loading="lazy" aria-hidden="true">
-
-          <img
-            src="/saojoao/assets/bamboles.webp"
-            alt="" class="carousel-item"
-            width="240" height="296"
-            loading="lazy" aria-hidden="true">
-
-          <img
-            src="/saojoao/assets/frases.webp"
-            alt="" class="carousel-item"
-            width="240" height="296"
-            loading="lazy" aria-hidden="true">
+          <img src="/saojoao/assets/caixinhas.webp"     alt="Caixinhas"    class="carousel-item" width="240" height="296" loading="eager" fetchpriority="high">
+          <img src="/saojoao/assets/lembracinhas.webp"  alt="Lembrancinhas" class="carousel-item" width="240" height="296" loading="eager">
+          <img src="/saojoao/assets/bamboles.webp"      alt="Bambolês"     class="carousel-item" width="240" height="296" loading="lazy">
+          <img src="/saojoao/assets/frases.webp"        alt="Frases"       class="carousel-item" width="240" height="296" loading="lazy">
+          <!-- Duplicatas loop -->
+          <img src="/saojoao/assets/caixinhas.webp"    alt="" class="carousel-item" width="240" height="296" loading="lazy" aria-hidden="true">
+          <img src="/saojoao/assets/lembrancinhas.webp" alt="" class="carousel-item" width="240" height="296" loading="lazy" aria-hidden="true">
+          <img src="/saojoao/assets/bamboles.webp"      alt="" class="carousel-item" width="240" height="296" loading="lazy" aria-hidden="true">
+          <img src="/saojoao/assets/frases.webp"        alt="" class="carousel-item" width="240" height="296" loading="lazy" aria-hidden="true">
         </div>
       </div>
 
@@ -1025,27 +983,46 @@
     </div>
   </header>
 
-<!-- ══════════════ MAIS PROVAS SOCIAIS (FOTOS) ══════════════ -->
-<section class="section section-white">
+  <!-- SEÇÃO KIT IDEAL — carrossel substituindo as duas imagens -->
+  <section class="section section-white">
     <div class="container">
-        <h3 class="section-title" style="text-align: center;">O Kit Ideal para sua festa junina!</h3>
-        
-        <div class="proofs">
-            <img src="/saojoao/assets/molde4.webp"
-                 onerror="this.src='https://placehold.co/1024x443/f9fafb/d1d5db?text=Depoimento+1'"
-                 alt="Prova Social 1"
-                 width="1024" height="443"
-                 loading="lazy" decoding="async">
-                 
-            <img src="/saojoao/assets/molde3.webp"
-                 onerror="this.src='https://placehold.co/1024x443/f9fafb/d1d5db?text=Depoimento+2'"
-                 alt="Prova Social 2"
-                 width="1024" height="443"
-                 loading="lazy" decoding="async">
+      <h3 class="section-title" style="text-align: center;">O Kit Ideal para sua festa junina!</h3>
+
+      <div class="carousel-container carousel-kit" aria-hidden="true">
+        <div class="carousel-track-kit">
+          <!-- Set 1 -->
+          <img src="https://ik.imagekit.io/alvoecom/a1.webp"  alt="Kit 1"  class="carousel-item-kit" width="350" height="350" loading="lazy">
+          <img src="https://ik.imagekit.io/alvoecom/a2.webp"  alt="Kit 2"  class="carousel-item-kit" width="350" height="350" loading="lazy">
+          <img src="https://ik.imagekit.io/alvoecom/a3.webp"  alt="Kit 3"  class="carousel-item-kit" width="350" height="350" loading="lazy">
+          <img src="https://ik.imagekit.io/alvoecom/a4.webp"  alt="Kit 4"  class="carousel-item-kit" width="350" height="350" loading="lazy">
+          <img src="https://ik.imagekit.io/alvoecom/a5.webp"  alt="Kit 5"  class="carousel-item-kit" width="350" height="350" loading="lazy">
+          <img src="https://ik.imagekit.io/alvoecom/a6.webp"  alt="Kit 6"  class="carousel-item-kit" width="350" height="350" loading="lazy">
+          <img src="https://ik.imagekit.io/alvoecom/a7.webp"  alt="Kit 7"  class="carousel-item-kit" width="350" height="350" loading="lazy">
+          <img src="https://ik.imagekit.io/alvoecom/a8.webp"  alt="Kit 8"  class="carousel-item-kit" width="350" height="350" loading="lazy">
+          <img src="https://ik.imagekit.io/alvoecom/a9.webp"  alt="Kit 9"  class="carousel-item-kit" width="350" height="350" loading="lazy">
+          <img src="https://ik.imagekit.io/alvoecom/a10.webp" alt="Kit 10" class="carousel-item-kit" width="350" height="350" loading="lazy">
+          <img src="https://ik.imagekit.io/alvoecom/a11.webp" alt="Kit 11" class="carousel-item-kit" width="350" height="350" loading="lazy">
+          <img src="https://ik.imagekit.io/alvoecom/a12.webp" alt="Kit 12" class="carousel-item-kit" width="350" height="350" loading="lazy">
+          <img src="https://ik.imagekit.io/alvoecom/a13.webp" alt="Kit 13" class="carousel-item-kit" width="350" height="350" loading="lazy">
+          <!-- Set 2 — duplicatas para loop infinito -->
+          <img src="https://ik.imagekit.io/alvoecom/a1.webp"  alt="" class="carousel-item-kit" width="350" height="350" loading="lazy" aria-hidden="true">
+          <img src="https://ik.imagekit.io/alvoecom/a2.webp"  alt="" class="carousel-item-kit" width="350" height="350" loading="lazy" aria-hidden="true">
+          <img src="https://ik.imagekit.io/alvoecom/a3.webp"  alt="" class="carousel-item-kit" width="350" height="350" loading="lazy" aria-hidden="true">
+          <img src="https://ik.imagekit.io/alvoecom/a4.webp"  alt="" class="carousel-item-kit" width="350" height="350" loading="lazy" aria-hidden="true">
+          <img src="https://ik.imagekit.io/alvoecom/a5.webp"  alt="" class="carousel-item-kit" width="350" height="350" loading="lazy" aria-hidden="true">
+          <img src="https://ik.imagekit.io/alvoecom/a6.webp"  alt="" class="carousel-item-kit" width="350" height="350" loading="lazy" aria-hidden="true">
+          <img src="https://ik.imagekit.io/alvoecom/a7.webp"  alt="" class="carousel-item-kit" width="350" height="350" loading="lazy" aria-hidden="true">
+          <img src="https://ik.imagekit.io/alvoecom/a8.webp"  alt="" class="carousel-item-kit" width="350" height="350" loading="lazy" aria-hidden="true">
+          <img src="https://ik.imagekit.io/alvoecom/a9.webp"  alt="" class="carousel-item-kit" width="350" height="350" loading="lazy" aria-hidden="true">
+          <img src="https://ik.imagekit.io/alvoecom/a10.webp" alt="" class="carousel-item-kit" width="350" height="350" loading="lazy" aria-hidden="true">
+          <img src="https://ik.imagekit.io/alvoecom/a11.webp" alt="" class="carousel-item-kit" width="350" height="350" loading="lazy" aria-hidden="true">
+          <img src="https://ik.imagekit.io/alvoecom/a12.webp" alt="" class="carousel-item-kit" width="350" height="350" loading="lazy" aria-hidden="true">
+          <img src="https://ik.imagekit.io/alvoecom/a13.webp" alt="" class="carousel-item-kit" width="350" height="350" loading="lazy" aria-hidden="true">
         </div>
+      </div>
     </div>
-</section>
-  
+  </section>
+
 
   <!-- O QUE VOCÊ VAI RECEBER -->
   <section class="section-white">
@@ -1092,39 +1069,28 @@
 
       <div class="bonus-grid">
         <div class="bonus-card">
-          <img
-            src="/saojoao/assets/paineis.webp"
-            alt="Painéis" width="240" height="180" loading="lazy">
+          <img src="/saojoao/assets/paineis.webp"     alt="Painéis"     width="240" height="180" loading="lazy">
           <div class="bonus-card-footer">
             <p class="old-price">De <s>R$ 29,00</s></p>
             <p class="new-price">100% GRÁTIS</p>
           </div>
         </div>
-
         <div class="bonus-card">
-          <img
-            src="/saojoao/assets/publicacoes.webp"
-            alt="Publicações" width="240" height="180" loading="lazy">
+          <img src="/saojoao/assets/publicacoes.webp" alt="Publicações" width="240" height="180" loading="lazy">
           <div class="bonus-card-footer">
             <p class="old-price">De <s>R$ 29,00</s></p>
             <p class="new-price">100% GRÁTIS</p>
           </div>
         </div>
-
         <div class="bonus-card">
-          <img
-            src="/saojoao/assets/cartaz.webp"
-            alt="Cartaz" width="240" height="180" loading="lazy">
+          <img src="/saojoao/assets/cartaz.webp"      alt="Cartaz"      width="240" height="180" loading="lazy">
           <div class="bonus-card-footer">
             <p class="old-price">De <s>R$ 29,00</s></p>
             <p class="new-price">100% GRÁTIS</p>
           </div>
         </div>
-
         <div class="bonus-card">
-          <img
-            src="/saojoao/assets/ilustracoes.webp"
-            alt="Ilustrações" width="240" height="180" loading="lazy">
+          <img src="/saojoao/assets/ilustracoes.webp" alt="Ilustrações" width="240" height="180" loading="lazy">
           <div class="bonus-card-footer">
             <p class="old-price">De <s>R$ 29,00</s></p>
             <p class="new-price">100% GRÁTIS</p>
@@ -1134,7 +1100,7 @@
     </div>
   </section>
 
-  <!-- PROVA SOCIAL (ATUALIZADA COM DEPOIMENTOS) -->
+  <!-- PROVA SOCIAL -->
   <section class="section-amber">
     <div class="container">
       <h3 class="section-title" style="text-align:center;margin-bottom:1rem">
@@ -1146,10 +1112,9 @@
 
       <!-- GRID DE DEPOIMENTOS -->
       <div class="testimonials-grid">
-          <!-- Depoimento 1 -->
           <div class="testimonial-card">
               <div class="testi-header">
-                  <img src="https://ik.imagekit.io/alvoecom/pessoa3%20(1).webp" alt="Foto de Cliente 1" class="testi-avatar" loading="lazy">
+                  <img src="https://ik.imagekit.io/alvoecom/pessoa3%20(1).webp" alt="Foto de Mariana S." class="testi-avatar" loading="lazy">
                   <div class="testi-info">
                       <h4>Mariana S.</h4>
                       <div class="testi-stars">★★★★★</div>
@@ -1158,10 +1123,9 @@
               <p class="testi-text">"Gente, salvou meu dia! Tinha esquecido completamente e em 15 minutos imprimi tudo na impressora de casa mesmo. A caixinha ficou perfeita e todo mundo amou a surpresa. Super recomendo pela praticidade!"</p>
           </div>
 
-          <!-- Depoimento 2 -->
           <div class="testimonial-card">
               <div class="testi-header">
-                  <img src="https://ik.imagekit.io/alvoecom/pessoa2%20(1).webp" alt="Foto de Cliente 2" class="testi-avatar" loading="lazy">
+                  <img src="https://ik.imagekit.io/alvoecom/pessoa2%20(1).webp" alt="Foto de Carla Dias" class="testi-avatar" loading="lazy">
                   <div class="testi-info">
                       <h4>Carla Dias</h4>
                       <div class="testi-stars">★★★★★</div>
@@ -1170,10 +1134,9 @@
               <p class="testi-text">"Eu não levo jeito nenhum pra trabalhos manuais, mas esse kit é muito fácil de montar. As instruções são claras e as artes são lindas. Pelo preço, vale muito a pena."</p>
           </div>
 
-          <!-- Depoimento 3 -->
           <div class="testimonial-card">
               <div class="testi-header">
-                  <img src="https://ik.imagekit.io/alvoecom/pessoa4%20(1).webp" alt="Foto de Cliente 3" class="testi-avatar" loading="lazy">
+                  <img src="https://ik.imagekit.io/alvoecom/pessoa4%20(1).webp" alt="Foto de Fernando Oliveira" class="testi-avatar" loading="lazy">
                   <div class="testi-info">
                       <h4>Fernando Oliveira</h4>
                       <div class="testi-stars">★★★★★</div>
@@ -1182,10 +1145,9 @@
               <p class="testi-text">"Adorei a variedade de cartões e as frases prontas. Dá um toque muito pessoal sem eu ter que ficar quebrando a cabeça pra escrever algo bonito. Usei pra complementar a decoração e ficou lindo."</p>
           </div>
 
-          <!-- Depoimento 4 -->
           <div class="testimonial-card">
               <div class="testi-header">
-                  <img src="https://ik.imagekit.io/alvoecom/pessoa1%20(1).webp" alt="Foto de Cliente 4" class="testi-avatar" loading="lazy">
+                  <img src="https://ik.imagekit.io/alvoecom/pessoa1%20(1).webp" alt="Foto de Beatriz Lima" class="testi-avatar" loading="lazy">
                   <div class="testi-info">
                       <h4>Beatriz Lima</h4>
                       <div class="testi-stars">★★★★★</div>
@@ -1200,20 +1162,9 @@
          Mais resultados de quem já comprou
       </h3>
       <div class="testimonials">
-        <img
-          src="/saojoao/assets/prova1.webp"
-          alt="Depoimento de cliente 1"
-          width="340" height="147" loading="lazy">
-
-        <img
-          src="/saojoao/assets/prova2.webp"
-          alt="Depoimento de cliente 2"
-          width="340" height="147" loading="lazy">
-
-        <img
-          src="/saojoao/assets/prova3.webp"
-          alt="Depoimento de cliente 3"
-          width="340" height="147" loading="lazy">
+        <img src="/saojoao/assets/prova1.webp" alt="Depoimento de cliente 1" width="340" height="147" loading="lazy">
+        <img src="/saojoao/assets/prova2.webp" alt="Depoimento de cliente 2" width="340" height="147" loading="lazy">
+        <img src="/saojoao/assets/prova3.webp" alt="Depoimento de cliente 3" width="340" height="147" loading="lazy">
       </div>
     </div>
   </section>
@@ -1321,14 +1272,12 @@
 
   <!-- FOOTER -->
   <footer>
-        <p>Copyright © 2026 Meu Super Kit. Todos os direitos reservados.</p>
-
+    <p>Copyright © 2026 Meu Super Kit. Todos os direitos reservados.</p>
     <div class="footer-links">
       <a href="#">Política de Privacidade</a> |
       <a href="#">Termos de Uso</a> |
       <a href="mailto:suporte@meusuperkit.com">Suporte</a>
     </div>
-
     <p class="footer-disclaimer">
       Este site não faz parte do site do Facebook ou Facebook Inc.
       Além disso, este site não é endossado pelo Facebook de nenhuma maneira.

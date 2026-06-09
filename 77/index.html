@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 77 - Painel Operacional</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        zinc: {
+                            50: '#fafafa', 100: '#f4f4f5', 200: '#e4e4e7', 300: '#d4d4d8',
+                            400: '#a1a1aa', 500: '#71717a', 600: '#52525b', 700: '#3f3f46',
+                            800: '#27272a', 900: '#18181b', 950: '#09090b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #09090b; color: #fafafa; }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #27272a; border-radius: 10px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #3f3f46; }
+        .tab-content { display: none; animation: fadeIn 0.3s ease-in-out; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="flex h-screen overflow-hidden selection:bg-zinc-800 selection:text-white">
+
+    <!-- Sidebar Desktop -->
+    <aside class="w-64 border-r border-zinc-800 bg-zinc-950/50 hidden md:flex flex-col z-10">
+        <div class="p-6 border-b border-zinc-800">
+            <div class="flex items-center gap-2 font-bold text-xl tracking-tight">
+                <div class="w-6 h-6 bg-zinc-100 rounded-sm flex items-center justify-center text-zinc-950 text-xs leading-none">77</div>
+                Project 77
+            </div>
+            <p class="text-xs text-zinc-500 mt-1 font-medium tracking-wide uppercase">Painel Operacional</p>
+        </div>
+        <nav class="flex-1 p-4 space-y-1" id="nav-menu">
+            <button onclick="switchTab('dashboard')" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 bg-zinc-800/80 text-zinc-100" data-target="dashboard">
+                <i class="ph ph-squares-four text-lg"></i> Dashboard
+            </button>
+            <button onclick="switchTab('missao')" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 text-zinc-400 hover:bg-zinc-900 hover:text-zinc-200" data-target="missao">
+                <i class="ph ph-crosshair text-lg"></i> Missão Diária
+            </button>
+            <button onclick="switchTab('calendario')" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 text-zinc-400 hover:bg-zinc-900 hover:text-zinc-200" data-target="calendario">
+                <i class="ph ph-calendar-blank text-lg"></i> Calendário 77
+            </button>
+            <button onclick="switchTab('metas')" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 text-zinc-400 hover:bg-zinc-900 hover:text-zinc-200" data-target="metas">
+                <i class="ph ph-trend-up text-lg"></i> Metas & Peso
+            </button>
+            <button onclick="switchTab('ofertas')" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 text-zinc-400 hover:bg-zinc-900 hover:text-zinc-200" data-target="ofertas">
+                <i class="ph ph-currency-dollar text-lg"></i> Ofertas
+            </button>
+            <button onclick="switchTab('config')" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 text-zinc-400 hover:bg-zinc-900 hover:text-zinc-200" data-target="config">
+                <i class="ph ph-gear text-lg"></i> Configurações
+            </button>
+        </nav>
+        <div class="p-4 border-t border-zinc-800">
+            <div class="flex items-center gap-3 px-3 py-2">
+                <div class="w-8 h-8 rounded-full bg-zinc-800 border border-zinc-700 flex items-center justify-center text-xs font-bold text-zinc-400">EU</div>
+                <div>
+                    <p class="text-sm font-medium text-zinc-200">Comandante</p>
+                    <p class="text-xs text-emerald-500 font-medium tracking-wide">Missão Ativa</p>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 overflow-y-auto custom-scrollbar relative h-screen bg-[#09090b]">
+        <!-- Mobile Header -->
+        <header class="md:hidden p-4 border-b border-zinc-800 flex justify-between items-center bg-zinc-950 sticky top-0 z-20">
+            <div class="font-bold text-lg flex items-center gap-2">
+                <div class="w-5 h-5 bg-zinc-100 rounded-sm flex items-center justify-center text-zinc-950 text-[10px]">77</div>
+                P77
+            </div>
+            <select id="mobile-nav" class="bg-zinc-900 border border-zinc-800 rounded px-2 py-1 text-sm text-zinc-200 outline-none" onchange="switchTab(this.value)">
+                <option value="dashboard">Dashboard</option>
+                <option value="missao">Missão Diária</option>
+                <option value="calendario">Calendário 77</option>
+                <option value="metas">Metas & Peso</option>
+                <option value="ofertas">Ofertas</option>
+                <option value="config">Configurações</option>
+            </select>
+        </header>
+
+        <div class="p-4 md:p-8 lg:p-10 max-w-7xl mx-auto">
+            
+            <!-- TAB: DASHBOARD -->
+            <div id="tab-dashboard" class="tab-content active">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+                    <!-- Progress Card -->
+                    <div class="bg-zinc-900 border border-zinc-800/80 rounded-xl p-5 flex flex-col justify-between">
+                        <div class="flex items-center justify-between text-zinc-400 mb-2">
+                            <span class="text-sm font-medium">Progresso</span>
+                            <i class="ph ph-activity"></i>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-semibold text-zinc-50 mb-1">Dia <span id="dash-day">1</span><span class="text-zinc-500 text-lg">/77</span></div>
+                            <div class="w-full bg-zinc-800 rounded-full h-1.5 mt-3">
+                                <div id="dash-progress-bar" class="bg-zinc-200 h-1.5 rounded-full" style="width: 0%"></div>
+                            </div>
+                            <p class="text-xs text-zinc-500 mt-2"><span id="dash-days-left">76</span> dias restantes</p>
+                        </div>
+                    </div>
+                    <!-- Profit Card -->
+                    <div class="bg-zinc-900 border border-zinc-800/80 rounded-xl p-5 flex flex-col justify-between">
+                        <div class="flex items-center justify-between text-zinc-400 mb-2">
+                            <span class="text-sm font-medium">Lucro Acumulado</span>
+                            <i class="ph ph-currency-dollar text-emerald-500"></i>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-semibold text-zinc-50" id="dash-profit">R$ 0,00</div>
+                            <div class="w-full bg-zinc-800 rounded-full h-1.5 mt-3">
+                                <div id="dash-profit-bar" class="bg-emerald-500 h-1.5 rounded-full" style="width: 0%"></div>
+                            </div>
+                            <p class="text-xs text-zinc-500 mt-2 text-emerald-400/80" id="dash-today-profit">Hoje: R$ 0,00</p>
+                        </div>
+                    </div>
+                    <!-- Weight Card -->
+                    <div class="bg-zinc-900 border border-zinc-800/80 rounded-xl p-5 flex flex-col justify-between">
+                        <div class="flex items-center justify-between text-zinc-400 mb-2">
+                            <span class="text-sm font-medium">Peso Atual</span>
+                            <i class="ph ph-trend-down text-blue-400"></i>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-semibold text-zinc-50"><span id="dash-weight">0</span> <span class="text-lg text-zinc-500">kg</span></div>
+                            <p class="text-sm text-zinc-400 mt-2">Meta: <span id="dash-target-weight">0</span> kg</p>
+                            <p class="text-xs text-zinc-500 mt-1" id="dash-weight-diff">0kg desde o início</p>
+                        </div>
+                    </div>
+                    <!-- Streak Card -->
+                    <div class="bg-zinc-900 border border-zinc-800/80 rounded-xl p-5 flex flex-col justify-between">
+                        <div class="flex items-center justify-between text-zinc-400 mb-2">
+                            <span class="text-sm font-medium">Disciplina Streak</span>
+                            <i class="ph ph-fire text-orange-500"></i>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-semibold text-zinc-50"><span id="dash-streak">0</span> <span class="text-lg text-zinc-500">dias</span></div>
+                            <div class="flex gap-1 mt-3" id="dash-streak-bars">
+                                <!-- Bars populated by JS -->
+                            </div>
+                            <p class="text-xs text-zinc-500 mt-2">Vitórias consecutivas</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <!-- Chart -->
+                    <div class="bg-zinc-900 border border-zinc-800/80 rounded-xl p-6 lg:col-span-2">
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="font-medium text-zinc-200">Evolução do Lucro</h3>
+                            <span class="px-2 py-0.5 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20" id="dash-roi">ROI: 0%</span>
+                        </div>
+                        <div class="h-[300px] w-full relative">
+                            <canvas id="profitChart"></canvas>
+                        </div>
+                    </div>
+                    <!-- Checklist Quick View -->
+                    <div class="bg-zinc-900 border border-zinc-800/80 rounded-xl p-6 flex flex-col">
+                        <h3 class="font-medium text-zinc-200 mb-4 flex items-center gap-2">
+                            <i class="ph ph-check-square"></i> Checklist de Hoje
+                        </h3>
+                        <div class="space-y-3 flex-1 overflow-y-auto custom-scrollbar pr-2" id="dash-quick-checklist">
+                            <!-- Populated by JS -->
+                        </div>
+                        <button onclick="switchTab('missao')" class="w-full mt-4 bg-zinc-800 text-zinc-200 hover:bg-zinc-700 font-medium px-4 py-2 rounded-lg text-sm transition-all duration-200">
+                            Atualizar Missão
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB: MISSÃO DIÁRIA -->
+            <div id="tab-missao" class="tab-content">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center bg-zinc-900 border border-zinc-800 rounded-xl p-6 mb-6">
+                    <div>
+                        <h2 class="text-2xl font-semibold text-zinc-100 flex items-center gap-2">
+                            Missão do Dia
+                        </h2>
+                        <p class="text-sm text-zinc-400 mt-1">Selecione o dia, preencha resultados e mantenha a disciplina.</p>
+                    </div>
+                    <div class="flex items-center gap-4 mt-4 md:mt-0">
+                        <input type="date" id="missao-date-picker" onchange="changeMissaoDate(this.value)" class="bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 text-sm text-zinc-200 focus:outline-none focus:border-zinc-600 focus:ring-1 focus:ring-zinc-600">
+                        <div class="text-right border-l border-zinc-800 pl-4">
+                            <div class="text-3xl font-bold text-zinc-100" id="missao-percent">0%</div>
+                            <p class="text-xs text-zinc-500">Execução</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Checklist Form -->
+                    <div class="bg-zinc-900 border border-zinc-800/80 rounded-xl p-6">
+                        <h3 class="font-medium text-zinc-200 mb-4 flex items-center gap-2">
+                            <i class="ph ph-list-checks text-zinc-400 text-xl"></i> Checklist (Regra do -1)
+                        </h3>
+                        <div class="space-y-2" id="missao-checklist-container">
+                            <!-- JS Injected -->
+                        </div>
+                    </div>
+
+                    <!-- Metrics & Journal -->
+                    <div class="space-y-6">
+                        <div class="bg-zinc-900 border border-zinc-800/80 rounded-xl p-6">
+                            <h3 class="font-medium text-zinc-200 mb-4 flex items-center gap-2">
+                                <i class="ph ph-chart-line-up text-zinc-400 text-xl"></i> Métricas Frias
+                            </h3>
+                            <div class="space-y-4">
+                                <div class="flex flex-col gap-1.5">
+                                    <label class="text-sm font-medium text-zinc-400">Peso de hoje (kg)</label>
+                                    <input type="number" step="0.1" id="input-weight" class="bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 text-sm text-zinc-200 focus:outline-none focus:border-zinc-600 focus:ring-1 focus:ring-zinc-600 placeholder:text-zinc-700">
+                                </div>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div class="flex flex-col gap-1.5">
+                                        <label class="text-sm font-medium text-zinc-400">Faturamento (R$)</label>
+                                        <input type="number" id="input-revenue" class="bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 text-sm text-zinc-200 focus:outline-none focus:border-zinc-600 focus:ring-1 focus:ring-zinc-600 placeholder:text-zinc-700">
+                                    </div>
+                                    <div class="flex flex-col gap-1.5">
+                                        <label class="text-sm font-medium text-zinc-400">Gasto Ads (R$)</label>
+                                        <input type="number" id="input-spend" class="bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 text-sm text-zinc-200 focus:outline-none focus:border-zinc-600 focus:ring-1 focus:ring-zinc-600 placeholder:text-zinc-700">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-zinc-900 border border-zinc-800/80 rounded-xl p-6">
+                            <h3 class="font-medium text-zinc-200 mb-4 flex items-center gap-2">
+                                <i class="ph ph-book-open text-zinc-400 text-xl"></i> Daily Journal
+                            </h3>
+                            <div class="space-y-4">
+                                <div class="flex flex-col gap-1.5">
+                                    <label class="text-sm font-medium text-zinc-400">O que funcionou hoje?</label>
+                                    <textarea id="input-journal-worked" class="bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 text-sm text-zinc-200 focus:outline-none focus:border-zinc-600 focus:ring-1 focus:ring-zinc-600 resize-none h-20"></textarea>
+                                </div>
+                                <div class="flex flex-col gap-1.5">
+                                    <label class="text-sm font-medium text-zinc-400">O que atrapalhou?</label>
+                                    <textarea id="input-journal-blocked" class="bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 text-sm text-zinc-200 focus:outline-none focus:border-zinc-600 focus:ring-1 focus:ring-zinc-600 resize-none h-20"></textarea>
+                                </div>
+                                <div class="flex flex-col gap-1.5">
+                                    <label class="text-sm font-medium text-zinc-400">Foco para amanhã</label>
+                                    <textarea id="input-journal-tomorrow" class="bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 text-sm text-zinc-200 focus:outline-none focus:border-zinc-600 focus:ring-1 focus:ring-zinc-600 resize-none h-20"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex justify-end mt-6 sticky bottom-6 z-10">
+                    <button onclick="saveDailyMission()" class="bg-zinc-100 text-zinc-950 hover:bg-white font-medium shadow-[0_0_20px_rgba(255,255,255,0.1)] px-8 py-3 rounded-lg text-base transition-all duration-200 flex items-center gap-2">
+                        <i class="ph-fill ph-check-circle"></i> Salvar Missão do Dia
+                    </button>
+                </div>
+            </div>
+
+            <!-- TAB: CALENDÁRIO 77 -->
+            <div id="tab-calendario" class="tab-content max-w-5xl mx-auto">
+                <div class="text-center mb-10">
+                    <h2 class="text-2xl font-semibold text-zinc-100">Visão Geral da Missão</h2>
+                    <p class="text-zinc-400 mt-2">77 dias para reescrever sua realidade.</p>
+                </div>
+
+                <div class="bg-zinc-900 border border-zinc-800/80 rounded-xl p-8 mb-6">
+                    <div class="flex gap-4 justify-center flex-wrap mb-8">
+                        <div class="flex items-center gap-2 text-xs text-zinc-400"><div class="w-3 h-3 rounded-sm bg-emerald-500"></div> Vencido</div>
+                        <div class="flex items-center gap-2 text-xs text-zinc-400"><div class="w-3 h-3 rounded-sm bg-red-500/80"></div> Perdido</div>
+                        <div class="flex items-center gap-2 text-xs text-zinc-400"><div class="w-3 h-3 rounded-sm bg-zinc-700"></div> Ñ Registrado</div>
+                        <div class="flex items-center gap-2 text-xs text-zinc-400"><div class="w-3 h-3 rounded-sm bg-zinc-950 border border-zinc-800"></div> Futuro</div>
+                    </div>
+
+                    <div id="calendar-grid" class="grid grid-flow-col grid-rows-7 gap-2 md:gap-3 w-fit mx-auto overflow-x-auto pb-4">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <!-- Info Panel for clicked day -->
+                <div id="calendar-info" class="hidden bg-zinc-900 border border-zinc-800/80 rounded-xl p-6 animate-[fadeIn_0.3s_ease-in-out]">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+
+            <!-- TAB: METAS & PESO -->
+            <div id="tab-metas" class="tab-content max-w-4xl mx-auto">
+                <div class="mb-8">
+                    <h2 class="text-2xl font-semibold text-zinc-100">Metas & Evolução de Peso</h2>
+                    <p class="text-sm text-zinc-400 mt-1">Acompanhe seu progresso macro.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <!-- Meta Financeira -->
+                    <div class="bg-zinc-900 border border-zinc-800/80 rounded-xl p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="font-medium text-zinc-200">Meta de Lucro Total</h3>
+                            <i class="ph ph-target text-xl text-zinc-500"></i>
+                        </div>
+                        <div class="text-3xl font-bold text-emerald-400 mb-2" id="metas-profit-current">R$ 0</div>
+                        <div class="text-sm text-zinc-400 mb-4">Alvo final: <span class="text-zinc-200 font-medium" id="metas-profit-target">R$ 0</span></div>
+                        
+                        <div class="w-full bg-zinc-800 rounded-full h-2 mb-2">
+                            <div id="metas-profit-bar" class="bg-emerald-500 h-2 rounded-full" style="width: 0%"></div>
+                        </div>
+                        <div class="flex justify-between text-xs font-medium text-zinc-500">
+                            <span>0%</span>
+                            <span id="metas-profit-percent">0%</span>
+                        </div>
+                    </div>
+
+                    <!-- Meta de Peso -->
+                    <div class="bg-zinc-900 border border-zinc-800/80 rounded-xl p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="font-medium text-zinc-200">Meta de Perda de Peso</h3>
+                            <i class="ph ph-scales text-xl text-zinc-500"></i>
+                        </div>
+                        <div class="text-3xl font-bold text-blue-400 mb-2" id="metas-weight-current">0 kg</div>
+                        <div class="text-sm text-zinc-400 mb-4">Alvo final: <span class="text-zinc-200 font-medium" id="metas-weight-target">0 kg</span></div>
+                        
+                        <div class="w-full bg-zinc-800 rounded-full h-2 mb-2">
+                            <div id="metas-weight-bar" class="bg-blue-400 h-2 rounded-full" style="width: 0%"></div>
+                        </div>
+                        <div class="flex justify-between text-xs font-medium text-zinc-500">
+                            <span>Início: <span id="metas-weight-start">0</span>kg</span>
+                            <span id="metas-weight-percent">0% Concluído</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-zinc-900 border border-zinc-800/80 rounded-xl p-6">
+                    <h3 class="font-medium text-zinc-200 mb-6">Evolução do Peso</h3>
+                    <div class="h-[300px] w-full">
+                        <canvas id="weightChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB: OFERTAS -->
+            <div id="tab-ofertas" class="tab-content">
+                <div class="flex justify-between items-center mb-6">
+                    <div>
+                        <h2 class="text-xl font-semibold text-zinc-100">Ofertas Ativas</h2>
+                        <p class="text-sm text-zinc-400">Gerencie seus infoprodutos.</p>
+                    </div>
+                    <button onclick="toggleOfferForm()" class="bg-zinc-100 text-zinc-950 hover:bg-white font-medium px-4 py-2 rounded-lg text-sm transition-all duration-200 flex items-center gap-2">
+                        <i class="ph ph-plus"></i> Nova Oferta
+                    </button>
+                </div>
+
+                <!-- Formulário de Oferta (Hidden by default) -->
+                <div id="offer-form" class="hidden bg-zinc-900/50 border border-dashed border-zinc-700 rounded-xl p-6 mb-6">
+                    <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+                        <div class="md:col-span-2 flex flex-col gap-1.5">
+                            <label class="text-sm font-medium text-zinc-400">Nome da Oferta</label>
+                            <input type="text" id="offer-name" placeholder="Ex: Protocolo Zero" class="bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 text-sm text-zinc-200 focus:outline-none focus:border-zinc-600 placeholder:text-zinc-700">
+                        </div>
+                        <div class="flex flex-col gap-1.5">
+                            <label class="text-sm font-medium text-zinc-400">Vertical</label>
+                            <input type="text" id="offer-vertical" placeholder="Ex: Saúde" class="bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 text-sm text-zinc-200 focus:outline-none focus:border-zinc-600 placeholder:text-zinc-700">
+                        </div>
+                        <div class="flex flex-col gap-1.5">
+                            <label class="text-sm font-medium text-zinc-400">Preço (R$)</label>
+                            <input type="number" id="offer-price" placeholder="97.00" class="bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 text-sm text-zinc-200 focus:outline-none focus:border-zinc-600 placeholder:text-zinc-700">
+                        </div>
+                        <div class="flex flex-col gap-1.5">
+                            <label class="text-sm font-medium text-zinc-400">CPA Alvo (R$)</label>
+                            <input type="number" id="offer-cpa" placeholder="40.00" class="bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 text-sm text-zinc-200 focus:outline-none focus:border-zinc-600 placeholder:text-zinc-700">
+                        </div>
+                    </div>
+                    <div class="mt-4 flex justify-end gap-2">
+                        <button onclick="toggleOfferForm()" class="px-4 py-2 rounded-lg text-sm text-zinc-400 hover:text-zinc-200 transition-colors">Cancelar</button>
+                        <button onclick="saveOffer()" class="bg-zinc-800 text-zinc-200 hover:bg-zinc-700 font-medium px-4 py-2 rounded-lg text-sm transition-all duration-200">Salvar Oferta</button>
+                    </div>
+                </div>
+
+                <div id="offers-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+
+            <!-- TAB: CONFIGURAÇÕES -->
+            <div id="tab-config" class="tab-content max-w-2xl">
+                <h2 class="text-xl font-semibold mb-6">Configurações da Missão</h2>
+                <div class="bg-zinc-900 border border-zinc-800/80 rounded-xl p-6 space-y-4">
+                    <div class="flex flex-col gap-1.5">
+                        <label class="text-sm font-medium text-zinc-400">Data de Início (Dia 1)</label>
+                        <input type="date" id="config-start-date" class="bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 text-sm text-zinc-200 focus:outline-none focus:border-zinc-600">
+                    </div>
+                    <div class="flex flex-col gap-1.5">
+                        <label class="text-sm font-medium text-zinc-400">Meta de Lucro Total (R$)</label>
+                        <input type="number" id="config-target-profit" class="bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 text-sm text-zinc-200 focus:outline-none focus:border-zinc-600">
+                    </div>
+                    <div class="flex flex-col gap-1.5">
+                        <label class="text-sm font-medium text-zinc-400">Peso Inicial (kg)</label>
+                        <input type="number" step="0.1" id="config-start-weight" class="bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 text-sm text-zinc-200 focus:outline-none focus:border-zinc-600">
+                    </div>
+                    <div class="flex flex-col gap-1.5">
+                        <label class="text-sm font-medium text-zinc-400">Meta de Peso Final (kg)</label>
+                        <input type="number" step="0.1" id="config-target-weight" class="bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 text-sm text-zinc-200 focus:outline-none focus:border-zinc-600">
+                    </div>
+                    <button onclick="saveConfig()" class="mt-4 bg-zinc-100 text-zinc-950 hover:bg-white font-medium px-4 py-2 rounded-lg text-sm transition-all duration-200">
+                        Salvar Alterações
+                    </button>
+                    <p class="text-xs text-zinc-500 mt-4 border-t border-zinc-800 pt-4">Todos os dados são salvos localmente no seu navegador (LocalStorage). Nenhuma informação é enviada para servidores externos.</p>
+                </div>
+
+                <div class="bg-zinc-900 border border-zinc-800/80 rounded-xl p-6 space-y-4 mt-6">
+                    <h3 class="font-medium text-zinc-200">Gerenciar Checklist Diário</h3>
+                    <div class="flex gap-2">
+                        <input type="text" id="new-check-label" placeholder="Nova tarefa (ex: Correr 5km)" class="flex-1 bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 text-sm text-zinc-200 focus:outline-none focus:border-zinc-600">
+                        <button onclick="addChecklistItem()" class="bg-zinc-800 hover:bg-zinc-700 text-zinc-200 px-4 py-2 rounded-lg text-sm transition-colors"><i class="ph ph-plus"></i></button>
+                    </div>
+                    <div id="config-checklist-container" class="space-y-2 mt-4">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <div class="mt-8 pt-6 border-t border-red-900/30">
+                    <h3 class="font-medium text-red-400 mb-2">Zona de Perigo</h3>
+                    <button onclick="resetAllData()" class="bg-red-500/10 text-red-500 hover:bg-red-500/20 font-medium px-4 py-2 rounded-lg text-sm transition-all duration-200">
+                        Apagar Todos os Dados e Reiniciar
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        // --- CONSTANTES E ESTADO GLOBAL ---
+        let appData = { config: {}, offers: [], records: {} };
+        let charts = { profit: null, weight: null };
+        let currentMissaoDate = '';
+
+        // --- FUNÇÕES UTILITÁRIAS ---
+        const formatCurrency = (val) => new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(val || 0);
+        const getTodayStr = () => {
+            const d = new Date();
+            d.setMinutes(d.getMinutes() - d.getTimezoneOffset());
+            return d.toISOString().split('T')[0];
+        };
+        const getDaysDiff = (start, end) => {
+            const d1 = new Date(start + 'T00:00:00');
+            const d2 = new Date(end + 'T00:00:00');
+            return Math.floor((d2 - d1) / (1000 * 60 * 60 * 24));
+        };
+
+        const showToast = (message, type = 'success') => {
+            const toast = document.createElement('div');
+            toast.className = `fixed bottom-4 right-4 px-4 py-3 rounded-lg text-sm font-medium text-white shadow-lg transition-all duration-300 z-50 transform translate-y-10 opacity-0 flex items-center gap-2 ${type === 'success' ? 'bg-emerald-600' : 'bg-red-600'}`;
+            toast.innerHTML = `<i class="ph ${type === 'success' ? 'ph-check-circle' : 'ph-warning-circle'} text-lg"></i> ${message}`;
+            document.body.appendChild(toast);
+            
+            // Animate in
+            requestAnimationFrame(() => {
+                toast.classList.remove('translate-y-10', 'opacity-0');
+            });
+            
+            // Animate out
+            setTimeout(() => {
+                toast.classList.add('translate-y-10', 'opacity-0');
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        };
+
+        // --- SISTEMA DE DADOS (LOCALSTORAGE) ---
+        function initData() {
+            const stored = localStorage.getItem('project77_data');
+            if (stored) {
+                appData = JSON.parse(stored);
+                // Migração para garantir que o checklist exista
+                if (!appData.config.checklist) {
+                    appData.config.checklist = [
+                        { id: 'gym', label: 'Academia', icon: 'ph-barbell' },
+                        { id: 'diet', label: 'Dieta', icon: 'ph-bowl-food' },
+                        { id: 'boxing', label: 'Treino', icon: 'ph-activity' },
+                        { id: 'water', label: 'Água (3L+)', icon: 'ph-drop' },
+                        { id: 'reading', label: 'Leitura (10 págs)', icon: 'ph-book-open' },
+                        { id: 'devotional', label: 'Devocional', icon: 'ph-check-square' },
+                        { id: 'deepwork', label: 'Deep Work (4h)', icon: 'ph-brain' },
+                        { id: 'metrics', label: 'Atualizar Métricas', icon: 'ph-trend-up' }
+                    ];
+                }
+            } else {
+                // Iniciar hoje (Dia 1 real) sem dados mockados
+                const today = getTodayStr();
+                appData = {
+                    config: {
+                        startDate: today,
+                        targetProfit: 50000,
+                        startWeight: 85.0,
+                        targetWeight: 75.0,
+                        checklist: [
+                            { id: 'gym', label: 'Academia', icon: 'ph-barbell' },
+                            { id: 'diet', label: 'Dieta', icon: 'ph-bowl-food' },
+                            { id: 'boxing', label: 'Treino/Boxe', icon: 'ph-activity' },
+                            { id: 'water', label: 'Água (3L+)', icon: 'ph-drop' },
+                            { id: 'reading', label: 'Leitura (10 págs)', icon: 'ph-book-open' },
+                            { id: 'devotional', label: 'Devocional', icon: 'ph-check-square' },
+                            { id: 'deepwork', label: 'Deep Work (4h)', icon: 'ph-brain' },
+                            { id: 'metrics', label: 'Atualizar Métricas', icon: 'ph-trend-up' }
+                        ]
+                    },
+                    offers: [],
+                    records: {}
+                };
+                saveData();
+            }
+            currentMissaoDate = getTodayStr();
+        }
+
+        function saveData() {
+            localStorage.setItem('project77_data', JSON.stringify(appData));
+        }
+
+        function resetAllData() {
+            if(confirm("Tem certeza que deseja APAGAR TODOS OS DADOS e iniciar do zero? Esta ação não pode ser desfeita.")) {
+                localStorage.removeItem('project77_data');
+                location.reload();
+            }
+        }
+
+        // --- NAVEGAÇÃO ---
+        function switchTab(tabId) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            // Remove active state from nav buttons
+            document.querySelectorAll('.nav-btn').forEach(el => {
+                el.classList.remove('bg-zinc-800/80', 'text-zinc-100');
+                el.classList.add('text-zinc-400');
+            });
+
+            // Show selected tab
+            document.getElementById(`tab-${tabId}`).classList.add('active');
+            
+            // Set active state on desktop nav
+            const desktopBtn = document.querySelector(`.nav-btn[data-target="${tabId}"]`);
+            if(desktopBtn) {
+                desktopBtn.classList.remove('text-zinc-400');
+                desktopBtn.classList.add('bg-zinc-800/80', 'text-zinc-100');
+            }
+            
+            // Sync mobile select
+            document.getElementById('mobile-nav').value = tabId;
+
+            // Render Tab Content
+            if (tabId === 'dashboard') renderDashboard();
+            if (tabId === 'missao') renderMissao();
+            if (tabId === 'calendario') renderCalendario();
+            if (tabId === 'metas') renderMetas();
+            if (tabId === 'ofertas') renderOfertas();
+            if (tabId === 'config') renderConfig();
+        }
+
+        // --- STREAMING_CHUNK: Lógica de Renderização do Dashboard e Gráficos ---
+        
+        // Configurações padrão do Chart.js para o tema Dark
+        Chart.defaults.color = '#a1a1aa';
+        Chart.defaults.borderColor = '#27272a';
+        Chart.defaults.font.family = 'Inter';
+
+        function renderDashboard() {
+            const todayStr = getTodayStr();
+            const currentDay = getDaysDiff(appData.config.startDate, todayStr) + 1;
+            const daysLeft = 77 - currentDay;
+            const progressPercent = Math.min(100, Math.max(0, (currentDay / 77) * 100));
+
+            // Calculos baseados nos records
+            const sortedDates = Object.keys(appData.records).sort();
+            let streak = 0;
+            let totalRevenue = 0;
+            let totalSpend = 0;
+            let accumProfit = 0;
+            let lastWeight = appData.config.startWeight;
+            
+            const chartLabels = [];
+            const chartDataValues = [];
+
+            // Correção da Lógica de Streak (conta para trás a partir de hoje)
+            const startD = new Date(appData.config.startDate + 'T00:00:00');
+            const todayD = new Date(todayStr + 'T00:00:00');
+            
+            for (let d = new Date(todayD); d >= startD; d.setDate(d.getDate() - 1)) {
+                const dStr = d.toISOString().split('T')[0];
+                const rec = appData.records[dStr];
+                
+                if (dStr === todayStr) {
+                    if (rec && rec.status === 'won') streak++;
+                    else if (rec && rec.status === 'lost') break;
+                    // Se não tiver registro hoje, não quebra ainda, ignora e olha para ontem
+                } else {
+                    if (rec && rec.status === 'won') streak++;
+                    else break; // dias passados perdidos ou em branco quebram a disciplina
+                }
+            }
+
+            sortedDates.forEach(date => {
+                const rec = appData.records[date];
+                const dailyProfit = (rec.revenue || 0) - (rec.adSpend || 0);
+                totalRevenue += (rec.revenue || 0);
+                totalSpend += (rec.adSpend || 0);
+                accumProfit += dailyProfit;
+                if (rec.weight) lastWeight = rec.weight;
+                
+                chartLabels.push(`Dia ${getDaysDiff(appData.config.startDate, date) + 1}`);
+                chartDataValues.push(accumProfit);
+            });
+
+            const totalProfit = totalRevenue - totalSpend;
+            const roi = totalSpend > 0 ? ((totalProfit / totalSpend) * 100).toFixed(1) : 0;
+            
+            const todayRecord = appData.records[todayStr] || {};
+            const todayProfit = (todayRecord.revenue || 0) - (todayRecord.adSpend || 0);
+
+            // Update DOM
+            document.getElementById('dash-day').textContent = Math.max(1, currentDay);
+            document.getElementById('dash-days-left').textContent = Math.max(0, daysLeft);
+            document.getElementById('dash-progress-bar').style.width = `${progressPercent}%`;
+            
+            document.getElementById('dash-profit').textContent = formatCurrency(totalProfit);
+            document.getElementById('dash-today-profit').textContent = `Hoje: ${formatCurrency(todayProfit)}`;
+            const financialProgress = Math.min(100, Math.max(0, (totalProfit / appData.config.targetProfit) * 100));
+            document.getElementById('dash-profit-bar').style.width = `${financialProgress}%`;
+
+            document.getElementById('dash-weight').textContent = lastWeight;
+            document.getElementById('dash-target-weight').textContent = appData.config.targetWeight;
+            const diff = Math.abs(appData.config.startWeight - lastWeight).toFixed(1);
+            const isDown = lastWeight <= appData.config.startWeight;
+            document.getElementById('dash-weight-diff').textContent = `${isDown ? '↓' : '↑'} ${diff}kg desde o início`;
+
+            document.getElementById('dash-streak').textContent = streak;
+            document.getElementById('dash-roi').textContent = `ROI Total: ${roi}%`;
+
+            // Streak Bars
+            let streakHtml = '';
+            for(let i=0; i<7; i++) {
+                streakHtml += `<div class="h-2 flex-1 rounded-sm ${i < Math.min(streak, 7) ? 'bg-orange-500' : 'bg-zinc-800'}"></div>`;
+            }
+            document.getElementById('dash-streak-bars').innerHTML = streakHtml;
+
+            // Quick Checklist
+            let checkHtml = '';
+            (appData.config.checklist || []).forEach(item => {
+                const isDone = todayRecord.checklist?.[item.id] || false;
+                checkHtml += `
+                    <div class="flex items-center gap-3 p-2 rounded-lg transition-colors ${isDone ? 'bg-zinc-800/30' : ''}">
+                        <div class="w-5 h-5 rounded border flex items-center justify-center ${isDone ? 'bg-emerald-500 border-emerald-500' : 'border-zinc-700'}">
+                            ${isDone ? '<i class="ph ph-check text-zinc-950 text-xs font-bold"></i>' : ''}
+                        </div>
+                        <span class="text-sm ${isDone ? 'text-zinc-500 line-through' : 'text-zinc-300'}">${item.label}</span>
+                    </div>
+                `;
+            });
+            document.getElementById('dash-quick-checklist').innerHTML = checkHtml;
+
+            // Chart
+            if (charts.profit) charts.profit.destroy();
+            const ctx = document.getElementById('profitChart').getContext('2d');
+            
+            // Gradient
+            const gradient = ctx.createLinearGradient(0, 0, 0, 300);
+            gradient.addColorStop(0, 'rgba(16, 185, 129, 0.4)');
+            gradient.addColorStop(1, 'rgba(16, 185, 129, 0.0)');
+
+            charts.profit = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: chartLabels,
+                    datasets: [{
+                        label: 'Lucro Acumulado (R$)',
+                        data: chartDataValues,
+                        borderColor: '#10b981',
+                        backgroundColor: gradient,
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.4,
+                        pointRadius: 0,
+                        pointHitRadius: 10
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false }, tooltip: { mode: 'index', intersect: false, backgroundColor: '#18181b', titleColor: '#a1a1aa', bodyColor: '#fafafa', borderColor: '#27272a', borderWidth: 1 } },
+                    scales: {
+                        x: { grid: { display: false } },
+                        y: { border: { dash: [4, 4] } }
+                    }
+                }
+            });
+        }
+
+        // --- STREAMING_CHUNK: Lógica de Missão Diária ---
+        let currentChecklistState = {};
+
+        function changeMissaoDate(dateStr) {
+            currentMissaoDate = dateStr;
+            renderMissao();
+        }
+
+        function renderMissao() {
+            document.getElementById('missao-date-picker').value = currentMissaoDate;
+            
+            // Pega o último peso conhecido antes/neste dia
+            const sortedDates = Object.keys(appData.records).sort();
+            let lastWeight = appData.config.startWeight;
+            for (let i = 0; i < sortedDates.length; i++) {
+                if (sortedDates[i] <= currentMissaoDate && appData.records[sortedDates[i]].weight) {
+                    lastWeight = appData.records[sortedDates[i]].weight;
+                }
+            }
+
+            const record = appData.records[currentMissaoDate] || {
+                weight: lastWeight,
+                revenue: '', adSpend: '', checklist: {}, 
+                journal: { worked: '', blocked: '', tomorrow: '' }
+            };
+
+            currentChecklistState = record.checklist || {};
+
+            document.getElementById('input-weight').value = record.weight || '';
+            document.getElementById('input-revenue').value = record.revenue || '';
+            document.getElementById('input-spend').value = record.adSpend || '';
+            document.getElementById('input-journal-worked').value = record.journal?.worked || '';
+            document.getElementById('input-journal-blocked').value = record.journal?.blocked || '';
+            document.getElementById('input-journal-tomorrow').value = record.journal?.tomorrow || '';
+
+            drawChecklist();
+        }
+
+        function drawChecklist() {
+            let html = '';
+            let completed = 0;
+            const customChecklist = appData.config.checklist || [];
+
+            customChecklist.forEach(item => {
+                const isDone = currentChecklistState[item.id] || false;
+                if(isDone) completed++;
+
+                html += `
+                    <button onclick="toggleCheck('${item.id}')" class="w-full flex items-center gap-3 p-3 rounded-lg border transition-all ${
+                        isDone ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400' : 'bg-zinc-950 border-zinc-800 hover:border-zinc-700 text-zinc-400'
+                    }">
+                        <div class="w-5 h-5 rounded border flex items-center justify-center flex-shrink-0 ${isDone ? 'bg-emerald-500 border-emerald-500' : 'border-zinc-600'}">
+                            ${isDone ? '<i class="ph ph-check text-emerald-950 text-xs font-bold"></i>' : ''}
+                        </div>
+                        <i class="ph ${item.icon} text-lg"></i>
+                        <span class="text-sm font-medium ${isDone ? 'text-emerald-100' : ''}">${item.label}</span>
+                    </button>
+                `;
+            });
+
+            document.getElementById('missao-checklist-container').innerHTML = html;
+            const percent = customChecklist.length > 0 ? (completed / customChecklist.length) * 100 : 0;
+            document.getElementById('missao-percent').textContent = `${Math.round(percent)}%`;
+        }
+
+        function toggleCheck(id) {
+            currentChecklistState[id] = !currentChecklistState[id];
+            drawChecklist();
+        }
+
+        function saveDailyMission() {
+            const targetDate = currentMissaoDate;
+            const customChecklist = appData.config.checklist || [];
+            const completed = Object.values(currentChecklistState).filter(Boolean).length;
+            const isWon = completed >= Math.max(1, customChecklist.length - 1); // Permite errar 1 tarefa
+
+            appData.records[targetDate] = {
+                date: targetDate,
+                weight: parseFloat(document.getElementById('input-weight').value || 0),
+                revenue: parseFloat(document.getElementById('input-revenue').value || 0),
+                adSpend: parseFloat(document.getElementById('input-spend').value || 0),
+                checklist: { ...currentChecklistState },
+                journal: {
+                    worked: document.getElementById('input-journal-worked').value,
+                    blocked: document.getElementById('input-journal-blocked').value,
+                    tomorrow: document.getElementById('input-journal-tomorrow').value,
+                },
+                status: isWon ? 'won' : 'lost'
+            };
+
+            saveData();
+            showToast(`Missão do dia ${targetDate} salva com sucesso!`, 'success');
+        }
+
+        // --- STREAMING_CHUNK: Lógica do Calendário 77 ---
+        function renderCalendario() {
+            const startDate = new Date(appData.config.startDate + 'T00:00:00');
+            const todayStr = getTodayStr();
+            let html = '';
+
+            for (let i = 0; i < 77; i++) {
+                const d = new Date(startDate);
+                d.setDate(d.getDate() + i);
+                const dateStr = d.toISOString().split('T')[0];
+                const record = appData.records[dateStr];
+                
+                let stateClass = 'bg-zinc-950 border border-zinc-800 text-zinc-600'; // future
+                let icon = '';
+                
+                if (dateStr <= todayStr) {
+                    if (record && record.status === 'won') {
+                        stateClass = 'bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.3)] border border-emerald-400 text-emerald-950';
+                        icon = '<i class="ph-fill ph-check-circle text-sm"></i>';
+                    } else if (record && record.status === 'lost') {
+                        stateClass = 'bg-red-500/80 border border-red-400 text-red-950';
+                        icon = '<i class="ph-fill ph-x-circle text-sm"></i>';
+                    } else {
+                        stateClass = 'bg-zinc-700 border border-zinc-600'; // missed
+                    }
+                }
+
+                // Add data attributes to allow clicking
+                html += `
+                    <button onclick="showCalendarInfo('${dateStr}', ${i+1})" 
+                        class="w-8 h-8 md:w-10 md:h-10 rounded-md transition-transform hover:scale-110 flex items-center justify-center font-bold ${stateClass}"
+                        title="Dia ${i + 1}: ${dateStr}">
+                        ${icon || `<span class="text-[10px] opacity-30">${i+1}</span>`}
+                    </button>
+                `;
+            }
+            
+            document.getElementById('calendar-grid').innerHTML = html;
+            document.getElementById('calendar-info').classList.add('hidden'); // Hide info panel initially
+        }
+
+        function showCalendarInfo(dateStr, dayNum) {
+            const panel = document.getElementById('calendar-info');
+            const record = appData.records[dateStr];
+
+            if (!record) {
+                showToast(`Dia ${dayNum} (${dateStr}): Sem registro salvo.`, 'warning');
+                panel.classList.add('hidden');
+                return;
+            }
+
+            const profit = (record.revenue || 0) - (record.adSpend || 0);
+            const isProfit = profit >= 0;
+            const completedChecks = Object.values(record.checklist || {}).filter(Boolean).length;
+            const totalChecks = (appData.config.checklist || []).length;
+            
+            let statusBadge = record.status === 'won' 
+                ? '<span class="px-2 py-0.5 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Dia Vencido</span>'
+                : '<span class="px-2 py-0.5 rounded-full text-xs font-medium bg-red-500/10 text-red-400 border border-red-500/20">Dia Perdido</span>';
+
+            panel.innerHTML = `
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <h3 class="text-xl font-semibold text-zinc-100">Resumo - Dia ${dayNum}</h3>
+                        <p class="text-zinc-400 text-sm">${dateStr}</p>
+                    </div>
+                    ${statusBadge}
+                </div>
+                
+                <div class="grid grid-cols-3 gap-4 mb-6">
+                    <div class="bg-zinc-950 p-3 rounded-lg border border-zinc-800">
+                        <span class="text-xs text-zinc-500 block mb-1">Lucro</span>
+                        <span class="font-semibold ${isProfit ? 'text-emerald-400' : 'text-red-400'}">${formatCurrency(profit)}</span>
+                    </div>
+                    <div class="bg-zinc-950 p-3 rounded-lg border border-zinc-800">
+                        <span class="text-xs text-zinc-500 block mb-1">Peso</span>
+                        <span class="font-semibold text-zinc-200">${record.weight || '-'} kg</span>
+                    </div>
+                    <div class="bg-zinc-950 p-3 rounded-lg border border-zinc-800">
+                        <span class="text-xs text-zinc-500 block mb-1">Checklist</span>
+                        <span class="font-semibold text-zinc-200">${completedChecks}/${totalChecks}</span>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <div>
+                        <span class="text-xs font-medium text-emerald-500 uppercase tracking-wider block mb-1">O que funcionou</span>
+                        <p class="text-sm text-zinc-300 bg-zinc-950/50 p-3 rounded border border-zinc-800/50">${record.journal?.worked || '-'}</p>
+                    </div>
+                    <div>
+                        <span class="text-xs font-medium text-red-400 uppercase tracking-wider block mb-1">O que atrapalhou</span>
+                        <p class="text-sm text-zinc-300 bg-zinc-950/50 p-3 rounded border border-zinc-800/50">${record.journal?.blocked || '-'}</p>
+                    </div>
+                </div>
+
+                <button onclick="editCalendarDay('${dateStr}')" class="w-full mt-6 bg-zinc-800 text-zinc-200 hover:bg-zinc-700 font-medium px-4 py-2 rounded-lg text-sm transition-all duration-200 flex items-center justify-center gap-2">
+                    <i class="ph ph-pencil-simple"></i> Editar Resultados deste Dia
+                </button>
+            `;
+            panel.classList.remove('hidden');
+        }
+
+        function editCalendarDay(dateStr) {
+            switchTab('missao');
+            changeMissaoDate(dateStr);
+        }
+
+        // --- STREAMING_CHUNK: Lógica de Metas e Peso ---
+        function renderMetas() {
+            // Finance
+            let totalProfit = 0;
+            const sortedDates = Object.keys(appData.records).sort();
+            
+            const chartLabels = [];
+            const chartWeightData = [];
+
+            sortedDates.forEach(date => {
+                const rec = appData.records[date];
+                totalProfit += (rec.revenue || 0) - (rec.adSpend || 0);
+                if (rec.weight) {
+                    chartLabels.push(date.substring(5)); // just MM-DD
+                    chartWeightData.push(rec.weight);
+                }
+            });
+
+            const targetP = parseFloat(appData.config.targetProfit);
+            const percentP = Math.min(100, Math.max(0, (totalProfit / targetP) * 100));
+            
+            document.getElementById('metas-profit-current').textContent = formatCurrency(totalProfit);
+            document.getElementById('metas-profit-target').textContent = formatCurrency(targetP);
+            document.getElementById('metas-profit-bar').style.width = `${percentP}%`;
+            document.getElementById('metas-profit-percent').textContent = `${percentP.toFixed(1)}%`;
+
+            // Weight
+            const startW = parseFloat(appData.config.startWeight);
+            const targetW = parseFloat(appData.config.targetWeight);
+            const currentW = chartWeightData.length > 0 ? chartWeightData[chartWeightData.length - 1] : startW;
+            
+            const totalToLose = startW - targetW;
+            const lostSoFar = startW - currentW;
+            let percentW = totalToLose > 0 ? (lostSoFar / totalToLose) * 100 : 0;
+            percentW = Math.min(100, Math.max(0, percentW)); // Clamp 0-100
+
+            document.getElementById('metas-weight-current').textContent = `${currentW} kg`;
+            document.getElementById('metas-weight-target').textContent = `${targetW} kg`;
+            document.getElementById('metas-weight-start').textContent = startW;
+            document.getElementById('metas-weight-bar').style.width = `${percentW}%`;
+            document.getElementById('metas-weight-percent').textContent = `${percentW.toFixed(1)}% Concluído`;
+
+            // Chart Weight
+            if (charts.weight) charts.weight.destroy();
+            const ctxW = document.getElementById('weightChart').getContext('2d');
+            
+            charts.weight = new Chart(ctxW, {
+                type: 'line',
+                data: {
+                    labels: chartLabels,
+                    datasets: [{
+                        label: 'Peso (kg)',
+                        data: chartWeightData,
+                        borderColor: '#60a5fa', // blue-400
+                        borderWidth: 3,
+                        tension: 0.2,
+                        pointBackgroundColor: '#60a5fa',
+                        pointBorderColor: '#18181b',
+                        pointRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        x: { grid: { display: false } },
+                        y: { 
+                            border: { dash: [4, 4] },
+                            min: targetW - 2, // dynamic min based on target
+                            max: startW + 2
+                        }
+                    }
+                }
+            });
+        }
+
+        // --- STREAMING_CHUNK: Lógica de Ofertas e Configs ---
+        function toggleOfferForm() {
+            const form = document.getElementById('offer-form');
+            form.classList.toggle('hidden');
+        }
+
+        function saveOffer() {
+            const name = document.getElementById('offer-name').value;
+            const vertical = document.getElementById('offer-vertical').value;
+            const price = parseFloat(document.getElementById('offer-price').value || 0);
+            const cpa = parseFloat(document.getElementById('offer-cpa').value || 0);
+
+            if(!name) return showToast('Nome da oferta é obrigatório.', 'error');
+
+            appData.offers.push({
+                id: Date.now().toString(),
+                name, vertical, price, targetCpa: cpa
+            });
+
+            saveData();
+            toggleOfferForm();
+            showToast('Oferta criada!', 'success');
+            renderOfertas();
+            
+            // clear form
+            document.getElementById('offer-name').value = '';
+            document.getElementById('offer-vertical').value = '';
+            document.getElementById('offer-price').value = '';
+            document.getElementById('offer-cpa').value = '';
+        }
+
+        function deleteOffer(id) {
+            appData.offers = appData.offers.filter(o => o.id !== id);
+            saveData();
+            showToast('Oferta removida.', 'success');
+            renderOfertas();
+        }
+
+        function renderOfertas() {
+            const container = document.getElementById('offers-container');
+            let html = '';
+
+            appData.offers.forEach(offer => {
+                html += `
+                    <div class="bg-zinc-900 border border-zinc-800/80 rounded-xl p-5 flex flex-col group hover:border-zinc-700 transition-colors">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="font-medium text-zinc-100 text-lg">${offer.name}</h3>
+                                <div class="flex gap-2 mt-2">
+                                    <span class="px-2 py-0.5 rounded-full text-xs font-medium bg-zinc-800 text-zinc-300">${offer.vertical || 'Geral'}</span>
+                                </div>
+                            </div>
+                            <button onclick="deleteOffer('${offer.id}')" class="text-zinc-600 hover:text-red-400 transition-colors" title="Excluir"><i class="ph ph-trash text-lg"></i></button>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-4 mb-4 flex-1">
+                            <div>
+                                <p class="text-xs text-zinc-500 mb-1">Ticket Médio</p>
+                                <p class="font-medium text-zinc-200">${formatCurrency(offer.price)}</p>
+                            </div>
+                            <div>
+                                <p class="text-xs text-zinc-500 mb-1">CPA Alvo</p>
+                                <p class="font-medium text-zinc-200">${formatCurrency(offer.targetCpa)}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            if (appData.offers.length === 0) {
+                html = '<div class="col-span-full text-center text-zinc-500 py-10">Nenhuma oferta cadastrada.</div>';
+            }
+
+            container.innerHTML = html;
+        }
+
+        function renderConfig() {
+            document.getElementById('config-start-date').value = appData.config.startDate || '';
+            document.getElementById('config-target-profit').value = appData.config.targetProfit || '';
+            document.getElementById('config-start-weight').value = appData.config.startWeight || '';
+            document.getElementById('config-target-weight').value = appData.config.targetWeight || '';
+
+            // Render Checklist
+            let checkHtml = '';
+            (appData.config.checklist || []).forEach(item => {
+                checkHtml += `
+                    <div class="flex justify-between items-center bg-zinc-950 border border-zinc-800 p-2.5 rounded-lg">
+                        <span class="text-sm text-zinc-300 flex items-center gap-2"><i class="ph ${item.icon} text-zinc-500"></i> ${item.label}</span>
+                        <button onclick="removeChecklistItem('${item.id}')" class="text-zinc-600 hover:text-red-400 transition-colors"><i class="ph ph-trash"></i></button>
+                    </div>
+                `;
+            });
+            if (!checkHtml) checkHtml = '<p class="text-sm text-zinc-500">Nenhuma tarefa. Adicione acima.</p>';
+            document.getElementById('config-checklist-container').innerHTML = checkHtml;
+        }
+
+        function addChecklistItem() {
+            const label = document.getElementById('new-check-label').value;
+            if (!label) return;
+            const id = 'task_' + Date.now();
+            if (!appData.config.checklist) appData.config.checklist = [];
+            appData.config.checklist.push({ id, label, icon: 'ph-check-circle' }); // ícone genérico
+            saveData();
+            document.getElementById('new-check-label').value = '';
+            renderConfig();
+            showToast('Tarefa adicionada!', 'success');
+        }
+
+        function removeChecklistItem(id) {
+            if(confirm("Tem certeza que deseja remover esta tarefa?")) {
+                appData.config.checklist = appData.config.checklist.filter(i => i.id !== id);
+                saveData();
+                renderConfig();
+                showToast('Tarefa removida.', 'success');
+            }
+        }
+
+        function saveConfig() {
+            appData.config.startDate = document.getElementById('config-start-date').value;
+            appData.config.targetProfit = parseFloat(document.getElementById('config-target-profit').value || 0);
+            appData.config.startWeight = parseFloat(document.getElementById('config-start-weight').value || 0);
+            appData.config.targetWeight = parseFloat(document.getElementById('config-target-weight').value || 0);
+            
+            saveData();
+            showToast('Configurações salvas!', 'success');
+        }
+
+        // --- INICIALIZAÇÃO ---
+        window.onload = () => {
+            initData();
+            switchTab('dashboard'); // Renderiza a aba principal por padrão
+        };
+    </script>
+</body>
+</html>

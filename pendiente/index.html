@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pago Pendiente</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --wine:       #6B1A2A;
+      --wine-light: #8C2438;
+      --wine-glow:  #A63048;
+      --black:      #0A0A0A;
+      --near-black: #111114;
+      --white:      #F5F0ED;
+      --white-dim:  #C2B9B4;
+      --border:     rgba(107, 26, 42, 0.35);
+      --blue:       #3A6BC2;
+      --blue-glow:  rgba(58, 107, 194, 0.18);
+    }
+
+    html, body {
+      min-height: 100%;
+      background-color: var(--black);
+      color: var(--white);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background-image:
+        radial-gradient(ellipse 60% 50% at 50% -10%, rgba(107, 26, 42, 0.22) 0%, transparent 70%),
+        repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.012) 2px, rgba(255,255,255,0.012) 3px);
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 1.5rem;
+    }
+
+    .card {
+      max-width: 600px;
+      width: 100%;
+      background: linear-gradient(160deg, #1a1014 0%, var(--near-black) 60%, #14101a 100%);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 3.5rem 3rem;
+      position: relative;
+      overflow: hidden;
+      animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 80px; height: 80px;
+      border-top: 2px solid var(--wine-glow);
+      border-left: 2px solid var(--wine-glow);
+      border-radius: 2px 0 0 0;
+    }
+    .card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; right: 0;
+      width: 80px; height: 80px;
+      border-bottom: 2px solid var(--wine-glow);
+      border-right: 2px solid var(--wine-glow);
+      border-radius: 0 0 2px 0;
+    }
+
+    /* ── Icon: hourglass ── */
+    .seal {
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 2rem;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: sealPop 0.6s 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    }
+
+    .seal-ring {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 1.5px solid var(--border);
+      box-shadow: 0 0 18px rgba(107, 26, 42, 0.2);
+    }
+
+    /* Dashed countdown ring */
+    .seal-dash {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 1.5px dashed rgba(166, 48, 72, 0.4);
+      animation: spin 12s linear infinite;
+    }
+
+    .seal-inner {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, #1f1018 0%, #2a1520 100%);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .seal-icon {
+      width: 20px;
+      height: 20px;
+      stroke: var(--wine-glow);
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .eyebrow {
+      text-align: center;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--wine-glow);
+      margin-bottom: 1.1rem;
+    }
+
+    .headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.9rem, 6vw, 2.75rem);
+      font-weight: 300;
+      line-height: 1.12;
+      text-align: center;
+      color: var(--white);
+      margin-bottom: 0.4rem;
+    }
+
+    .headline em {
+      font-style: italic;
+      color: var(--wine-glow);
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 1.8rem 0;
+    }
+    .divider-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+    }
+    .divider-diamond {
+      width: 5px; height: 5px;
+      background: var(--wine-glow);
+      transform: rotate(45deg);
+      flex-shrink: 0;
+    }
+
+    .body-text {
+      text-align: center;
+      font-size: 0.9rem;
+      font-weight: 300;
+      line-height: 1.8;
+      color: var(--white-dim);
+      margin-bottom: 2rem;
+    }
+
+    .body-text strong {
+      color: var(--white);
+      font-weight: 500;
+    }
+
+    /* ── Action box ── */
+    .action-box {
+      background: rgba(107, 26, 42, 0.1);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 1.5rem 1.6rem;
+      margin-bottom: 1rem;
+      display: flex;
+      gap: 1.2rem;
+      align-items: flex-start;
+    }
+
+    .action-icon {
+      width: 36px;
+      height: 36px;
+      flex-shrink: 0;
+      background: rgba(107, 26, 42, 0.25);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+
+    .action-icon svg {
+      width: 16px;
+      height: 16px;
+      stroke: var(--wine-glow);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .action-body {
+      flex: 1;
+    }
+
+    .action-title {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 0.3rem;
+      letter-spacing: 0.02em;
+    }
+
+    .action-desc {
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: var(--white-dim);
+      line-height: 1.6;
+    }
+
+    /* ── Warning strip ── */
+    .warning-strip {
+      background: rgba(58, 107, 194, 0.1);
+      border: 1px solid rgba(58, 107, 194, 0.25);
+      border-radius: 2px;
+      padding: 1rem 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .warning-icon {
+      flex-shrink: 0;
+    }
+
+    .warning-icon svg {
+      width: 18px;
+      height: 18px;
+      stroke: #7aabe0;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .warning-text {
+      font-size: 0.78rem;
+      font-weight: 400;
+      color: var(--white-dim);
+      line-height: 1.55;
+    }
+
+    .warning-text strong {
+      color: #a8c8f0;
+      font-weight: 500;
+    }
+
+    .footer-sig {
+      text-align: center;
+      margin-top: 0.5rem;
+    }
+
+    .footer-rule {
+      width: 32px; height: 1px;
+      background: var(--wine);
+      margin: 0 auto 0.9rem;
+    }
+
+    .footer-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(194, 185, 180, 0.4);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(32px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes sealPop {
+      from { opacity: 0; transform: scale(0.5); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    @media (max-width: 480px) {
+      .card { padding: 2.5rem 1.4rem; }
+      .card::before, .card::after { width: 48px; height: 48px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="card">
+
+      <div class="seal">
+        <div class="seal-ring"></div>
+        <div class="seal-dash"></div>
+        <div class="seal-inner">
+          <!-- Hourglass icon -->
+          <svg class="seal-icon" viewBox="0 0 24 24">
+            <path d="M5 22h14M5 2h14M17 2v4.172a2 2 0 0 1-.586 1.414L12 12l-4.414-4.414A2 2 0 0 1 7 6.172V2M17 22v-4.172a2 2 0 0 0-.586-1.414L12 12l-4.414 4.414A2 2 0 0 0 7 17.828V22"/>
+          </svg>
+        </div>
+      </div>
+
+      <p class="eyebrow">Acción requerida</p>
+
+      <h1 class="headline">
+        Tu pedido está<br><em>esperando el pago</em>
+      </h1>
+
+      <div class="divider">
+        <div class="divider-line"></div>
+        <div class="divider-diamond"></div>
+        <div class="divider-line"></div>
+      </div>
+
+      <p class="body-text">
+        Tu pedido fue generado, pero aún <strong>no hemos recibido la confirmación del pago</strong>.<br>
+        Completa el proceso para garantizar tu acceso al producto.
+      </p>
+
+      <!-- Action 1: boleto / OXXO -->
+      <div class="action-box">
+        <div class="action-icon">
+          <svg viewBox="0 0 24 24">
+            <rect x="2" y="5" width="20" height="14" rx="2"/>
+            <line x1="2" y1="10" x2="22" y2="10"/>
+          </svg>
+        </div>
+        <div class="action-body">
+          <p class="action-title">Pago con referencia bancaria o en efectivo</p>
+          <p class="action-desc">Si elegiste pagar con OXXO, tiendas de conveniencia o transferencia bancaria, realiza el pago con la referencia que recibiste en tu correo. Puede tardar hasta 72 horas en reflejarse.</p>
+        </div>
+      </div>
+
+      <!-- Action 2: tarjeta -->
+      <div class="action-box" style="margin-bottom: 2rem;">
+        <div class="action-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+            <polyline points="12 6 12 12 16 14"/>
+          </svg>
+        </div>
+        <div class="action-body">
+          <p class="action-title">¿Usaste tarjeta de crédito o débito?</p>
+          <p class="action-desc">Si el cargo no se procesó correctamente, vuelve a la página de compra e intenta de nuevo. Asegúrate de que tu banco no haya bloqueado la transacción.</p>
+        </div>
+      </div>
+
+      <!-- Info strip -->
+      <div class="warning-strip">
+        <div class="warning-icon">
+          <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="12"/>
+            <line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+        </div>
+        <div class="warning-text">
+          <strong>Tu acceso se liberará automáticamente</strong> en cuanto el pago sea confirmado. Si ya pagaste y aún no tienes acceso, contáctanos por soporte.
+        </div>
+      </div>
+
+      <div class="footer-sig">
+        <div class="footer-rule"></div>
+        <p class="footer-brand">Estamos aquí para ayudarte</p>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>
